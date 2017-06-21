@@ -1,0 +1,27 @@
+ $output-bourbon-deprecation-warnings: false;
+ @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
+ @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+ @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+ @import "../../bower_components/flexslider/flexslider";
+ @import "../../bower_components/font-awesome/scss/font-awesome";
+ @import "../../bower_components/angular-ui-swiper/dist/angular-ui-swiper";
+ @import "../../bower_components/fancyBox/source/jquery.fancybox";
+ @import "../../bower_components/smart-app-banner/smart-app-banner";
+
+  //Template Css
+ @import "template/fonts/linecons/css/linecons";
+ @import "template/xenon-core";
+ @import "template/xenon-forms";
+ @import "template/xenon-components"; 
+ @import "template/xenon-skins";
+ //End Template Css
+
+
+ /****** Please Import Libraries Above This!!!!!! ******/
+ 
+ @import "main";
+ @import "other/fancybox-override";
+ @import "responsive/lg";
+ @import "responsive/md";
+ @import "responsive/sm";
+ @import "responsive/xs";

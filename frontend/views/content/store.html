@@ -1,0 +1,148 @@
+<div ng-include="template.header" class="template header"></div>
+<div class="add-header">
+	<div class="pull-right search-all">
+		<form class="navbar-form" role="search">
+			<div class="input-group add-on">
+				<input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<span class="main bredcrums">Dashboard</span> >> <span>overview & stats</span>
+</div>
+
+<div class="title-all">
+	<h4>
+		iSee Snapshot - Administration
+	</h4>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+
+		<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+			<div class="xe-icon">
+				<i class="fa fa-money"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">100</strong>
+				<span>Cash refunds</span>
+			</div>
+		</div>
+
+		<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+			<div class="xe-icon">
+				<i class="fa fa-thumb-tack color-blue"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">2000</strong>
+				<span>POS markdowns</span>
+			</div>
+		</div>
+		<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+			<div class="xe-icon">
+				<i class="fa fa-credit-card color-red"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">30000</strong>
+				<span>Petty Cash</span>
+			</div>
+		</div>
+		<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+			<div class="xe-icon">
+				<i class="fa fa-ban color-yellow"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">0.0%</strong>
+				<span>Post voids</span>
+			</div>
+		</div>
+
+		<div class="xe-widget xe-counter xe-counter-purple" data-count=".num" data-from="1" data-to="117" data-suffix="k" data-duration="3"
+		    data-easing="false">
+			<div class="xe-icon">
+				<i class="fa fa-wrench"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">1k</strong>
+				<span>Repairs</span>
+			</div>
+		</div>
+
+		<div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="1000" data-to="2470" data-duration="4" data-easing="true">
+			<div class="xe-icon">
+				<i class="fa fa-suitcase"></i>
+			</div>
+			<div class="xe-label">
+				<strong class="num">26</strong>
+				<span>Layaway</span>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="task-made">
+			<!--<img src="img/3.jpg" alt="" class="img-responsive">-->
+			<ul class="tabs">
+				<li class="ms-hover bg-green color-white">
+					<span class="fnt-14"> 61%</span>
+					<span>Task <br> Completion</span>
+				</li>
+				<li class="ms-hover bg-blue color-white">
+					<span class="fnt-26"> 
+						<i class="fa fa-bar-chart" aria-hidden="true"></i>
+						</span>
+					<span>Earings <br> $32,000</span>
+				</li>
+				<li class="ms-hover bg-red color-white">
+					<span class="fnt-26"> 
+						<i class="fa fa-download" aria-hidden="true"></i>
+						</span>
+					<span>
+							Downloads <br> 1,205
+						</span>
+				</li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+		<div class="obervation-text">
+			<div class="edit-submit">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			</div>
+			<textarea name="" id="" rows="2" class="form-control" placeholder="Observation from the Return Observer goes here"></textarea>
+		</div>
+	</div>
+	<div class="col-sm-6">
+
+		<div class="chart-item-bg">
+			<!--<img src="img/charts.jpg" alt="" class="img-responsive">-->
+			<div class="sub-title chart-header">
+				<h4>Analytical Engine Outcome</h4>
+			</div>
+			<highchart config="chartConfig" style="height: 300px;"></highchart>
+			<div class="task-made">
+				<!--<img src="img/3.jpg" alt="" class="img-responsive">-->
+				<ul class="tabs">
+					<li class="ms-hover bg-green color-white">
+						<span class="fnt-16"> 61%</span>
+						<span>Task <br> Completion</span>
+					</li>
+					<li class="ms-hover bg-blue color-white">
+						<span class="fnt-26"> 
+						<i class="fa fa-bar-chart" aria-hidden="true"></i>
+						</span>
+						<span>Earings <br> $32,000</span>
+					</li>
+					<li class="ms-hover bg-red color-white">
+						<span class="fnt-26"> 
+						<i class="fa fa-download" aria-hidden="true"></i>
+						</span>
+						<span>
+							Downloads <br> 1,205
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>
