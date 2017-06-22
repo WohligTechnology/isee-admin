@@ -4,13 +4,13 @@
 	<!-- Left links for user info navbar -->
 	<ul class="user-info-menu left-links list-inline list-unstyled">
 
-		<li class="hidden-sm hidden-xs">
+		<li class="hidden-sm hidden-xs" ng-click="sideMenu()">
 			<a data-toggle="sidebar" class="menu-icons">
 							<i class="fa-bars"></i>
 						</a>
 		</li>
-		<li class="dropdown hover-line">
-			<a class="dropdown-toggle menu-icons" data-toggle="dropdown" >
+		<!--<li class="dropdown hover-line">
+			<a class="dropdown-toggle menu-icons" data-toggle="dropdown">
 							<i class="fa-envelope-o"></i>
 							<span class="badge badge-green">15</span>
 						</a>
@@ -21,7 +21,6 @@
 					<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
 
 						<li class="active">
-							<!-- "active" class means message is unread -->
 							<a>
 											<span class="line">
 												<strong>Luc Chartier</strong>
@@ -72,10 +71,8 @@
 										</a>
 						</li>
 
-						<!-- Repeated -->
 
 						<li class="active">
-							<!-- "active" class means message is unread -->
 							<a href="#">
 											<span class="line">
 												<strong>Luc Chartier</strong>
@@ -134,9 +131,9 @@
 								</a>
 				</li>
 			</ul>
-		</li>
+		</li>-->
 
-		<li class="dropdown hover-line">
+		<!--<li class="dropdown hover-line">
 			<a class="dropdown-toggle menu-icons" data-toggle="dropdown">
 							<i class="fa-bell-o"></i>
 							<span class="badge badge-purple">7</span>
@@ -244,32 +241,18 @@
 								</a>
 				</li>
 			</ul>
-		</li>
+		</li>-->
 
 	</ul>
 
 
-	<!-- Right links for user info navbar -->
 	<ul class="user-info-menu right-links list-inline list-unstyled">
-		<!--<li class="search-form">
-			
-						<form name="userinfo_search_form" method="get" action="extra-search.html">
-							<input type="text" name="s" class="form-control search-field" placeholder="Type to search..." />
-			
-							<button type="submit" class="btn btn-link">
-								<i class="linecons-search"></i>
-							</button>
-						</form>
-			
-					</li>-->
-
 		<li class="dropdown user-profile">
 			<a class="dropdown-toggle" data-toggle="dropdown">
 							<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
 							<span>
 								Welcome, <br>	
 								Jason
-								<!--<i class="fa-angle-down"></i>-->
 							</span>
 						</a>
 

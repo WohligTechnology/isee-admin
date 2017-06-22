@@ -44,7 +44,7 @@ module.exports = [
   // Contorllers
   'frontend/js/controllers/controller.js',
   'frontend/js/controllers/widget.js',
-  'frontend/js/controllers/rule.js',
+  'frontend/js/controllers/rules.js',
   'frontend/js/controllers/store.js',
   'frontend/js/controllers/user.js',
   'frontend/js/controllers/header-controller.js',
