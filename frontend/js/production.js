@@ -61280,9 +61280,10 @@ myApp.factory('NavigationService', function () {
         icon: "fa-desktop",
         hasSub: "has-sub",
         subnav: [{
-            name: "Subnav1",
+            name: "Subnav",
             classis: "active",
-            anchor: "home"
+            anchor: "home",
+            icon:"fa-cog"
         }]
     }, {
         name: "Returns Details",
@@ -61328,10 +61329,10 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
         $scope.chartConfig = {
             options: {
                 chart: {
-                    type: 'pie',
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
+                       plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
 
                 },
                 title: {
@@ -61339,6 +61340,7 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
                 },
                 plotOptions: {
                     pie: {
+                        allowPointSelect: true,
                         dataLabels: {
                             enabled: false
                         },
@@ -61347,19 +61349,14 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
                 }
             },
             series: [{
-                data: [{
-                    name: 'Task Completion',
-                    y: 61,
-                    color: '#E94B3B'
-                }, {
-                    name: 'Earing',
-                    y: 20,
-                    color: '#8AD5E7'
-                }, {
-                    name: 'Download',
-                    color: '#F8C471',
-                    y: 19
-                }]
+                 data: [
+            { name: 'Microsoft Internet Explorer', y: 56.33 },
+            { name: 'Chrome', y: 24.03 },
+            { name: 'Firefox', y: 10.38 },
+            { name: 'Safari', y: 4.77 },
+            { name: 'Opera', y: 0.91 },
+            { name: 'Proprietary or Undetectable', y: 0.2 }
+        ]
             }],
 
             loading: false
@@ -61394,6 +61391,69 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
         TemplateService.class = "store"; //This is the Class of the Theme
         TemplateService.templateTitle = "Stores Manager"; //This is the Title of the Theme
         $scope.navigation = NavigationService.getNavigation();
+
+        $scope.chartConfig = {
+            options: {
+                chart: {
+                    type: 'spline'
+
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                    ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Cash Refunded'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value + '°';
+                        }
+                    }
+                },
+                tooltip: {
+                    crosshairs: true,
+                    shared: true
+                },
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            radius: 4,
+                            lineColor: '#666666',
+                            lineWidth: 1
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Tokyo',
+                marker: {
+                    symbol: 'square'
+                },
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, {
+                    y: 26.5,
+                    // marker: {
+                    //     symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
+                    // }
+                }, 23.3, 18.3, 13.9, 9.6]
+
+            }, {
+                name: 'London',
+                marker: {
+                    symbol: 'diamond'
+                },
+                data: [{
+                    y: 3.9,
+                    // marker: {
+                    //     symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
+                    // }
+                }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }],
+
+            loading: false
+        };
     })
     myApp.controller('UserCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.getHTML("content/user.html");
@@ -61401,8 +61461,71 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
         TemplateService.class = "user"; //This is the Class of the Theme
         TemplateService.templateTitle = "Corporate User"; //This is the Title of the Theme
         $scope.navigation = NavigationService.getNavigation();
-    })
 
+        $scope.chartConfig = {
+            options: {
+chart: {
+        type: 'area'
+    },
+    title: {
+        text: ''
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Billions'
+        },
+        labels: {
+            formatter: function () {
+                return this.value / 1000;
+            }
+        }
+    },
+    tooltip: {
+        split: true,
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#666666'
+            }
+        }
+    }
+            },
+            series: [{
+        name: 'Asia',
+        data: [502, 635, 809, 947, 1402, 3634, 5268]
+    }, {
+        name: 'Africa',
+        data: [106, 107, 111, 133, 221, 767, 1766]
+    }, {
+        name: 'Europe',
+        data: [163, 203, 276, 408, 547, 729, 628]
+    }, {
+        name: 'America',
+        data: [18, 31, 54, 156, 339, 818, 1201]
+    }, {
+        name: 'Oceania',
+        data: [2, 2, 2, 6, 13, 30, 46]
+    }],
+
+            loading: false
+        };
+    })
 myApp.controller('headerCtrl', function ($scope, TemplateService) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

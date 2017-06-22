@@ -8,10 +8,10 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
         $scope.chartConfig = {
             options: {
                 chart: {
-                    type: 'pie',
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
+                       plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
 
                 },
                 title: {
@@ -19,6 +19,7 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
                 },
                 plotOptions: {
                     pie: {
+                        allowPointSelect: true,
                         dataLabels: {
                             enabled: false
                         },
@@ -27,19 +28,14 @@ myApp.controller('CorporateCtrl', function ($scope, TemplateService, NavigationS
                 }
             },
             series: [{
-                data: [{
-                    name: 'Task Completion',
-                    y: 61,
-                    color: '#E94B3B'
-                }, {
-                    name: 'Earing',
-                    y: 20,
-                    color: '#8AD5E7'
-                }, {
-                    name: 'Download',
-                    color: '#F8C471',
-                    y: 19
-                }]
+                 data: [
+            { name: 'Microsoft Internet Explorer', y: 56.33 },
+            { name: 'Chrome', y: 24.03 },
+            { name: 'Firefox', y: 10.38 },
+            { name: 'Safari', y: 4.77 },
+            { name: 'Opera', y: 0.91 },
+            { name: 'Proprietary or Undetectable', y: 0.2 }
+        ]
             }],
 
             loading: false

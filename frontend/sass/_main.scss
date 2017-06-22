@@ -216,7 +216,7 @@ header {
             }
             &.active,
             &:hover {
-                background: #096da5;
+                background: #3c4fb1;
                 a {
                     color: #fff;
                     &:before {
@@ -388,17 +388,17 @@ header {
 //corporate Theme
 .corporate {
     .user-info-navbar {
-        background-color: #096da5;
+        background-color: #3c4fb1;
     }
     .sidebar-menu .logo-env {
-        background: #096da5;
+        background: #3c4fb1;
     }
     .sidebar-menu {
         .main-menu {
             li {
                 &.active,
                 &:hover {
-                    background: #096da5;
+                    background: #3c4fb1;
                 }
             }
         }
@@ -408,10 +408,10 @@ header {
 //User Theme
 .store {
     .user-info-navbar {
-        background: #00a746;
+        background: #44b6ae;
     }
     .sidebar-menu .logo-env {
-        background: #00a746;
+        background: #44b6ae;
     }
 
         .sidebar-menu {
@@ -419,29 +419,36 @@ header {
             li {
                 &.active,
                 &:hover {
-                    background: #00a746;
+                    background: #44b6ae;
+                }
+            }
+        }
+    }
+}
+//Store Theme
+.user {
+    .user-info-navbar {
+        background: #27303a;
+    }
+    .sidebar-menu .logo-env {
+        background: #27303a;
+    }
+        .sidebar-menu {
+        .main-menu {
+            li {
+                &.active,
+                &:hover {
+                    background: #27303a;
                 }
             }
         }
     }
 }
 
-//Store Theme
-.user {
-    .user-info-navbar {
-        background: #2a2a2a;
-    }
-    .sidebar-menu .logo-env {
-        background: #2a2a2a;
-    }
-        .sidebar-menu {
-        .main-menu {
-            li {
-                &.active,
-                &:hover {
-                    background: #2a2a2a;
-                }
-            }
-        }
-    }
+.xe-widget.xe-counter.width-33 {
+    width: 33%;
+}
+
+.mb-20{
+    margin-bottom: 20px;
 }

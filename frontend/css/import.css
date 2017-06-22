@@ -3414,8 +3414,8 @@ html[xmlns] .flexslider .slides {
 
 @font-face {
   font-family: 'linecons';
-  src: url("../font/linecons.eot?24293614");
-  src: url("../font/linecons.eot?24293614#iefix") format("embedded-opentype"), url("../font/linecons.woff?24293614") format("woff"), url("../font/linecons.ttf?24293614") format("truetype"), url("../font/linecons.svg?24293614#linecons") format("svg");
+  src: url("../font/linecons.eot");
+  src: url("../font/linecons.eot") format("embedded-opentype"), url("../font/linecons.woff") format("woff"), url("../font/linecons.ttf") format("truetype"), url("../font/linecons.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -32397,7 +32397,7 @@ header {
         display: block;
         height: auto; }
       .sidebar-menu .main-menu li.active, .sidebar-menu .main-menu li:hover {
-        background: #096da5; }
+        background: #3c4fb1; }
         .sidebar-menu .main-menu li.active a, .sidebar-menu .main-menu li:hover a {
           color: #fff; }
           .sidebar-menu .main-menu li.active a:before, .sidebar-menu .main-menu li:hover a:before {
@@ -32525,31 +32525,37 @@ header {
     padding: 0 11px 8px; }
 
 .corporate .user-info-navbar {
-  background-color: #096da5; }
+  background-color: #3c4fb1; }
 
 .corporate .sidebar-menu .logo-env {
-  background: #096da5; }
+  background: #3c4fb1; }
 
 .corporate .sidebar-menu .main-menu li.active, .corporate .sidebar-menu .main-menu li:hover {
-  background: #096da5; }
+  background: #3c4fb1; }
 
 .store .user-info-navbar {
-  background: #00a746; }
+  background: #44b6ae; }
 
 .store .sidebar-menu .logo-env {
-  background: #00a746; }
+  background: #44b6ae; }
 
 .store .sidebar-menu .main-menu li.active, .store .sidebar-menu .main-menu li:hover {
-  background: #00a746; }
+  background: #44b6ae; }
 
 .user .user-info-navbar {
-  background: #2a2a2a; }
+  background: #27303a; }
 
 .user .sidebar-menu .logo-env {
-  background: #2a2a2a; }
+  background: #27303a; }
 
 .user .sidebar-menu .main-menu li.active, .user .sidebar-menu .main-menu li:hover {
-  background: #2a2a2a; }
+  background: #27303a; }
+
+.xe-widget.xe-counter.width-33 {
+  width: 33%; }
+
+.mb-20 {
+  margin-bottom: 20px; }
 
 #fancybox-loading,
 .fancybox-close,

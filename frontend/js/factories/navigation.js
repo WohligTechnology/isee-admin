@@ -11,9 +11,10 @@ myApp.factory('NavigationService', function () {
         icon: "fa-desktop",
         hasSub: "has-sub",
         subnav: [{
-            name: "Subnav1",
+            name: "Subnav",
             classis: "active",
-            anchor: "home"
+            anchor: "home",
+            icon:"fa-cog"
         }]
     }, {
         name: "Returns Details",

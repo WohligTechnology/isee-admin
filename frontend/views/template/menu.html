@@ -1,14 +1,15 @@
 
 
-  <li ng-repeat="menu in navigation" ui-sref-active="active" class="{{menu.hasSub}}" ng-click="subMenu();">
+  <li ng-repeat="menu in navigation" ui-sref-active="active" class="{{menu.hasSub}} {{subClass}}" ng-click="subMenu();">
     <a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">
       <i class="fa {{menu.icon}}" ng-if="menu.icon"></i>
-      {{menu.name}}
+       <span class="title">{{menu.name}}</span>
       </a>
     <a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
-    <ul class="has-sub {{subClass}}" ng-if="menu.subnav!='';">
+    <ul class="has-sub" ng-if="menu.subnav!='';">
       <li ng-repeat="submenu in menu.subnav" ui-sref-active="active">
         <a ui-serf="{{submenu.anchor}}" ng-if="submenu.anchor">
+           <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i>
           <span class="title">{{submenu.name}}</span>
         </a>
         <a herf="{{submenu.link}}" ng-if="submenu.link"> <span class="title">{{submenu.name}}</span></a>
