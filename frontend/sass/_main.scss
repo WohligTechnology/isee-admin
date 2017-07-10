@@ -1,6 +1,6 @@
 /* Bootstrap Variables Goes Here */
 
-$brand-primary: #0d9dff !default;
+$brand-primary: #5397be !default;
 $brand-success: #84ce3c !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
@@ -216,7 +216,7 @@ header {
             }
             &.active,
             &:hover {
-                background: #3c4fb1;
+                background: $brand-primary;
                 a {
                     color: #fff;
                     &:before {
@@ -251,7 +251,7 @@ header {
 
 .sidebar-menu.collapsed .main-menu>li.active,
 .sidebar-menu.collapsed .main-menu>li li.active {
-    background-color: #fff;
+    background-color: $brand-primary;
 }
 
 .sidebar-menu.collapsed+.main-content .user-info-navbar .user-info-menu a[data-toggle=sidebar] {
@@ -386,64 +386,64 @@ header {
 }
 
 //corporate Theme
-.corporate {
+// .corporate {
     .user-info-navbar {
-        background-color: #3c4fb1;
+        background-color: $brand-primary;
     }
     .sidebar-menu .logo-env {
-        background: #3c4fb1;
+        background: $brand-primary;
     }
     .sidebar-menu {
         .main-menu {
             li {
                 &.active,
                 &:hover {
-                    background: #3c4fb1;
+                    background: $brand-primary;
                 }
             }
         }
     }
-}
+// }
 
 //User Theme
-.store {
-    .user-info-navbar {
-        background: #44b6ae;
-    }
-    .sidebar-menu .logo-env {
-        background: #44b6ae;
-    }
+// .store {
+//     .user-info-navbar {
+//         background: #44b6ae;
+//     }
+//     .sidebar-menu .logo-env {
+//         background: #44b6ae;
+//     }
 
-        .sidebar-menu {
-        .main-menu {
-            li {
-                &.active,
-                &:hover {
-                    background: #44b6ae;
-                }
-            }
-        }
-    }
-}
+//         .sidebar-menu {
+//         .main-menu {
+//             li {
+//                 &.active,
+//                 &:hover {
+//                     background: #44b6ae;
+//                 }
+//             }
+//         }
+//     }
+// }
 //Store Theme
-.user {
-    .user-info-navbar {
-        background: #27303a;
-    }
-    .sidebar-menu .logo-env {
-        background: #27303a;
-    }
-        .sidebar-menu {
-        .main-menu {
-            li {
-                &.active,
-                &:hover {
-                    background: #27303a;
-                }
-            }
-        }
-    }
-}
+// .user {
+//     .user-info-navbar {
+//         background: #27303a;
+//     }
+//     .sidebar-menu .logo-env {
+//         background: #27303a;
+//     }
+//         .sidebar-menu {
+//         .main-menu {
+//             li {
+//                 &.active,
+//                 &:hover {
+//                     background: #27303a;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 .xe-widget.xe-counter.width-33 {
     width: 33%;
