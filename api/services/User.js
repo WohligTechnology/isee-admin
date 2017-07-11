@@ -81,6 +81,7 @@ schema.plugin(deepPopulate, {
 });
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
+schema.plugin(mongoosastic);
 
 module.exports = mongoose.model('User', schema);
 

@@ -37,6 +37,7 @@
     "md5": "^2.1.0",
     "moment": "^2.14.1",
     "mongodb": "2.1.7",
+    "mongoosastic": "^4.3.0",
     "mongoose": "^4.5.5",
     "mongoose-deep-populate": "^3.0.0",
     "mongoose-middleware": "^0.2.19",
