@@ -16,7 +16,8 @@ var schema = new Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        es_indexed: true
     },
     region: String,
     textCode: String,
@@ -40,6 +41,7 @@ var schema = new Schema({
 schema.plugin(deepPopulate, {});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
+schema.plugin(mongoosastic);
 module.exports = mongoose.model('Company', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
