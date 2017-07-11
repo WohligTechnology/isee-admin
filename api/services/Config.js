@@ -13,6 +13,9 @@ var MaxImageSize = 1600;
 var schema = new Schema({
     name: String,
     content: String,
+    mix: {
+        type: Schema.Types.Mixed
+    }
 });
 
 // var client = new Twitter({
