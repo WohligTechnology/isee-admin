@@ -45,6 +45,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'RulesCtrl'
         })
+                 .state('login', {
+            url: "/login",
+            templateUrl: tempateURL,
+            controller: 'LoginCtrl'
+        })
         ;
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
