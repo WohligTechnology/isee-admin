@@ -46,7 +46,8 @@ module.exports = [
   'frontend/js/controllers/widget.js',
   'frontend/js/controllers/rules.js',
   'frontend/js/controllers/store.js',
-  'frontend/js/controllers/user.js',
+  'frontend/js/controllers/user.js', 
+  'frontend/js/controllers/login.js', 
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',
 ];

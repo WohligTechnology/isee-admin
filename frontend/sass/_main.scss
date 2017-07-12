@@ -2,9 +2,9 @@
 
 $brand-primary: #5397be !default;
 $brand-success: #84ce3c !default;
-$brand-warning: #ffec39 !default;
-$brand-danger: #fc483f !default;
-$brand-info: #000072 !default;
+$brand-warning: #ffc600 !default;
+$brand-danger: #e53d0a !default;
+$brand-info: #2191d0 !default;
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 /* Bootstrap Variables Goes Here */
@@ -133,6 +133,20 @@ header {
     float: left;
 }
 
+// colors
+.color-red {
+    background: $brand-danger!important;
+}
+
+.color-blue {
+    background: $brand-info !important;
+}
+
+.color-yellow {
+    background: $brand-warning !important;
+}
+
+// for navigation
 .user-info-navbar {
     .user-info-menu {
         li {
@@ -261,18 +275,6 @@ header {
     color: #fff;
 }
 
-.color-red {
-    background: #e53d0a !important;
-}
-
-.color-blue {
-    background: #af4f96 !important;
-}
-
-.color-yellow {
-    background: #ffc600 !important;
-}
-
 .image-3 img {
     padding-top: 20px;
 }
@@ -338,7 +340,7 @@ header {
 }
 
 .bg-red {
-    background: #d44823 !important;
+    background: $brand-danger !important;
 }
 
 .color-white {
@@ -454,4 +456,60 @@ header {
 
 .mb-20 {
     margin-bottom: 20px;
+}
+
+// fullscreen
+.min-h100 {
+    height: 100vh;
+}
+
+.login-bg {
+    background: #5397be;
+}
+
+//button rounded
+.btn-rounded {
+    border-radius: 15px;
+    padding: 4px 40px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+//Login or Blank Screen
+.blank-screen {
+    position: relative;
+    .content {
+        padding: 0;
+    }
+    .login-sec-inside {
+        padding: 20px 0;
+    }
+    .login-sec {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        @include transform (translateY(-50%));
+        .logo {
+            margin-bottom: 40px;
+        }
+        .form-group.has-primary-custom {
+            border: 1px solid $brand-primary;
+            margin-bottom: 30px;
+            .input-group-addon {
+                background: #fff;
+                border: 0;
+                padding: 6px 0px 6px 9px;
+                i{
+                    color: #b2b2b2;
+                }
+            }
+            .form-control {
+                border: 0;
+            }
+            .label-danger{
+                font-weight: 400;
+                letter-spacing: 2px;
+            }
+        }
+    }
 }

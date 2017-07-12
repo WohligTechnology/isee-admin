@@ -1,26 +1,53 @@
-<div class="login min-h100">
-    <div class="account-user-sec">
-        <div class="account-sec">
-            <div class="acount-sec">
-                <div class="container">
-                    <div class="logo text-center">
-                        <a ui-sref="login" title="Admin"><img src="img/logo.png" alt="Absolute" height="45"></a>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="contact-sec">
-                                <div class="widget-title text-center">
-                                    <h3 class="text-center"></h3>
-                                    <span>Login with your Google ID</span>
-                                </div>
-                                <div class="clearfix"></div>
-                                <a class="btn btn-google btn-icon btn-block" ng-href="{{template.adminurl}}user/loginGoogle?returnUrl={{currentHost}}/backend/%23!/login"><i class=" fa fa-google "></i>Sign In with Google</a>
+<div class="login min-h100 login-bg">
+    <div class="login-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="login-sec-inside">
+                            <div class="logo text-center">
+                                <a ui-sref="login" title="Admin">
+                                    <figure>
+                                        <img src="img/logo.png" alt="Absolute" height="45">
+                                    </figure>
+                                </a>
                             </div>
+                            <!--<pre>{{formLoginData|json}}</pre>
+                            <pre style="background: #b0deff;">{{formLogin.email|json}}</pre>-->
+                            <form action="" name="formLogin">
+                                <div class="form-group has-primary-custom">
+                                    <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"> <i class="fa fa-user"></i></span>
+                                        <input type="text" ng-model="formLoginData.name" class="form-control" id="name" placeholder="Username" name="name" required>
+                                    </div>
+                                    <div class="pull-right" ng-repeat="(field,value) in formLogin.name.$error" ng-show="formLogin.name.$touched">
+                                        <span class="label label-danger" ng-if="field=='required' && value">Please Enter Name</span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-primary-custom">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"> <i class="fa fa-lock"></i></span>
+                                        <input type="password" class="form-control" placeholder="Password" name="password" ng-model="formLoginData.password" required>
+                                    </div>
+                                    <div class="pull-right" ng-repeat="(field,value) in formLogin.password.$error" ng-show="formLogin.password.$touched">
+                                        <span class="label label-danger" ng-if="field=='required' && value">Please Enter Password</span>
+                                    </div>
+                                </div>
+                                <div class="button-login text-center">
+                                    <button ng-click="submitForm()" ui-sref="corporate" class="btn btn-primary btn-rounded text-upper" ng-disabled="formLogin.$invalid" promise-btn>Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                    <!--<div class="forgot-band text-center">
+                                    <a class="forgot-blue" ui-sref="">Forgot Password ?</a>
+                                </div>-->
                 </div>
             </div>
         </div>
     </div>
-
+</div>
+</div>
+</div>
 </div>
