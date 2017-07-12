@@ -7,6 +7,8 @@
  @import "../../bower_components/angular-ui-swiper/dist/angular-ui-swiper";
  @import "../../bower_components/fancyBox/source/jquery.fancybox";
  @import "../../bower_components/smart-app-banner/smart-app-banner";
+  @import "../../bower_components/angular-promise-buttons/src/styles/style";
+ @import "../../bower_components/angular-toastr/dist/angular-toastr";
 
   //Template Css
  @import "template/fonts/linecons/css/linecons";
@@ -14,6 +16,7 @@
  @import "template/xenon-forms";
  @import "template/xenon-components"; 
  @import "template/xenon-skins";
+ @import "../../bower_components/angular-ui-select/dist/select.min";
  //End Template Css
 
 

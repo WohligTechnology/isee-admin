@@ -7,7 +7,6 @@ module.exports = [
   'bower_components/smart-app-banner/smart-app-banner.js',
   'bower_components/moment/min/moment.min.js',
   'frontend/js/highchart.js',
-
   //Angular Libs
   'bower_components/angular/angular.js',
   'bower_components/angular-bootstrap/ui-bootstrap.min.js',
@@ -15,10 +14,13 @@ module.exports = [
   'bower_components/angular-ui-router/release/angular-ui-router.min.js',
   'bower_components/angular-flexslider/angular-flexslider.js',
   'bower_components/angular-translate/angular-translate.js',
+  'bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
   'bower_components/lodash/lodash.js',
+  'bower_components/angular-ui-select/dist/select.min.js',
   'bower_components/angulartics/dist/angulartics.min.js',
   'bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js',
   'bower_components/angular-ui-swiper/dist/angular-ui-swiper.js',
+  "bower_components/angular-promise-buttons/dist/angular-promise-buttons.js",
   'frontend/js/highchart-ng.js',
 
   //App.js
@@ -46,8 +48,9 @@ module.exports = [
   'frontend/js/controllers/widget.js',
   'frontend/js/controllers/rules.js',
   'frontend/js/controllers/store.js',
-  'frontend/js/controllers/user.js', 
-  'frontend/js/controllers/login.js', 
+  'frontend/js/controllers/user.js',
+  'frontend/js/controllers/login.js',
+  'frontend/js/controllers/customer-detail.js',
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',
 ];

@@ -5,6 +5,8 @@ var myApp = angular.module('myApp', [
     'angulartics',
     'angulartics.google.analytics',
     'ui.bootstrap',
+    'ui.select',
+    'imageupload',
     // 'ngAnimate',
     // 'ngSanitize',
     'angular-flexslider',
@@ -24,7 +26,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'CorporateCtrl'
         })
-         .state('user', {
+        .state('user', {
             url: "/user",
             templateUrl: tempateURL,
             controller: 'UserCtrl'
@@ -40,17 +42,21 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'WidgetCtrl'
         })
-         .state('rules', {
+        .state('rules', {
             url: "/rules",
             templateUrl: tempateURL,
             controller: 'RulesCtrl'
         })
-                 .state('login', {
+        .state('login', {
             url: "/login",
             templateUrl: tempateURL,
             controller: 'LoginCtrl'
         })
-        ;
+        .state('customer-detail', {
+            url: "/customer-detail",
+            templateUrl: tempateURL,
+            controller: 'CustomerDetailCtrl'
+        });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
 });
