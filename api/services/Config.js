@@ -286,6 +286,26 @@ var models = {
         });
         return dataObj;
     },
+    importForCustomFields: function (name, customFields) {
+        function getCustomFieldValue(field) {
+            var ourField = _.filter(customFields, function (n) {
+                return (n.theirField == field);
+            });
+            return ourField[0].ourField;
+        }
+        var jsonExcel = xlsx.parse(name);
+        var retVal = [];
+        var firstRow = _.slice(jsonExcel[0].data, 0, 1)[0];
+        var excelDataToExport = _.slice(jsonExcel[0].data, 1);
+        var dataObj = [];
+        _.each(excelDataToExport, function (val, key) {
+            dataObj.push({});
+            _.each(val, function (value, key2) {
+                dataObj[key][getCustomFieldValue(firstRow[key2])] = value;
+            });
+        });
+        return dataObj;
+    },
     importGS: function (filename, callback) {
         var readstream = gfs.createReadStream({
             filename: filename

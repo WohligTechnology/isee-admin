@@ -16,6 +16,23 @@ var controller = {
         } else {
             res.callback("Please provide File to be uploaded");
         }
+    },
+    finalUpload: function (req, res) {
+        res.body.companyExcel = {
+            name: "",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        }
     }
 };
 module.exports = controller;
