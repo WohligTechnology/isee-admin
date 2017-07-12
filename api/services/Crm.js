@@ -16,7 +16,10 @@ var schema = new Schema({
     }],
     customerGroupId: String,
     salutation: String,
-    firstName: String,
+    firstName: {
+        type: String,
+        es_indexed: true
+    },
     middleName: String,
     lastName: String,
     gender: String,
