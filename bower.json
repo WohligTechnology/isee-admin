@@ -66,5 +66,8 @@
     "cleave.js": "^0.7.10",
     "highcharts-ng": "^0.0.6",
     "highcharts": "^5.0.12"
+  },
+  "resolutions": {
+    "angular": "1.6.5"
   }
 }
