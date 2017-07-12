@@ -1,10 +1,11 @@
 var controller = {
     companyUpload: function (req, res) {
         if (req.body.file) {
+            var retJson = {};
             retJson.fields = [
                 "name", "email"
             ];
-            Config.getExcelFields(req.body.file, function (err, data) {
+            Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
                 } else {
