@@ -86,7 +86,9 @@ footer {
         }
     }
 }
-
+.mt20{
+margin-top: 20px;
+}
 .form-submission {
     min-height: 300px;
 }
@@ -169,11 +171,6 @@ header {
         }
     }
 }
-
-// nav.navbar {
-//     background: #2196F3;
-// }
-
 //add header
 .add-header {
     margin-left: -30px;
@@ -183,9 +180,9 @@ header {
     margin-top: -20px;
     margin-bottom: 20px;
     span.main.bredcrums {
-        font-size: 20px;
-        color: #42aae4;
-        font-weight: 300;
+        font-size: 16px;
+        color: $brand-primary;
+        font-weight: 400;
     }
     .search-all {
         margin-top: -3px;
@@ -195,9 +192,9 @@ header {
 .add-title {
     padding: 12px 0px;
     span.main.bredcrums {
-        font-size: 20px;
-        color: #42aae4;
-        font-weight: 300;
+        font-size: 16px;
+        color: $brand-primary;
+        font-weight: 400;
         letter-spacing: 1.5px;
     }
 }
@@ -557,8 +554,9 @@ header {
 
 .panel-divider {
     padding: 25px 0px;
-    &+.panel-divider{
-    border-top: 1px solid #ddd;
-    }
-
+    border-bottom: 1px solid #ddd;
+}
+.panel-default > .panel-heading {
+    background-color: #fff;
+    border-color: #fff;
 }

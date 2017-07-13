@@ -1,6 +1,6 @@
-myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.getHTML("content/customer-detail.html");
-    TemplateService.title = "Customer Detail"; //This is the Title of the Website
+myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    $scope.template = TemplateService.getHTML("content/author-rule.html");
+    TemplateService.title = "Author Rule"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
     $scope.navigation = NavigationService.getNavigation();
     $scope.submitForm = function (formLoginData) {
@@ -281,4 +281,17 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             code: 'ZW'
         }
     ];
+
+    $scope.confCancel = function (callback) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '/views/modal/conf-cancel.html',
+            size: 'md',
+            scope: $scope
+        });
+        $scope.close = function (value) {
+            callback(value);
+            modalInstance.close("cancel");
+        };
+    };
 })

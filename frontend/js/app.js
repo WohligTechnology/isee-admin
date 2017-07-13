@@ -52,6 +52,21 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'LoginCtrl'
         })
+        .state('author-rule', {
+            url: "/drl-rule",
+            templateUrl: tempateURL,
+            controller: 'AuthorRuleCtrl'
+        })
+        .state('es-rule', {
+            url: "/es-rule",
+            templateUrl: tempateURL,
+            controller: 'EsRuleCtrl'
+        })
+        .state('transition', {
+            url: "/transition",
+            templateUrl: tempateURL,
+            controller: 'TransitionCtrl'
+        })
         .state('customer-detail', {
             url: "/customer-detail",
             templateUrl: tempateURL,

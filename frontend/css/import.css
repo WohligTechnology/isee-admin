@@ -31824,6 +31824,9 @@ footer {
     .form-invalid .form-control::-webkit-input-placeholder {
       color: #e53d0a; }
 
+.mt20 {
+  margin-top: 20px; }
+
 .form-submission {
   min-height: 300px; }
 
@@ -31891,18 +31894,18 @@ header {
   margin-top: -20px;
   margin-bottom: 20px; }
   .add-header span.main.bredcrums {
-    font-size: 20px;
-    color: #42aae4;
-    font-weight: 300; }
+    font-size: 16px;
+    color: #5397be;
+    font-weight: 400; }
   .add-header .search-all {
     margin-top: -3px; }
 
 .add-title {
   padding: 12px 0px; }
   .add-title span.main.bredcrums {
-    font-size: 20px;
-    color: #42aae4;
-    font-weight: 300;
+    font-size: 16px;
+    color: #5397be;
+    font-weight: 400;
     letter-spacing: 1.5px; }
 
 .img-responsive {
@@ -32138,9 +32141,12 @@ header {
         color: #919191; }
 
 .panel-divider {
-  padding: 25px 0px; }
-  .panel-divider + .panel-divider {
-    border-top: 1px solid #ddd; }
+  padding: 25px 0px;
+  border-bottom: 1px solid #ddd; }
+
+.panel-default > .panel-heading {
+  background-color: #fff;
+  border-color: #fff; }
 
 #fancybox-loading,
 .fancybox-close,
