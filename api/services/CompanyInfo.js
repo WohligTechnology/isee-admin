@@ -1,21 +1,42 @@
 var schema = new Schema({
-    reasonTypeCode: String,
-    reasonCode: String,
+    reasonTypeCode: {
+        type: String,
+        es_indexed: true
+    },
+    reasonCode: {
+        type: String,
+        es_indexed: true
+    },
     description: String,
     commentRequired: String,
     sortOrder: {
         type: String,
         enum: ['Asc', 'Desc']
     },
-    parentCode: String,
-    glAccountNumber: String,
+    parentCode: {
+        type: String,
+        es_indexed: true
+    },
+    glAccountNumber: {
+        type: String,
+        es_indexed: true
+    },
     minimumAmt: String,
     maximumAmt: String,
     privilegeType: String,
     customerMessage: String,
-    inventoryActionCode: String,
-    inventoryLocationId: String,
-    inventoryBucketId: String,
+    inventoryActionCode: {
+        type: String,
+        es_indexed: true
+    },
+    inventoryLocationId: {
+        type: String,
+        es_indexed: true
+    },
+    inventoryBucketId: {
+        type: String,
+        es_indexed: true
+    }
 });
 
 schema.plugin(deepPopulate, {});

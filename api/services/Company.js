@@ -1,4 +1,35 @@
 var schema = new Schema({
+    name: {
+        type: String,
+        required: true,
+        es_indexed: true
+    },
+    region: {
+        type: String,
+        es_indexed: true
+    },
+    textCode: String,
+    textSequence: String,
+    textSubcode: String,
+    receiptText: String,
+    effectiveDate: Date,
+    expirationDate: {
+        type: Date,
+        es_indexed: true
+    },
+    recordState: String,
+    lineFormat: String,
+    reformat: String,
+    category: {
+        type: String,
+        es_indexed: true
+    },
+    beginRange: String,
+    endRange: String,
+    cost: Number,
+    minimumCost: Number,
+    maximumCost: Number,
+    itemId: String, //item table
     location: [{
         type: Schema.Types.ObjectId,
         ref: "Location",
@@ -13,29 +44,7 @@ var schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'CompanyInfo',
         index: true
-    },
-    name: {
-        type: String,
-        required: true,
-        es_indexed: true
-    },
-    region: String,
-    textCode: String,
-    textSequence: String,
-    textSubcode: String,
-    receiptText: String,
-    effectiveDate: Date,
-    expirationDate: Date,
-    recordState: String,
-    lineFormat: String,
-    reformat: String,
-    category: String,
-    beginRange: String,
-    endRange: String,
-    cost: Number,
-    minimumCost: Number,
-    maximumCost: Number,
-    itemId: String //item table
+    }
 });
 
 schema.plugin(deepPopulate, {});

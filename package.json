@@ -63,7 +63,8 @@
     "sails-disk": "~0.10.9",
     "sails-wohlig-controller": "latest",
     "sails-wohlig-service": "latest",
-    "sendgrid": "^5.0.0"
+    "sendgrid": "^5.0.0",
+    "skipper": "^0.8.2"
   },
   "scripts": {
     "debug": "node debug app.js",

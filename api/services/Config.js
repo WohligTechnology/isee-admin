@@ -286,6 +286,7 @@ var models = {
         });
         return dataObj;
     },
+
     importForCustomFields: function (name, customFields) {
         function getCustomFieldValue(field) {
             var ourField = _.filter(customFields, function (n) {
@@ -306,6 +307,28 @@ var models = {
         });
         return dataObj;
     },
+
+    importGSForCustomFields: function (filename, customFields, callback) {
+        var readstream = gfs.createReadStream({
+            filename: filename
+        });
+        readstream.on('error', function (err) {
+            res.json({
+                value: false,
+                error: err
+            });
+        });
+        var buffers = [];
+        readstream.on('data', function (buffer) {
+            buffers.push(buffer);
+        });
+        readstream.on('end', function () {
+            var buffer = Buffer.concat(buffers);
+            callback(null, Config.importForCustomFields(buffer));
+        });
+    },
+
+
     importGS: function (filename, callback) {
         var readstream = gfs.createReadStream({
             filename: filename
@@ -325,12 +348,16 @@ var models = {
             callback(null, Config.import(buffer));
         });
     },
+
+
     getExcelFields: function (name) {
         var jsonExcel = xlsx.parse(name);
         var retVal = [];
         var firstRow = _.slice(jsonExcel[0].data, 0, 1)[0];
         return firstRow;
     },
+
+
     getGSExcelFields: function (filename, callback) {
         var readstream = gfs.createReadStream({
             filename: filename
@@ -350,6 +377,8 @@ var models = {
             callback(null, Config.getExcelFields(buffer));
         });
     },
+
+
     generateExcel: function (name, found, res) {
         // name = _.kebabCase(name);
         var excelData = [];

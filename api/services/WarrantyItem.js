@@ -1,6 +1,12 @@
 var schema = new Schema({
-    warrantyType: String,
-    warrantySubtype: String,
+    warrantyType: {
+        type: String,
+        es_indexed: true
+    },
+    warrantySubtype: {
+        type: String,
+        es_indexed: true
+    },
     description: String,
     replaceType: String,
     item: [{

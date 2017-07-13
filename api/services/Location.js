@@ -10,37 +10,65 @@ var schema = new Schema({
         ref: 'Transaction',
         index: true
     }],
-    retailLocationId: String,
-    storeNumber: String,
-    storeName: String,
+    retailLocationId: {
+        type: String,
+        es_indexed: true
+    },
+    storeNumber: {
+        type: String,
+        es_indexed: true
+    },
+    storeName: {
+        type: String,
+        es_indexed: true
+    },
     description: String,
     effectiveDate: Date,
     expirationDate: Date,
     apartment: String,
     address1: String,
     address2: String,
-    city: String,
-    country: String,
+    city: {
+        type: String,
+        es_indexed: true
+    },
+    country: {
+        type: String,
+        es_indexed: true
+    },
     postalCode: String,
-    state: String,
+    state: {
+        type: String,
+        es_indexed: true
+    },
     telephone1: Number,
     telephone2: Number,
     telephone3: Number,
     telephone4: Number,
-    region: String,
+    region: {
+        type: String,
+        es_indexed: true
+    },
     loc: {
         type: [Number], // [<longitude>, <latitude>]
         index: '2d' // create the geospatial index
     },
     taxPercentage: String,
-    storeManager: String,
-    locationType: String,
+    storeManager: {
+        type: String,
+        es_indexed: true
+    },
+    locationType: {
+        type: String,
+        es_indexed: true
+    },
     deliveryAvailable: String,
     pickupAvailable: String,
     transferAvailable: String,
     email: {
         type: String,
-        validate: validators.isEmail()
+        validate: validators.isEmail(),
+        es_indexed: true
     },
     geoCode: String
 });

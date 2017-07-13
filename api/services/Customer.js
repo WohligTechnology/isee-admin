@@ -6,12 +6,19 @@ var schema = new Schema({
         type: String,
         es_indexed: true
     },
-    country: String,
+    country: {
+        type: String,
+        es_indexed: true
+    },
     postalCode: String,
-    state: String,
+    state: {
+        type: String,
+        es_indexed: true
+    },
     email: {
         type: String,
-        validate: validators.isEmail()
+        validate: validators.isEmail(),
+        es_indexed: true
     }
 });
 

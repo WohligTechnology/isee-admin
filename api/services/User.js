@@ -2,39 +2,19 @@ var schema = new Schema({
     name: {
         type: String,
         required: true,
-        excel: true,
+        es_indexed: true
     },
     email: {
         type: String,
         validate: validators.isEmail(),
-        excel: "User Email",
+        es_indexed: true,
         unique: true
     },
     dob: {
         type: Date,
-        excel: {
-            name: "Birthday",
-            modify: function (val, data) {
-                return moment(val).format("MMM DD YYYY");
-            }
-        }
     },
     photo: {
         type: String,
-        default: "",
-        excel: [{
-            name: "Photo Val"
-        }, {
-            name: "Photo String",
-            modify: function (val, data) {
-                return "http://abc/" + val;
-            }
-        }, {
-            name: "Photo Kebab",
-            modify: function (val, data) {
-                return data.name + " " + moment(data.dob).format("MMM DD YYYY");
-            }
-        }]
     },
     password: {
         type: String,
@@ -54,15 +34,6 @@ var schema = new Schema({
     },
     accessToken: {
         type: [String],
-        index: true
-    },
-    googleAccessToken: String,
-    googleRefreshToken: String,
-    oauthLogin: {
-        type: [{
-            socialId: String,
-            socialProvider: String
-        }],
         index: true
     },
     accessLevel: {

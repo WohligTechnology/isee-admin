@@ -1,4 +1,38 @@
 var schema = new Schema({
+    businessDate: Date,
+    transactionSequence: String,
+    workstationId: {
+        type: String,
+        es_indexed: true
+    },
+    retailTransactionLineItemSequence: String,
+    transactionType: {
+        type: String,
+        es_indexed: true
+    },
+    activityDate: Date,
+    amount: Number,
+    cardNumber: {
+        type: Number,
+        es_indexed: true
+    },
+    custAccountCode: {
+        type: String,
+        es_indexed: true
+    },
+    effectiveDate: Date,
+    expirationDate: Date,
+    startTime: String,
+    endTime: String,
+    loyaltyProgramId: {
+        type: String,
+        es_indexed: true
+    },
+    historySequence: String,
+    CustomerGroupId: {
+        type: String,
+        es_indexed: true
+    },
     location: {
         type: Schema.Types.ObjectId,
         ref: 'Location',
@@ -16,24 +50,7 @@ var schema = new Schema({
         ref: 'Crm',
         index: true,
         key: "transaction"
-    },
-    businessDate: Date,
-    transactionSequence: String,
-    workstationId: String,
-    retailTransactionLineItemSequence: String,
-    transactionType: String,
-    activityDate: Date,
-    amount: Number,
-    cardNumber: Number,
-    custAccountCode: String,
-    effectiveDate: Date,
-    expirationDate: Date,
-    startTime: String,
-    endTime: String,
-    loyaltyProgramId: String,
-    historySequence: String,
-    CustomerGroupId: String
-
+    }
 });
 
 schema.plugin(deepPopulate, {});

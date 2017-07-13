@@ -1,7 +1,10 @@
 var schema = new Schema({
     promptToAdd: String,
     applyRestockingFee: String,
-    disallowDiscounts: String,
+    disallowDiscounts: {
+        type: String,
+        es_indexed: true
+    },
     disallowPriceChange: String,
     forceQuantityOfOne: String,
     frequentShopperPointsCount: String,
@@ -23,33 +26,75 @@ var schema = new Schema({
     manufacturer: String,
     restrictionCategory: String,
     restrictionCode: String,
-    region: String,
+    region: {
+        type: String,
+        es_indexed: true
+    },
     dayCode: String,
     effectiveDate: Date,
     startTime: Date,
     expirationDate: Date,
     endTime: Date,
-    itemLevelCode: String,
-    itemTypeCode: String,
-    warrantyItemId: String,
+    itemLevelCode: {
+        type: String,
+        es_indexed: true
+    },
+    itemTypeCode: {
+        type: String,
+        es_indexed: true
+    },
+    warrantyItemId: {
+        type: String,
+        es_indexed: true
+    },
     itemCeilingPrice: Number,
     ceilingPriceType: String,
     zlcWarrantyItem: String,
-    warrantyNumber: Number,
-    warrantyTypeCode: String,
-    serviceNumber: Number,
-    serviceDate: Date,
-    serviceByEmployee: String,
-    serviceTypeCode: String,
-    serviceProviderId: String,
+    warrantyNumber: {
+        type: Number,
+        es_indexed: true
+    },
+    warrantyTypeCode: {
+        type: String,
+        es_indexed: true
+    },
+    serviceNumber: {
+        type: Number,
+        es_indexed: true
+    },
+    serviceDate: {
+        type: Date,
+        es_indexed: true
+    },
+    serviceByEmployee: {
+        type: String,
+        es_indexed: true
+    },
+    serviceTypeCode: {
+        type: String,
+        es_indexed: true
+    },
+    serviceProviderId: {
+        type: String,
+        es_indexed: true
+    },
     groupName: String,
     beginDate: Date,
     endDate: Date,
     sequence: String,
-    vendorType: String,
-    vendorId: String,
+    vendorType: {
+        type: String,
+        es_indexed: true
+    },
+    vendorId: {
+        type: String,
+        es_indexed: true
+    },
     description: String,
-    subClassId: String,
+    subClassId: {
+        type: String,
+        es_indexed: true
+    },
     transaction: [{
         type: Schema.Types.ObjectId,
         ref: 'Transaction',

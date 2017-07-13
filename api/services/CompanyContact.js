@@ -1,6 +1,12 @@
 var schema = new Schema({
-    phoneNumberId: String,
-    phoneNumber: Number,
+    phoneNumberId: {
+        type: String,
+        es_indexed: true
+    },
+    phoneNumber: {
+        type: Number,
+        es_indexed: true
+    },
     phoneTypeCode: String,
     contactDiscription: String,
     sortOrder: {
