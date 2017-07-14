@@ -287,7 +287,7 @@ var models = {
         return dataObj;
     },
 
-    importForCustomFields: function (name, customFields) {
+    importForCustomFields: function (name) {
         function getCustomFieldValue(field) {
             var ourField = _.filter(customFields, function (n) {
                 return (n.theirField == field);

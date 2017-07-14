@@ -8,7 +8,7 @@ var controller = {
             var retJson = {};
             retJson.fields = [
                 "name", "region", "textCode", "textSequence", "textSubcode", "receiptText", "effectiveDate", "expirationDate", "recordState", "lineFormat", "reformat", "category", "beginRange", "endRange", "cost", "minimumCost", "maximumCost", "itemId", "location", "companyContact", "companyInfo"
-            ];
+            ]; //fields in schema
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -23,6 +23,7 @@ var controller = {
     },
 
     finalUpload: function (req, res) {
+        res.body = {};
         res.body.companyExcel = {
             name: "",
             fields: [{
