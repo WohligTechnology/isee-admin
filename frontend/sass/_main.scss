@@ -560,3 +560,11 @@ header {
     background-color: #fff;
     border-color: #fff;
 }
+
+//table responsive
+.table-responsive {
+    float: left;
+    width: 100%;
+    overflow-x: auto;
+    min-height: 0.01%;
+}

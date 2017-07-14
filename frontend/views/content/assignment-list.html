@@ -1,0 +1,70 @@
+<div ng-include="template.header" class="template header"></div>
+<div class="add-header">
+    <span class="main bredcrums"> 
+        <a href="">Home</a> >><a href=""> Assignment Allocation</a> >> CTA-2017-04-26,34
+        </span>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-options">
+            <form class="navbar-form ng-pristine ng-valid ng-submitted" role="search">
+                <div class="input-group add-on">
+                    <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="add-title">
+            <span class="main bredcrums">Assignment Allocation</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive dataTables_wrapper container-fluid">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="sorting">Assignment ID</th>
+                        <th>Assignment To</th>
+                        <th>Legal Entry</th>
+                        <th>Actual Assignment Size</th>
+                        <th>Current Assignment Size</th>
+                        <th>Exceptions Completed</th>
+                        <th>Outstanding</th>
+                        <th>Assignment Date</th>
+                        <th>Last Action Perfect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in assignmentdata">
+                        <th>{{data._id}}</th>
+                        <td>{{data.to}}</td>
+                        <td>{{data.entry}}</td>
+                        <td>{{data.actualSize}}</td>
+                        <td>{{data.currentSize}}</td>
+                        <td>{{data.expection}}</td>
+                        <td>{{data.outstanding}}</td>
+                        <td>{{data.assignmentDate}}</td>
+                        <td>{{data.lastPerfect}}</td>
+                    </tr>
+            </table>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="paginate_button previous"><a href="#">Previous</a></li>
+                            <li class="paginate_button active" tabindex="0"><a href="#">1</a></li>
+                            <li class="paginate_button " tabindex="0"><a href="#">2</a></li>
+                            <li class="paginate_button next" tabindex="0"><a href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="dataTables_info">Showing 1 to 10 of 57 entries</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
