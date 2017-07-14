@@ -287,7 +287,7 @@ var models = {
         return dataObj;
     },
 
-    importForCustomFields: function (name) {
+    importForCustomFields: function (name, customFields) {
         function getCustomFieldValue(field) {
             var ourField = _.filter(customFields, function (n) {
                 return (n.theirField == field);
@@ -324,7 +324,7 @@ var models = {
         });
         readstream.on('end', function () {
             var buffer = Buffer.concat(buffers);
-            callback(null, Config.importForCustomFields(buffer));
+            callback(null, Config.importForCustomFields(buffer, customFields));
         });
     },
 
