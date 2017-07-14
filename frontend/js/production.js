@@ -62184,276 +62184,48 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
             }, 5000);
         });
     };
-    $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
+    $scope.countries = [{}];
+
+    $scope.operators = [
         {
-            name: 'Afghanistan',
-            code: 'AF'
-        },
+        name:"="
+    },
         {
-            name: 'Åland Islands',
-            code: 'AX'
-        },
+        name:"<="
+    },
         {
-            name: 'Albania',
-            code: 'AL'
-        },
+        name:">="
+    },
         {
-            name: 'Algeria',
-            code: 'DZ'
-        },
+        name:">"
+    },
         {
-            name: 'Azerbaijan',
-            code: 'AZ'
-        },
+        name:"<"
+    },
         {
-            name: 'Bahamas',
-            code: 'BS'
-        },
+        name:"!="
+    },
         {
-            name: 'Bahrain',
-            code: 'BH'
-        },
+        name:"Contains"
+    },
         {
-            name: 'Bangladesh',
-            code: 'BD'
-        },
-        {
-            name: 'Bulgaria',
-            code: 'BG'
-        },
-        {
-            name: 'Burkina Faso',
-            code: 'BF'
-        },
-        {
-            name: 'Burundi',
-            code: 'BI'
-        },
-        {
-            name: 'Cambodia',
-            code: 'KH'
-        },
-        {
-            name: 'Cameroon',
-            code: 'CM'
-        },
-        {
-            name: 'Czech Republic',
-            code: 'CZ'
-        },
-        {
-            name: 'Denmark',
-            code: 'DK'
-        },
-        {
-            name: 'Djibouti',
-            code: 'DJ'
-        },
-        {
-            name: 'Dominica',
-            code: 'DM'
-        },
-        {
-            name: 'Dominican Republic',
-            code: 'DO'
-        },
-        {
-            name: 'Ecuador',
-            code: 'EC'
-        },
-        {
-            name: 'Egypt',
-            code: 'EG'
-        },
-        {
-            name: 'El Salvador',
-            code: 'SV'
-        },
-        {
-            name: 'Equatorial Guinea',
-            code: 'GQ'
-        },
-        {
-            name: 'Eritrea',
-            code: 'ER'
-        },
-        {
-            name: 'Estonia',
-            code: 'EE'
-        },
-        {
-            name: 'Gabon',
-            code: 'GA'
-        },
-        {
-            name: 'Gambia',
-            code: 'GM'
-        },
-        {
-            name: 'Georgia',
-            code: 'GE'
-        },
-        {
-            name: 'Germany',
-            code: 'DE'
-        },
-        {
-            name: 'Ghana',
-            code: 'GH'
-        },
-        {
-            name: 'Heard Island and Mcdonald Islands',
-            code: 'HM'
-        },
-        {
-            name: 'Holy See (Vatican City State)',
-            code: 'VA'
-        },
-        {
-            name: 'Honduras',
-            code: 'HN'
-        },
-        {
-            name: 'Hong Kong',
-            code: 'HK'
-        },
-        {
-            name: 'Hungary',
-            code: 'HU'
-        },
-        {
-            name: 'Iceland',
-            code: 'IS'
-        },
-        {
-            name: 'India',
-            code: 'IN'
-        },
-        {
-            name: 'Indonesia',
-            code: 'ID'
-        },
-        {
-            name: 'Kazakhstan',
-            code: 'KZ'
-        },
-        {
-            name: 'Kenya',
-            code: 'KE'
-        },
-        {
-            name: 'Kiribati',
-            code: 'KI'
-        },
-        {
-            name: 'Korea, Democratic People\'s Republic of',
-            code: 'KP'
-        },
-        {
-            name: 'Korea, Republic of',
-            code: 'KR'
-        },
-        {
-            name: 'Niue',
-            code: 'NU'
-        },
-        {
-            name: 'Norfolk Island',
-            code: 'NF'
-        },
-        {
-            name: 'Northern Mariana Islands',
-            code: 'MP'
-        },
-        {
-            name: 'Norway',
-            code: 'NO'
-        },
-        {
-            name: 'Oman',
-            code: 'OM'
-        },
-        {
-            name: 'Pakistan',
-            code: 'PK'
-        },
-        {
-            name: 'Palau',
-            code: 'PW'
-        },
-        {
-            name: 'Russian Federation',
-            code: 'RU'
-        },
-        {
-            name: 'Rwanda',
-            code: 'RW'
-        },
-        {
-            name: 'Saint Helena',
-            code: 'SH'
-        },
-        {
-            name: 'Swaziland',
-            code: 'SZ'
-        },
-        {
-            name: 'Sweden',
-            code: 'SE'
-        },
-        {
-            name: 'Switzerland',
-            code: 'CH'
-        },
-        {
-            name: 'Syrian Arab Republic',
-            code: 'SY'
-        },
-        {
-            name: 'Taiwan, Province of China',
-            code: 'TW'
-        },
-        {
-            name: 'Tajikistan',
-            code: 'TJ'
-        },
-        {
-            name: 'Togo',
-            code: 'TG'
-        },
-        {
-            name: 'Tokelau',
-            code: 'TK'
-        },
-        {
-            name: 'Tonga',
-            code: 'TO'
-        },
-        {
-            name: 'Virgin Islands, U.S.',
-            code: 'VI'
-        },
-        {
-            name: 'Wallis and Futuna',
-            code: 'WF'
-        },
-        {
-            name: 'Western Sahara',
-            code: 'EH'
-        },
-        {
-            name: 'Yemen',
-            code: 'YE'
-        },
-        {
-            name: 'Zambia',
-            code: 'ZM'
-        },
-        {
-            name: 'Zimbabwe',
-            code: 'ZW'
-        }
+        name:"Matches"
+    },
     ];
+//addition of Element/Expression
+  $scope.choices = [{id: 'choice1'}];
+  
+  $scope.addNewChoice = function() {
+    var newItemNo = $scope.choices.length+1;
+    $scope.choices.push({'id':'choice'+newItemNo});
+  };
+
+//Remove of Element/Expression
+  $scope.removeChoice = function() {
+    var lastItem = $scope.choices.length-1;
+    $scope.choices.splice(lastItem);
+  };
+// End Remove of Element/Expression
 
     $scope.confCancel = function (callback) {
         var modalInstance = $uibModal.open({
@@ -62481,277 +62253,49 @@ myApp.controller('EsRuleCtrl', function ($scope, TemplateService, NavigationServ
             }, 5000);
         });
     };
-    $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
+    $scope.countries = [{}];
+    $scope.operators = [
         {
-            name: 'Afghanistan',
-            code: 'AF'
-        },
+        name:"="
+    },
         {
-            name: 'Åland Islands',
-            code: 'AX'
-        },
+        name:"<="
+    },
         {
-            name: 'Albania',
-            code: 'AL'
-        },
+        name:">="
+    },
         {
-            name: 'Algeria',
-            code: 'DZ'
-        },
+        name:">"
+    },
         {
-            name: 'Azerbaijan',
-            code: 'AZ'
-        },
+        name:"<"
+    },
         {
-            name: 'Bahamas',
-            code: 'BS'
-        },
+        name:"!="
+    },
         {
-            name: 'Bahrain',
-            code: 'BH'
-        },
+        name:"Contains"
+    },
         {
-            name: 'Bangladesh',
-            code: 'BD'
-        },
-        {
-            name: 'Bulgaria',
-            code: 'BG'
-        },
-        {
-            name: 'Burkina Faso',
-            code: 'BF'
-        },
-        {
-            name: 'Burundi',
-            code: 'BI'
-        },
-        {
-            name: 'Cambodia',
-            code: 'KH'
-        },
-        {
-            name: 'Cameroon',
-            code: 'CM'
-        },
-        {
-            name: 'Czech Republic',
-            code: 'CZ'
-        },
-        {
-            name: 'Denmark',
-            code: 'DK'
-        },
-        {
-            name: 'Djibouti',
-            code: 'DJ'
-        },
-        {
-            name: 'Dominica',
-            code: 'DM'
-        },
-        {
-            name: 'Dominican Republic',
-            code: 'DO'
-        },
-        {
-            name: 'Ecuador',
-            code: 'EC'
-        },
-        {
-            name: 'Egypt',
-            code: 'EG'
-        },
-        {
-            name: 'El Salvador',
-            code: 'SV'
-        },
-        {
-            name: 'Equatorial Guinea',
-            code: 'GQ'
-        },
-        {
-            name: 'Eritrea',
-            code: 'ER'
-        },
-        {
-            name: 'Estonia',
-            code: 'EE'
-        },
-        {
-            name: 'Gabon',
-            code: 'GA'
-        },
-        {
-            name: 'Gambia',
-            code: 'GM'
-        },
-        {
-            name: 'Georgia',
-            code: 'GE'
-        },
-        {
-            name: 'Germany',
-            code: 'DE'
-        },
-        {
-            name: 'Ghana',
-            code: 'GH'
-        },
-        {
-            name: 'Heard Island and Mcdonald Islands',
-            code: 'HM'
-        },
-        {
-            name: 'Holy See (Vatican City State)',
-            code: 'VA'
-        },
-        {
-            name: 'Honduras',
-            code: 'HN'
-        },
-        {
-            name: 'Hong Kong',
-            code: 'HK'
-        },
-        {
-            name: 'Hungary',
-            code: 'HU'
-        },
-        {
-            name: 'Iceland',
-            code: 'IS'
-        },
-        {
-            name: 'India',
-            code: 'IN'
-        },
-        {
-            name: 'Indonesia',
-            code: 'ID'
-        },
-        {
-            name: 'Kazakhstan',
-            code: 'KZ'
-        },
-        {
-            name: 'Kenya',
-            code: 'KE'
-        },
-        {
-            name: 'Kiribati',
-            code: 'KI'
-        },
-        {
-            name: 'Korea, Democratic People\'s Republic of',
-            code: 'KP'
-        },
-        {
-            name: 'Korea, Republic of',
-            code: 'KR'
-        },
-        {
-            name: 'Niue',
-            code: 'NU'
-        },
-        {
-            name: 'Norfolk Island',
-            code: 'NF'
-        },
-        {
-            name: 'Northern Mariana Islands',
-            code: 'MP'
-        },
-        {
-            name: 'Norway',
-            code: 'NO'
-        },
-        {
-            name: 'Oman',
-            code: 'OM'
-        },
-        {
-            name: 'Pakistan',
-            code: 'PK'
-        },
-        {
-            name: 'Palau',
-            code: 'PW'
-        },
-        {
-            name: 'Russian Federation',
-            code: 'RU'
-        },
-        {
-            name: 'Rwanda',
-            code: 'RW'
-        },
-        {
-            name: 'Saint Helena',
-            code: 'SH'
-        },
-        {
-            name: 'Swaziland',
-            code: 'SZ'
-        },
-        {
-            name: 'Sweden',
-            code: 'SE'
-        },
-        {
-            name: 'Switzerland',
-            code: 'CH'
-        },
-        {
-            name: 'Syrian Arab Republic',
-            code: 'SY'
-        },
-        {
-            name: 'Taiwan, Province of China',
-            code: 'TW'
-        },
-        {
-            name: 'Tajikistan',
-            code: 'TJ'
-        },
-        {
-            name: 'Togo',
-            code: 'TG'
-        },
-        {
-            name: 'Tokelau',
-            code: 'TK'
-        },
-        {
-            name: 'Tonga',
-            code: 'TO'
-        },
-        {
-            name: 'Virgin Islands, U.S.',
-            code: 'VI'
-        },
-        {
-            name: 'Wallis and Futuna',
-            code: 'WF'
-        },
-        {
-            name: 'Western Sahara',
-            code: 'EH'
-        },
-        {
-            name: 'Yemen',
-            code: 'YE'
-        },
-        {
-            name: 'Zambia',
-            code: 'ZM'
-        },
-        {
-            name: 'Zimbabwe',
-            code: 'ZW'
-        }
+        name:"Matches"
+    },
     ];
 
+    //addition of Element/Expression
+  $scope.choices = [{id: 'choice1'}];
+  
+  $scope.addNewChoice = function() {
+    var newItemNo = $scope.choices.length+1;
+    $scope.choices.push({'id':'choice'+newItemNo});
+  };
+
+//Remove of Element/Expression
+  $scope.removeChoice = function() {
+    var lastItem = $scope.choices.length-1;
+    $scope.choices.splice(lastItem);
+  };
+
+  
     $scope.confCancel = function (callback) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -62822,274 +62366,27 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     };
     $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
         {
-            name: 'Afghanistan',
-            code: 'AF'
+            name: 'Sr.No.',
         },
         {
-            name: 'Åland Islands',
-            code: 'AX'
+            name: 'Name',
         },
         {
-            name: 'Albania',
-            code: 'AL'
+            name: 'Email',
         },
         {
-            name: 'Algeria',
-            code: 'DZ'
+            name: 'Password',
         },
         {
-            name: 'Azerbaijan',
-            code: 'AZ'
+            name: 'Username',
         },
         {
-            name: 'Bahamas',
-            code: 'BS'
+            name: 'MD5',
         },
         {
-            name: 'Bahrain',
-            code: 'BH'
+            name: 'SHA512',
         },
-        {
-            name: 'Bangladesh',
-            code: 'BD'
-        },
-        {
-            name: 'Bulgaria',
-            code: 'BG'
-        },
-        {
-            name: 'Burkina Faso',
-            code: 'BF'
-        },
-        {
-            name: 'Burundi',
-            code: 'BI'
-        },
-        {
-            name: 'Cambodia',
-            code: 'KH'
-        },
-        {
-            name: 'Cameroon',
-            code: 'CM'
-        },
-        {
-            name: 'Czech Republic',
-            code: 'CZ'
-        },
-        {
-            name: 'Denmark',
-            code: 'DK'
-        },
-        {
-            name: 'Djibouti',
-            code: 'DJ'
-        },
-        {
-            name: 'Dominica',
-            code: 'DM'
-        },
-        {
-            name: 'Dominican Republic',
-            code: 'DO'
-        },
-        {
-            name: 'Ecuador',
-            code: 'EC'
-        },
-        {
-            name: 'Egypt',
-            code: 'EG'
-        },
-        {
-            name: 'El Salvador',
-            code: 'SV'
-        },
-        {
-            name: 'Equatorial Guinea',
-            code: 'GQ'
-        },
-        {
-            name: 'Eritrea',
-            code: 'ER'
-        },
-        {
-            name: 'Estonia',
-            code: 'EE'
-        },
-        {
-            name: 'Gabon',
-            code: 'GA'
-        },
-        {
-            name: 'Gambia',
-            code: 'GM'
-        },
-        {
-            name: 'Georgia',
-            code: 'GE'
-        },
-        {
-            name: 'Germany',
-            code: 'DE'
-        },
-        {
-            name: 'Ghana',
-            code: 'GH'
-        },
-        {
-            name: 'Heard Island and Mcdonald Islands',
-            code: 'HM'
-        },
-        {
-            name: 'Holy See (Vatican City State)',
-            code: 'VA'
-        },
-        {
-            name: 'Honduras',
-            code: 'HN'
-        },
-        {
-            name: 'Hong Kong',
-            code: 'HK'
-        },
-        {
-            name: 'Hungary',
-            code: 'HU'
-        },
-        {
-            name: 'Iceland',
-            code: 'IS'
-        },
-        {
-            name: 'India',
-            code: 'IN'
-        },
-        {
-            name: 'Indonesia',
-            code: 'ID'
-        },
-        {
-            name: 'Kazakhstan',
-            code: 'KZ'
-        },
-        {
-            name: 'Kenya',
-            code: 'KE'
-        },
-        {
-            name: 'Kiribati',
-            code: 'KI'
-        },
-        {
-            name: 'Korea, Democratic People\'s Republic of',
-            code: 'KP'
-        },
-        {
-            name: 'Korea, Republic of',
-            code: 'KR'
-        },
-        {
-            name: 'Niue',
-            code: 'NU'
-        },
-        {
-            name: 'Norfolk Island',
-            code: 'NF'
-        },
-        {
-            name: 'Northern Mariana Islands',
-            code: 'MP'
-        },
-        {
-            name: 'Norway',
-            code: 'NO'
-        },
-        {
-            name: 'Oman',
-            code: 'OM'
-        },
-        {
-            name: 'Pakistan',
-            code: 'PK'
-        },
-        {
-            name: 'Palau',
-            code: 'PW'
-        },
-        {
-            name: 'Russian Federation',
-            code: 'RU'
-        },
-        {
-            name: 'Rwanda',
-            code: 'RW'
-        },
-        {
-            name: 'Saint Helena',
-            code: 'SH'
-        },
-        {
-            name: 'Swaziland',
-            code: 'SZ'
-        },
-        {
-            name: 'Sweden',
-            code: 'SE'
-        },
-        {
-            name: 'Switzerland',
-            code: 'CH'
-        },
-        {
-            name: 'Syrian Arab Republic',
-            code: 'SY'
-        },
-        {
-            name: 'Taiwan, Province of China',
-            code: 'TW'
-        },
-        {
-            name: 'Tajikistan',
-            code: 'TJ'
-        },
-        {
-            name: 'Togo',
-            code: 'TG'
-        },
-        {
-            name: 'Tokelau',
-            code: 'TK'
-        },
-        {
-            name: 'Tonga',
-            code: 'TO'
-        },
-        {
-            name: 'Virgin Islands, U.S.',
-            code: 'VI'
-        },
-        {
-            name: 'Wallis and Futuna',
-            code: 'WF'
-        },
-        {
-            name: 'Western Sahara',
-            code: 'EH'
-        },
-        {
-            name: 'Yemen',
-            code: 'YE'
-        },
-        {
-            name: 'Zambia',
-            code: 'ZM'
-        },
-        {
-            name: 'Zimbabwe',
-            code: 'ZW'
-        }
-    ];
+];
 })
 
 myApp.controller('headerCtrl', function ($scope, TemplateService) {
