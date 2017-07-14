@@ -23,9 +23,9 @@ var controller = {
     },
 
     finalUpload: function (req, res) {
-        res.body = {};
-        res.body.companyExcel = {
-            name: "",
+        req.body = {};
+        req.body.companyExcel = {
+            name: "5968634a742984b7745a21cc.xlsx",
             fields: [{
                     ourField: "firstName",
                     theirField: "name1"
@@ -39,11 +39,15 @@ var controller = {
                 }
             ]
         };
-        Config.importGSForCustomFields(req.body.companyExcel, function (err, data) {
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                res.callback(null, data);
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Demo.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
             }
         });
     },
