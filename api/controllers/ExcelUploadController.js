@@ -22,7 +22,7 @@ var controller = {
         }
     },
 
-    finalUpload: function (req, res) {
+    finalUploadForCompany: function (req, res) {
         req.body = {};
         req.body.companyExcel = {
             name: "59687872b44b5921b96d474a.xlsx",
@@ -44,7 +44,7 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Demo.saveData(singleData, callback);
+                    Company.saveData(singleData, callback);
                 }, function (err, data) {
                     res.callback(null, data);
                 });
@@ -73,6 +73,37 @@ var controller = {
         }
     },
 
+    finalUploadForCompanyContact: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    CompanyContact.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
+
     //companyInfo
 
     companyInfoUpload: function (req, res) {
@@ -93,6 +124,37 @@ var controller = {
             res.callback("Please provide File to be uploaded");
         }
     },
+
+    finalUploadForCompanyInfo: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    CompanyInfo.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
 
     //crm
 
@@ -115,6 +177,37 @@ var controller = {
         }
     },
 
+    finalUploadForCrm: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Crm.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
+
     //customer
 
     customerUpload: function (req, res) {
@@ -135,6 +228,37 @@ var controller = {
             res.callback("Please provide File to be uploaded");
         }
     },
+
+    finalUploadForCustomer: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Customer.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
 
     //customerNote
 
@@ -157,6 +281,37 @@ var controller = {
         }
     },
 
+    finalUploadForCustomerNote: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    CutomerNote.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
+
     //itemId
 
     itemUpload: function (req, res) {
@@ -177,6 +332,37 @@ var controller = {
             res.callback("Please provide File to be uploaded");
         }
     },
+
+    finalUploadForItem: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Item.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
 
     //location
 
@@ -200,6 +386,37 @@ var controller = {
         }
     },
 
+    finalUploadForLocation: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Location.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
+
     //transaction
 
     TransactionUpload: function (req, res) {
@@ -220,6 +437,37 @@ var controller = {
             res.callback("Please provide File to be uploaded");
         }
     },
+
+    finalUploadForTransaction: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    Transaction.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
 
     //warrantyItem
 
@@ -242,6 +490,37 @@ var controller = {
         }
     },
 
+    finalUploadForWarranty: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    WarrantyItem.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
+
     //user
 
     userUpload: function (req, res) {
@@ -262,6 +541,37 @@ var controller = {
             res.callback("Please provide File to be uploaded");
         }
     },
+
+    finalUploadForUser: function (req, res) {
+        req.body = {};
+        req.body.companyExcel = {
+            name: "59687872b44b5921b96d474a.xlsx",
+            fields: [{
+                    ourField: "firstName",
+                    theirField: "name1"
+                }, {
+                    ourField: "middleName",
+                    theirField: "name2"
+                },
+                {
+                    ourField: "lastName",
+                    theirField: "name3"
+                }
+            ]
+        };
+        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                async.concatLimit(data, 20, function (singleData, callback) {
+                    User.saveData(singleData, callback);
+                }, function (err, data) {
+                    res.callback(null, data);
+                });
+            }
+        });
+    },
+
 
 };
 module.exports = controller;
