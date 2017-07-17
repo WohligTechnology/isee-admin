@@ -11,7 +11,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }, 5000);
         });
     };
-
     $scope.tabs = [{
             title: 'User',
             formNames: [{
@@ -38,7 +37,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                         name: 'SHA512',
                     },
                 ]
-            },{
+            }, {
                 name: 'First Name',
                 countries: [{
                         name: 'Sr.No.',
@@ -112,4 +111,28 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         }
 
     ];
-})
+    console.log("tabsss", $scope.tabs[0].title);
+    console.log("tabsss", $scope.tabs[1].title);
+    if ($scope.tabs[0].title == 'User') {
+        $scope.getExcelFields = function (formdata) {
+            console.log("formdata", formdata);
+            NavigationService.apiCall("ExcelUpload/companyUpload", formdata, function (data) {
+                if (data.value == true) {
+                    $scope.excelArrData = [];
+                    $scope.excelData = data.data;
+                    $scope.excelArrData.push($scope.excelData);
+                    console.log("aaaa", $scope.excelArrData);
+                } else {
+                    alert("aaaaa");
+                }
+            });
+        };
+    } else {
+
+        console.log("################");
+    }
+
+
+
+
+});

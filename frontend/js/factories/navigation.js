@@ -1,4 +1,7 @@
-myApp.factory('NavigationService', function () {
+var adminUrl = "http://wohlig.io/api/";
+var uploadurl = adminUrl + "upload/";
+
+myApp.factory('NavigationService', function ($http) {
     var navigation = [{
         name: "Dashboard",
         classis: "active",
@@ -14,7 +17,7 @@ myApp.factory('NavigationService', function () {
             name: "Subnav",
             classis: "active",
             anchor: "home",
-            icon:"fa-cog"
+            icon: "fa-cog"
         }]
     }, {
         name: "Returns Details",
@@ -31,6 +34,21 @@ myApp.factory('NavigationService', function () {
     return {
         getNavigation: function () {
             return navigation;
+        },
+
+        apiCall: function (url, formData, callback) {
+            $http.post(adminurl + url, formData).then(function (data) {
+                data = data.data;
+                callback(data);
+
+            });
+        },
+
+        searchCall: function (url, formData, i, callback) {
+            $http.post(adminurl + url, formData).then(function (data) {
+                data = data.data;
+                callback(data, i);
+            });
         },
     };
 });
