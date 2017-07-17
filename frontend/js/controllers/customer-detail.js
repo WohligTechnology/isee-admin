@@ -11,6 +11,68 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }, 5000);
         });
     };
+
+    $scope.tabs = [
+                {
+            title: 'User',
+            content: 'Dynamic content 3',
+            // disabled: true
+        },
+        {
+            title: 'Customer Note',
+            content: 'Dynamic content 2',
+            // disabled: true
+        },
+        {
+            title: 'CRM',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Company',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Company Contact',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Company Info',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Item',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Location',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+        {
+            title: 'Transaction',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+        ,
+                {
+            title: 'Warranty Item',
+            content: 'Dynamic content 3',
+            // disabled: true
+        }
+
+    ];
+
     $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
         {
             name: 'Sr.No.',
@@ -33,5 +95,5 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         {
             name: 'SHA512',
         },
-];
+    ];
 })

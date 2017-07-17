@@ -5,9 +5,81 @@
 
 <div class="panel panel-default">
 	<div class="form-default min-h100">
-		<div class="row">
+		<div class="table-responsive">
+		<uib-tabset active="activeJustified" justified="true">
+			<uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
+					<form action="">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1">
+									<div class="upload-data">
+										<upload-image ng-model=formData.fileData></upload-image>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="text-right">
+										<button type="submit" class="btn btn-success">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1">
+									<label class=" control-label">First Name</label>
+								</div>
+								<div class="col-sm-6">
+									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
+										<ui-select-match placeholder="Select">
+											<span>{{$select.selected.name}}</span>
+										</ui-select-match>
+										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
+											{{country.name}}
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1">
+									<label class=" control-label">Middle Name</label>
+								</div>
+								<div class="col-sm-6">
+									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
+										<ui-select-match placeholder="Select">
+											<span>{{$select.selected.name}}</span>
+										</ui-select-match>
+										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
+											{{country.name}}
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1">
+									<label class=" control-label">Surname</label>
+								</div>
+								<div class="col-sm-6">
+									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
+										<ui-select-match placeholder="Select">
+											<span>{{$select.selected.name}}</span>
+										</ui-select-match>
+										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
+											{{country.name}}
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
+					</form>
+			</uib-tab>
+		</uib-tabset>
+		</div>
+		<!--<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<!--form-divider-->
 				<div class="panel-divider">
 					<div class="row">
 						<div class="col-sm-8 col-sm-offset-1 ">
@@ -84,9 +156,6 @@
 						</div>
 					</form>
 				</div>
-				<!--form-divider End-->
-
-				<!--form-divider-->
 				<div class="panel-divider">
 					<div class="row">
 						<div class="col-sm-offset-1 col-sm-8">
@@ -163,9 +232,6 @@
 						</div>
 					</form>
 				</div>
-				<!--form-divider End-->
-
-				<!--form-divider-->
 				<div class="panel-divider">
 					<div class="row">
 						<div class="col-sm-offset-1 col-sm-8">
@@ -242,8 +308,7 @@
 						</div>
 					</form>
 				</div>
-				<!--form-divider End-->
 			</div>
-		</div>
+		</div>-->
 	</div>
 </div>
