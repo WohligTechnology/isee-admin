@@ -23,24 +23,24 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" ng-repeat="formname in tab.formNames">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-1">
-									<label class=" control-label">First Name</label>
+									<label class=" control-label">{{formname.name}}</label>
 								</div>
 								<div class="col-sm-6">
 									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
 										<ui-select-match placeholder="Select">
 											<span>{{$select.selected.name}}</span>
 										</ui-select-match>
-										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
+										<ui-select-choices repeat="country.name as country in formname.countries | filter: $select.search" refresh="" refresh-delay="0">
 											{{country.name}}
 										</ui-select-choices>
 									</ui-select>
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<!--<div class="form-group">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-1">
 									<label class=" control-label">Middle Name</label>
@@ -73,7 +73,7 @@
 									</ui-select>
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</form>
 			</uib-tab>
 		</uib-tabset>

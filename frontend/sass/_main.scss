@@ -573,7 +573,7 @@ header {
     float: left;
     width: 100%;
     overflow-x: auto;
-    min-height: 0.01%;
+    min-height: calc(100vh - 120px);
 }
 
 //tabs active
