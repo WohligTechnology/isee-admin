@@ -292,7 +292,9 @@ var models = {
             var ourField = _.filter(customFields, function (n) {
                 return (n.theirField == field);
             });
-            return ourField[0].ourField;
+            if (!_.isEmpty(ourField)) {
+                return ourField[0].ourField;
+            }
         }
         var jsonExcel = xlsx.parse(name);
         var retVal = [];

@@ -1,7 +1,6 @@
 var schema = new Schema({
     name: {
         type: String,
-        required: true,
         es_indexed: true
     },
     region: {

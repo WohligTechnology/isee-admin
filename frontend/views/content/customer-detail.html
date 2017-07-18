@@ -7,22 +7,23 @@
 	<div class="form-default min-h100">
 		<div class="table-responsive">
 			<div>
-				<!--<button type="button" class="btn btn-default btn-sm" ng-repeat="tab in tabs" ng-click="activeJustified =  {{$index + 1}} ">{{tab.title}}</button>-->
-				<!--<button type="button" class="btn btn-default btn-sm" ng-click="activeJustified = 2">Select third tab</button>-->
+				<div>
+					<button type="button" class="btn btn-default btn-sm" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</button>
+				</div>
+
 			</div>
 			<uib-tabset active="activeJustified" justified="true">
 				<uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" index="$index + 1" disable="tab.disabled">
-					{{tab}}
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-4 col-sm-offset-1">
 								<div class="upload-data">
-									<upload-image ng-model=formData.file></upload-image>
+									<upload-image ng-model=formdata.file></upload-image>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="text-right">
-									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formData)">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
+									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -33,7 +34,7 @@
 								<label class=" control-label">{{formname}}</label>
 							</div>
 							<div class="col-sm-6">
-								<ui-select ng-model="formData.country" name="country" theme="bootstrap" sortable="true">
+								<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
 									<ui-select-match placeholder="Select">
 										<span>{{$select.selected}}</span>
 									</ui-select-match>
@@ -78,6 +79,11 @@
 								</div>
 							</div>
 						</div>-->
+					<div class="col-sm-6">
+						<div class="text-right">
+							<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
+						</div>
+					</div>
 
 				</uib-tab>
 			</uib-tabset>

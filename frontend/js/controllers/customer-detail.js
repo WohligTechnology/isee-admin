@@ -111,28 +111,121 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         }
 
     ];
-    console.log("tabsss", $scope.tabs[0].title);
-    console.log("tabsss", $scope.tabs[1].title);
-    if ($scope.tabs[0].title == 'User') {
+
+    $scope.activeJustified = 1;
+    $scope.activeTabs = function (n) {
+        $scope.activeJustified = n + 1;
+        var mySchema;
+        if ($scope.activeJustified == 1) {
+            $scope.excelData = "";
+            getExcel = "userUpload";
+            mapExcel = "finalUploadForUser";
+        } else if ($scope.activeJustified == 2) {
+            $scope.excelData = "";
+            getExcel = "customerNoteUpload";
+            mapExcel = "finalUploadForCustomerNote";
+        } else if ($scope.activeJustified == 3) {
+            $scope.excelData = "";
+            getExcel = "crmUpload";
+            mapExcel = "finalUploadForCrm";
+        } else if ($scope.activeJustified == 4) {
+            $scope.excelData = "";
+            getExcel = "companyUpload";
+            mapExcel = "finalUploadForCompany";
+        } else if ($scope.activeJustified == 5) {
+            $scope.excelData = "";
+            getExcel = "companyContactUpload";
+            mapExcel = "companyContactUpload";
+        } else if ($scope.activeJustified == 6) {
+            $scope.excelData = "";
+            getExcel = "companyInfoUpload";
+            mapExcel = "finalUploadForCompanyInfo";
+        } else if ($scope.activeJustified == 7) {
+            $scope.excelData = "";
+            getExcel = "itemUpload";
+            mapExcel = "finalUploadForItem";
+        } else if ($scope.activeJustified == 8) {
+            $scope.excelData = "";
+            getExcel = "LocationUpload";
+            mapExcel = "finalUploadForLocation";
+        } else if ($scope.activeJustified == 9) {
+            $scope.excelData = "";
+            getExcel = "TransactionUpload";
+            mapExcel = "finalUploadForTransaction";
+        } else if ($scope.activeJustified == 10) {
+            $scope.excelData = "";
+            getExcel = "warrantyItemUpload";
+            mapExcel = "finalUploadForWarranty";
+        }
+
         $scope.getExcelFields = function (formdata) {
             console.log("formdata", formdata);
-            NavigationService.apiCall("ExcelUpload/companyUpload", formdata, function (data) {
+            NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
-                    $scope.excelArrData = [];
                     $scope.excelData = data.data;
-                    $scope.excelArrData.push($scope.excelData);
                     console.log("aaaa", $scope.excelArrData);
                 } else {
                     alert("aaaaa");
                 }
             });
         };
-    } else {
 
-        console.log("################");
-    }
+        $scope.formData = {};
+        $scope.mapExcelFields = function (formdata, formdata1) {
+            $scope.companyExcel = {};
+            $scope.companyExcel.name = formdata1.file;
+            $scope.companyExcel.fields = [];
+            _.forEach(formdata, function (value, key) {
+                $scope.field = {};
+                $scope.field.ourField = key;
+                $scope.field.theirField = value;
+                $scope.companyExcel.fields.push($scope.field);
+            });
+            console.log("$scope.companyExcel", $scope.companyExcel);
+            NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
+                if (data.value == true) {
+                    console.log("Sucess");
+                } else {
+                    alert("aaaaa");
+                }
+            });
+        };
+
+    };
 
 
 
+    // $scope.getExcelFields = function (formdata) {
+    //     console.log("formdata", formdata);
+    //     NavigationService.apiCall("ExcelUpload/companyUpload", formdata, function (data) {
+    //         if (data.value == true) {
+    //             $scope.excelData = data.data;
+    //             console.log("aaaa", $scope.excelArrData);
+    //         } else {
+    //             alert("aaaaa");
+    //         }
+    //     });
+    // };
+
+    // $scope.formData = {};
+    // $scope.mapExcelFields = function (formdata, formdata1) {
+    //     $scope.companyExcel = {};
+    //     $scope.companyExcel.name = formdata1.file;
+    //     $scope.companyExcel.fields = [];
+    //     _.forEach(formdata, function (value, key) {
+    //         $scope.field = {};
+    //         $scope.field.ourField = key;
+    //         $scope.field.theirField = value;
+    //         $scope.companyExcel.fields.push($scope.field);
+    //     });
+    //     console.log("$scope.companyExcel", $scope.companyExcel);
+    //     NavigationService.apiCall("ExcelUpload/finalUploadForCompany", $scope.companyExcel, function (data) {
+    //         if (data.value == true) {
+    //             console.log("Sucess");
+    //         } else {
+    //             alert("aaaaa");
+    //         }
+    //     });
+    // };
 
 });
