@@ -115,6 +115,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     $scope.activeJustified = 1;
     $scope.activeTabs = function (n) {
         $scope.activeJustified = n + 1;
+        console.log(n);
         var getExcel;
         var mapExcel;
         if ($scope.activeJustified == 1) {
@@ -157,6 +158,10 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             $scope.excelData = "";
             getExcel = "warrantyItemUpload";
             mapExcel = "finalUploadForWarranty";
+        } else {
+            $scope.excelData = "";
+            getExcel = "userUpload";
+            mapExcel = "finalUploadForUser";
         }
 
         $scope.getExcelFields = function (formdata) {

@@ -179,7 +179,7 @@ header {
     margin-left: -30px;
     margin-right: -30px;
     background: #fff;
-    padding: 12px 30px;
+    padding: 12px 30px 16px;
     margin-top: -20px;
     margin-bottom: 20px;
     span.main.bredcrums {
@@ -577,29 +577,21 @@ header {
 }
 
 //tabs active
-.nav-tabs.nav-justified {
+
+
+.custom-tabs{
+.tab {
+    float: left;
+    width: 100%;
+    overflow-x: auto;
+}
+.nav-tabs{
     li {
-        width: 150px !important;
+        min-width: 150px;
+    display: table-cell;
         a {
-            border: 1px solid $brand-primary;
-            border-radius: 0;
-            background: #fff;
-            padding-left: 5px;
-            padding-right: 5px;
+padding: 0;
         }
     }
 }
-
-.nav.nav-tabs {
-    li {
-        &.active,
-        &:hover,
-        &:focus {
-            a {
-                background-color: $brand-primary;
-                color: #fff;
-                border: 1px solid $brand-primary;
-            }
-        }
-    }
 }

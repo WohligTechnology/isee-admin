@@ -31890,7 +31890,7 @@ header {
   margin-left: -30px;
   margin-right: -30px;
   background: #fff;
-  padding: 12px 30px;
+  padding: 12px 30px 16px;
   margin-top: -20px;
   margin-bottom: 20px; }
   .add-header span.main.bredcrums {
@@ -32154,19 +32154,16 @@ header {
   overflow-x: auto;
   min-height: calc(100vh - 120px); }
 
-.nav-tabs.nav-justified li {
-  width: 150px !important; }
-  .nav-tabs.nav-justified li a {
-    border: 1px solid #5397be;
-    border-radius: 0;
-    background: #fff;
-    padding-left: 5px;
-    padding-right: 5px; }
+.custom-tabs .tab {
+  float: left;
+  width: 100%;
+  overflow-x: auto; }
 
-.nav.nav-tabs li.active a, .nav.nav-tabs li:hover a, .nav.nav-tabs li:focus a {
-  background-color: #5397be;
-  color: #fff;
-  border: 1px solid #5397be; }
+.custom-tabs .nav-tabs li {
+  min-width: 150px;
+  display: table-cell; }
+  .custom-tabs .nav-tabs li a {
+    padding: 0; }
 
 #fancybox-loading,
 .fancybox-close,

@@ -5,15 +5,15 @@
 
 <div class="panel panel-default">
 	<div class="form-default min-h100">
-		<div class="table-responsive">
-			<div>
-				<div>
-					<button type="button" class="btn btn-default btn-sm" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</button>
-				</div>
-
+		<div class="custom-tabs">
+			<div class="tab">
+				<ul class="nav nav-tabs">
+					<li class="btn btn-default btn-primary" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</li>
+				</ul>
+				<!--<button type="button"  ></button>-->
 			</div>
-			<uib-tabset active="activeJustified" justified="true">
-				<uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" index="$index + 1" disable="tab.disabled">
+			<uib-tabset active="activeJustified">
+				<uib-tab ng-repeat="tab in tabs" index="$index + 1" disable="tab.disabled">
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-4 col-sm-offset-1">
@@ -23,7 +23,7 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="text-right">
-									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
+									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -45,43 +45,9 @@
 							</div>
 						</div>
 					</div>
-					<!--<div class="form-group">
-							<div class="row">
-								<div class="col-sm-4 col-sm-offset-1">
-									<label class=" control-label">Middle Name</label>
-								</div>
-								<div class="col-sm-6">
-									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
-										<ui-select-match placeholder="Select">
-											<span>{{$select.selected.name}}</span>
-										</ui-select-match>
-										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
-											{{country.name}}
-										</ui-select-choices>
-									</ui-select>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-sm-4 col-sm-offset-1">
-									<label class=" control-label">Surname</label>
-								</div>
-								<div class="col-sm-6">
-									<ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
-										<ui-select-match placeholder="Select">
-											<span>{{$select.selected.name}}</span>
-										</ui-select-match>
-										<ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
-											{{country.name}}
-										</ui-select-choices>
-									</ui-select>
-								</div>
-							</div>
-						</div>-->
-					<div class="col-sm-6">
-						<div class="text-right">
-							<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">Submit <i class="fa fa-upload" aria-hidden="true"></i></button>
+					<div class="col-sm-12">
+						<div class="text-center">
+							<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)">Submit</button>
 						</div>
 					</div>
 
