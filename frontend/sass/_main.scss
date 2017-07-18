@@ -577,21 +577,32 @@ header {
 }
 
 //tabs active
-
-
-.custom-tabs{
-.tab {
-    float: left;
-    width: 100%;
-    overflow-x: auto;
-}
-.nav-tabs{
-    li {
-        min-width: 150px;
-    display: table-cell;
-        a {
-padding: 0;
+.custom-tabs {
+    .tab {
+        float: left;
+        width: 100%;
+        overflow-x: auto;
+        &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: #F5F5F5;
+        }
+        &::-webkit-scrollbar {
+            width: 0px;
+            height: 5px;
+            background-color: #F5F5F5;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #ccc;
         }
     }
-}
+    .nav-tabs {
+        li {
+            min-width: 150px;
+            display: table-cell;
+            a {
+                padding: 0;
+            }
+        }
+    }
 }

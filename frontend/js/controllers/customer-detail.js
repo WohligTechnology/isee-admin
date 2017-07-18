@@ -13,100 +13,42 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     };
     $scope.tabs = [{
             title: 'User',
-            formNames: [{
-                name: 'First Name',
-                countries: [{
-                        name: 'Sr.No.',
-                    },
-                    {
-                        name: 'Name',
-                    },
-                    {
-                        name: 'Email',
-                    },
-                    {
-                        name: 'Password',
-                    },
-                    {
-                        name: 'Username',
-                    },
-                    {
-                        name: 'MD5',
-                    },
-                    {
-                        name: 'SHA512',
-                    },
-                ]
-            }, {
-                name: 'First Name',
-                countries: [{
-                        name: 'Sr.No.',
-                    },
-                    {
-                        name: 'Name',
-                    },
-                    {
-                        name: 'Email',
-                    },
-                    {
-                        name: 'Password',
-                    },
-                    {
-                        name: 'Username',
-                    },
-                    {
-                        name: 'MD5',
-                    },
-                    {
-                        name: 'SHA512',
-                    },
-                ]
-            }]
             // disabled: true
         },
         {
             title: 'Customer Note',
-            name: 'Dynamic content 2',
             // disabled: true
         },
         {
             title: 'CRM',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Company',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Company Contact',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Company Info',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Item',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Location',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Transaction',
-            content: 'Dynamic content 3',
             // disabled: true
         },
         {
             title: 'Warranty Item',
-            content: 'Dynamic content 3',
             // disabled: true
         }
 
@@ -163,6 +105,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             getExcel = "userUpload";
             mapExcel = "finalUploadForUser";
         }
+
 
         $scope.getExcelFields = function (formdata) {
             console.log("formdata", formdata);

@@ -32158,6 +32158,16 @@ header {
   float: left;
   width: 100%;
   overflow-x: auto; }
+  .custom-tabs .tab::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #F5F5F5; }
+  .custom-tabs .tab::-webkit-scrollbar {
+    width: 0px;
+    height: 5px;
+    background-color: #F5F5F5; }
+  .custom-tabs .tab::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ccc; }
 
 .custom-tabs .nav-tabs li {
   min-width: 150px;
