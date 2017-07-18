@@ -75,22 +75,6 @@ var controller = {
     },
 
     finalUploadForCompanyContact: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -127,22 +111,6 @@ var controller = {
     },
 
     finalUploadForCompanyInfo: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -179,22 +147,6 @@ var controller = {
     },
 
     finalUploadForCrm: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -231,22 +183,6 @@ var controller = {
     },
 
     finalUploadForCustomer: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -283,22 +219,6 @@ var controller = {
     },
 
     finalUploadForCustomerNote: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -335,22 +255,6 @@ var controller = {
     },
 
     finalUploadForItem: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -388,22 +292,6 @@ var controller = {
     },
 
     finalUploadForLocation: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -440,22 +328,6 @@ var controller = {
     },
 
     finalUploadForTransaction: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -492,22 +364,6 @@ var controller = {
     },
 
     finalUploadForWarranty: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -544,22 +400,6 @@ var controller = {
     },
 
     finalUploadForUser: function (req, res) {
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);

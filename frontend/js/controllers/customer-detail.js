@@ -115,7 +115,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     $scope.activeJustified = 1;
     $scope.activeTabs = function (n) {
         $scope.activeJustified = n + 1;
-        var mySchema;
+        var getExcel;
+        var mapExcel;
         if ($scope.activeJustified == 1) {
             $scope.excelData = "";
             getExcel = "userUpload";
