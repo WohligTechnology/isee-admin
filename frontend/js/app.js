@@ -67,6 +67,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'AssignmentListCtrl'
         })
+        .state('transition', {
+            url: "/transition",
+            templateUrl: tempateURL,
+            controller: 'TransitionCtrl'
+        })
         .state('customer-detail', {
             url: "/customer-detail",
             templateUrl: tempateURL,

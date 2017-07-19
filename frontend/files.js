@@ -53,6 +53,7 @@ module.exports = [
   'frontend/js/controllers/author-rule.js',
   'frontend/js/controllers/es-rule.js',
   'frontend/js/controllers/assignment-list.js',
+  'frontend/js/controllers/transition.js',
   'frontend/js/controllers/customer-detail.js',
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',

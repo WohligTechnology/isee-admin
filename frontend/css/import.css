@@ -32152,7 +32152,6 @@ header {
   border-color: #fff; }
 
 .table-responsive {
-  float: left;
   width: 100%;
   overflow-x: auto;
   min-height: calc(100vh - 120px); }
@@ -32182,7 +32181,12 @@ header {
     min-height: calc(100vh - 185px); }
     .custom-tabs .tab-content .custom-scroll {
       height: calc(100vh - 325px);
-      overflow: auto; }
+      overflow-y: auto;
+      overflow-x: hidden; }
+  .custom-tabs span.main.bredcrums {
+    font-size: 16px;
+    color: #5397be;
+    font-weight: 400; }
 
 #fancybox-loading,
 .fancybox-close,
