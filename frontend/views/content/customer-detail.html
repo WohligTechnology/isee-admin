@@ -1,10 +1,6 @@
 <div ng-include="template.header" class="template header"></div>
-<!--<div class="add-header">
-	<span class="main bredcrums">Customer Detail</span>
-</div>-->
-
 <div class="panel panel-default">
-	<div class="form-default min-h100">
+	<div class="form-default">
 		<!--tabs for Excel Upload-->
 		<div class="custom-tabs">
 			<!--tabs for  Button Nav Excel Upload-->
@@ -34,25 +30,27 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group" ng-repeat="formname in excelData.fields">
-						<div class="row">
-							<div class="col-sm-4 col-sm-offset-1 ">
-								<label class=" control-label">{{formname}}</label>
-							</div>
-							<div class="col-sm-6">
-								<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
-									<ui-select-match placeholder="Select">
-										<span>{{$select.selected}}</span>
-									</ui-select-match>
-									<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search" refresh="" refresh-delay="0">
-										{{country}}
-									</ui-select-choices>
-								</ui-select>
+					<div class="custom-scroll">
+						<div class="form-group" ng-repeat="formname in excelData.fields">
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1 ">
+									<label class=" control-label">{{formname}}</label>
+								</div>
+								<div class="col-sm-6">
+									<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
+										<ui-select-match placeholder="Select">
+											<span>{{$select.selected}}</span>
+										</ui-select-match>
+										<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search" refresh="" refresh-delay="0">
+											{{country}}
+										</ui-select-choices>
+									</ui-select>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-12">
-						<div class="text-center">
+						<div class="text-center mt-10">
 							<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)">Submit</button>
 						</div>
 					</div>
