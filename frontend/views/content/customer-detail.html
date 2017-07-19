@@ -1,10 +1,6 @@
 <div ng-include="template.header" class="template header"></div>
-<!--<div class="add-header">
-	<span class="main bredcrums">Customer Detail</span>
-</div>-->
-
 <div class="panel panel-default">
-	<div class="form-default min-h100">
+	<div class="form-default">
 		<!--tabs for Excel Upload-->
 		<div class="custom-tabs">
 			<!--tabs for  Button Nav Excel Upload-->
@@ -48,11 +44,12 @@
 										{{country}}
 									</ui-select-choices>
 								</ui-select>
+
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-12">
-						<div class="text-center">
+						<div class="text-center mt-10">
 							<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)">Submit</button>
 						</div>
 					</div>

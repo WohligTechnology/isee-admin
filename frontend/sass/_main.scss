@@ -127,7 +127,7 @@ header {
 
 .page-container .main-content {
     display: block;
-    min-height: 100vh;
+    min-height: calc(100vh - 78px);
 }
 
 .xe-widget.xe-counter {
@@ -470,6 +470,9 @@ header {
 .mb-20 {
     margin-bottom: 20px;
 }
+.mt-10 {
+    margin-top: 10px;
+}
 
 // fullscreen
 .min-h100 {
@@ -576,8 +579,9 @@ header {
     min-height: calc(100vh - 120px);
 }
 
-//tabs active
+//custom tab
 .custom-tabs {
+            border: 1px solid #eee;
     .tab {
         float: left;
         width: 100%;
@@ -603,6 +607,13 @@ header {
             a {
                 padding: 0;
             }
+        }
+    }
+    .tab-content {
+        min-height: calc(100vh - 185px);
+        .custom-scroll {
+            height: calc(100vh - 325px);
+            overflow: auto;
         }
     }
 }
