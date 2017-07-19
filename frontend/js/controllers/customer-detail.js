@@ -100,19 +100,14 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         // console.log(n);
         var getExcel;
         var mapExcel;
-        $scope.activeField;
         if ($scope.activeJustified == 1) {
             $scope.excelData = "";
             getExcel = "userUpload";
             mapExcel = "finalUploadForUser";
-            $scope.activeField = "userData";
-
         } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             getExcel = "customerNoteUpload";
             mapExcel = "finalUploadForCustomerNote";
-            $scope.activeField = "userData";
-
         } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
             getExcel = "crmUpload";
@@ -162,24 +157,24 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
-            console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-            // $scope.companyExcel = {};
-            // $scope.companyExcel.name = formdata1.file;
-            // $scope.companyExcel.fields = [];
-            // _.forEach(formdata, function (value, key) {
-            //     $scope.field = {};
-            //     $scope.field.ourField = key;
-            //     $scope.field.theirField = value;
-            //     $scope.companyExcel.fields.push($scope.field);
-            // });
-            // console.log("$scope.companyExcel", $scope.companyExcel);
-            // NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
-            //     if (data.value == true) {
-            //         console.log("Sucess");
-            //     } else {
-            //         alert("aaaaa");
-            //     }
-            // });
+            // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
+            $scope.companyExcel = {};
+            $scope.companyExcel.name = formdata1.file;
+            $scope.companyExcel.fields = [];
+            _.forEach(formdata, function (value, key) {
+                $scope.field = {};
+                $scope.field.ourField = key;
+                $scope.field.theirField = value;
+                $scope.companyExcel.fields.push($scope.field);
+            });
+            console.log("$scope.companyExcel", $scope.companyExcel);
+            NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
+                if (data.value == true) {
+                    console.log("Sucess");
+                } else {
+                    alert("aaaaa");
+                }
+            });
         };
 
     };
