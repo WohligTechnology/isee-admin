@@ -506,6 +506,19 @@ header {
     }
 }
 
+//pagination css
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #373e4a;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
 //Login or Blank Screen
 .blank-screen {
     position: relative;
@@ -576,7 +589,7 @@ header {
 .table-responsive {
     width: 100%;
     overflow-x: auto;
-    min-height: calc(100vh - 120px);
+    max-height: calc(100vh - 120px);
 }
 
 //custom tab

@@ -58,8 +58,12 @@
 					<div class="text-center mt-10 mb-20">
 						<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)" promise-btn>Submit</button>
 					</div>
+
 					<!--Logs Tabel-->
 					<div class="logs-tabel" ng-if="errData">
+						<div class="mb-10">
+							<span class="main bredcrums">Logs</span>
+						</div>
 						<div class="table-responsive dataTables_wrapper">
 							<table class="table">
 								<thead>
@@ -71,26 +75,40 @@
 								</thead>
 								<tbody>
 									<tr ng-repeat="formname in errData">
-										<th>{{formname.ourField}}</th>
+										<td>{{formname.ourField}}</td>
 										<td>{{formname.theirField}}</td>
 										<!--<td><i class="fa fa-check"></i></td>-->
 									</tr>
 							</table>
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="dataTables_paginate paging_simple_numbers">
-										<ul class="pagination">
-											<li class="paginate_button previous"><a href="#">Previous</a></li>
-											<li class="paginate_button active" tabindex="0"><a href="#">1</a></li>
-											<li class="paginate_button " tabindex="0"><a href="#">2</a></li>
-											<li class="paginate_button next" tabindex="0"><a href="#">Next</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 					<!--End Logs Tabel-->
+
+					<!--Logs Tabel History-->
+					<div class="mb-10">
+						<span class="main bredcrums">Log History</span>
+					</div>
+					<div class="logs-tabel" ng-if="errData">
+						<div class="table-responsive dataTables_wrapper">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th>Sucess</th>
+										<th>Failer</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="formname in errData">
+										<td>demo</td>
+										<td>demo</td>
+										<td>demo</td>
+									</tr>
+							</table>
+						</div>
+					</div>
+					<!--End Logs Tabel History-->
+
 				</uib-tab>
 			</uib-tabset>
 			<!--tabs End-->
