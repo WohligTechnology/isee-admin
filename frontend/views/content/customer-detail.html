@@ -59,21 +59,21 @@
 						<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)" promise-btn>Submit</button>
 					</div>
 					<!--Logs Tabel-->
-					<div class="logs-tabel">
+					<div class="logs-tabel" ng-if="errData">
 						<div class="table-responsive dataTables_wrapper">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>Fields Name</th>
 										<th>Fields Selected</th>
-										<th>Result</th>
+										<!--<th>Result</th>-->
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="formname in excelData.fields">
-										<th>{{formname}}</th>
-										<td>formData[formname]</td>
-										<td><i class="fa fa-check"></i></td>
+									<tr ng-repeat="formname in errData">
+										<th>{{formname.ourField}}</th>
+										<td>{{formname.theirField}}</td>
+										<!--<td><i class="fa fa-check"></i></td>-->
 									</tr>
 							</table>
 							<div class="row">

@@ -5,7 +5,7 @@ var schema = new Schema({
         index: true,
         key: "customerNote"
     },
-    noteSequence: String,
+    noteSequence: Number,
     note: String,
     noteTimeStamp: Date
 });

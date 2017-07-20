@@ -12,10 +12,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         });
     };
 
-    $scope.tabs = [{
-            title: 'User',
-            // disabled: true
-        },
+    $scope.tabs = [
+        // {
+        //     title: 'User',
+        //     // disabled: true
+        // },
         {
             title: 'Customer Note',
             // disabled: true
@@ -61,7 +62,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     if ($scope.activeJustified == 1) {
         $scope.getExcelFields = function (formdata) {
             console.log("formdata", formdata);
-            NavigationService.apiCall("ExcelUpload/userUpload", formdata, function (data) {
+            NavigationService.apiCall("ExcelUpload/customerNoteUpload", formdata, function (data) {
                 if (data.value == true) {
                     $scope.excelData = data.data;
                     console.log("aaaa", $scope.excelArrData);
@@ -83,7 +84,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 $scope.companyExcel.fields.push($scope.field);
             });
             console.log("$scope.companyExcel", $scope.companyExcel);
-            NavigationService.apiCall("ExcelUpload/finalUploadForUser", $scope.companyExcel, function (data) {
+            NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value == true) {
                     console.log("Sucess");
                 } else {
@@ -100,57 +101,68 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         // console.log(n);
         var getExcel;
         var mapExcel;
+        var tableName;
+        // if ($scope.activeJustified == 1) {
+        //     $scope.excelData = "";
+        //     getExcel = "userUpload";
+        //     mapExcel = "finalUploadForUser";
+        // } else 
         if ($scope.activeJustified == 1) {
-            $scope.excelData = "";
-            getExcel = "userUpload";
-            mapExcel = "finalUploadForUser";
-        } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             getExcel = "customerNoteUpload";
             mapExcel = "finalUploadForCustomerNote";
-        } else if ($scope.activeJustified == 3) {
+            tableName = "CustomerNote";
+        } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             getExcel = "crmUpload";
             mapExcel = "finalUploadForCrm";
-        } else if ($scope.activeJustified == 4) {
+            tableName = "Crm";
+        } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
             getExcel = "companyUpload";
             mapExcel = "finalUploadForCompany";
-        } else if ($scope.activeJustified == 5) {
+            tableName = "Company";
+        } else if ($scope.activeJustified == 4) {
             $scope.excelData = "";
             getExcel = "companyContactUpload";
             mapExcel = "companyContactUpload";
-        } else if ($scope.activeJustified == 6) {
+            tableName = "CompanyContact";
+        } else if ($scope.activeJustified == 5) {
             $scope.excelData = "";
             getExcel = "companyInfoUpload";
             mapExcel = "finalUploadForCompanyInfo";
-        } else if ($scope.activeJustified == 7) {
+            tableName = "CompanyInfo";
+        } else if ($scope.activeJustified == 6) {
             $scope.excelData = "";
             getExcel = "itemUpload";
             mapExcel = "finalUploadForItem";
-        } else if ($scope.activeJustified == 8) {
+            tableName = "Item";
+        } else if ($scope.activeJustified == 7) {
             $scope.excelData = "";
             getExcel = "LocationUpload";
             mapExcel = "finalUploadForLocation";
-        } else if ($scope.activeJustified == 9) {
+            tableName = "Locations";
+        } else if ($scope.activeJustified == 8) {
             $scope.excelData = "";
             getExcel = "TransactionUpload";
             mapExcel = "finalUploadForTransaction";
-        } else if ($scope.activeJustified == 10) {
+            tableName = "Transaction";
+        } else if ($scope.activeJustified == 9) {
             $scope.excelData = "";
             getExcel = "warrantyItemUpload";
             mapExcel = "finalUploadForWarranty";
+            tableName = "WarrantyItem";
         }
 
 
         $scope.getExcelFields = function (formdata) {
-            console.log("formdata", formdata);
+            // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
                     $scope.excelData = data.data;
-                    console.log("aaaa", $scope.excelArrData);
+                    // console.log("aaaa", $scope.excelArrData);
                 } else {
-                    alert("aaaaa");
+                    alert("Incorrect Input  ");
                 }
             });
         };
@@ -170,9 +182,30 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    console.log("Sucess");
+                    console.log("Sucess#############################", data);
+                    $scope.errData = data.data;
+                    $scope.eData = {};
+                    $scope.eData.tableName = tableName;
+                    $scope.eData.logs = data.data;
+                    $scope.eData.status = 'Sucess';
+                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                        if (data.value == true) {
+                            console.log("Sucess#############################", data);
+                            alert("data submit Sucessfully");
+                        }
+                    });
                 } else {
-                    alert("aaaaa");
+                    $scope.errData = data.error;
+                    $scope.eData = {};
+                    $scope.eData.tableName = tableName;
+                    $scope.eData.logs = data.error;
+                    $scope.eData.status = 'error';
+                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                        if (data.value == true) {
+                            console.log("Sucess#############################", data);
+                            alert("data submit Sucessfully");
+                        }
+                    });
                 }
             });
         };

@@ -226,7 +226,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     CustomerNote.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
