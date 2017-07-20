@@ -74,6 +74,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
+            // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -86,9 +87,30 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    console.log("Sucess");
+                    console.log("Sucess#############################", data);
+                    $scope.errData = data.data;
+                    $scope.eData = {};
+                    $scope.eData.tableName = 'CustomerNote';
+                    $scope.eData.logs = data.data;
+                    $scope.eData.status = 'Sucess';
+                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                        if (data.value == true) {
+                            console.log("Sucess#############################", data);
+                            alert("data submit Sucessfully");
+                        }
+                    });
                 } else {
-                    alert("aaaaa");
+                    $scope.errData = data.error;
+                    $scope.eData = {};
+                    $scope.eData.tableName = 'CustomerNote';
+                    $scope.eData.logs = data.error;
+                    $scope.eData.status = 'error';
+                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                        if (data.value == true) {
+                            console.log("Sucess#############################", data);
+                            alert("Error data submit Sucessfully");
+                        }
+                    });
                 }
             });
         };
