@@ -59,6 +59,9 @@
 						<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)" promise-btn>Submit</button>
 					</div>
 
+					<div class="text-right mt-10 mb-20">
+						<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">History</button>
+					</div>
 					<!--Logs Tabel-->
 					<div class="logs-tabel" ng-if="errData">
 						<div class="mb-10">
@@ -85,10 +88,11 @@
 					<!--End Logs Tabel-->
 
 					<!--Logs Tabel History-->
-					<div class="mb-10">
-						<span class="main bredcrums">Log History</span>
-					</div>
+
 					<div class="logs-tabel" ng-if="errData">
+						<div class="mb-10">
+							<span class="main bredcrums">Log History</span>
+						</div>
 						<div class="table-responsive dataTables_wrapper">
 							<table class="table">
 								<thead>
