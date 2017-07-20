@@ -47,7 +47,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Company.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -82,7 +91,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     CompanyContact.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -118,7 +136,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     CompanyInfo.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -154,7 +181,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Crm.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -190,7 +226,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Customer.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -271,7 +316,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Item.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -308,7 +362,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Locations.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -344,7 +407,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     Transaction.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -380,7 +452,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     WarrantyItem.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });
@@ -416,7 +497,16 @@ var controller = {
                 async.concatLimit(data, 20, function (singleData, callback) {
                     User.saveData(singleData, callback);
                 }, function (err, data) {
-                    res.callback(null, data);
+                    if (err) {
+                        res.callback(req.body.fields, "err");
+                    } else {
+                        if (_.isEmpty(data)) {
+                            res.callback(null, "noDataFound");
+                        } else {
+                            res.callback(null, req.body.fields);
+                        }
+                    }
+                    // res.callback(null, data);
                 });
             }
         });

@@ -204,7 +204,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    console.log("Sucess#############################", data);
+                    console.log("#############1################", data);
                     $scope.errData = data.data;
                     $scope.eData = {};
                     $scope.eData.tableName = tableName;
@@ -212,11 +212,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $scope.eData.status = 'Sucess';
                     NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
                         if (data.value == true) {
-                            console.log("Sucess#############################", data);
                             alert("data submit Sucessfully");
                         }
                     });
                 } else {
+                    console.log("###############2##############", data);
                     $scope.errData = data.error;
                     $scope.eData = {};
                     $scope.eData.tableName = tableName;
@@ -224,8 +224,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $scope.eData.status = 'error';
                     NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
                         if (data.value == true) {
-                            console.log("Sucess#############################", data);
-                            alert("data submit Sucessfully");
+                            alert(" Error data submit Sucessfully");
                         }
                     });
                 }
