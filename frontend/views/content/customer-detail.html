@@ -28,7 +28,8 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="text-right">
-									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload 
+										<i class="fa fa-upload" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -39,7 +40,10 @@
 						<div class="form-group" ng-repeat="formname in excelData.fields">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-1 ">
-									<label class=" control-label">{{formname.field}} <i class="fa fa-info-circle" tooltip-placement="{{formname.name}}" uib-tooltip="On the {{formname.name}}"></i></label>
+									<!-- {{formname}} -->
+									<label class=" control-label">{{formname.field}} 
+										<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
+									</label>
 								</div>
 								<div class="col-sm-6">
 									<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
@@ -86,17 +90,53 @@
 									<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open">
 										<div>
 											<div class="mb-10"><span class="primary">Time </span> 12.45 pm</div>
-											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-											text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-											book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-											unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-											and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why
-											do we use it? It is a long established fact that a reader will be distracted by the readable content of a page
-											when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-											letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop
-											publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-											ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
-											by accident, sometimes on purpose (injected humour and the like).
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th width="100">Row #</th>
+														<th>Status</th>
+														<th width="200">Total Entries: 4</th>
+													</tr>
+												</thead>
+												<tbody>
+													<!-- ngRepeat: d in data.value -->
+													<tr>
+														<td>
+															<!-- ngIf: !d.name -->
+															<!-- ngIf: d.name -->
+															<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
+															<!-- end ngIf: d.name -->
+														</td>
+														<td colspan="2">
+															<!-- ngIf: !d.name -->
+															<!-- ngIf: d.name -->
+															<span>
+                                						<span>Entry failed!</span>
+															<pre class="danger-pre"><code>{
+																"errors": {
+																	"name": {
+																		"message": "Path `name` is required.",
+																		"name": "ValidatorError",
+																		"properties": {
+																			"type": "required",
+																			"message": "Path `{PATH}` is required.",
+																			"path": "name"
+																		},
+																		"kind": "required",
+																		"path": "name"
+																	}
+																},
+																"_message": "User validation failed",
+																"name": "ValidationError",
+																"message": "User validation failed: name: Path `name` is required."
+															}</code></pre>
+															</span>
+															<!-- end ngIf: d.name -->
+														</td>
+													</tr>
+													<!-- end ngRepeat: d in data.value -->
+												</tbody>
+											</table>
 										</div>
 									</td>
 								</tr>

@@ -39130,7 +39130,8 @@ header {
     right: 0;
     bottom: 0; }
 
-.pagination > li > a, .pagination > li > span {
+.pagination > li > a,
+.pagination > li > span {
   position: relative;
   float: left;
   padding: 6px 12px;
@@ -39224,6 +39225,16 @@ header {
     font-size: 16px;
     color: #5397be;
     font-weight: 400; }
+
+tr.inside-status {
+  border: 0; }
+  tr.inside-status td.panel-default {
+    padding: 0; }
+  tr.inside-status .panel-heading {
+    padding: 0;
+    border: 0; }
+  tr.inside-status .panel-body {
+    padding: 20px; }
 
 #fancybox-loading,
 .fancybox-close,

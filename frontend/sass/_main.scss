@@ -343,12 +343,15 @@ header {
         cursor: pointer;
     }
 }
-.success{
+
+.success {
     color: $brand-success;
 }
-.danger{
+
+.danger {
     color: $brand-danger;
 }
+
 .bg-green {
     background: #68bc30 !important;
 }
@@ -357,7 +360,7 @@ header {
     background: #2191d0 !important;
 }
 
-.bg-red{
+.bg-red {
     background: $brand-danger !important;
 }
 
@@ -429,45 +432,6 @@ header {
     }
 }
 
-// }
-//User Theme
-// .store {
-//     .user-info-navbar {
-//         background: #44b6ae;
-//     }
-//     .sidebar-menu .logo-env {
-//         background: #44b6ae;
-//     }
-//         .sidebar-menu {
-//         .main-menu {
-//             li {
-//                 &.active,
-//                 &:hover {
-//                     background: #44b6ae;
-//                 }
-//             }
-//         }
-//     }
-// }
-//Store Theme
-// .user {
-//     .user-info-navbar {
-//         background: #27303a;
-//     }
-//     .sidebar-menu .logo-env {
-//         background: #27303a;
-//     }
-//         .sidebar-menu {
-//         .main-menu {
-//             li {
-//                 &.active,
-//                 &:hover {
-//                     background: #27303a;
-//                 }
-//             }
-//         }
-//     }
-// }
 .xe-widget.xe-counter.width-33 {
     width: 33%;
 }
@@ -512,7 +476,8 @@ header {
 }
 
 //pagination css
-.pagination>li>a, .pagination>li>span {
+.pagination>li>a,
+.pagination>li>span {
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -633,9 +598,26 @@ header {
             min-height: 300px;
         }
     }
-        span.main.bredcrums {
+    span.main.bredcrums {
         font-size: 16px;
         color: $brand-primary;
         font-weight: 400;
     }
 }
+
+//tabel-logs
+tr.inside-status {
+    border: 0;
+    td.panel-default {
+        padding: 0;
+    }
+    .panel-heading {
+        padding: 0;
+        border: 0;
+    }
+    .panel-body{
+        padding: 20px;
+    }
+}
+
+//end tabel-logs
