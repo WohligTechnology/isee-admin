@@ -6,9 +6,61 @@ var controller = {
     companyUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "name", "region", "textCode", "textSequence", "textSubcode", "receiptText", "effectiveDate", "expirationDate", "recordState", "lineFormat", "reformat", "category", "beginRange", "endRange", "cost", "minimumCost", "maximumCost", "itemId", "location", "companyContact", "companyInfo"
-            ]; //fields in schema
+            retJson.fields = [{
+                field: "name",
+                description: "String"
+            }, {
+                field: "region",
+                description: "String"
+            }, {
+                field: "textCode",
+                description: "String"
+            }, {
+                field: "textSequence",
+                description: "String"
+            }, {
+                field: "textSubcode",
+                description: "String"
+            }, {
+                field: "receiptText",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "recordState",
+                description: "String"
+            }, {
+                field: "lineFormat",
+                description: "String"
+            }, {
+                field: "reformat",
+                description: "String"
+            }, {
+                field: "category",
+                description: "String"
+            }, {
+                field: "beginRange",
+                description: "String"
+            }, {
+                field: "endRange",
+                description: "String"
+            }, {
+                field: "cost",
+                description: "Number"
+            }, {
+                field: "minimumCost",
+                description: "Number"
+            }, {
+                field: "maximumCost",
+                description: "Number"
+            }, {
+                field: "itemId",
+                description: "String"
+            }]; //fields in schema
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -45,19 +97,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Company.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Company.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -67,9 +113,22 @@ var controller = {
     companyContactUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "phoneNumberId", "phoneNumber", "phoneTypeCode", "contactDiscription", "sortOrder"
-            ];
+            retJson.fields = [{
+                field: "phoneNumberId",
+                description: "String"
+            }, {
+                field: "phoneNumber",
+                description: "Number"
+            }, {
+                field: "phoneTypeCode",
+                description: "String"
+            }, {
+                field: "contactDiscription",
+                description: "String"
+            }, {
+                field: "sortOrder",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -89,19 +148,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    CompanyContact.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    CompanyContact.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -112,9 +165,49 @@ var controller = {
     companyInfoUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "reasonTypeCode", "reasonCode", "description", "commentRequired", "sortOrder", "parentCode", "glAccountNumber", "minimumAmt", "maximumAmt", "privilegeType", "customerMessage", "inventoryActionCode", "inventoryLocationId", "inventoryBucketId"
-            ];
+            retJson.fields = [{
+                field: "reasonTypeCode",
+                description: "String"
+            }, {
+                field: "reasonCode",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "commentRequired",
+                description: "String"
+            }, {
+                field: "sortOrder",
+                description: "String"
+            }, {
+                field: "parentCode",
+                description: "String"
+            }, {
+                field: "glAccountNumber",
+                description: "Number"
+            }, {
+                field: "minimumAmt",
+                description: "Number"
+            }, {
+                field: "maximumAmt",
+                description: "Number"
+            }, {
+                field: "privilegeType",
+                description: "String"
+            }, {
+                field: "customerMessage",
+                description: "String"
+            }, {
+                field: "inventoryActionCode",
+                description: "String"
+            }, {
+                field: "inventoryLocationId",
+                description: "String"
+            }, {
+                field: "inventoryBucketId",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -134,19 +227,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    CompanyInfo.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    CompanyInfo.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -157,9 +244,136 @@ var controller = {
     crmUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "customerGroupId", "salutation", "firstName", "middleName", "lastName", "gender", "totalTransactionCount", "totalSoldItemCount", "ytdReturnsAmount", "partyId", "idVerificationRequired", "partyId1", "totalReturnedItemCount", "totalReturnsAmount", "totalSalesAmount", "ytdReturnedItemCount", "ytdSalesAmount", "ytdSoldItemCount", "ytdTransactionCount", "allegianceRetailLocationId", "birthDate", "customerLevelCode", "employeeId", "federalTaxId", "legalStatusCode", "mailingList", "organizationName", "organizationTypeCode", "partyTypeCode", "pictureUri", "signUpRetailLocationId", "socialSecurityNumber", "stateTaxId", "suffix", "void", "anniversaryDate", "emailContact", "privacyCard", "commercialCustomer", "recordState", "processDate", "customerGroups", "creatorPartyId", "creatorParty", "customer", "customerNote", "transaction"
-            ];
+            retJson.fields = [{
+                field: "customerGroupId",
+                description: "String"
+            }, {
+                field: "salutation",
+                description: "String"
+            }, {
+                field: "firstName",
+                description: "String"
+            }, {
+                field: "middleName",
+                description: "String"
+            }, {
+                field: "lastName",
+                description: "String"
+            }, {
+                field: "gender",
+                description: "String"
+            }, {
+                field: "totalTransactionCount",
+                description: "Number"
+            }, {
+                field: "totalSoldItemCount",
+                description: "Number"
+            }, {
+                field: "ytdReturnsAmount",
+                description: "Number"
+            }, {
+                field: "partyId",
+                description: "String"
+            }, {
+                field: "idVerificationRequired",
+                description: "Boolean"
+            }, {
+                field: "partyId1",
+                description: "String"
+            }, {
+                field: "totalReturnedItemCount",
+                description: "Number"
+            }, {
+                field: "totalReturnsAmount",
+                description: "Number"
+            }, {
+                field: "totalSalesAmount",
+                description: "Number"
+            }, {
+                field: "ytdReturnedItemCount",
+                description: "Number"
+            }, {
+                field: "ytdSalesAmount",
+                description: "Number"
+            }, {
+                field: "ytdSoldItemCount",
+                description: "Number"
+            }, {
+                field: "ytdTransactionCount",
+                description: "Number"
+            }, {
+                field: "allegianceRetailLocationId",
+                description: "String"
+            }, {
+                field: "birthDate",
+                description: "Date"
+            }, {
+                field: "customerLevelCode",
+                description: "String"
+            }, {
+                field: "employeeId",
+                description: "String"
+            }, {
+                field: "federalTaxId",
+                description: "String"
+            }, {
+                field: "legalStatusCode",
+                description: "String"
+            }, {
+                field: "mailingList",
+                description: "String"
+            }, {
+                field: "organizationName",
+                description: "String"
+            }, {
+                field: "organizationTypeCode",
+                description: "String"
+            }, {
+                field: "partyTypeCode",
+                description: "String"
+            }, {
+                field: "pictureUri",
+                description: "String"
+            }, {
+                field: "signUpRetailLocationId",
+                description: "String"
+            }, {
+                field: "socialSecurityNumber",
+                description: "Number"
+            }, {
+                field: "stateTaxId",
+                description: "String"
+            }, {
+                field: "suffix",
+                description: "String"
+            }, {
+                field: "void",
+                description: "String"
+            }, {
+                field: "anniversaryDate",
+                description: "Date"
+            }, {
+                field: "emailContact",
+                description: "String"
+            }, {
+                field: "privacyCard",
+                description: "String"
+            }, {
+                field: "commercialCustomer",
+                description: "String"
+            }, {
+                field: "recordState",
+                description: "String"
+            }, {
+                field: "processDate",
+                description: "Date"
+            }, {
+                field: "customerGroups",
+                description: "String"
+            }, {
+                field: "creatorPartyId",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -179,19 +393,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Crm.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Crm.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -202,9 +410,31 @@ var controller = {
     customerUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "address1", "address2", "apartment", "city", "country", "postalCode", "state", "email"
-            ];
+            retJson.fields = [{
+                field: "address1",
+                description: "String"
+            }, {
+                field: "address2",
+                description: "String"
+            }, {
+                field: "apartment",
+                description: "String"
+            }, {
+                field: "city",
+                description: "String"
+            }, {
+                field: "country",
+                description: "String"
+            }, {
+                field: "postalCode",
+                description: "String"
+            }, {
+                field: "state",
+                description: "String"
+            }, {
+                field: "email",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -224,19 +454,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Customer.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Customer.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -247,9 +471,16 @@ var controller = {
     customerNoteUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "noteSequence", "note", "noteTimeStamp"
-            ];
+            retJson.fields = [{
+                field: "noteSequence",
+                description: "Number"
+            }, {
+                field: "note",
+                description: "String"
+            }, {
+                field: "noteTimeStamp",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -286,9 +517,160 @@ var controller = {
     itemUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "promptToAdd", "applyRestockingFee", "disallowDiscounts", "disallowPriceChange", "forceQuantityOfOne", "frequentShopperPointsCount", "frequentShopperPointsIneligible", "itemUrl", "maximumSaleUnitCount", "minimumSaleUnitCount", "listPrice", "noGiveaways", "notInventoried", "notReturnable", "restockingFee", "hazardousMaterial", "noRainCheckAllowed", "minAgeRequired", "foodStampEligible", "shippingWeight", "manufacturerUpc", "manufacturer", "restrictionCategory", "restrictionCode", "region", "dayCode", "effectiveDate", "startTime", "expirationDate", "endTime", "itemLevelCode", "itemTypeCode", "warrantyItemId", "itemCeilingPrice", "ceilingPriceType", "zlcWarrantyItem", "warrantyNumber", "warrantyTypeCode", "serviceNumber", "serviceDate", "serviceByEmployee", "serviceTypeCode", "serviceProviderId", "groupName", "beginDate", "endDate", "sequence", "vendorType", "vendorId", "description", "subClassId", "transaction", "warrantyItem"
-            ];
+            retJson.fields = [{
+                field: "promptToAdd",
+                description: "String"
+            }, {
+                field: "applyRestockingFee",
+                description: "String"
+            }, {
+                field: "disallowDiscounts",
+                description: "String"
+            }, {
+                field: "disallowPriceChange",
+                description: "String"
+            }, {
+                field: "forceQuantityOfOne",
+                description: "String"
+            }, {
+                field: "frequentShopperPointsCount",
+                description: "String"
+            }, {
+                field: "frequentShopperPointsIneligible",
+                description: "String"
+            }, {
+                field: "itemUrl",
+                description: "String"
+            }, {
+                field: "maximumSaleUnitCount",
+                description: "Number"
+            }, {
+                field: "minimumSaleUnitCount",
+                description: "Number"
+            }, {
+                field: "listPrice",
+                description: "Number"
+            }, {
+                field: "noGiveaways",
+                description: "String"
+            }, {
+                field: "notInventoried",
+                description: "String"
+            }, {
+                field: "notReturnable",
+                description: "String"
+            }, {
+                field: "restockingFee",
+                description: "String"
+            }, {
+                field: "hazardousMaterial",
+                description: "String"
+            }, {
+                field: "noRainCheckAllowed",
+                description: "String"
+            }, {
+                field: "minAgeRequired",
+                description: "Number"
+            }, {
+                field: "foodStampEligible",
+                description: "String"
+            }, {
+                field: "shippingWeight",
+                description: "Number"
+            }, {
+                field: "manufacturerUpc",
+                description: "String"
+            }, {
+                field: "manufacturer",
+                description: "String"
+            }, {
+                field: "restrictionCategory",
+                description: "String"
+            }, {
+                field: "restrictionCode",
+                description: "String"
+            }, {
+                field: "region",
+                description: "String"
+            }, {
+                field: "dayCode",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "startTime",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "endTime",
+                description: "Date"
+            }, {
+                field: "itemLevelCode",
+                description: "String"
+            }, {
+                field: "itemTypeCode",
+                description: "String"
+            }, {
+                field: "warrantyItemId",
+                description: "String"
+            }, {
+                field: "itemCeilingPrice",
+                description: "Number"
+            }, {
+                field: "ceilingPriceType",
+                description: "String"
+            }, {
+                field: "zlcWarrantyItem",
+                description: "String"
+            }, {
+                field: "warrantyNumber",
+                description: "Number"
+            }, {
+                field: "warrantyTypeCode",
+                description: "String"
+            }, {
+                field: "serviceNumber",
+                description: "Number"
+            }, {
+                field: "serviceDate",
+                description: "Date"
+            }, {
+                field: "serviceByEmployee",
+                description: "String"
+            }, {
+                field: "serviceTypeCode",
+                description: "String"
+            }, {
+                field: "serviceProviderId",
+                description: "String"
+            }, {
+                field: "groupName",
+                description: "String"
+            }, {
+                field: "beginDate",
+                description: "Date"
+            }, {
+                field: "endDate",
+                description: "Date"
+            }, {
+                field: "sequence",
+                description: "String"
+            }, {
+                field: "vendorType",
+                description: "String"
+            }, {
+                field: "vendorId",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "subClassId",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -308,19 +690,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Item.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Item.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -332,9 +708,88 @@ var controller = {
     LocationUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "company", "transaction", "retailLocationId", "storeNumber", "storeName", "description", "effectiveDate", "expirationDate", "apartment", "address1", "address2", "city", "country", "postalCode", "state", "telephone1", "telephone2", "telephone3", "telephone4", "region", "loc", "taxPercentage", "storeManager", "locationType", "deliveryAvailable", "pickupAvailable", "transferAvailable", "email", "geoCode"
-            ];
+            retJson.fields = [{
+                field: "retailLocationId",
+                description: "String"
+            }, {
+                field: "storeNumber",
+                description: "String"
+            }, {
+                field: "storeName",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "apartment",
+                description: "String"
+            }, {
+                field: "address1",
+                description: "String"
+            }, {
+                field: "address2",
+                description: "String"
+            }, {
+                field: "city",
+                description: "String"
+            }, {
+                field: "country",
+                description: "String"
+            }, {
+                field: "postalCode",
+                description: "String"
+            }, {
+                field: "state",
+                description: "String"
+            }, {
+                field: "telephone1",
+                description: "Number"
+            }, {
+                field: "telephone2",
+                description: "Number"
+            }, {
+                field: "telephone3",
+                description: "Number"
+            }, {
+                field: "telephone4",
+                description: "Number"
+            }, {
+                field: "region",
+                description: "String"
+            }, {
+                field: "loc",
+                description: "Number"
+            }, {
+                field: "taxPercentage",
+                description: "String"
+            }, {
+                field: "storeManager",
+                description: "String"
+            }, {
+                field: "locationType",
+                description: "String"
+            }, {
+                field: "deliveryAvailable",
+                description: "String"
+            }, {
+                field: "pickupAvailable",
+                description: "String"
+            }, {
+                field: "transferAvailable",
+                description: "String"
+            }, {
+                field: "email",
+                description: "String"
+            }, {
+                field: "geoCode",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -354,19 +809,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Locations.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Locations.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -377,9 +826,55 @@ var controller = {
     TransactionUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "businessDate", "transactionSequence", "workstationId", "retailTransactionLineItemSequence", "transactionType", "activityDate", "amount", "cardNumber", "custAccountCode", "effectiveDate", "expirationDate", "startTime", "endTime", "loyaltyProgramId", "historySequence", "CustomerGroupId", "location", "item", "crm"
-            ];
+            retJson.fields = [{
+                field: "businessDate",
+                description: "Date"
+            }, {
+                field: "transactionSequence",
+                description: "String"
+            }, {
+                field: "workstationId",
+                description: "String"
+            }, {
+                field: "retailTransactionLineItemSequence",
+                description: "String"
+            }, {
+                field: "transactionType",
+                description: "String"
+            }, {
+                field: "activityDate",
+                description: "Date"
+            }, {
+                field: "amount",
+                description: "Number"
+            }, {
+                field: "cardNumber",
+                description: "Number"
+            }, {
+                field: "custAccountCode",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "startTime",
+                description: "Date"
+            }, {
+                field: "endTime",
+                description: "Date"
+            }, {
+                field: "loyaltyProgramId",
+                description: "String"
+            }, {
+                field: "historySequence",
+                description: "String"
+            }, {
+                field: "CustomerGroupId",
+                description: "String"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -399,19 +894,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    Transaction.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    Transaction.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -422,9 +911,19 @@ var controller = {
     warrantyItemUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [
-                "warrantyType", "warrantySubtype", "description", "replaceType", "item"
-            ];
+            retJson.fields = [{
+                field: "warrantyType",
+                description: "Date"
+            }, {
+                field: "warrantySubtype",
+                description: "Date"
+            }, {
+                field: "description",
+                description: "Date"
+            }, {
+                field: "replaceType",
+                description: "Date"
+            }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -444,19 +943,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    WarrantyItem.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    WarrantyItem.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },
@@ -489,19 +982,13 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-                    User.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                    User.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },

@@ -22,8 +22,8 @@ var schema = new Schema({
     },
     effectiveDate: Date,
     expirationDate: Date,
-    startTime: String,
-    endTime: String,
+    startTime: Date,
+    endTime: Date,
     loyaltyProgramId: {
         type: String,
         es_indexed: true

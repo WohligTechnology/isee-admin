@@ -18,11 +18,11 @@ var schema = new Schema({
         es_indexed: true
     },
     glAccountNumber: {
-        type: String,
+        type: Number,
         es_indexed: true
     },
-    minimumAmt: String,
-    maximumAmt: String,
+    minimumAmt: Number,
+    maximumAmt: Number,
     privilegeType: String,
     customerMessage: String,
     inventoryActionCode: {

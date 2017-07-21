@@ -187,11 +187,12 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
 
         $scope.getExcelFields = function (formdata) {
-            // console.log("formdata", formdata);
+            console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
+                    console.log("aaaa", data);
                     $scope.excelData = data.data;
-                    // console.log("aaaa", $scope.excelArrData);
+                    console.log("aaaa", $scope.excelArrData);
                 } else {
                     alert("Incorrect Input  ");
                 }
