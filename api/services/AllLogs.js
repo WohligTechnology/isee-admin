@@ -31,9 +31,7 @@
                 $group: {
                     "_id": "$createdAt",
                     info: {
-                        $push: {
-                            "status": "$logs"
-                        }
+                        $push: "$logs"
                     }
                 }
             }], function (err, found) {
@@ -45,23 +43,27 @@
                         callback(null, "noDataFound");
                     } else {
                         var result = {};
-                        result.succesCount = 0;
-                        result.errorCount = 0;
+                        result.totalSuccesCount = 0;
+                        result.totalErrorCount = 0;
                         async.eachSeries(found, function (file, cb1) {
                             // console.log(value);
-                            async.eachSeries(file.info, function (file1, cb2) {
-                                // console.log(value);
-                                async.eachSeries(file1.status, function (file2, cb3) {
-                                    // console.log(value);
-                                    if (file2.error == null) {
-                                        result.succesCount++;
-                                    } else {
-                                        result.errorCount++;
-                                    }
-                                    cb3(null, file2);
-                                }, function (err) {
-                                    cb2(err, result);
-                                });
+                            var succesCount = 0;
+                            var errorCount = 0;
+                            async.eachSeries(file.info[0], function (file1, cb2) {
+                                console.log("--->>>>>", file1);
+                                if (file1.error == null) {
+                                    succesCount = _.cloneDeep(succesCount) + 1;
+                                    result.totalSuccesCount++;
+                                } else {
+                                    console.log("I am in Error");
+                                    errorCount = _.cloneDeep(errorCount) + 1;
+                                    result.totalErrorCount++;
+                                }
+                                console.log("succesCount", succesCount);
+                                console.log("errorCount", errorCount);
+                                file.succesCount = succesCount;
+                                file.errorCount = errorCount;
+                                cb2(err, file1);
                             }, function (err) {
                                 cb1(err, result);
                             });
