@@ -131,46 +131,55 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         // } else 
         if ($scope.activeJustified == 1) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "customerNoteUpload";
             mapExcel = "finalUploadForCustomerNote";
             tableName = "CustomerNote";
         } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "crmUpload";
             mapExcel = "finalUploadForCrm";
             tableName = "Crm";
         } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "companyUpload";
             mapExcel = "finalUploadForCompany";
             tableName = "Company";
         } else if ($scope.activeJustified == 4) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "companyContactUpload";
             mapExcel = "companyContactUpload";
             tableName = "CompanyContact";
         } else if ($scope.activeJustified == 5) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "companyInfoUpload";
             mapExcel = "finalUploadForCompanyInfo";
             tableName = "CompanyInfo";
         } else if ($scope.activeJustified == 6) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "itemUpload";
             mapExcel = "finalUploadForItem";
             tableName = "Item";
         } else if ($scope.activeJustified == 7) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "LocationUpload";
             mapExcel = "finalUploadForLocation";
             tableName = "Locations";
         } else if ($scope.activeJustified == 8) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "TransactionUpload";
             mapExcel = "finalUploadForTransaction";
             tableName = "Transaction";
         } else if ($scope.activeJustified == 9) {
             $scope.excelData = "";
+            $scope.errData = "";
             getExcel = "warrantyItemUpload";
             mapExcel = "finalUploadForWarranty";
             tableName = "WarrantyItem";

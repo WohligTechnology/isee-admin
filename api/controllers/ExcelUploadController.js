@@ -268,20 +268,14 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
-                    CustomerNote.saveData(singleData, callback);
-                }, function (err, data) {
-                    if (err) {
-                        res.callback(req.body.fields, "err");
-                    } else {
-                        if (_.isEmpty(data)) {
-                            res.callback(null, "noDataFound");
-                        } else {
-                            res.callback(null, req.body.fields);
-                        }
-                    }
-                    // res.callback(null, data);
-                });
+                async.concatSeries(data, function (singleData, callback) {
+                    CustomerNote.saveData(singleData, function (err, data) {
+                        callback(null, {
+                            error: err,
+                            success: data
+                        });
+                    });
+                }, res.callback);
             }
         });
     },

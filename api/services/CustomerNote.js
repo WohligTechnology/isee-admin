@@ -5,7 +5,10 @@ var schema = new Schema({
         index: true,
         key: "customerNote"
     },
-    noteSequence: Number,
+    noteSequence: {
+        type: Number,
+        required: true
+    },
     note: String,
     noteTimeStamp: Date
 });
