@@ -364,6 +364,14 @@ header {
     background: $brand-danger !important;
 }
 
+//error message
+.danger-pre {
+    background-color: #fff5f5;
+    font-size: 12px;
+    line-height: 120%;
+}
+
+
 .color-white {
     color: #fff;
 }
@@ -621,3 +629,4 @@ tr.inside-status {
 }
 
 //end tabel-logs
+
