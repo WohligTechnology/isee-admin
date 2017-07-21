@@ -76,27 +76,11 @@ var controller = {
 
     finalUploadForCompany: function (req, res) {
         console.log("reqqqq*********************************", req.body);
-        // req.body = {};
-        // req.body.companyExcel = {
-        //     name: "59687872b44b5921b96d474a.xlsx",
-        //     fields: [{
-        //             ourField: "firstName",
-        //             theirField: "name1"
-        //         }, {
-        //             ourField: "middleName",
-        //             theirField: "name2"
-        //         },
-        //         {
-        //             ourField: "lastName",
-        //             theirField: "name3"
-        //         }
-        //     ]
-        // };
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Company.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -147,7 +131,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     CompanyContact.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -226,7 +210,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     CompanyInfo.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -392,7 +376,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Crm.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -453,7 +437,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Customer.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -689,7 +673,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Item.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -808,7 +792,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Locations.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -893,7 +877,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     Transaction.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -942,7 +926,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     WarrantyItem.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
@@ -981,7 +965,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
+                async.concatSeries(data, function (singleData, callback) {
                     User.saveData(singleData, function (err, data) {
                         callback(null, {
                             error: err,
