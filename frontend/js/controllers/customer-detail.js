@@ -88,29 +88,29 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value == true) {
                     console.log("Sucess#############################", data);
-                    $scope.errData = data.data;
-                    $scope.eData = {};
-                    $scope.eData.tableName = 'CustomerNote';
-                    $scope.eData.logs = data.data;
-                    $scope.eData.status = 'Sucess';
-                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                        if (data.value == true) {
-                            console.log("Sucess#############################", data);
-                            alert("data submit Sucessfully");
-                        }
-                    });
+                    // $scope.errData = data.data;
+                    // $scope.eData = {};
+                    // $scope.eData.tableName = 'CustomerNote';
+                    // $scope.eData.logs = data.data;
+                    // $scope.eData.status = 'Sucess';
+                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                    //     if (data.value == true) {
+                    //         console.log("Sucess#############################", data);
+                    //         alert("data submit Sucessfully");
+                    //     }
+                    // });
                 } else {
-                    $scope.errData = data.error;
-                    $scope.eData = {};
-                    $scope.eData.tableName = 'CustomerNote';
-                    $scope.eData.logs = data.error;
-                    $scope.eData.status = 'error';
-                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                        if (data.value == true) {
-                            console.log("Sucess#############################", data);
-                            alert("Error data submit Sucessfully");
-                        }
-                    });
+                    // $scope.errData = data.error;
+                    // $scope.eData = {};
+                    // $scope.eData.tableName = 'CustomerNote';
+                    // $scope.eData.logs = data.error;
+                    // $scope.eData.status = 'error';
+                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                    //     if (data.value == true) {
+                    //         console.log("Sucess#############################", data);
+                    //         alert("Error data submit Sucessfully");
+                    //     }
+                    // });
                 }
             });
         };
@@ -120,15 +120,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
     $scope.activeTabs = function (n) {
         $scope.activeJustified = n + 1;
-        // console.log(n);
         var getExcel;
         var mapExcel;
         var tableName;
-        // if ($scope.activeJustified == 1) {
-        //     $scope.excelData = "";
-        //     getExcel = "userUpload";
-        //     mapExcel = "finalUploadForUser";
-        // } else 
         if ($scope.activeJustified == 1) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -190,9 +184,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
-                    console.log("aaaa", data);
+                    // console.log("aaaa", data);
                     $scope.excelData = data.data;
-                    console.log("aaaa", $scope.excelArrData);
+                    console.log("excelData", $scope.excelData);
                 } else {
                     alert("Incorrect Input  ");
                 }
@@ -215,28 +209,28 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
                     console.log("#############1################", data);
-                    $scope.errData = data.data;
-                    $scope.eData = {};
-                    $scope.eData.tableName = tableName;
-                    $scope.eData.logs = data.data;
-                    $scope.eData.status = 'Sucess';
-                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                        if (data.value == true) {
-                            alert("data submit Sucessfully");
-                        }
-                    });
+                    // $scope.errData = data.data;
+                    // $scope.eData = {};
+                    // $scope.eData.tableName = tableName;
+                    // $scope.eData.logs = data.data;
+                    // $scope.eData.status = 'Sucess';
+                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                    //     if (data.value == true) {
+                    //         alert("data submit Sucessfully");
+                    //     }
+                    // });
                 } else {
                     console.log("###############2##############", data);
-                    $scope.errData = data.error;
-                    $scope.eData = {};
-                    $scope.eData.tableName = tableName;
-                    $scope.eData.logs = data.error;
-                    $scope.eData.status = 'error';
-                    NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                        if (data.value == true) {
-                            alert(" Error data submit Sucessfully");
-                        }
-                    });
+                    // $scope.errData = data.error;
+                    // $scope.eData = {};
+                    // $scope.eData.tableName = tableName;
+                    // $scope.eData.logs = data.error;
+                    // $scope.eData.status = 'error';
+                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
+                    //     if (data.value == true) {
+                    //         alert(" Error data submit Sucessfully");
+                    //     }
+                    // });
                 }
             });
         };
