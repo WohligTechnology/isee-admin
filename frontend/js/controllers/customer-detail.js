@@ -101,7 +101,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
-
     }
 
 
@@ -208,10 +207,25 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
-
     };
 
-
+    $scope.getHistory = function () {
+        NavigationService.apiCall("AllLogs/logHistory", $scope.eData, function (data) {
+            if (data.value == true) {
+                $scope.eData = {};
+                $scope.dataHistory = data.data;
+                $scope.sucessCount=data.data.succesCount;
+                $scope.errorCount=data.data.errorCount;
+                $scope.dateOfLogs=data.data.found[0]._id;
+                $scope.logData=data.data.found[0].info[0].status;
+                $scope.totalCount=$scope.sucessCount + $scope.errorCount;
+                 console.log("dataHistory", $scope.dataHistory);
+                 console.log("logData", $scope.logData);
+                 console.log("error", $scope.errorCount);
+                 console.log("total", $scope.totalCount);
+            }
+        });
+    }
 
     // $scope.getExcelFields = function (formdata) {
     //     console.log("formdata", formdata);

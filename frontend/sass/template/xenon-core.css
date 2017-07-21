@@ -6042,27 +6042,8 @@ label.cbr-inline+.cbr-inline {
     display: block
 }
 
-.panel-group .panel .panel-heading a[data-toggle=collapse]:before,
-.panel-group .panel .panel-heading .accordion-toggle:before {
-    float: right;
-    display: block;
-    content: '–';
-    font-size: 18px;
-    width: 25px;
-    text-align: right
-}
-
-.panel-group .panel .panel-heading a[data-toggle=collapse].collapsed:before,
-.panel-group .panel .panel-heading .accordion-toggle.collapsed:before {
-    content: '+'
-}
-
 .panel-group .panel .panel-heading .accordion-toggle {
     cursor: pointer
-}
-
-.panel-group .panel .panel-heading .accordion-toggle:before {
-    content: '+'
 }
 
 .panel-group .panel .panel-heading+.panel-collapse .panel-body {

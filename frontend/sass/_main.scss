@@ -627,6 +627,7 @@ tr.inside-status {
         padding: 20px;
     }
 }
-
+.panel-group .panel .panel-heading + .panel-collapse .panel-body {
+        margin: -1px;
+}
 //end tabel-logs
-

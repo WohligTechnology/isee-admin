@@ -64,7 +64,7 @@
 					</div>
 
 					<div class="text-right mt-10 mb-20">
-						<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">History</button>
+						<button type="submit" class="btn btn-success" ng-click="getHistory()">History</button>
 					</div>
 
 					<!--Logs Tabel History-->
@@ -73,76 +73,50 @@
 							<span class="main bredcrums">Upload History</span>
 						</div>
 						<uib-accordion>
-						<div class="table-responsive dataTables_wrapper">
-							<table class="table table-bordered">
-								<tr ng-click="status.open = !status.open">
-									<th>Date</th>
-									<th>Sucess</th>
-									<th>Failer</th>
-									<th>Total Upload</th>
-								</tr>
-								<tr ng-click="status.open = !status.open">
-									<th>12 nov 2015</th>
-									<th><span class="success"> 300 <i class="fa fa-check-circle"></i></span></th>
-									<th><span class="danger"> 400 <i class="fa fa-times-circle"></i></span></th>
-									<th>300</th>
-								</tr>
-								<tr class="inside-status">
-									<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open">
-										<div>
-											<div class="mb-10"><span class="primary">Time </span> 12.45 pm</div>
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th width="100">Row #</th>
-														<th>Status</th>
-														<th width="200">Total Entries: 4</th>
-													</tr>
-												</thead>
-												<tbody>
-													<!-- ngRepeat: d in data.value -->
-													<tr>
-														<td>
-															<!-- ngIf: !d.name -->
-															<!-- ngIf: d.name -->
-															<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
-															<!-- end ngIf: d.name -->
-														</td>
-														<td colspan="2">
-															<!-- ngIf: !d.name -->
-															<!-- ngIf: d.name -->
-															<span>
+							<div class="dataTables_wrapper">
+								<table class="table table-bordered">
+									<tr ng-click="status.open = !status.open">
+										<th>Date</th>
+										<th>Sucess</th>
+										<th>Failer</th>
+										<th>Total Upload</th>
+									</tr>
+									<tr ng-click="status.open = !status.open">
+										<th>{{dateOfLogs | date:'MM/dd/yyyy'}}</th>
+										<th><span class="success"> {{sucessCount}} <i class="fa fa-check-circle"></i></span></th>
+										<th><span class="danger"> {{errorCount}} <i class="fa fa-times-circle"></i></span></th>
+										<th>{{totalCount}}</th>
+									</tr>
+									<tr class="inside-status" ng-repeat="data in logData track by $index">
+										<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open" >
+											<div>
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th width="100">Row #</th>
+															<th>Status</th>
+															<th width="200">Total Entries: 4</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>
+																<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
+															</td>
+															<td colspan="2">
+																<span>
                                 						<span>Entry failed!</span>
-															<pre class="danger-pre"><code>{
-																"errors": {
-																	"name": {
-																		"message": "Path `name` is required.",
-																		"name": "ValidatorError",
-																		"properties": {
-																			"type": "required",
-																			"message": "Path `{PATH}` is required.",
-																			"path": "name"
-																		},
-																		"kind": "required",
-																		"path": "name"
-																	}
-																},
-																"_message": "User validation failed",
-																"name": "ValidationError",
-																"message": "User validation failed: name: Path `name` is required."
-															}</code></pre>
-															</span>
-															<!-- end ngIf: d.name -->
-														</td>
-													</tr>
-													<!-- end ngRepeat: d in data.value -->
-												</tbody>
-											</table>
-										</div>
-									</td>
-								</tr>
-							</table>
-						</div>
+																<pre class="danger-pre"><code>{{data}}</code></pre>
+																</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
 						</uib-accordion>
 					</div>
 					<!--End Logs Tabel History-->
