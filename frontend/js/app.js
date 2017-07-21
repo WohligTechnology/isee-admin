@@ -7,8 +7,8 @@ var myApp = angular.module('myApp', [
     'ui.bootstrap',
     'ui.select',
     'imageupload',
-    // 'ngAnimate',
-    // 'ngSanitize',
+    'ngAnimate',
+    'ngSanitize',
     'angular-flexslider',
     'ui.swiper',
     'highcharts-ng'
