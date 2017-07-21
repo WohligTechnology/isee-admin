@@ -39037,6 +39037,12 @@ header {
     border-radius: 5px;
     cursor: pointer; }
 
+.success {
+  color: #84ce3c; }
+
+.danger {
+  color: #e53d0a; }
+
 .bg-green {
   background: #68bc30 !important; }
 
@@ -39213,9 +39219,7 @@ header {
   .custom-tabs .tab-content {
     min-height: calc(100vh - 185px); }
     .custom-tabs .tab-content .custom-scroll {
-      height: calc(100vh - 325px);
-      overflow-y: auto;
-      overflow-x: hidden; }
+      min-height: 300px; }
   .custom-tabs span.main.bredcrums {
     font-size: 16px;
     color: #5397be;

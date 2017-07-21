@@ -192,7 +192,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     console.log("aaaa", data);
                     $scope.excelData = data.data;
-                    console.log("aaaa", $scope.excelArrData);
+                    console.log("aaaa", $scope.excelData);
                 } else {
                     alert("Incorrect Input  ");
                 }

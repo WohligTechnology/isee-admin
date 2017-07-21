@@ -39,7 +39,7 @@
 						<div class="form-group" ng-repeat="formname in excelData.fields">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-1 ">
-									<label class=" control-label">{{formname}}</label>
+									<label class=" control-label">{{formname.field}} <i class="fa fa-info-circle" tooltip-placement="{{formname.name}}" uib-tooltip="On the {{formname.name}}"></i></label>
 								</div>
 								<div class="col-sm-6">
 									<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
@@ -62,57 +62,49 @@
 					<div class="text-right mt-10 mb-20">
 						<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">History</button>
 					</div>
-					<!--Logs Tabel-->
-					<div class="logs-tabel" ng-if="errData">
-						<div class="mb-10">
-							<span class="main bredcrums">Logs</span>
-						</div>
-						<div class="table-responsive dataTables_wrapper">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Fields Name</th>
-										<th>Fields Selected</th>
-										<!--<th>Result</th>-->
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="formname in errData">
-										<td>{{formname.ourField}}</td>
-										<td>{{formname.theirField}}</td>
-										<!--<td><i class="fa fa-check"></i></td>-->
-									</tr>
-							</table>
-						</div>
-					</div>
-					<!--End Logs Tabel-->
 
 					<!--Logs Tabel History-->
-
 					<div class="logs-tabel">
 						<div class="mb-10">
-							<span class="main bredcrums">Log History</span>
+							<span class="main bredcrums">Upload History</span>
 						</div>
 						<div class="table-responsive dataTables_wrapper">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Sucess</th>
-										<th>Failer</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="formname in errData">
-										<td>demo</td>
-										<td>demo</td>
-										<td>demo</td>
-									</tr>
+							<table class="table table-bordered">
+								<tr ng-click="status.open = !status.open">
+									<th>Date</th>
+									<th>Sucess</th>
+									<th>Failer</th>
+									<th>Total Upload</th>
+								</tr>
+								<tr ng-click="status.open = !status.open">
+									<th>12 nov 2015</th>
+									<th><span class="success"> 300 <i class="fa fa-check-circle"></i></span></th>
+									<th><span class="danger"> 400 <i class="fa fa-times-circle"></i></span></th>
+									<th>300</th>
+								</tr>
+								<tr class="inside-status">
+									<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open">
+										<div>
+											<div class="mb-10"><span class="primary">Time </span> 12.45 pm</div>
+											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+											text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+											book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+											unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+											and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why
+											do we use it? It is a long established fact that a reader will be distracted by the readable content of a page
+											when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+											letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop
+											publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
+											ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
+											by accident, sometimes on purpose (injected humour and the like).
+										</div>
+									</td>
+								</tr>
 							</table>
 						</div>
+						</uib-accordion>
 					</div>
 					<!--End Logs Tabel History-->
-
 				</uib-tab>
 			</uib-tabset>
 			<!--tabs End-->

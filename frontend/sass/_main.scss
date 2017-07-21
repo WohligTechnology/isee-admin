@@ -343,7 +343,12 @@ header {
         cursor: pointer;
     }
 }
-
+.success{
+    color: $brand-success;
+}
+.danger{
+    color: $brand-danger;
+}
 .bg-green {
     background: #68bc30 !important;
 }
@@ -352,7 +357,7 @@ header {
     background: #2191d0 !important;
 }
 
-.bg-red {
+.bg-red{
     background: $brand-danger !important;
 }
 
@@ -625,9 +630,7 @@ header {
     .tab-content {
         min-height: calc(100vh - 185px);
         .custom-scroll {
-            height: calc(100vh - 325px);
-            overflow-y: auto;
-            overflow-x: hidden;
+            min-height: 300px;
         }
     }
         span.main.bredcrums {
