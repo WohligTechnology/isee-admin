@@ -74,6 +74,22 @@
                     }
                 }
             });
+        },
+
+        singleLogHistory:function(data,callback){
+            AllLogs.findOne({
+                createdAt:data.createdDate
+            },function(err,found){
+                if (err) {
+                    // console.log(err);
+                    callback(err, null);
+                } else {
+                    if (_.isEmpty(found)) {
+                        callback(null, "noDataFound");
+                    } else {
+                            callback(err, found);                        
+                    }}
+            })
         }
     };
     module.exports = _.assign(module.exports, exports, model);
