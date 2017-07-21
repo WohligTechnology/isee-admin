@@ -39037,6 +39037,12 @@ header {
     border-radius: 5px;
     cursor: pointer; }
 
+.success {
+  color: #84ce3c; }
+
+.danger {
+  color: #e53d0a; }
+
 .bg-green {
   background: #68bc30 !important; }
 
@@ -39124,7 +39130,8 @@ header {
     right: 0;
     bottom: 0; }
 
-.pagination > li > a, .pagination > li > span {
+.pagination > li > a,
+.pagination > li > span {
   position: relative;
   float: left;
   padding: 6px 12px;
@@ -39213,13 +39220,21 @@ header {
   .custom-tabs .tab-content {
     min-height: calc(100vh - 185px); }
     .custom-tabs .tab-content .custom-scroll {
-      height: calc(100vh - 325px);
-      overflow-y: auto;
-      overflow-x: hidden; }
+      min-height: 300px; }
   .custom-tabs span.main.bredcrums {
     font-size: 16px;
     color: #5397be;
     font-weight: 400; }
+
+tr.inside-status {
+  border: 0; }
+  tr.inside-status td.panel-default {
+    padding: 0; }
+  tr.inside-status .panel-heading {
+    padding: 0;
+    border: 0; }
+  tr.inside-status .panel-body {
+    padding: 20px; }
 
 #fancybox-loading,
 .fancybox-close,

@@ -28,7 +28,8 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="text-right">
-									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+									<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload 
+										<i class="fa fa-upload" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -39,7 +40,10 @@
 						<div class="form-group" ng-repeat="formname in excelData.fields">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-1 ">
-									<label class=" control-label">{{formname}}</label>
+									<!-- {{formname}} -->
+									<label class=" control-label">{{formname.field}} 
+										<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
+									</label>
 								</div>
 								<div class="col-sm-6">
 									<ui-select ng-model="formData[formname]" name="country" theme="bootstrap" sortable="true">
@@ -62,57 +66,85 @@
 					<div class="text-right mt-10 mb-20">
 						<button type="submit" class="btn btn-success" ng-click="mapExcelFields(formData,formdata)">History</button>
 					</div>
-					<!--Logs Tabel-->
-					<div class="logs-tabel" ng-if="errData">
-						<div class="mb-10">
-							<span class="main bredcrums">Logs</span>
-						</div>
-						<div class="table-responsive dataTables_wrapper">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Fields Name</th>
-										<th>Fields Selected</th>
-										<!--<th>Result</th>-->
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="formname in errData">
-										<td>{{formname.ourField}}</td>
-										<td>{{formname.theirField}}</td>
-										<!--<td><i class="fa fa-check"></i></td>-->
-									</tr>
-							</table>
-						</div>
-					</div>
-					<!--End Logs Tabel-->
 
 					<!--Logs Tabel History-->
-
 					<div class="logs-tabel">
 						<div class="mb-10">
-							<span class="main bredcrums">Log History</span>
+							<span class="main bredcrums">Upload History</span>
 						</div>
 						<div class="table-responsive dataTables_wrapper">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Sucess</th>
-										<th>Failer</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="formname in errData">
-										<td>demo</td>
-										<td>demo</td>
-										<td>demo</td>
-									</tr>
+							<table class="table table-bordered">
+								<tr ng-click="status.open = !status.open">
+									<th>Date</th>
+									<th>Sucess</th>
+									<th>Failer</th>
+									<th>Total Upload</th>
+								</tr>
+								<tr ng-click="status.open = !status.open">
+									<th>12 nov 2015</th>
+									<th><span class="success"> 300 <i class="fa fa-check-circle"></i></span></th>
+									<th><span class="danger"> 400 <i class="fa fa-times-circle"></i></span></th>
+									<th>300</th>
+								</tr>
+								<tr class="inside-status">
+									<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open">
+										<div>
+											<div class="mb-10"><span class="primary">Time </span> 12.45 pm</div>
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th width="100">Row #</th>
+														<th>Status</th>
+														<th width="200">Total Entries: 4</th>
+													</tr>
+												</thead>
+												<tbody>
+													<!-- ngRepeat: d in data.value -->
+													<tr>
+														<td>
+															<!-- ngIf: !d.name -->
+															<!-- ngIf: d.name -->
+															<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
+															<!-- end ngIf: d.name -->
+														</td>
+														<td colspan="2">
+															<!-- ngIf: !d.name -->
+															<!-- ngIf: d.name -->
+															<span>
+                                						<span>Entry failed!</span>
+															<pre class="danger-pre"><code>{
+																"errors": {
+																	"name": {
+																		"message": "Path `name` is required.",
+																		"name": "ValidatorError",
+																		"properties": {
+																			"type": "required",
+																			"message": "Path `{PATH}` is required.",
+																			"path": "name"
+																		},
+																		"kind": "required",
+																		"path": "name"
+																	}
+																},
+																"_message": "User validation failed",
+																"name": "ValidationError",
+																"message": "User validation failed: name: Path `name` is required."
+															}</code></pre>
+															</span>
+															<!-- end ngIf: d.name -->
+														</td>
+													</tr>
+													<!-- end ngRepeat: d in data.value -->
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</tr>
 							</table>
 						</div>
+						</uib-accordion>
 					</div>
 					<!--End Logs Tabel History-->
-
 				</uib-tab>
 			</uib-tabset>
 			<!--tabs End-->
