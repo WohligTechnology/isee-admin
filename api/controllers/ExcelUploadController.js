@@ -457,13 +457,13 @@ var controller = {
             var retJson = {};
             retJson.fields = [{
                 field: "noteSequence",
-                description: "Number"
+                description: "Note Sequence a number that can not be greater than 65000"
             }, {
                 field: "note",
-                description: "String"
+                description: "This is a string of length less than 140 characters."
             }, {
                 field: "noteTimeStamp",
-                description: "String"
+                description: "This is a timestamp"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {

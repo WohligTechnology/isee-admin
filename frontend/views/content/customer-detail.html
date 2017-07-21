@@ -68,56 +68,105 @@
 					</div>
 
 					<!--Logs Tabel History-->
-					<div class="logs-tabel">
-						<div class="mb-10">
-							<span class="main bredcrums">Upload History</span>
-						</div>
-						<uib-accordion>
-							<div class="dataTables_wrapper">
-								<table class="table table-bordered">
-									<tr ng-click="status.open = !status.open">
-										<th>Date</th>
-										<th>Sucess</th>
-										<th>Failer</th>
-										<th>Total Upload</th>
-									</tr>
-									<tr ng-click="status.open = !status.open">
-										<th>{{dateOfLogs | date:'MM/dd/yyyy'}}</th>
-										<th><span class="success"> {{sucessCount}} <i class="fa fa-check-circle"></i></span></th>
-										<th><span class="danger"> {{errorCount}} <i class="fa fa-times-circle"></i></span></th>
-										<th>{{totalCount}}</th>
-									</tr>
-									<tr class="inside-status" ng-repeat="data in logData track by $index">
-										<td colspan="4" uib-accordion-group class="panel-default" is-open="status.open" >
-											<div>
-												<table class="table table-bordered">
-													<thead>
-														<tr>
-															<th width="100">Row #</th>
-															<th>Status</th>
-															<th width="200">Total Entries: 4</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>
-																<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
-															</td>
-															<td colspan="2">
-																<span>
-                                						<span>Entry failed!</span>
-																<pre class="danger-pre"><code>{{data}}</code></pre>
-																</span>
-															</td>
-														</tr>
-													</tbody>
-												</table>
+					<div class="logs-tabel" ng-if="eData.length>0">
+						<div class="dataTables_wrapper">
+							<div class="table table-bordered">
+								<div class="row">
+									<div class="col-xs-3">
+										<div class="pad-5 title-sub">Date</div>
+									</div>
+									<div class="col-xs-3">
+										<div class="pad-5 title-sub">Sucess</div>
+									</div>
+
+									<div class="col-xs-3">
+										<div class="pad-5 title-sub">Failer</div>
+									</div>
+
+									<div class="col-xs-3">
+										<div class="pad-5 title-sub">Total Upload</div>
+									</div>
+								</div>
+								<div ng-repeat="logData in eData">
+									<div class="row pointer">
+										<div ng-click="openLogs(logData)">
+											<div class="col-xs-3">
+												<div class="pad-5 inside-history">{{logData._id | date:'medium'}}</div>
 											</div>
-										</td>
-									</tr>
-								</table>
+											<div class="col-xs-3">
+												<div class="pad-5 inside-history">
+													<span class="success"> {{logData.succesCount}} 
+														<i class="fa fa-check-circle"></i></span>
+												</div>
+											</div>
+											<div class="col-xs-3">
+												<div class="pad-5 inside-history">
+													<span class="danger"> {{logData.errorCount}}
+														 <i class="fa fa-times-circle"></i></span>
+												</div>
+											</div>
+											<div class="col-xs-3">
+												<div class="pad-5 inside-history">
+													{{logData.succesCount+logData.errorCount}}
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="inside-status" ng-if="logData.isOpen">
+										<div class="row">
+											<div class="col-xs-3">
+												<div class="pad-5 title-sub">Row # </div>
+											</div>
+											<div class="col-xs-6">
+												<div class="pad-5 title-sub">Status</div>
+											</div>
+
+											<div class="col-xs-3">
+												<div class="pad-5 title-sub">Total Entries: 4</div>
+											</div>
+										</div>
+										<!--<div class="row" ng-repeat="logs in logData">-->
+										<div class="row">
+
+											<div class="col-xs-3">
+												<div class="pad-5 inside-history">
+													<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
+												</div>
+											</div>
+											<div class="col-xs-9">
+												<div class="pad-5 inside-history">
+													<span>
+                                				<!--<span>Entry failed!</span>-->
+													<pre class="danger-pre"><code>[
+        {
+             title: 'User',
+             disabled: true
+        },
+        {
+            title: 'Customer Note',
+            disabled: true
+        },
+        {
+            title: 'CRM',
+            disabled: true
+        },
+        {
+            title: 'Company',
+            disabled: true
+        },
+        {
+            title: 'Company Contact',
+            disabled: true
+        }
+]</code></pre>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</uib-accordion>
+						</div>
 					</div>
 					<!--End Logs Tabel History-->
 				</uib-tab>

@@ -56,7 +56,10 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
     ];
 
-
+    $scope.openLogs = function (logData) {
+        console.log(logData);
+        logData.isOpen = !logData.isOpen;
+    };
 
     $scope.activeJustified = 1
     if ($scope.activeJustified == 1) {
@@ -209,30 +212,35 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         };
     };
 
-    $scope.getHistory = function () {
+    $scope.getHistory = function (n) {
         NavigationService.apiCall("AllLogs/logHistory", $scope.eData, function (data) {
             if (data.value == true) {
-                $scope.eData = {};
-                $scope.dataHistory = data.data;
-                $scope.sucessCount=data.data.succesCount;
-                $scope.errorCount=data.data.errorCount;
-                $scope.dateOfLogs=data.data.found[0]._id;
-                $scope.logData=data.data.found[0].info[0].status;
-                $scope.totalCount=$scope.sucessCount + $scope.errorCount;
-                 console.log("dataHistory", $scope.dataHistory);
-                 console.log("logData", $scope.logData);
-                 console.log("error", $scope.errorCount);
-                 console.log("total", $scope.totalCount);
+                $scope.eData = data.data.found;
+                console.log("eData--------------", $scope.eData);
+                $scope.logData = data.data.found[0].info[0];
+                console.log("logData--------------", $scope.logData);
+                // _.forEach($scope.eData, function (value) {
+                //     console.log(value);
+                // });
+                // $scope.sucessCount = data.data.succesCount;
+                // $scope.errorCount = data.data.errorCount;
+                // $scope.dateOfLogs = data.data.found[0]._id;
+                // $scope.logData = data.data.found[0].info[0].status;
+                // $scope.totalCount = $scope.sucessCount + $scope.errorCount;
+                // console.log("dataHistory", $scope.dataHistory);
+                // console.log("logData", $scope.logData);
+                // console.log("error", $scope.errorCount);
+                // console.log("total", $scope.totalCount);
             }
         });
-    }
+    };
 
     // $scope.getExcelFields = function (formdata) {
     //     console.log("formdata", formdata);
     //     NavigationService.apiCall("ExcelUpload/companyUpload", formdata, function (data) {
     //         if (data.value == true) {
     //             $scope.excelData = data.data;
-    //             console.log("aaaa", $scope.excelArrData);
+    //             console.log("aaaa", $scope.exclogs.infoelArrData);
     //         } else {
     //             alert("aaaaa");
     //         }
@@ -240,7 +248,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     // };
 
     // $scope.formData = {};
-    // $scope.mapExcelFields = function (formdata, formdata1) {
+    // $scope.mapExcelFields = function (formdatalogs.info, formdata1) {
     //     $scope.companyExcel = {};
     //     $scope.companyExcel.name = formdata1.file;
     //     $scope.companyExcel.fields = [];

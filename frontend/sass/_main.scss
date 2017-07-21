@@ -371,7 +371,6 @@ header {
     line-height: 120%;
 }
 
-
 .color-white {
     color: #fff;
 }
@@ -614,20 +613,16 @@ header {
 }
 
 //tabel-logs
-tr.inside-status {
-    border: 0;
-    td.panel-default {
-        padding: 0;
-    }
-    .panel-heading {
-        padding: 0;
-        border: 0;
-    }
-    .panel-body{
-        padding: 20px;
-    }
+.pad-5 {
+    padding: 5px;
 }
-.panel-group .panel .panel-heading + .panel-collapse .panel-body {
-        margin: -1px;
+
+.title-sub {
+    font-weight: 600;
 }
+
+.pointer {
+    cursor: pointer;
+}
+
 //end tabel-logs
