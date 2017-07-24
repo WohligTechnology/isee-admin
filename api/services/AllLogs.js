@@ -115,8 +115,9 @@
                                 Data.id = file2._id;
                                 Data.succesCount = file2.succesCount;
                                 Data.errorCount = file2.errorCount;
+                                Data.createdAt = file2.createdAt;
                                 logsData.push(Data);
-                                console.log("logsDatalogsData------", logsData);
+                                // console.log("logsDatalogsData------", logsData);
                                 cb2(err, file2);
                             }, function (err) {
                                 callback(err, logsData);

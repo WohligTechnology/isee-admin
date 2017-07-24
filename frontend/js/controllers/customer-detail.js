@@ -58,7 +58,18 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
     $scope.openLogs = function (logData) {
         console.log(logData);
+        $scope.openLogdata = {};
+        $scope.openLogdata._id = logData.id;
         logData.isOpen = !logData.isOpen;
+
+        NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
+            console.log(data);
+            if (data.value == true) {
+                $scope.logData = data.data;
+                console.log("logData--------------", $scope.logData);
+            }
+        });
+
     };
 
     $scope.activeJustified = 1
@@ -104,6 +115,21 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
+
+        $scope.getHistory = function (n) {
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = 'CustomerNote';
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                console.log(data);
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                    console.log("eData--------------", $scope.eData);
+                    // $scope.logData = data.data.found[0].info[0];
+                    // console.log("logData--------------", $scope.logData);
+                }
+            });
+        };
+
     }
 
 
@@ -118,54 +144,63 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             getExcel = "customerNoteUpload";
             mapExcel = "finalUploadForCustomerNote";
             tableName = "CustomerNote";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "crmUpload";
             mapExcel = "finalUploadForCrm";
             tableName = "Crm";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyUpload";
             mapExcel = "finalUploadForCompany";
             tableName = "Company";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 4) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyContactUpload";
             mapExcel = "companyContactUpload";
             tableName = "CompanyContact";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 5) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyInfoUpload";
             mapExcel = "finalUploadForCompanyInfo";
             tableName = "CompanyInfo";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 6) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "itemUpload";
             mapExcel = "finalUploadForItem";
             tableName = "Item";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 7) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "LocationUpload";
             mapExcel = "finalUploadForLocation";
             tableName = "Locations";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 8) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "TransactionUpload";
             mapExcel = "finalUploadForTransaction";
             tableName = "Transaction";
+            $scope.eData = "";
         } else if ($scope.activeJustified == 9) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "warrantyItemUpload";
             mapExcel = "finalUploadForWarranty";
             tableName = "WarrantyItem";
+            $scope.eData = "";
         }
 
 
@@ -210,30 +245,45 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
+
+        $scope.getHistory = function (n) {
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                console.log(data);
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                    console.log("eData--------------", $scope.eData);
+                    // $scope.logData = data.data.found[0].info[0];
+                    // console.log("logData--------------", $scope.logData);
+                }
+            });
+        };
     };
 
-    $scope.getHistory = function (n) {
-        NavigationService.apiCall("AllLogs/logHistory", $scope.eData, function (data) {
-            if (data.value == true) {
-                $scope.eData = data.data.found;
-                console.log("eData--------------", $scope.eData);
-                $scope.logData = data.data.found[0].info[0];
-                console.log("logData--------------", $scope.logData);
-                // _.forEach($scope.eData, function (value) {
-                //     console.log(value);
-                // });
-                // $scope.sucessCount = data.data.succesCount;
-                // $scope.errorCount = data.data.errorCount;
-                // $scope.dateOfLogs = data.data.found[0]._id;
-                // $scope.logData = data.data.found[0].info[0].status;
-                // $scope.totalCount = $scope.sucessCount + $scope.errorCount;
-                // console.log("dataHistory", $scope.dataHistory);
-                // console.log("logData", $scope.logData);
-                // console.log("error", $scope.errorCount);
-                // console.log("total", $scope.totalCount);
-            }
-        });
-    };
+    // $scope.getHistory = function (n) {
+    //     NavigationService.apiCall("AllLogs/logHistory", $scope.eData, function (data) {
+    //         console.log(data);
+    //         if (data.value == true) {
+    //             $scope.eData = data.data;
+    //             console.log("eData--------------", $scope.eData);
+    //             // $scope.logData = data.data.found[0].info[0];
+    //             // console.log("logData--------------", $scope.logData);
+    //             // _.forEach($scope.eData, function (value) {
+    //             //     console.log(value);
+    //             // });
+    //             // $scope.sucessCount = data.data.succesCount;
+    //             // $scope.errorCount = data.data.errorCount;
+    //             // $scope.dateOfLogs = data.data.found[0]._id;
+    //             // $scope.logData = data.data.found[0].info[0].status;
+    //             // $scope.totalCount = $scope.sucessCount + $scope.errorCount;
+    //             // console.log("dataHistory", $scope.dataHistory);
+    //             // console.log("logData", $scope.logData);
+    //             // console.log("error", $scope.errorCount);
+    //             // console.log("total", $scope.totalCount);
+    //         }
+    //     });
+    // };
 
     // $scope.getExcelFields = function (formdata) {
     //     console.log("formdata", formdata);

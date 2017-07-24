@@ -91,7 +91,7 @@
 									<div class="row pointer">
 										<div ng-click="openLogs(logData)">
 											<div class="col-xs-3">
-												<div class="pad-5 inside-history">{{logData._id | date:'medium'}}</div>
+												<div class="pad-5 inside-history">{{logData.createdAt | date:'medium'}}</div>
 											</div>
 											<div class="col-xs-3">
 												<div class="pad-5 inside-history">
@@ -122,7 +122,7 @@
 											</div>
 
 											<div class="col-xs-3">
-												<div class="pad-5 title-sub">Total Entries: 4</div>
+												<div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
 											</div>
 										</div>
 										<!--<div class="row" ng-repeat="logs in logData">-->
