@@ -76,10 +76,10 @@
             });
         },
 
-        singleLogHistory:function(data,callback){
-            AllLogs.findOne({
-                createdAt:data.createdDate
-            },function(err,found){
+        singleLogHistory: function (data, callback) {
+            AllLogs.find({
+                tableName: data.tableName
+            }).lean().exec(function (err, found) {
                 if (err) {
                     // console.log(err);
                     callback(err, null);
@@ -87,9 +87,35 @@
                     if (_.isEmpty(found)) {
                         callback(null, "noDataFound");
                     } else {
-                            callback(err, found);                        
-                    }}
-            })
+                        var result = {};
+                        result.totalSuccesCount = 0;
+                        result.totalErrorCount = 0;
+                        async.eachSeries(found, function (file, cb1) {
+                            var succesCount = 0;
+                            var errorCount = 0;
+                            async.eachSeries(file.logs, function (file1, cb2) {
+                                if (file1.error == null) {
+                                    succesCount = _.cloneDeep(succesCount) + 1;
+                                    result.totalSuccesCount++;
+                                } else {
+                                    errorCount = _.cloneDeep(errorCount) + 1;
+                                    result.totalErrorCount++;
+                                }
+                                cb2(err, file1);
+                            }, function (err) {
+                                file.succesCount = succesCount;
+                                file.errorCount = errorCount;
+                                cb1(err, file);
+                            });
+                        }, function (err) {
+                            result.found = found;
+                            console.log("results------------", result);
+                            callback(err, result);
+                        });
+                        // callback(err, found);
+                    }
+                }
+            });
         }
     };
     module.exports = _.assign(module.exports, exports, model);
