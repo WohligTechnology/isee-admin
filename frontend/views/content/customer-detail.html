@@ -71,23 +71,26 @@
 					<div class="logs-tabel" ng-if="eData.length>0">
 						<div class="dataTables_wrapper">
 							<div class="table table-bordered">
-								<div class="row">
-									<div class="col-xs-3">
-										<div class="pad-5 title-sub">Date</div>
-									</div>
-									<div class="col-xs-3">
-										<div class="pad-5 title-sub">Sucess</div>
-									</div>
+								<div class="log-history">
+									<div class="row">
+										<div class="col-xs-3">
+											<div class="pad-5 title-sub">Date</div>
+										</div>
+										<div class="col-xs-3">
+											<div class="pad-5 title-sub">Sucess</div>
+										</div>
 
-									<div class="col-xs-3">
-										<div class="pad-5 title-sub">Failer</div>
-									</div>
+										<div class="col-xs-3">
+											<div class="pad-5 title-sub">Failer</div>
+										</div>
 
-									<div class="col-xs-3">
-										<div class="pad-5 title-sub">Total Upload</div>
+										<div class="col-xs-3">
+											<div class="pad-5 title-sub">Total Upload</div>
+										</div>
 									</div>
 								</div>
-								<div ng-repeat="logData in eData">
+								<div ng-repeat="logData in eData track by $index">
+								<div class="log-history">
 									<div class="row pointer">
 										<div ng-click="openLogs(logData)">
 											<div class="col-xs-3">
@@ -112,54 +115,38 @@
 											</div>
 										</div>
 									</div>
+								</div>
+
 									<div class="inside-status" ng-if="logData.isOpen">
-										<div class="row">
-											<div class="col-xs-3">
-												<div class="pad-5 title-sub">Row # </div>
-											</div>
-											<div class="col-xs-6">
-												<div class="pad-5 title-sub">Status</div>
-											</div>
+										<div class="log-history" ng-if="logInsideData.error.errors">
+											<div class="row">
+												<div class="col-xs-3">
+													<div class="pad-5 title-sub">Row # </div>
+												</div>
+												<div class="col-xs-6">
+													<div class="pad-5 title-sub">Status</div>
+												</div>
 
-											<div class="col-xs-3">
-												<div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
-											</div>
-										</div>
-										<!--<div class="row" ng-repeat="logs in logData">-->
-										<div class="row">
-
-											<div class="col-xs-3">
-												<div class="pad-5 inside-history">
-													<span class="danger"><i class="fa fa-times-circle"></i> Row 2</span>
+												<div class="col-xs-3">
+													<div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
 												</div>
 											</div>
-											<div class="col-xs-9">
-												<div class="pad-5 inside-history">
-													<span>
-                                				<!--<span>Entry failed!</span>-->
-													<pre class="danger-pre"><code>[
-        {
-             title: 'User',
-             disabled: true
-        },
-        {
-            title: 'Customer Note',
-            disabled: true
-        },
-        {
-            title: 'CRM',
-            disabled: true
-        },
-        {
-            title: 'Company',
-            disabled: true
-        },
-        {
-            title: 'Company Contact',
-            disabled: true
-        }
-]</code></pre>
+										</div>
+										<div class="log-history" ng-repeat="logs in logInsideData" ng-if="logs.error.errors">
+											<div class="row" >
+												<!-- <div class="row"> -->
+
+												<div class="col-xs-3">
+													<div class="pad-5 inside-history">
+														<span class="danger"><i class="fa fa-times-circle"></i> Row {{logs.error.length}}</span>
+													</div>
+												</div>
+												<div class="col-xs-9">
+													<div class="pad-5 inside-history">
+														<span>
+													<pre class="danger-pre"><code>{{logs.error.errors}}</code></pre>
 													</span>
+													</div>
 												</div>
 											</div>
 										</div>

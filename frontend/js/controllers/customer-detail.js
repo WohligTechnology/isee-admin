@@ -61,15 +61,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.openLogdata = {};
         $scope.openLogdata._id = logData.id;
         logData.isOpen = !logData.isOpen;
-
         NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
             console.log(data);
             if (data.value == true) {
-                $scope.logData = data.data;
+                $scope.logInsideData = data.data.logs;
                 console.log("logData--------------", $scope.logData);
             }
         });
-
     };
 
     $scope.activeJustified = 1
