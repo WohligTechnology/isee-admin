@@ -60,12 +60,16 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         console.log(logData);
         $scope.openLogdata = {};
         $scope.openLogdata._id = logData.id;
+        _.each($scope.eData,function(n){
+            n.isOpen = false;
+        });
         logData.isOpen = !logData.isOpen;
         NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
             console.log(data);
             if (data.value == true) {
                 $scope.logInsideData = data.data.logs;
-                console.log("logData--------------", $scope.logData);
+                $scope.logInsideDataLength = data.data.logs.errorCount;
+                console.log("logData--------------", $scope.logInsideDataLength);
             }
         });
     };
@@ -252,68 +256,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     $scope.eData = data.data;
                     console.log("eData--------------", $scope.eData);
-                    // $scope.logData = data.data.found[0].info[0];
-                    // console.log("logData--------------", $scope.logData);
                 }
             });
         };
     };
-
-    // $scope.getHistory = function (n) {
-    //     NavigationService.apiCall("AllLogs/logHistory", $scope.eData, function (data) {
-    //         console.log(data);
-    //         if (data.value == true) {
-    //             $scope.eData = data.data;
-    //             console.log("eData--------------", $scope.eData);
-    //             // $scope.logData = data.data.found[0].info[0];
-    //             // console.log("logData--------------", $scope.logData);
-    //             // _.forEach($scope.eData, function (value) {
-    //             //     console.log(value);
-    //             // });
-    //             // $scope.sucessCount = data.data.succesCount;
-    //             // $scope.errorCount = data.data.errorCount;
-    //             // $scope.dateOfLogs = data.data.found[0]._id;
-    //             // $scope.logData = data.data.found[0].info[0].status;
-    //             // $scope.totalCount = $scope.sucessCount + $scope.errorCount;
-    //             // console.log("dataHistory", $scope.dataHistory);
-    //             // console.log("logData", $scope.logData);
-    //             // console.log("error", $scope.errorCount);
-    //             // console.log("total", $scope.totalCount);
-    //         }
-    //     });
-    // };
-
-    // $scope.getExcelFields = function (formdata) {
-    //     console.log("formdata", formdata);
-    //     NavigationService.apiCall("ExcelUpload/companyUpload", formdata, function (data) {
-    //         if (data.value == true) {
-    //             $scope.excelData = data.data;
-    //             console.log("aaaa", $scope.exclogs.infoelArrData);
-    //         } else {
-    //             alert("aaaaa");
-    //         }
-    //     });
-    // };
-
-    // $scope.formData = {};
-    // $scope.mapExcelFields = function (formdatalogs.info, formdata1) {
-    //     $scope.companyExcel = {};
-    //     $scope.companyExcel.name = formdata1.file;
-    //     $scope.companyExcel.fields = [];
-    //     _.forEach(formdata, function (value, key) {
-    //         $scope.field = {};
-    //         $scope.field.ourField = key;
-    //         $scope.field.theirField = value;
-    //         $scope.companyExcel.fields.push($scope.field);
-    //     });
-    //     console.log("$scope.companyExcel", $scope.companyExcel);
-    //     NavigationService.apiCall("ExcelUpload/finalUploadForCompany", $scope.companyExcel, function (data) {
-    //         if (data.value == true) {
-    //             console.log("Sucess");
-    //         } else {
-    //             alert("aaaaa");
-    //         }
-    //     });
-    // };
 
 });
