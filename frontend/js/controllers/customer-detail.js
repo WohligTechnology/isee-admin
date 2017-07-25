@@ -60,7 +60,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         console.log(logData);
         $scope.openLogdata = {};
         $scope.openLogdata._id = logData.id;
-        _.each($scope.eData,function(n){
+        _.each($scope.eData, function (n) {
             n.isOpen = false;
         });
         logData.isOpen = !logData.isOpen;
@@ -68,8 +68,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log(data);
             if (data.value == true) {
                 $scope.logInsideData = data.data.logs;
-                $scope.logInsideDataLength = data.data.logs.errorCount;
-                console.log("logData--------------", $scope.logInsideDataLength);
+                console.log("logData--------------", $scope.logInsideData);
+                _.forEach($scope.logInsideData, function (value, key) {
+                    // console.log(value);
+                    value.rowNo = key;
+                });
             }
         });
     };

@@ -85,7 +85,7 @@
                     callback(err, null);
                 } else {
                     if (_.isEmpty(found)) {
-                        callback(null, "noDataFound");
+                        callback(err, null);
                     } else {
                         var result = {};
                         result.totalSuccesCount = 0;
