@@ -39218,6 +39218,9 @@ header {
 .pad-5 {
   padding: 5px; }
 
+.btn-big {
+  padding: 8px 80px; }
+
 .title-sub {
   font-weight: 600; }
 
