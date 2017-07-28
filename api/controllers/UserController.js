@@ -88,6 +88,19 @@ var controller = {
         } else {
             res.callback("Access Denied for Database Backup");
         }
-    }
+    },
+
+    doLogin: function (req, res) {
+        if (req.body) {
+            User.doLogin(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
+        }
+    },
 };
 module.exports = _.assign(module.exports, controller);

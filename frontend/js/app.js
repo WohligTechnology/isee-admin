@@ -9,7 +9,8 @@ var myApp = angular.module('myApp', [
     'imageupload',
     'angular-flexslider',
     'ui.swiper',
-    'highcharts-ng'
+    'highcharts-ng',
+    'toastr'
 ]);
 
 // Define all the routes below

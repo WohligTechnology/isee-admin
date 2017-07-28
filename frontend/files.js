@@ -7,6 +7,7 @@ module.exports = [
   'bower_components/smart-app-banner/smart-app-banner.js',
   'bower_components/moment/min/moment.min.js',
   'frontend/js/highchart.js',
+  'bower_components/jStorage/jstorage.js',
   //Angular Libs
   'bower_components/angular/angular.js',
   'bower_components/angular-bootstrap/ui-bootstrap.min.js',
@@ -22,6 +23,8 @@ module.exports = [
   'bower_components/angular-ui-swiper/dist/angular-ui-swiper.js',
   "bower_components/angular-promise-buttons/dist/angular-promise-buttons.js",
   'frontend/js/highchart-ng.js',
+  'bower_components/angular-toastr/dist/angular-toastr.js',
+  'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
 
   //App.js
   'frontend/js/app.js',

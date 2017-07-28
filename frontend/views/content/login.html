@@ -14,29 +14,28 @@
                             </div>
                             <!--<pre>{{formLoginData|json}}</pre>
                             <pre style="background: #b0deff;">{{formLogin.email|json}}</pre>-->
-                            <form action="" name="formLogin">
+                            <form name="formLogin">
                                 <div class="form-group has-primary-custom">
                                     <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"> <i class="fa fa-user"></i></span>
-                                        <input type="text" ng-model="formLoginData.name" class="form-control" id="name" placeholder="Username" name="name" required>
+                                        <input type="text" ng-model="formData.email" class="form-control" id="name" placeholder="Username" name="name" required>
                                     </div>
                                     <div class="pull-right" ng-repeat="(field,value) in formLogin.name.$error" ng-show="formLogin.name.$touched">
-                                        <span class="label label-danger" ng-if="field=='required' && value">Please Enter Name</span>
+                                        <span class="label label-danger" ng-if="field=='required' && value">Please Enter Email</span>
                                     </div>
                                 </div>
                                 <div class="form-group has-primary-custom">
                                     <div class="input-group">
                                         <span class="input-group-addon"> <i class="fa fa-lock"></i></span>
-                                        <input type="password" class="form-control" placeholder="Password" name="password" ng-model="formLoginData.password" required>
+                                        <input type="password" class="form-control" placeholder="Password" name="password" ng-model="formData.password" required>
                                     </div>
                                     <div class="pull-right" ng-repeat="(field,value) in formLogin.password.$error" ng-show="formLogin.password.$touched">
                                         <span class="label label-danger" ng-if="field=='required' && value">Please Enter Password</span>
                                     </div>
                                 </div>
                                 <div class="button-login text-center">
-                                    <button ng-click="submitForm()" ui-sref="corporate" class="btn btn-primary btn-rounded text-upper" ng-disabled="formLogin.$invalid"
-                                        promise-btn>Submit</button>
+                                    <button ng-click="login(formData)" class="btn btn-primary btn-rounded text-upper" ng-disabled="formLogin.$invalid" promise-btn>Submit</button>
                                 </div>
                             </form>
                         </div>
