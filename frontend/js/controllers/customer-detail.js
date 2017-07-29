@@ -1,4 +1,4 @@
-myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr) {
     $scope.template = TemplateService.getHTML("content/customer-detail.html");
     TemplateService.title = "Customer Detail"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
@@ -131,6 +131,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     console.log("eData--------------", $scope.eData);
                     // $scope.logData = data.data.found[0].info[0];
                     // console.log("logData--------------", $scope.logData);
+                } else {
+                    toastr.error('No History');
                 }
             });
         };
@@ -259,6 +261,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     $scope.eData = data.data;
                     console.log("eData--------------", $scope.eData);
+                } else {
+                    toastr.error('No History');
                 }
             });
         };

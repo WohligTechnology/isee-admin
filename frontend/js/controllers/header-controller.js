@@ -22,9 +22,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
       $scope.subClass = "closeSub";
   };
 
-  if ($.jStorage.get("User")) {
-    $state.go("customer-detail");
-  } else {
+  if (!$.jStorage.get("User")) {
     $state.go("login");
   }
 
