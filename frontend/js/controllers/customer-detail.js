@@ -13,45 +13,32 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     };
 
     $scope.tabs = [
-        // {
-        //     title: 'User',
-        //     // disabled: true
-        // },
         {
             title: 'Customer Note',
-            // disabled: true
         },
         {
             title: 'CRM',
-            // disabled: true
         },
         {
             title: 'Company',
-            // disabled: true
         },
         {
             title: 'Company Contact',
-            // disabled: true
         },
         {
             title: 'Company Info',
-            // disabled: true
         },
         {
             title: 'Item',
-            // disabled: true
         },
         {
             title: 'Location',
-            // disabled: true
         },
         {
             title: 'Transaction',
-            // disabled: true
         },
         {
             title: 'Warranty Item',
-            // disabled: true
         }
 
     ];
@@ -76,7 +63,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }
         });
     };
-
     $scope.activeJustified = 1
     if ($scope.activeJustified == 1) {
         $scope.getExcelFields = function (formdata) {
@@ -138,8 +124,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         };
 
     }
-
-
     $scope.activeTabs = function (n) {
         $scope.activeJustified = n + 1;
         var getExcel;
@@ -209,8 +193,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             tableName = "WarrantyItem";
             $scope.eData = "";
         }
-
-
         $scope.getExcelFields = function (formdata) {
             console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
@@ -223,7 +205,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
-
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
@@ -252,7 +233,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
-
         $scope.getHistory = function (n) {
             $scope.getHistoryData = {};
             $scope.getHistoryData.tableName = tableName;
@@ -267,5 +247,4 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             });
         };
     };
-
 });

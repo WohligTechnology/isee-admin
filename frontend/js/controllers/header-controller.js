@@ -4,27 +4,35 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
     $(window).scrollTop(0);
   });
   $.fancybox.close(true);
-  $scope.classNg = "open";
-  $scope.sideMenu = function () {
-    console.log("menu");
-    if ($scope.classNg === "open")
-      $scope.classNg = "collapsed";
-    else
-      $scope.classNg = "open";
-  };
 
+  //submenu
   $scope.subClass = "closeSub";
-  $scope.subMenu = function () {
-    console.log("menu");
-    if ($scope.subClass === "closeSub")
-      $scope.subClass = "expanded";
-    else
-      $scope.subClass = "closeSub";
-  };
+  // $scope.subMenu = function () {
+  //   console.log("menu");
 
+  // };
+  //End submenu
+
+
+  $scope.subMenu = function (navigation) {
+    console.log($scope.navigation)
+    _.each($scope.navigation, function (n) {
+      if ($scope.subClass == "closeSub") {
+        $scope.subClass = "expanded";
+        console.log("Openmenu",n);
+      } else {
+        $scope.subClass = "closeSub";
+        console.log("Closemenu");
+      };
+    });
+  }
+
+  // jStorage for user 
   if (!$.jStorage.get("User")) {
     $state.go("login");
   }
 
   $scope.userData = $.jStorage.get("User");
+
+  //End  jStorage for user
 });

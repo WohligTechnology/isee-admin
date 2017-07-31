@@ -1,18 +1,23 @@
-
-
-  <li ng-repeat="menu in navigation" ui-sref-active="active" class="{{menu.hasSub}} {{subClass}}" ng-click="subMenu();">
-    <a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">
+<li ng-repeat="menu in navigation track by $index" ui-sref-active="active" class="{{menu.hasSub}} {{subClass}}" ng-click="subMenu();">
+  <a ui-sref="{{menu.anchor}}" ng-if="menu.anchor" class="hoverClass">
       <i class="fa {{menu.icon}}" ng-if="menu.icon"></i>
        <span class="title">{{menu.name}}</span>
       </a>
-    <a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
-    <ul class="has-sub" ng-if="menu.subnav!='';">
-      <li ng-repeat="submenu in menu.subnav" ui-sref-active="active">
-        <a ui-serf="{{submenu.anchor}}" ng-if="submenu.anchor">
+  <a href="{{menu.link}}" ng-if="menu.link" class="hoverClass">
+       <i class="fa {{menu.icon}}" ng-if="menu.icon"></i>
+      {{menu.name}}
+    </a>
+  <a ng-if="menu.hasSub" class="hoverClass">
+       <i class="fa {{menu.icon}}" ng-if="menu.icon"></i>
+      {{menu.name}}
+    </a>
+  <ul class="has-sub" ng-if="menu.subnav!='' || navigation.isOpen;">
+    <li ng-repeat="submenu in menu.subnav track by $index" ui-sref-active="active">
+      <a ui-sref="{{submenu.anchor}}" ng-if="submenu.anchor">
            <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i>
           <span class="title">{{submenu.name}}</span>
         </a>
-        <a herf="{{submenu.link}}" ng-if="submenu.link"> <span class="title">{{submenu.name}}</span></a>
-      </li>
-    </ul>
-  </li>
+      <a herf="{{submenu.link}}" ng-if="submenu.link"> <span class="title">{{submenu.name}}</span></a>
+    </li>
+  </ul>
+</li>

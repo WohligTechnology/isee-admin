@@ -8,27 +8,111 @@ myApp.factory('NavigationService', function ($http) {
         anchor: "corporate",
         icon: "fa-tachometer"
     }, {
-        name: "Widgets-iSee",
+        name: "Product Admin",
         classis: "active",
-        anchor: "store",
+        anchor: "",
         icon: "fa-desktop",
         hasSub: "has-sub",
         subnav: [{
-            name: "Subnav",
+            name: "Setup Company",
             classis: "active",
-            anchor: "home",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "License Manager",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "User Admin",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "Roles Administration",
+            classis: "active",
+            anchor: "coming-soon",
             icon: "fa-cog"
         }]
     }, {
-        name: "Returns Details",
+        name: "Company Admin",
         classis: "active",
-        anchor: "user",
-        icon: "fa-tasks"
+        icon: "fa-tasks",
+        hasSub: "has-sub",
+        subnav: [{
+            name: "Setup Company",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "Role Administration",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "Store/Branch Setup",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }]
+    },{
+        name: "Rules Admin",
+        classis: "active",
+        icon: "fa-pencil-square-o",
+        hasSub: "has-sub",
+        subnav: [{
+            name: "Setup Rules",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "What-if-Analysis",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "Rules Report",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }]
     }, {
-        name: "Rules Alert",
+        name: "Reports",
         classis: "active",
-        anchor: "rules",
-        icon: "fa-pencil-square-o"
+        icon: "fa-pencil-square-o",
+        hasSub: "has-sub",
+        subnav: [{
+            name: "Setup Rules",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "What-if-Analysis",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }, {
+            name: "Rules Report",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }]
+    }, {
+        name: "Case Management",
+        classis: "active",
+        icon: "fa-pencil-square-o",
+        anchor: "coming-soon"
+    }, {
+        name: "Help",
+        classis: "active",
+        icon: "fa-pencil-square-o",
+        hasSub: "has-sub",
+        subnav: [{
+            name: "Help Documentation",
+            classis: "active",
+            anchor: "coming-soon",
+            icon: "fa-cog"
+        }]
     }];
 
     return {

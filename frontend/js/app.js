@@ -75,6 +75,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/customer-detail",
             templateUrl: tempateURL,
             controller: 'CustomerDetailCtrl'
+        })
+        .state('coming-soon', {
+            url: "/coming-soon",
+            templateUrl: tempateURL,
+            controller: 'ComingSoonCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
