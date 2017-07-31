@@ -14,17 +14,14 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   //End submenu
 
 
+
   $scope.subMenu = function (navigation) {
-    console.log($scope.navigation)
-    _.each($scope.navigation, function (n) {
-      if ($scope.subClass == "closeSub") {
-        $scope.subClass = "expanded";
-        console.log("Openmenu", n);
-      } else {
-        $scope.subClass = "closeSub";
-        console.log("Closemenu");
-      };
-    });
+    if (navigation.subClass == "closeSub") {
+      navigation.subClass = "expanded";
+    } else {
+      navigation.subClass = "closeSub";
+      console.log("Closemenu");
+    };
   }
 
   // jStorage for user 
