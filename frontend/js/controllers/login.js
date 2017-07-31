@@ -22,7 +22,7 @@ myApp.controller('LoginCtrl', function ($scope, TemplateService, NavigationServi
                 console.log(data.data);
                 $.jStorage.set("User", data.data);
                 $scope.template.profile = data.data;
-                $state.go("customer-detail");
+                $state.go("user");
             } else {
                 toastr.error('Incorrect credential');
                 // alert("Error");

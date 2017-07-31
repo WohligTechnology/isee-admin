@@ -1,4 +1,4 @@
-<nav class="navbar user-info-navbar" role="navigation">
+<nav class="navbar user-info-navbar" role="navigation" ng-controller="headerCtrl">
 	<!-- User Info, Notifications and Menu Bar -->
 
 	<!-- Left links for user info navbar -->
@@ -46,10 +46,10 @@
 								</a>
 				</li>
 				<li class="last">
-					<a href="extra-lockscreen.html">
-									<i class="fa-lock"></i>
-									Logout
-								</a>
+					<a ng-click="logout()">
+						<i class="fa-lock"></i> Logout
+					</a>
+
 				</li>
 			</ul>
 		</li>

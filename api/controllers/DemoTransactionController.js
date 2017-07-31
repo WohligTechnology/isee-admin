@@ -7,7 +7,7 @@ var controller = {
 
         req.body = {};
         req.body.companyExcel = {
-            name: "596898c78d0fdb32438c202a.xlsx",
+            name: "597efee84a56004cd5d828b6.xlsx",
             fields: [{
                     ourField: "name",
                     theirField: "Firstname"
@@ -50,16 +50,13 @@ var controller = {
                     var R = new RuleEngine(rules);
 
                     R.execute(singleData, function (result) {
-                        if (result.result) {
-                            // console.log("In if faults", faults);
+                        if (singleData.result == false) {
+                            console.log("Condition satisfied", singleData);
                             // DemoTransaction.saveData(singleData, callback);
                         } else {
-                            // console.log("In else", singleData);
+                            console.log("Condition unsatisfied", singleData);
                         }
                     });
-
-                    console.log("In if faults", faults);
-
                 }, function (err, data) {
                     // res.callback(null, data);
                 });

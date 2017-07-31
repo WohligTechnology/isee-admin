@@ -19,7 +19,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
     _.each($scope.navigation, function (n) {
       if ($scope.subClass == "closeSub") {
         $scope.subClass = "expanded";
-        console.log("Openmenu",n);
+        console.log("Openmenu", n);
       } else {
         $scope.subClass = "closeSub";
         console.log("Closemenu");
@@ -33,6 +33,11 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   }
 
   $scope.userData = $.jStorage.get("User");
+
+  $scope.logout = function () {
+    $.jStorage.flush("User");
+    $state.go("login");
+  };
 
   //End  jStorage for user
 });
