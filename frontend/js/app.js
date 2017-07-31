@@ -51,7 +51,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'LoginCtrl'
         })
-        .state('author-rule', {
+        .state('drl-rule', {
             url: "/drl-rule",
             templateUrl: tempateURL,
             controller: 'AuthorRuleCtrl'

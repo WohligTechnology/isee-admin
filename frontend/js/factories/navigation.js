@@ -63,7 +63,7 @@ myApp.factory('NavigationService', function ($http) {
         subnav: [{
             name: "Setup Rules",
             classis: "active",
-            anchor: "coming-soon",
+            anchor: "es-rule",
             icon: "fa-cog"
         }, {
             name: "What-if-Analysis",
@@ -73,7 +73,7 @@ myApp.factory('NavigationService', function ($http) {
         }, {
             name: "Rules Report",
             classis: "active",
-            anchor: "coming-soon",
+            anchor: "drl-rule",
             icon: "fa-cog"
         }]
     }, {
@@ -84,7 +84,7 @@ myApp.factory('NavigationService', function ($http) {
         subnav: [{
             name: "Setup Rules",
             classis: "active",
-            anchor: "coming-soon",
+            anchor: "es-rule",
             icon: "fa-cog"
         }, {
             name: "What-if-Analysis",
@@ -94,7 +94,7 @@ myApp.factory('NavigationService', function ($http) {
         }, {
             name: "Rules Report",
             classis: "active",
-            anchor: "coming-soon",
+            anchor: "drl-rule",
             icon: "fa-cog"
         }]
     }, {
