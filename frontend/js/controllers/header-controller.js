@@ -16,10 +16,10 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
 
 
   $scope.subMenu = function (navigation) {
-    if (navigation.subClass == "closeSub") {
+    if (navigation.subClass == "has-sub") {
       navigation.subClass = "expanded";
     } else {
-      navigation.subClass = "closeSub";
+      navigation.subClass = "has-sub";
       console.log("Closemenu");
     };
   }
