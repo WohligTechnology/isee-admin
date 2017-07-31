@@ -38927,6 +38927,8 @@ header {
   width: 250px;
   box-shadow: 0px 2px 6px #000;
   transition: width 500ms; }
+  .sidebar-menu .logo-env {
+    background: #5397be; }
   .sidebar-menu .fixed {
     height: 100vh; }
   .sidebar-menu .main-menu {
@@ -38935,6 +38937,16 @@ header {
     margin-top: 0;
     height: calc(100vh - 70px);
     overflow-y: auto; }
+    .sidebar-menu .main-menu::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background-color: #F5F5F5; }
+    .sidebar-menu .main-menu::-webkit-scrollbar {
+      width: 3px;
+      height: 0px;
+      background-color: #F5F5F5; }
+    .sidebar-menu .main-menu::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: #ccc; }
     .sidebar-menu .main-menu li {
       transition: all ease 300ms; }
       .sidebar-menu .main-menu li a {
@@ -38948,15 +38960,19 @@ header {
       .sidebar-menu .main-menu li.expanded ul {
         display: block;
         height: auto; }
-        .sidebar-menu .main-menu li.expanded ul li.active a, .sidebar-menu .main-menu li.expanded ul li:hover a {
+        .sidebar-menu .main-menu li.expanded ul li.active a {
+          color: #000; }
+        .sidebar-menu .main-menu li.expanded ul li:hover a {
           background: #5397be;
           color: #fff; }
-          .sidebar-menu .main-menu li.expanded ul li.active a:before, .sidebar-menu .main-menu li.expanded ul li:hover a:before {
-            color: #fff; }
-      .sidebar-menu .main-menu li.active .hoverClass, .sidebar-menu .main-menu li:hover .hoverClass {
+      .sidebar-menu .main-menu li.active a {
+        color: #000; }
+        .sidebar-menu .main-menu li.active a:before {
+          color: #000; }
+      .sidebar-menu .main-menu li:hover .hoverClass {
         background: #5397be;
         color: #fff; }
-        .sidebar-menu .main-menu li.active .hoverClass:before, .sidebar-menu .main-menu li:hover .hoverClass:before {
+        .sidebar-menu .main-menu li:hover .hoverClass:before {
           color: #fff; }
   .sidebar-menu .logo-env {
     padding: 18px 10px;
@@ -38971,10 +38987,6 @@ header {
       margin-right: 5px; }
   .sidebar-menu.collapsed .logo-env {
     padding: 20px 0; }
-
-.sidebar-menu.collapsed .main-menu > li a.active,
-.sidebar-menu.collapsed .main-menu > li li a.active {
-  background-color: #5397be; }
 
 .sidebar-menu.collapsed + .main-content .user-info-navbar .user-info-menu a[data-toggle=sidebar] {
   color: #fff; }
@@ -39084,9 +39096,6 @@ header {
 
 .user-info-navbar {
   background-color: #5397be; }
-
-.sidebar-menu .logo-env {
-  background: #5397be; }
 
 .xe-widget.xe-counter.width-33 {
   width: 33%; }
