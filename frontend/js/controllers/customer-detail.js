@@ -12,8 +12,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         });
     };
 
-    $scope.tabs = [
-        {
+    $scope.tabs = [{
             title: 'Customer Note',
         },
         {
@@ -63,8 +62,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }
         });
     };
+
+
     $scope.activeJustified = 1
     if ($scope.activeJustified == 1) {
+
         $scope.getExcelFields = function (formdata) {
             console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/customerNoteUpload", formdata, function (data) {
@@ -124,6 +126,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         };
 
     }
+
+
     $scope.activeTabs = function (n) {
         $scope.activeJustified = n + 1;
         var getExcel;

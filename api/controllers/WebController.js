@@ -45,14 +45,23 @@ module.exports = {
             res.notFound();
         }
     },
-    demo: function (req, res) {
-        sails.renderView('email/welcome', {
-            name: "Pooja",
-            lastname: "Thakre",
-            hobbies: ["cricket", "name", "email", "phone"]
-        }, function (err, view) {
+    getAllModels: function (req, res) {
+        var allModels = mongoose.modelNames();
+        _.pull(allModels, "User", "Config", "AllLogs", "RuleEngine");
+        res.callback(null, allModels);
+    },
 
-            res.send(view);
+
+    getModelFields: function (req, res) {
+        var model = req.body.model;
+        var schema = mongoose.model(model).schema;
+
+        var paths = [];
+        schema.eachPath(function (n) {
+            paths.push(n);
         });
+        _.pull(paths,
+            "_id", "createdAt", "updatedAt", "__v");
+        res.callback(null, paths);
     }
 };

@@ -7,7 +7,7 @@ var controller = {
 
         req.body = {};
         req.body.companyExcel = {
-            name: "597efee84a56004cd5d828b6.xlsx",
+            name: "5980818b0bfe830dfb688609.xlsx",
             fields: [{
                     ourField: "name",
                     theirField: "Firstname"
@@ -26,23 +26,37 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatLimit(data, 20, function (singleData, callback) {
-
                     var rules = [{
+                            name: "Amount600",
+                            priority: 1,
                             "condition": function (R) {
-                                R.when(singleData && (singleData.amount < 500));
+                                red("Amount 600");
+                                R.when((singleData.amount == 600));
                             },
                             "consequence": function (R) {
-                                singleData.result = false;
-                                R.stop();
+                                R.next();
                             }
                         },
                         {
+
+                            name: "NameAdi",
+                            priority: 2,
                             "condition": function (R) {
-                                R.when(singleData && (singleData.name == 'adi'));
+                                R.when((singleData.name == 'Adi'));
                             },
                             "consequence": function (R) {
-                                singleData.result = false;
-                                R.stop();
+                                R.next();
+                            }
+                        },
+                        {
+                            name: "TypeTest",
+                            priority: 3,
+                            "condition": function (R) {
+                                green("TypeTest");
+                                R.when((singleData.type == 'Test'));
+                            },
+                            "consequence": function (R) {
+                                R.next();
                             }
                         }
                     ];
@@ -50,15 +64,10 @@ var controller = {
                     var R = new RuleEngine(rules);
 
                     R.execute(singleData, function (result) {
-                        if (singleData.result == false) {
-                            console.log("Condition satisfied", singleData);
-                            // DemoTransaction.saveData(singleData, callback);
-                        } else {
-                            console.log("Condition unsatisfied", singleData);
-                        }
+                        callback(null, result);
                     });
                 }, function (err, data) {
-                    // res.callback(null, data);
+                    res.callback(err, data);
                 });
             }
         });

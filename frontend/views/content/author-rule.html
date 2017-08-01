@@ -57,10 +57,34 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">Element/Expression</label>
+                                    <label class=" control-label">All Models</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Enter Element/Expression">
+                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
+                                        <ui-select-match placeholder="Select">
+                                            <span>{{$select.selected}}</span>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
+                                            {{country}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-1">
+                                    <label class=" control-label">Model Fields</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true">
+                                        <ui-select-match placeholder="Select">
+                                            <span>{{$select.selected}}</span>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="country in allFields | filter: $select.search" refresh="" refresh-delay="0">
+                                            {{country}}
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </div>
                         </div>
@@ -70,12 +94,13 @@
                                     <label class=" control-label">Select Operator</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="formData.operators" name="country" theme="bootstrap" sortable="true">
+                                    <ui-select ng-model="country2.operators" on-select="addOperator(country2.operators,$index)" name="choice" theme="bootstrap"
+                                        sortable="true">
                                         <ui-select-match placeholder="Select Operator">
-                                            <span>{{$select.selected.name}}</span>
+                                            <span>{{$select.selected}}</span>
                                         </ui-select-match>
-                                        <ui-select-choices repeat="operator.name as operator in operators | filter: $select.search" refresh="" refresh-delay="0">
-                                            {{operator.name}}
+                                        <ui-select-choices repeat="operator as operator in operators | filter: $select.search" refresh="" refresh-delay="0">
+                                            {{operator}}
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
@@ -87,11 +112,11 @@
                                     <div class="radio">
                                         <label><input type="radio" name="element">Constant</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Constant">
+                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-model="choice.constant">
                                     <div class="radio">
                                         <label><input type="radio" name="element">Element/Expression</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Element/Expression">
+                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-model="choice.element">
                                 </div>
                             </div>
                         </div>
@@ -99,8 +124,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-11 col-sm-offset-1">
-                                    <div class="mt20" ng-if="!(choice.id == 'choice1')">
-                                        <a class="btn btn-success" ng-click="removeChoice();">
+                                    <div class="mt20" ng-if="choices.length>1">
+                                        <a class="btn btn-success" ng-click="removeChoice($index);">
                                             <i class="fa fa-minus" aria-hidden="true"></i> 
                                             Remove Condition </a>
                                     </div>
@@ -125,7 +150,7 @@
                             <div class="col-sm-11 col-sm-offset-1">
                                 <div class="mt20 text-right">
                                     <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
-                                    <a ng-click="" class="btn btn-primary">Save</a>
+                                    <a class="btn btn-primary" ng-click="drlSave(choices)">Save</a>
                                     <a ng-click="" class="btn btn-primary">Home</a>
                                 </div>
                             </div>

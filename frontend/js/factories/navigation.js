@@ -7,7 +7,7 @@ myApp.factory('NavigationService', function ($http) {
         classis: "active",
         anchor: "corporate",
         // icon: "fa-tachometer"
-    },{
+    }, {
         name: "Predictive Dashboard",
         classis: "active",
         anchor: "coming-soon",
@@ -60,7 +60,7 @@ myApp.factory('NavigationService', function ($http) {
             anchor: "coming-soon",
             // icon: "fa-cog"
         }]
-    },{
+    }, {
         name: "Rules Admin",
         classis: "active",
         // icon: "fa-pencil-square-o",
@@ -130,6 +130,13 @@ myApp.factory('NavigationService', function ($http) {
                 data = data.data;
                 callback(data);
 
+            });
+        },
+
+        callApi: function (url, callback) {
+            $http.post(adminurl + url).then(function (data) {
+                data = data.data;
+                callback(data);
             });
         },
 
