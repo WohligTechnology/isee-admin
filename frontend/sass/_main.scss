@@ -150,6 +150,13 @@ header {
     background: $brand-warning !important;
 }
 
+//All button 
+.btn {
+    padding: 6px 25px;
+}
+.panel .panel-heading > .panel-options a.btn-primary{
+    color: #fff;
+}
 // for navigation
 .user-info-navbar {
     .user-info-menu {
