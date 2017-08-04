@@ -639,9 +639,9 @@ var controller = {
         res.callback(null, retJson);
     },
 
-    findRuleByName: function (req, res) {
+    findAll: function (req, res) {
         if (req.body) {
-            RuleEngine.findRuleByName(req.body, res.callback);
+            RuleEngine.findAll(req.body, res.callback);
         } else {
             res.json({
                 value: false,

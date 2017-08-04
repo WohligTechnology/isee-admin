@@ -82,7 +82,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'ViewRulesCtrl'
         })
         .state('view-rules-detail', {
-            url: "/view-rules-detail",
+            url: "/view-rules-detail/:ruleId",
             templateUrl: tempateURL,
             controller: 'ViewRulesDetailCtrl'
         })

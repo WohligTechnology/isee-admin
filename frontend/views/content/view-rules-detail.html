@@ -25,16 +25,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="sorting">Assignment ID</th>
-                        <th>Show Results When</th>
-                        <th>Transition Type</th>
+                        <th>Model</th>
+                        <th>Field</th>
+                        <th>Operator</th>
+                        <th>Constant</th>
+                        <th>Expression</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in assignmentdata">
-                        <th>{{data._id}}</th>
-                        <td>{{data.to}}</td>
-                        <td>{{data.entry}}</td>
+                    <tr ng-repeat="data in singleRuleData.rule">
+                        <th>{{data.model}}</th>
+                        <td>{{data.field}}</td>
+                        <td>{{data.operators}}</td>
+                        <td>{{data.constant}}</td>
                     </tr>
             </table>
             <div class="row">

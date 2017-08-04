@@ -14,7 +14,7 @@
              expection: '8',
              outstanding: '0',
              assignmentDate: '05/02/17',
-             lastPerfect:'05/02/17'
+             lastPerfect: '05/02/17'
          },
          {
              _id: 'CTA-2017-04-24_40',
@@ -25,7 +25,7 @@
              expection: '5',
              outstanding: '3',
              assignmentDate: '05/02/17',
-             lastPerfect:'05/02/17'
+             lastPerfect: '05/02/17'
          },
          {
              _id: 'CTA-2017-04-26_40',
@@ -36,7 +36,13 @@
              expection: '6',
              outstanding: '2',
              assignmentDate: '05/02/17',
-             lastPerfect:'05/02/17'
+             lastPerfect: '05/02/17'
          }
      ];
+
+     NavigationService.callApi("RuleEngine/findAll", function (data) {
+         if (data.value == true) {
+             $scope.allRules = data.data;
+         }
+     });
  })

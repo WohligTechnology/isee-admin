@@ -45,11 +45,25 @@ var controller = {
                         function (data, callback) {
                             async.concatLimit(data, 20, function (singleData, callback) {
                                 async.concatLimit(rules, 20, function (ruleData, callback) {
+                                    var conditionData = {};
+                                    if (ruleData.operators == '==') {
+                                        conditionData = singleData[ruleData.field] == ruleData.constant;
+                                    } else if (ruleData.operators == '<=') {
+                                        conditionData = singleData[ruleData.field] <= ruleData.constant;
+                                    } else if (ruleData.operators == '>=') {
+                                        conditionData = singleData[ruleData.field] >= ruleData.constant;
+                                    } else if (ruleData.operators == '>') {
+                                        conditionData = singleData[ruleData.field] > ruleData.constant;
+                                    } else if (ruleData.operators == '<') {
+                                        conditionData = singleData[ruleData.field] < ruleData.constant;
+                                    } else if (ruleData.operators == '!=') {
+                                        conditionData = singleData[ruleData.field] != ruleData.constant;
+                                    }
                                     var rules = [{
                                         name: ruleData.model,
                                         // priority: 1,
                                         "condition": function (R) {
-                                            R.when(singleData[ruleData.field] == ruleData.constant);
+                                            R.when(conditionData);
                                         },
                                         "consequence": function (R) {
                                             R.next();
@@ -67,52 +81,54 @@ var controller = {
                                 });
 
                             }, function (err, resultArr) {
-                                // res.callback(null, resultArr);
+                                res.callback(null, resultArr);
                             });
                         }
                     ],
                     function (err, found) {
                         if (err) {
                             // console.log(err);
-                            res.callback(err);
+                            // res.callback(err);
                         } else {
-                            res.callback(null, resultArr);
+                            // res.callback(null, found);
                         }
                     });
-                Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
-                    if (err || _.isEmpty(data)) {
-                        res.callback(err);
-                    } else {
-                        async.concatLimit(data, 20, function (singleData, callback) {
-                            async.concatLimit(rules, 20, function (ruleData, callback) {
-                                var rules = [{
-                                    name: ruleData.model,
-                                    // priority: 1,
-                                    "condition": function (R) {
-                                        R.when(singleData[ruleData.field] == ruleData.constant);
-                                    },
-                                    "consequence": function (R) {
-                                        R.next();
-                                    }
-                                }];
 
-                                var R = new RuleEng(rules);
 
-                                R.execute(singleData, function (result) {
-                                    callback(null, result.matchPath);
-                                });
-                            }, function (err, data) {
-                                callback(err, {
-                                    name: singleData.name,
-                                    result: data
-                                });
-                            });
+                // Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+                //     if (err || _.isEmpty(data)) {
+                //         res.callback(err);
+                //     } else {
+                //         async.concatLimit(data, 20, function (singleData, callback) {
+                //             async.concatLimit(rules, 20, function (ruleData, callback) {
+                //                 var rules = [{
+                //                     name: ruleData.model,
+                //                     // priority: 1,
+                //                     "condition": function (R) {
+                //                         R.when(singleData[ruleData.field] == ruleData.constant);
+                //                     },
+                //                     "consequence": function (R) {
+                //                         R.next();
+                //                     }
+                //                 }];
 
-                        }, function (err, resultArr) {
-                            res.callback(null, resultArr);
-                        });
-                    }
-                });
+                //                 var R = new RuleEng(rules);
+
+                //                 R.execute(singleData, function (result) {
+                //                     callback(null, result.matchPath);
+                //                 });
+                //             }, function (err, data) {
+                //                 callback(err, {
+                //                     name: singleData.name,
+                //                     result: data
+                //                 });
+                //             });
+
+                //         }, function (err, resultArr) {
+                //             res.callback(null, resultArr);
+                //         });
+                //     }
+                // });
             }
         });
 
