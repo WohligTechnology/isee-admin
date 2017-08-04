@@ -1,76 +1,122 @@
 module.exports = _.cloneDeep(require("sails-wohlig-controller"));
-var RuleEngine = require('node-rules');
+var RuleEng = require('node-rules');
 
 var controller = {
 
     rulesDemo: function (req, res) {
-
         req.body = {};
         req.body.companyExcel = {
-            name: "5980818b0bfe830dfb688609.xlsx",
+            name: "5982c26d7b6d0616085e8551.xlsx",
             fields: [{
                     ourField: "name",
-                    theirField: "Firstname"
+                    theirField: "Name"
                 }, {
-                    ourField: "type",
-                    theirField: "TransactionType"
+                    ourField: "region",
+                    theirField: "Region"
+                }, {
+                    ourField: "code",
+                    theirField: "TextCode"
                 },
                 {
                     ourField: "amount",
-                    theirField: "Amount"
+                    theirField: "amount"
                 }
             ]
         };
-        Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+
+        var rules = {};
+        RuleEngine.findOne({
+            _id: "5981877732bd63244a871981"
+        }, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatLimit(data, 20, function (singleData, callback) {
-                    var rules = [{
-                            name: "Amount600",
-                            priority: 1,
-                            "condition": function (R) {
-                                red("Amount 600");
-                                R.when((singleData.amount == 600));
-                            },
-                            "consequence": function (R) {
-                                R.next();
-                            }
+                rules = data.rule;
+                async.waterfall([
+                        function (callback) {
+                            Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+                                if (err || _.isEmpty(data)) {
+                                    res.callback(err);
+                                } else {
+                                    callback(null, data);
+                                }
+                            });
                         },
-                        {
+                        function (data, callback) {
+                            async.concatLimit(data, 20, function (singleData, callback) {
+                                async.concatLimit(rules, 20, function (ruleData, callback) {
+                                    var rules = [{
+                                        name: ruleData.model,
+                                        // priority: 1,
+                                        "condition": function (R) {
+                                            R.when(singleData[ruleData.field] == ruleData.constant);
+                                        },
+                                        "consequence": function (R) {
+                                            R.next();
+                                        }
+                                    }];
+                                    var R = new RuleEng(rules);
+                                    R.execute(singleData, function (result) {
+                                        callback(null, result.matchPath);
+                                    });
+                                }, function (err, data) {
+                                    callback(err, {
+                                        name: singleData.name,
+                                        result: data
+                                    });
+                                });
 
-                            name: "NameAdi",
-                            priority: 2,
-                            "condition": function (R) {
-                                R.when((singleData.name == 'Adi'));
-                            },
-                            "consequence": function (R) {
-                                R.next();
-                            }
-                        },
-                        {
-                            name: "TypeTest",
-                            priority: 3,
-                            "condition": function (R) {
-                                green("TypeTest");
-                                R.when((singleData.type == 'Test'));
-                            },
-                            "consequence": function (R) {
-                                R.next();
-                            }
+                            }, function (err, resultArr) {
+                                // res.callback(null, resultArr);
+                            });
                         }
-                    ];
-
-                    var R = new RuleEngine(rules);
-
-                    R.execute(singleData, function (result) {
-                        callback(null, result);
+                    ],
+                    function (err, found) {
+                        if (err) {
+                            // console.log(err);
+                            res.callback(err);
+                        } else {
+                            res.callback(null, resultArr);
+                        }
                     });
-                }, function (err, data) {
-                    res.callback(err, data);
+                Config.importGSForCustomFields(req.body.companyExcel.name, req.body.companyExcel.fields, function (err, data) {
+                    if (err || _.isEmpty(data)) {
+                        res.callback(err);
+                    } else {
+                        async.concatLimit(data, 20, function (singleData, callback) {
+                            async.concatLimit(rules, 20, function (ruleData, callback) {
+                                var rules = [{
+                                    name: ruleData.model,
+                                    // priority: 1,
+                                    "condition": function (R) {
+                                        R.when(singleData[ruleData.field] == ruleData.constant);
+                                    },
+                                    "consequence": function (R) {
+                                        R.next();
+                                    }
+                                }];
+
+                                var R = new RuleEng(rules);
+
+                                R.execute(singleData, function (result) {
+                                    callback(null, result.matchPath);
+                                });
+                            }, function (err, data) {
+                                callback(err, {
+                                    name: singleData.name,
+                                    result: data
+                                });
+                            });
+
+                        }, function (err, resultArr) {
+                            res.callback(null, resultArr);
+                        });
+                    }
                 });
             }
         });
+
+
     },
 
 };

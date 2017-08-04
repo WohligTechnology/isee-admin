@@ -22,12 +22,12 @@
                                 <label class=" control-label">Show Results When</label>
                             </div>
                             <div class="col-sm-8">
-                                <ui-select ng-model="formRuleData.name" name="name" theme="bootstrap" sortable="true">
+                                <ui-select ng-model="drlRule.showResult" name="name" theme="bootstrap" sortable="true">
                                     <ui-select-match placeholder="Show Results When">
-                                        <span>{{$select.selected.name}}</span>
+                                        <span>{{$select.selected}}</span>
                                     </ui-select-match>
-                                    <ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
-                                        {{country.name}}
+                                    <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
+                                        {{country}}
                                     </ui-select-choices>
                                 </ui-select>
                                 <div class="pull-right" ng-repeat="(field,value) in formRule.name.$error" ng-show="formRule.name.$touched">
@@ -42,18 +42,18 @@
                                 <label class=" control-label">Transition Type</label>
                             </div>
                             <div class="col-sm-8">
-                                <ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
+                                <ui-select ng-model="drlRule.transactionType" name="country" theme="bootstrap" sortable="true">
                                     <ui-select-match placeholder="Transition Type">
-                                        <span>{{$select.selected.name}}</span>
+                                        <span>{{$select.selected}}</span>
                                     </ui-select-match>
-                                    <ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
-                                        {{country.name}}
+                                    <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
+                                        {{country}}
                                     </ui-select-choices>
                                 </ui-select>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-divider" ng-repeat="choice in choices">
+                    <div class="panel-divider" ng-repeat="choice in drlRule.choices">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
@@ -150,7 +150,7 @@
                             <div class="col-sm-11 col-sm-offset-1">
                                 <div class="mt20 text-right">
                                     <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
-                                    <a class="btn btn-primary" ng-click="drlSave(choices)">Save</a>
+                                    <a class="btn btn-primary" ng-click="drlSave(drlRule)">Save</a>
                                     <a ng-click="" class="btn btn-primary">Home</a>
                                 </div>
                             </div>

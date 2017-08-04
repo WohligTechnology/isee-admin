@@ -22,5 +22,24 @@ schema.plugin(mongoosastic);
 module.exports = mongoose.model('RuleEngine', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+    // findOne: function (id, callback) {
+    //     RuleEngine.findOne({
+    //         _id: id
+    //     }).lean().exec(function (err, found) {
+    //         if (err) {
+    //             callback(err, null);
+    //         } else {
+    //             if (found) {
+    //                 callback(null, found);
+    //             } else {
+    //                 callback({
+    //                     message: "Incorrect Credentials!"
+    //                 }, null);
+    //             }
+    //         }
+
+    //     });
+    // },
+};
 module.exports = _.assign(module.exports, exports, model);

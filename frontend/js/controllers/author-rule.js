@@ -11,19 +11,20 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
             }, 5000);
         });
     };
-    $scope.countries = [{}];
+    $scope.countries = [];
 
-    $scope.operators = ["=", "<=", ">=", ">", "<", "!=", "Contains", "Matches"];
+    $scope.operators = ["==", "<=", ">=", ">", "<", "!=", "Contains", "Matches"];
     //addition of Element/Expression
-    $scope.choices = [{}];
+    $scope.drlRule = {};
+    $scope.drlRule.choices = [{}];
 
     $scope.addNewChoice = function () {
-        $scope.choices.push({});
+        $scope.drlRule.choices.push({});
     };
 
     //Remove of Element/Expression
     $scope.removeChoice = function (index) {
-        $scope.choices.splice(index, 1);
+        $scope.drlRule.choices.splice(index, 1);
     };
     // End Remove of Element/Expression
 
@@ -50,8 +51,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
 
     $scope.selectedModel = {};
     $scope.addAllModel = function (val, index) {
-        $scope.choices[index].model = val;
-        console.log("$scope.choices[index].allModels", $scope.choices[index].allModels, index);
+        $scope.drlRule.choices[index].model = val;
         $scope.selectedModel.model = val;
         NavigationService.apiCall("Web/getModelFields", $scope.selectedModel, function (data) {
             if (data.value == true) {
@@ -61,15 +61,23 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         });
     };
     $scope.addModelField = function (val, index) {
-        $scope.choices[index].field = val;
+        $scope.drlRule.choices[index].field = val;
 
     };
     $scope.addOperator = function (val, index) {
-        $scope.choices[index].operators = val;
+        $scope.drlRule.choices[index].operators = val;
     };
 
 
     $scope.drlSave = function (formdata) {
-        console.log("formdata------", formdata);
+        $scope.rules = {};
+        $scope.rules.name = formdata.showResult;
+        $scope.rules.rule = formdata.choices;
+        NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
+            if (data.value == true) {
+                // $scope.allFields = data.data;
+                console.log("data-------    ", data);
+            }
+        });
     }
 })

@@ -639,5 +639,18 @@ var controller = {
         res.callback(null, retJson);
     },
 
+    findRuleByName: function (req, res) {
+        if (req.body) {
+            RuleEngine.findRuleByName(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            });
+        }
+    },
+
 };
 module.exports = _.assign(module.exports, controller);
