@@ -1,7 +1,7 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header">
     <span class="main bredcrums"> 
-        <a href="">Home</a> >><a ui-sref="drl-rule"> Assignment Allocation</a> >> CTA-2017-04-26,34
+        <a href="">Home</a> >><a ui-sref="drl-rule"> DRL Rule</a> >> <a ui-sref="view-rules">Rule List</a> >> Rule List Detail 
         </span>
 </div>
 <div class="panel panel-default">
@@ -17,7 +17,7 @@
             </form>
         </div>
         <div class="add-title">
-            <span class="main bredcrums">Assignment Allocation</span>
+            <span class="main bredcrums">Rule List Detail</span>
         </div>
     </div>
     <div class="panel-body">
@@ -26,14 +26,8 @@
                 <thead>
                     <tr>
                         <th class="sorting">Assignment ID</th>
-                        <th>Assignment To</th>
-                        <th>Legal Entry</th>
-                        <th>Actual Assignment Size</th>
-                        <th>Current Assignment Size</th>
-                        <th>Exceptions Completed</th>
-                        <th>Outstanding</th>
-                        <th>Assignment Date</th>
-                        <th>Last Action Perfect</th>
+                        <th>Show Results When</th>
+                        <th>Transition Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,12 +35,6 @@
                         <th>{{data._id}}</th>
                         <td>{{data.to}}</td>
                         <td>{{data.entry}}</td>
-                        <td>{{data.actualSize}}</td>
-                        <td>{{data.currentSize}}</td>
-                        <td>{{data.expection}}</td>
-                        <td>{{data.outstanding}}</td>
-                        <td>{{data.assignmentDate}}</td>
-                        <td>{{data.lastPerfect}}</td>
                     </tr>
             </table>
             <div class="row">

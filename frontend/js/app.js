@@ -76,6 +76,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'CustomerDetailCtrl'
         })
+        .state('view-rules', {
+            url: "/view-rules",
+            templateUrl: tempateURL,
+            controller: 'ViewRulesCtrl'
+        })
+        .state('view-rules-detail', {
+            url: "/view-rules-detail",
+            templateUrl: tempateURL,
+            controller: 'ViewRulesDetailCtrl'
+        })
         .state('coming-soon', {
             url: "/coming-soon",
             templateUrl: tempateURL,

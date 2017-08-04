@@ -1,7 +1,12 @@
+<!-- header -->
 <div ng-include="template.header" class="template header"></div>
+<!-- end header -->
+<!-- header bredcrums -->
 <div class="add-header">
-    <span class="main bredcrums"> <a href="">Author Rule</a> >><a href=""> Listing Library</a> >><a href=""> Add New Rule</a> >> DRL Rule</span>
+    <span class="main bredcrums"> <a ui-sref="drl-rule">Author Rule</a> >><a ui-sref="drl-rule"> Listing Library</a> >><a href=""> Add New Rule</a> >> DRL Rule</span>
 </div>
+<!-- End header bredcrums -->
+
 
 <div class="panel panel-default">
     <div class="form-default min-h100">
@@ -10,7 +15,10 @@
                 <!--form-divider-->
                 <form action="" name="formRule">
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-1 ">
+                        <div class="col-sm-11 col-sm-offset-1 ">
+                            <div class="pull-right">
+                                <button class="btn btn-info btn-md" ui-sref="view-rules">View</button>
+                            </div>
                             <div class="add-title">
                                 <span class="main bredcrums">Listing Library</span>
                             </div>
