@@ -489,12 +489,35 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    CustomerNote.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
-                        });
+                    Customer.findOne({
+                        custId: singleData.custId
+                    }).exec(function (err, found) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (found) {
+                                singleData.custId = found._id
+                                CustomerNote.saveData(singleData, function (err, data) {
+                                    callback(null, {
+                                        error: err,
+                                        success: data
+                                    });
+                                });
+                                // callback(null, found);
+                            } else {
+                                callback({
+                                    message: "Incorrect Credentials!"
+                                }, null);
+                            }
+                        }
+
                     });
+                    // CustomerNote.saveData(singleData, function (err, data) {
+                    //     callback(null, {
+                    //         error: err,
+                    //         success: data
+                    //     });
+                    // });
                 }, res.callback);
             }
         });
