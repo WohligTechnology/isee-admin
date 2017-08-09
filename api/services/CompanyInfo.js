@@ -36,7 +36,10 @@ var schema = new Schema({
     inventoryBucketId: {
         type: String,
         es_indexed: true
-    }
+    },
+    //custId
+
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});

@@ -12,7 +12,10 @@ var schema = new Schema({
     sortOrder: {
         type: String,
         enum: ['Asc', 'Desc']
-    }
+    },
+    //custId
+
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});

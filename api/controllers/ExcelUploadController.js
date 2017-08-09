@@ -456,15 +456,20 @@ var controller = {
         if (req.body.file) {
             var retJson = {};
             retJson.fields = [{
-                field: "noteSequence",
-                description: "Note Sequence a number that can not be greater than 65000"
-            }, {
-                field: "note",
-                description: "This is a string of length less than 140 characters."
-            }, {
-                field: "noteTimeStamp",
-                description: "This is a timestamp"
-            }];
+                    field: "noteSequence",
+                    description: "Note Sequence a number that can not be greater than 65000"
+                }, {
+                    field: "note",
+                    description: "This is a string of length less than 140 characters."
+                }, {
+                    field: "noteTimeStamp",
+                    description: "This is a timestamp"
+                },
+                {
+                    field: "custId",
+                    description: "This is a Id"
+                }
+            ];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);

@@ -70,7 +70,11 @@ var schema = new Schema({
         validate: validators.isEmail(),
         es_indexed: true
     },
-    geoCode: String
+    geoCode: String,
+
+    //custId
+
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});

@@ -10,7 +10,10 @@ var schema = new Schema({
         required: true
     },
     note: String,
-    noteTimeStamp: Date
+    noteTimeStamp: Date,
+
+    //custId
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});
@@ -20,5 +23,85 @@ schema.plugin(mongoosastic);
 module.exports = mongoose.model('CustomerNote', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+
+    replaceCustomerId: function (data, callback) {
+        // console.log("data", data)
+        Customer.findOne({
+            custId: data.id
+        }).exec(function (err, found) {
+            if (err) {
+                callback(err, null);
+            } else {
+                if (found) {
+                    CustomerNote.findOneAndUpdate({
+                        custId: data.id
+                    }, {
+                        custId: found._id
+                    }, {
+                        new: true
+                    }).exec(function (err, found1) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (found) {
+                                callback(null, found1);
+                            } else {
+                                callback({
+                                    message: "Incorrect Credentials!"
+                                }, null);
+                            }
+                        }
+
+                    });
+                    // callback(null, found);
+                } else {
+                    callback({
+                        message: "Incorrect Credentials!"
+                    }, null);
+                }
+            }
+
+        });
+    },
+
+    //  Customer.findOne({
+    //                     custId: singleData.custId
+    //                 }).exec(function (err, found) {
+    //                     if (err) {
+    //                         callback(err, null);
+    //                     } else {
+    //                         if (found) {
+    //                             CustomerNote.findOneAndUpdate({
+    //                                 custId: singleData.custId
+    //                             }, {
+    //                                 custId: found._id
+    //                             }, {
+    //                                 new: true,
+    //                                 upsert: true
+    //                             }).exec(function (err, found1) {
+    //                                 if (err) {
+    //                                     callback(err, null);
+    //                                 } else {
+    //                                     if (found) {
+    //                                         callback(null, found1);
+    //                                     } else {
+    //                                         callback({
+    //                                             message: "Incorrect Credentials!"
+    //                                         }, null);
+    //                                     }
+    //                                 }
+
+    //                             });
+    //                             // callback(null, found);
+    //                         } else {
+    //                             callback({
+    //                                 message: "Incorrect Credentials!"
+    //                             }, null);
+    //                         }
+    //                     }
+
+    //                 });
+
+};
 module.exports = _.assign(module.exports, exports, model);

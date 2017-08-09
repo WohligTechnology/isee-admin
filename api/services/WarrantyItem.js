@@ -13,7 +13,10 @@ var schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Item',
         index: true
-    }]
+    }],
+    //custId
+
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});

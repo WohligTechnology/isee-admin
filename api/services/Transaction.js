@@ -50,7 +50,10 @@ var schema = new Schema({
         ref: 'Crm',
         index: true,
         key: "transaction"
-    }
+    },
+    //custId
+
+    custId: String
 });
 
 schema.plugin(deepPopulate, {});

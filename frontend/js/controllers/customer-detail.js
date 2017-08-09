@@ -68,11 +68,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     if ($scope.activeJustified == 1) {
 
         $scope.getExcelFields = function (formdata) {
-            console.log("formdata", formdata);
+            // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/customerNoteUpload", formdata, function (data) {
                 if (data.value == true) {
                     $scope.excelData = data.data;
-                    console.log("aaaa", $scope.excelArrData);
+                    // console.log("aaaa", $scope.excelArrData);
                 } else {
                     alert("aaaaa");
                 }
@@ -197,12 +197,12 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             $scope.eData = "";
         }
         $scope.getExcelFields = function (formdata) {
-            console.log("formdata", formdata);
+            // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
                     // console.log("aaaa", data);
                     $scope.excelData = data.data;
-                    console.log("excelData", $scope.excelData);
+                    // console.log("excelData", $scope.excelData);
                 } else {
                     alert("Incorrect Input  ");
                 }
@@ -220,7 +220,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 $scope.field.theirField = value;
                 $scope.companyExcel.fields.push($scope.field);
             });
-            console.log("$scope.companyExcel", $scope.companyExcel);
+            // console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
                     console.log("#############1################", data);
