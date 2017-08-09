@@ -4,9 +4,9 @@ var RuleEng = require('node-rules');
 var controller = {
 
     rulesDemo: function (req, res) {
-        req.body = {};
+        // req.body = {};
         req.body.companyExcel = {
-            name: "5982c26d7b6d0616085e8551.xlsx",
+            name: "59895be27352f455fcb4bcfc.xlsx",
             fields: [{
                     ourField: "name",
                     theirField: "Name"
@@ -26,7 +26,7 @@ var controller = {
 
         var rules = {};
         RuleEngine.findOne({
-            _id: "5981877732bd63244a871981"
+            _id: req.body.id
         }, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);

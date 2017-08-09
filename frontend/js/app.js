@@ -86,6 +86,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'ViewRulesDetailCtrl'
         })
+        .state('violatedRules', {
+            url: "/violatedRules/:ruleId",
+            templateUrl: tempateURL,
+            controller: 'violatedRulesCtrl'
+        })
         .state('coming-soon', {
             url: "/coming-soon",
             templateUrl: tempateURL,

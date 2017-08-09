@@ -78,7 +78,7 @@ myApp.factory('NavigationService', function ($http) {
         }, {
             name: "Rules Report",
             classis: "active",
-            anchor: "drl-rule",
+            anchor: "view-rules",
             // icon: "fa-cog"
         }]
     }, {

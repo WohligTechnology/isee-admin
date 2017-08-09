@@ -94,7 +94,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    console.log("Sucess#############################", data);
                     $scope.errData = data.data;
                     $scope.eData = {};
                     $scope.eData.tableName = 'CustomerNote';
@@ -102,7 +101,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
                         if (data.value == true) {
                             console.log("Sucess#############################", data);
-                            alert("data submit Sucessfully");
+                            toastr.success("Data Submitted Sucessfully");
                         }
                     });
                 }
@@ -231,7 +230,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $scope.eData.logs = data.data;
                     NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
                         if (data.value == true) {
-                            alert("data submit Sucessfully");
+                            toastr.success("Data Submitted Sucessfully");
                         }
                     });
                 }

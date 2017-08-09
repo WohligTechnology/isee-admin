@@ -59,6 +59,7 @@ module.exports = [
   'frontend/js/controllers/transition.js',
   'frontend/js/controllers/customer-detail.js',
   'frontend/js/controllers/view-rules.js',
+  'frontend/js/controllers/violatedRules.js',
   'frontend/js/controllers/view-rules-detail.js',
   'frontend/js/controllers/coming-soon.js',
   'frontend/js/controllers/header-controller.js',
