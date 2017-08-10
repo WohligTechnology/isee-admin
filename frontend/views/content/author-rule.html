@@ -27,24 +27,17 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-3 col-sm-offset-1">
-                                <label class=" control-label">Show Results When</label>
+                                <label class=" control-label">Name</label>
                             </div>
                             <div class="col-sm-8">
-                                <ui-select ng-model="drlRule.showResult" name="name" theme="bootstrap" sortable="true">
-                                    <ui-select-match placeholder="Show Results When">
-                                        <span>{{$select.selected}}</span>
-                                    </ui-select-match>
-                                    <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
-                                        {{country}}
-                                    </ui-select-choices>
-                                </ui-select>
+                                <input type="text" ng-model="drlRule.name">
                                 <div class="pull-right" ng-repeat="(field,value) in formRule.name.$error" ng-show="formRule.name.$touched">
                                     <span class="label label-danger" ng-if="field=='required' && value">Please Select Show Results When</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <div class="row">
                             <div class="col-sm-3 col-sm-offset-1">
                                 <label class=" control-label">Transition Type</label>
@@ -60,7 +53,7 @@
                                 </ui-select>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="panel-divider" ng-repeat="choice in drlRule.choices">
                         <div class="form-group">
                             <div class="row">
@@ -158,7 +151,7 @@
                             <div class="col-sm-11 col-sm-offset-1">
                                 <div class="mt20 text-right">
                                     <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
-                                    <a class="btn btn-primary" ng-click="drlSave(drlRule)">Save</a>
+                                    <a class="btn btn-primary" ng-click="drlSave(drlRule)" ui-sref="view-rules">Save</a>
                                     <a ng-click="" class="btn btn-primary">Home</a>
                                 </div>
                             </div>

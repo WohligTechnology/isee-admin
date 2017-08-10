@@ -81,12 +81,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Company.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Company.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
                         });
-                    });
+                    } else {
+                        Company.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -132,12 +156,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    CompanyContact.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    CompanyContact.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
                         });
-                    });
+                    } else {
+                        CompanyContact.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -211,12 +259,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    CompanyInfo.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    CompanyInfo.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
                         });
-                    });
+                    } else {
+                        CompanyInfo.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -377,12 +449,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Crm.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Crm.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
                         });
-                    });
+                    } else {
+                        Crm.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -438,12 +534,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Customer.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Customer.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
                         });
-                    });
+                    } else {
+                        Customer.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -489,35 +609,36 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Customer.findOne({
-                        custId: singleData.custId
-                    }).exec(function (err, found) {
-                        if (err) {
-                            callback(err, null);
-                        } else {
-                            if (found) {
-                                singleData.custId = found._id
-                                CustomerNote.saveData(singleData, function (err, data) {
-                                    callback(null, {
-                                        error: err,
-                                        success: data
-                                    });
-                                });
-                                // callback(null, found);
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
                             } else {
-                                callback({
-                                    message: "Incorrect Credentials!"
-                                }, null);
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    CustomerNote.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
                             }
-                        }
-
-                    });
-                    // CustomerNote.saveData(singleData, function (err, data) {
-                    //     callback(null, {
-                    //         error: err,
-                    //         success: data
-                    //     });
-                    // });
+                        });
+                    } else {
+                        CustomerNote.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -702,12 +823,38 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Item.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Item.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
+
                         });
-                    });
+                    } else {
+                        Item.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
+
                 }, res.callback);
             }
         });
@@ -821,12 +968,38 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Locations.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Locations.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
+
                         });
-                    });
+                    } else {
+                        Locations.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
+
                 }, res.callback);
             }
         });
@@ -906,12 +1079,37 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    Transaction.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    Transaction.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
+
                         });
-                    });
+                    } else {
+                        Transaction.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -955,12 +1153,37 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    WarrantyItem.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    WarrantyItem.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
+
                         });
-                    });
+                    } else {
+                        WarrantyItem.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });
@@ -994,12 +1217,37 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    User.saveData(singleData, function (err, data) {
-                        callback(null, {
-                            error: err,
-                            success: data
+                    if (singleData.custId) {
+                        Customer.findOne({
+                            custId: singleData.custId
+                        }).exec(function (err, found) {
+                            if (err) {
+                                callback(err, null);
+                            } else {
+                                if (found) {
+                                    singleData.custId = found._id;
+                                    User.saveData(singleData, function (err, data) {
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
+                                    });
+                                } else {
+                                    callback({
+                                        message: "Incorrect Credentials!"
+                                    }, null);
+                                }
+                            }
+
                         });
-                    });
+                    } else {
+                        User.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
+                        });
+                    }
                 }, res.callback);
             }
         });

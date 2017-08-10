@@ -52,7 +52,6 @@ var model = {
                                 }, null);
                             }
                         }
-
                     });
                     // callback(null, found);
                 } else {
@@ -63,45 +62,6 @@ var model = {
             }
 
         });
-    },
-
-    //  Customer.findOne({
-    //                     custId: singleData.custId
-    //                 }).exec(function (err, found) {
-    //                     if (err) {
-    //                         callback(err, null);
-    //                     } else {
-    //                         if (found) {
-    //                             CustomerNote.findOneAndUpdate({
-    //                                 custId: singleData.custId
-    //                             }, {
-    //                                 custId: found._id
-    //                             }, {
-    //                                 new: true,
-    //                                 upsert: true
-    //                             }).exec(function (err, found1) {
-    //                                 if (err) {
-    //                                     callback(err, null);
-    //                                 } else {
-    //                                     if (found) {
-    //                                         callback(null, found1);
-    //                                     } else {
-    //                                         callback({
-    //                                             message: "Incorrect Credentials!"
-    //                                         }, null);
-    //                                     }
-    //                                 }
-
-    //                             });
-    //                             // callback(null, found);
-    //                         } else {
-    //                             callback({
-    //                                 message: "Incorrect Credentials!"
-    //                             }, null);
-    //                         }
-    //                     }
-
-    //                 });
-
+    }
 };
 module.exports = _.assign(module.exports, exports, model);

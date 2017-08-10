@@ -71,7 +71,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
 
     $scope.drlSave = function (formdata) {
         $scope.rules = {};
-        $scope.rules.name = formdata.showResult;
+        $scope.rules.name = formdata.name;
         $scope.rules.rule = formdata.choices;
         NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
             if (data.value == true) {
