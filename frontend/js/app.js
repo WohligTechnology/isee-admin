@@ -10,7 +10,9 @@ var myApp = angular.module('myApp', [
     'angular-flexslider',
     'ui.swiper',
     'highcharts-ng',
-    'toastr'
+    'toastr',
+    'ngAnimate',
+    'ngSanitize'
 ]);
 
 // Define all the routes below

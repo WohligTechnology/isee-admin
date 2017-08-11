@@ -14,7 +14,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   //End submenu
 
 
-
+ $scope.oneAtATime = true;
   $scope.subMenu = function (navigation) {
     if (navigation.subClass == "has-sub") {
       navigation.subClass = "expanded";

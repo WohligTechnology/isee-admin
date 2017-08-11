@@ -154,9 +154,11 @@ header {
 .btn {
     padding: 6px 25px;
 }
-.panel .panel-heading > .panel-options a.btn-primary{
+
+.panel .panel-heading>.panel-options a.btn-primary {
     color: #fff;
 }
+
 // for navigation
 .user-info-navbar {
     .user-info-menu {
@@ -236,64 +238,63 @@ header {
         padding-right: 0;
         margin-top: 0;
         height: calc(100vh - 70px);
-        overflow-y: auto;
-        //scroll
-            &::-webkit-scrollbar-track {
-                border-radius: 5px;
-                background-color: #F5F5F5;
-            }
-            &::-webkit-scrollbar {
-                width: 3px;
-                height: 0px;
-                background-color: #F5F5F5;
-            }
-            &::-webkit-scrollbar-thumb {
-                border-radius: 5px;
-                background-color: #ccc;
-            } //scroll end
-        li {
-            @include transition (all ease 300ms);
-            a {
-                padding: 15px;
-                border-bottom: 1px solid #fff;
-                color: #000;
-            }
-            ul {
-                display: block;
-                height: 0;
-                @include transition( height 500ms);
-            }
-            &.expanded ul {
-                display: block;
-                height: auto;
-                li {
-                    &.active a {
-                        color: #000;
-                    }
-                    &:hover {
-                        a {
-                            background: $brand-primary;
-                            color: #fff;
-                        }
-                    }
-                }
-            }
-            &.active a {
-                color: #000;
-                &:before {
-                    color: #000;
-                }
-            }
-            &:hover {
-                .hoverClass {
-                    background: $brand-primary;
-                    color: #fff;
-                    &:before {
-                        color: #fff;
-                    }
-                }
-            }
+        overflow-y: auto; //scroll
+        &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: #F5F5F5;
         }
+        &::-webkit-scrollbar {
+            width: 3px;
+            height: 0px;
+            background-color: #F5F5F5;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #ccc;
+        } //scroll end
+        // li {
+        //     @include transition (all ease 300ms);
+        //     a {
+        //         padding: 15px;
+        //         border-bottom: 1px solid #fff;
+        //         color: #000;
+        //     }
+        //     ul {
+        //         display: block;
+        //         // height: 0;
+        //         @include transition( height 500ms);
+        //     }
+        //     &.expanded ul {
+        //         display: block;
+        //         height: auto;
+        //         li {
+        //             &.active a {
+        //                 color: #000;
+        //             }
+        //             &:hover {
+        //                 a {
+        //                     background: $brand-primary;
+        //                     color: #fff;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     &.active a {
+        //         color: #000;
+        //         &:before {
+        //             color: #000;
+        //         }
+        //     }
+        //     &:hover {
+        //         .hoverClass {
+        //             background: $brand-primary;
+        //             color: #fff;
+        //             &:before {
+        //                 color: #fff;
+        //             }
+        //         }
+        //     }
+        // }
     }
     .logo-env {
         padding: 18px 10px;
@@ -314,6 +315,20 @@ header {
     &.collapsed {
         .logo-env {
             padding: 20px 0;
+        }
+    }
+}
+
+.sidebar-menu .main-menu {
+    ul {
+        display: block;
+    }
+    a {
+        border-width: 0;
+        padding: 8px;
+        font-weight: 400;
+        &:hover{
+            color: $brand-primary;
         }
     }
 }
@@ -702,6 +717,42 @@ header {
     text-transform: uppercase;
     color: $brand-primary;
     background: #fff;
+}
+
+.accordion-custom {
+    .panel,
+    .panel-default>.panel-heading {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        &:first-child {
+            border-top: none;
+        }
+        span{
+            display: block;
+        }
+    }
+    .panel {
+        padding: 0px;
+    }
+    .panel-default>.panel-heading {
+        padding: 0;
+    }
+    .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        padding: 0px 0 0;
+        border: none;
+        margin: 0;
+    }
+    .panel-group .panel+.panel {
+        margin-top: 0;
+    }
+    .icon {
+        font-size: 20px;
+        margin-top: 0px;
+        @include transition(all ease 300ms);
+        color: #979898;
+    }
 }
 
 //End Coming Soon
