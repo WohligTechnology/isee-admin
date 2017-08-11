@@ -54,7 +54,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log(data);
             if (data.value == true) {
                 $scope.logInsideData = data.data.logs;
-                console.log("logData--------------", $scope.logInsideData);
+                // console.log("logData--------------", $scope.logInsideData);
                 _.forEach($scope.logInsideData, function (value, key) {
                     // console.log(value);
                     value.rowNo = key;
@@ -115,7 +115,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 console.log(data);
                 if (data.value == true) {
                     $scope.eData = data.data;
-                    console.log("eData--------------", $scope.eData);
+                    // console.log("eData--------------", $scope.eData);
                     // $scope.logData = data.data.found[0].info[0];
                     // console.log("logData--------------", $scope.logData);
                 } else {
@@ -196,6 +196,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             tableName = "WarrantyItem";
             $scope.eData = "";
         }
+
+
         $scope.getExcelFields = function (formdata) {
             // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
@@ -204,10 +206,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $scope.excelData = data.data;
                     // console.log("excelData", $scope.excelData);
                 } else {
-                    alert("Incorrect Input  ");
+                    toastr.error("Incorrect Input  ");
+                    // alert("Incorrect Input  ");
                 }
             });
         };
+
+
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
@@ -223,7 +228,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             // console.log("$scope.companyExcel", $scope.companyExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    console.log("#############1################", data);
+                    // console.log("#############1################", data);
                     $scope.errData = data.data;
                     $scope.eData = {};
                     $scope.eData.tableName = tableName;
@@ -236,6 +241,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         };
+
+
         $scope.getHistory = function (n) {
             $scope.getHistoryData = {};
             $scope.getHistoryData.tableName = tableName;
@@ -243,7 +250,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 console.log(data);
                 if (data.value == true) {
                     $scope.eData = data.data;
-                    console.log("eData--------------", $scope.eData);
+                    // console.log("eData--------------", $scope.eData);
                 } else {
                     toastr.error('No History');
                 }

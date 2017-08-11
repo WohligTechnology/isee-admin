@@ -21,6 +21,7 @@
                      _.forEach($scope.violatedRuleData, function (n) {
                          if (!_.isEmpty(n.result) && n.result.length == $scope.singleRuleData.rule.length) {
                              $scope.violatedRule.push(n);
+                             console.log("violatedRule-----", $scope.violatedRule);
                          }
                      });
                  }

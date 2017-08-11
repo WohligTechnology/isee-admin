@@ -107,8 +107,8 @@ var schema = new Schema({
         ref: 'Transaction',
         index: true
     }],
-    //custId
 
+    //custId
     custId: String
 });
 

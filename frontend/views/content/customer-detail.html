@@ -51,7 +51,7 @@
 											<ui-select-match placeholder="Select">
 												<span>{{$select.selected}}</span>
 											</ui-select-match>
-											<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search" refresh="" refresh-delay="0">
+											<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search track by $index" refresh="" refresh-delay="0">
 												{{country}}
 											</ui-select-choices>
 										</ui-select>

@@ -1,4 +1,4 @@
-myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     $scope.template = TemplateService.getHTML("content/author-rule.html");
     TemplateService.title = "Author Rule"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
@@ -77,6 +77,10 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
             if (data.value == true) {
                 // $scope.allFields = data.data;
                 console.log("data-------    ", data);
+                $state.go("view-rules");
+            } else {
+                toastr.error("Rule Not Saved");
+
             }
         });
     }

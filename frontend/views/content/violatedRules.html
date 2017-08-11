@@ -30,10 +30,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in violatedRule">
+                    <tr ng-repeat="data in violatedRule track by $index">
                         <th>{{data.name}}</th>
                         <td>
-                            <ul ng-repeat="data1 in data.result">{{data1}}</ul>
+                            <ul ng-repeat="data1 in data.result track by $index">{{data1}}</ul>
                         </td>
                     </tr>
             </table>

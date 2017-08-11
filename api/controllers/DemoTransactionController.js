@@ -6,21 +6,21 @@ var controller = {
     rulesDemo: function (req, res) {
         // req.body = {};
         req.body.companyExcel = {
-            name: "59895be27352f455fcb4bcfc.xlsx",
+            name: "598d90146608f93786e91972.xlsx",
             fields: [{
-                    ourField: "name",
-                    theirField: "Name"
+                    ourField: "orignalTender",
+                    theirField: "Orignal Tender"
                 }, {
-                    ourField: "region",
-                    theirField: "Region"
+                    ourField: "returnTender",
+                    theirField: "Return Tender"
                 }, {
-                    ourField: "code",
-                    theirField: "TextCode"
-                },
-                {
                     ourField: "amount",
-                    theirField: "amount"
+                    theirField: "Amount"
                 }
+                // {
+                //     ourField: "lastName",
+                //     theirField: "LastName"
+                // }
             ]
         };
 
@@ -75,7 +75,7 @@ var controller = {
                                     });
                                 }, function (err, data) {
                                     callback(err, {
-                                        name: singleData.name,
+                                        name: singleData.amount,
                                         result: data
                                     });
                                 });

@@ -1,4 +1,5 @@
 var schema = new Schema({
+    organizationId: String,
     promptToAdd: String,
     applyRestockingFee: String,
     disallowDiscounts: {

@@ -1,8 +1,7 @@
 var schema = new Schema({
-    name: String,
-    type: String,
-    amount: Number,
-    result: Boolean
+    orignalTender: String,
+    returnTender: String,
+    amount: Number
 });
 
 schema.plugin(deepPopulate, {});

@@ -60,6 +60,9 @@ var controller = {
             }, {
                 field: "itemId",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }]; //fields in schema
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -75,7 +78,7 @@ var controller = {
     },
 
     finalUploadForCompany: function (req, res) {
-        console.log("reqqqq*********************************", req.body);
+        // console.log("reqqqq*********************************", req.body);
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
@@ -136,6 +139,9 @@ var controller = {
             }, {
                 field: "sortOrder",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -239,6 +245,9 @@ var controller = {
             }, {
                 field: "inventoryBucketId",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -429,6 +438,9 @@ var controller = {
             }, {
                 field: "creatorPartyId",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -514,6 +526,9 @@ var controller = {
             }, {
                 field: "email",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -651,6 +666,9 @@ var controller = {
         if (req.body.file) {
             var retJson = {};
             retJson.fields = [{
+                field: "organizationId",
+                description: "String"
+            }, {
                 field: "promptToAdd",
                 description: "String"
             }, {
@@ -803,6 +821,9 @@ var controller = {
             }, {
                 field: "subClassId",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -948,6 +969,9 @@ var controller = {
             }, {
                 field: "geoCode",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -1059,6 +1083,9 @@ var controller = {
             }, {
                 field: "CustomerGroupId",
                 description: "String"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
@@ -1133,6 +1160,9 @@ var controller = {
             }, {
                 field: "replaceType",
                 description: "Date"
+            }, {
+                field: "custId",
+                description: "This is a Id"
             }];
             Config.getGSExcelFields(req.body.file, function (err, data) {
                 if (err || _.isEmpty(data)) {
