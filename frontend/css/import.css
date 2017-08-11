@@ -38973,7 +38973,8 @@ header {
 .sidebar-menu .main-menu a {
   border-width: 0;
   padding: 8px;
-  font-weight: 400; }
+  font-weight: 400;
+  color: #5d5d5d; }
   .sidebar-menu .main-menu a:hover {
     color: #5397be; }
 
@@ -39297,7 +39298,7 @@ header {
   font-size: 20px;
   margin-top: 0px;
   transition: all ease 300ms;
-  color: #979898; }
+  color: #5d5d5d; }
 
 #fancybox-loading,
 .fancybox-close,

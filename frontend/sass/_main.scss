@@ -327,6 +327,7 @@ header {
         border-width: 0;
         padding: 8px;
         font-weight: 400;
+        color: #5d5d5d;
         &:hover{
             color: $brand-primary;
         }
@@ -751,7 +752,7 @@ header {
         font-size: 20px;
         margin-top: 0px;
         @include transition(all ease 300ms);
-        color: #979898;
+        color: #5d5d5d;
     }
 }
 
