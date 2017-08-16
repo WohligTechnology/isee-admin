@@ -151,9 +151,9 @@
             });
         },
 
-        findDataInTable: function (data, callback) {
+        findDataInTable: function (tabs, callback) {
 
-            var AllTableLog = {};
+            // var AllTableLog = {};
 
             async.parallel([
 
@@ -164,9 +164,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.customerNote = true;
+                                tabs[0].checkMe = true;
                             } else {
-                                AllTableLog.customerNote = false;
+                                tabs[0].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -178,13 +178,12 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.crm = true;
+                                tabs[1].checkMe = true;
                             } else {
-                                AllTableLog.crm = false;
+                                tabs[1].checkMe = false;
                             }
                         }
                         callback(null, "done");
-
                     });
 
                 },
@@ -194,9 +193,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.company = true;
+                                tabs[2].checkMe = true;
                             } else {
-                                AllTableLog.company = false;
+                                tabs[2].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -209,9 +208,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.companyContact = true;
+                                tabs[3].checkMe = true;
                             } else {
-                                AllTableLog.companyContact = false;
+                                tabs[3].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -224,9 +223,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.companyInfo = true;
+                                tabs[4].checkMe = true;
                             } else {
-                                AllTableLog.companyInfo = false;
+                                tabs[4].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -239,9 +238,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.item = true;
+                                tabs[5].checkMe = true;
                             } else {
-                                AllTableLog.item = false;
+                                tabs[5].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -254,9 +253,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.locations = true;
+                                tabs[6].checkMe = true;
                             } else {
-                                AllTableLog.locations = false;
+                                tabs[6].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -269,9 +268,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.transaction = true;
+                                tabs[7].checkMe = true;
                             } else {
-                                AllTableLog.transaction = false;
+                                tabs[7].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -284,9 +283,9 @@
                             callback(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
-                                AllTableLog.warrantyItem = true;
+                                tabs[8].checkMe = true;
                             } else {
-                                AllTableLog.warrantyItem = false;
+                                tabs[8].checkMe = false;
                             }
                         }
                         callback(null, "done");
@@ -294,11 +293,9 @@
                 }
             ], function (err, results) {
                 if (err) {
-                    console.log(err);
                     callback(err, null);
                 } else {
-                    console.log("AllTableLog--------", AllTableLog);
-                    callback(null, AllTableLog);
+                    callback(null, tabs);
                 }
             });
         }
