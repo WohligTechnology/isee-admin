@@ -76,7 +76,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
             if (data.value == true) {
                 // $scope.allFields = data.data;
-                console.log("data-------    ", data);
+                // console.log("data-------    ", data);
                 $state.go("view-rules");
             } else {
                 toastr.error("Rule Not Saved");

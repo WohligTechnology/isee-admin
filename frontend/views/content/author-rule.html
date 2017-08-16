@@ -3,7 +3,7 @@
 <!-- end header -->
 <!-- header bredcrums -->
 <div class="add-header">
-    <span class="main bredcrums"> <a ui-sref="drl-rule">Author Rule</a> >><a ui-sref="drl-rule"> Listing Library</a> >><a href=""> Add New Rule</a> >> DRL Rule</span>
+    <span class="main bredcrums"> <a href="views/template/template.html">Home</a> >> <a href="view-rules">Rule List</a> >> DRL Rules</span>
 </div>
 <!-- End header bredcrums -->
 
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>-->
-                    <div class="panel-divider" ng-repeat="choice in drlRule.choices">
+                    <div class="panel-divider">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
@@ -55,10 +55,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="panel-divider" ng-repeat="choice in drlRule.choices">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">All Models</label>
+                                    <label class=" control-label">Models</label>
                                 </div>
                                 <div class="col-sm-8">
                                     <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
@@ -111,13 +114,13 @@
                             <div class="row">
                                 <div class="col-sm-8 col-sm-offset-4">
                                     <div class="radio">
-                                        <label><input type="radio" name="element">Constant</label>
+                                        <label><input type="radio" name="element" value="true" ng-model="optCons" ng-click="choice.element=''">Constant</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-model="choice.constant">
+                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-disabled="optCons!='true'" ng-model="choice.constant">
                                     <div class="radio">
-                                        <label><input type="radio" name="element">Element/Expression</label>
+                                        <label><input type="radio" name="element" value="false" ng-model="optCons" ng-click="choice.constant=''">Element/Expression</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-model="choice.element">
+                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-disabled="optCons!='false'" ng-model="choice.element">
                                 </div>
                             </div>
                         </div>

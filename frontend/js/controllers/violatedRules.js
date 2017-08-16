@@ -11,6 +11,7 @@
      $scope.singleRuleData = {};
      NavigationService.apiCall("RuleEngine/getOne", $scope.getRuleData, function (data) {
          if (data.value == true) {
+             console.log("data", data);
              $scope.singleRuleData = data.data;
              $scope.getRuleData = {};
              $scope.getRuleData.id = $stateParams.ruleId;
