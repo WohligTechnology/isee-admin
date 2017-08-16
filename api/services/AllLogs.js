@@ -151,6 +151,157 @@
             });
         },
 
+        findDataInTable: function (data, callback) {
+
+            var AllTableLog = {};
+
+            async.parallel([
+
+                //find customerNote Data
+                function (callback) {
+                    CustomerNote.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.customerNote = true;
+                            } else {
+                                AllTableLog.customerNote = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                },
+                function (callback) {
+                    Crm.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.crm = true;
+                            } else {
+                                AllTableLog.crm = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+
+                },
+                function (callback) {
+                    Company.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.company = true;
+                            } else {
+                                AllTableLog.company = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    CompanyContact.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.companyContact = true;
+                            } else {
+                                AllTableLog.companyContact = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    CompanyInfo.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.companyInfo = true;
+                            } else {
+                                AllTableLog.companyInfo = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Item.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.item = true;
+                            } else {
+                                AllTableLog.item = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Locations.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.locations = true;
+                            } else {
+                                AllTableLog.locations = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Transaction.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.transaction = true;
+                            } else {
+                                AllTableLog.transaction = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    WarrantyItem.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                AllTableLog.warrantyItem = true;
+                            } else {
+                                AllTableLog.warrantyItem = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                }
+            ], function (err, results) {
+                if (err) {
+                    console.log(err);
+                    callback(err, null);
+                } else {
+                    console.log("AllTableLog--------", AllTableLog);
+                    callback(null, AllTableLog);
+                }
+            });
+        }
 
     };
     module.exports = _.assign(module.exports, exports, model);
