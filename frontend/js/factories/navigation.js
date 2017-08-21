@@ -1,4 +1,4 @@
-var adminUrl = "http://wohlig.io/api/";
+var adminUrl = "http://wohlig.io:81/api/";
 var uploadurl = adminUrl + "upload/";
 
 myApp.factory('NavigationService', function ($http) {
