@@ -151,9 +151,9 @@ header {
 }
 
 //All button 
-.btn {
-    padding: 6px 25px;
-}
+// .btn {
+//     padding: 6px 25px;
+// }
 
 .panel .panel-heading>.panel-options a.btn-primary {
     color: #fff;
@@ -759,6 +759,21 @@ header {
         margin-top: 0px;
         @include transition(all ease 300ms);
         color: #5d5d5d;
+    }
+}
+
+
+.form-block.position-made {
+    position: absolute;
+    bottom: -56px;
+    left: 50%;
+    background: #fff;
+    @include transform(translateX(-50%));
+    padding: 0 10px;
+    z-index: 1;
+    span{
+        padding: 0 5px;
+        font-weight: 600;
     }
 }
 
