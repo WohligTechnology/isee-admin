@@ -6,8 +6,6 @@
     <span class="main bredcrums"> <a href="views/template/template.html">Home</a> >> <a href="view-rules">Rule List</a> >> DRL Rules</span>
 </div>
 <!-- End header bredcrums -->
-
-
 <div class="panel panel-default">
     <div class="form-default min-h100">
         <div class="row">
@@ -17,7 +15,7 @@
                     <div class="row">
                         <div class="col-sm-11 col-sm-offset-1 ">
                             <div class="pull-right">
-                                <button class="btn btn-info btn-md" ui-sref="view-rules">View</button>
+                                <button class="btn btn-info btn-md" ui-sref="view-rules">   <i class="fa fa-eye"></i>    View</button>
                             </div>
                             <div class="add-title">
                                 <span class="main bredcrums">Listing Library</span>
@@ -57,7 +55,6 @@
                         </div>
                     </div>
                     <div class="panel-divider" ng-repeat="choice in drlRule.choices">
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
@@ -123,11 +120,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">table</label>
+                                    <label class=" control-label">Table</label>
                                 </div>
                                 <div class="col-sm-8">
                                     <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
@@ -141,11 +137,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">table Fields</label>
+                                    <label class=" control-label">Table Fields</label>
                                 </div>
                                 <div class="col-sm-8">
                                     <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true">
@@ -159,7 +154,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-11 col-sm-offset-1">
@@ -171,8 +165,23 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-11 col-sm-offset-1">
+                                    <!-- <label class=" control-label">Table Fields</label> -->
+                                    <!-- <select class="form-control">
+                                            <option value="">AND</option>
+                                            <option value="">OR</option>
+                                        </select> -->
+                                    <div class="form-block position-made">
+                                      <span>OR </span> <input type="checkbox" checked class="iswitch iswitch-blue"> <span>AND</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-11 col-sm-offset-1">
@@ -180,7 +189,6 @@
                                     <a class="btn btn-success" ng-click="addNewChoice();">
                                         <i class="fa fa-plus" aria-hidden="true"></i> Add Condition </a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -197,7 +205,6 @@
                     </div>
                 </form>
                 <!--form-divider End-->
-
             </div>
         </div>
     </div>

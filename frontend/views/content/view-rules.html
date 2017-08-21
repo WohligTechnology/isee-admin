@@ -18,7 +18,10 @@
                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <a class="btn btn-primary" ui-sref="drl-rule">Add Rules</a>
+                <a class="btn btn-primary" ui-sref="drl-rule">
+                <i class="fa fa-plus"></i>
+                    Add Rules
+                </a>
             </form>
 
         </div>
@@ -28,7 +31,6 @@
             <table class="table">
                 <thead>
                     <tr>
-
                         <th>Name</th>
                         <th>Rules</th>
                         <th>Violated Rules</th>
@@ -36,19 +38,17 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in allRules">
-
                         <td>{{data.name}}</td>
                         <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td>
                         <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td>
-
                     </tr>
             </table>
             <div class="row">
-
                 <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
                                             " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
                     class="pagination-sm
-                                            " boundary-links="true " force-ellipses="true "></ul>
+                                            " boundary-links="true " force-ellipses="true ">
+                                        </ul>
 
                 <!--<div class="col-xs-12">
                     <div class="dataTables_paginate paging_simple_numbers">
