@@ -1,8 +1,9 @@
- myApp.controller('ViewRulesCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+ myApp.controller('ViewRulesCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
      $scope.template = TemplateService.getHTML("content/view-rules.html");
      TemplateService.title = "Rules List"; //This is the Title of the Website
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
+     //  $scope.currentPage = 1;
 
      //Json Tables
      $scope.assignmentdata = [{
@@ -40,9 +41,62 @@
          }
      ];
 
-     NavigationService.callApi("RuleEngine/findAll", function (data) {
-         if (data.value == true) {
-             $scope.allRules = data.data;
+     var i = 0;
+     console.log("$stateParams.page", $stateParams.page);
+     if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
+         $scope.currentPage = $stateParams.page;
+         console.log("$stateParams.page", $scope.currentPage);
+     } else {
+         $scope.currentPage = 1;
+         console.log("$stateParams.page", $scope.currentPage);
+     }
+
+     $scope.search = {
+         keyword: ""
+     };
+     if ($stateParams.keyword) {
+         $scope.search.keyword = $stateParams.keyword;
+     }
+     $scope.changePage = function (page) {
+         console.log("changePage: ", page);
+         var goTo = "view-rules";
+         $scope.currentPage = page;
+         if ($scope.search.keyword) {
+             goTo = "view-rules";
          }
-     });
+         $state.go(goTo, {
+             page: page
+         });
+         $scope.getAllItems();
+     };
+
+     $scope.getAllItems = function (keywordChange) {
+         console.log("In getAllItems: ", keywordChange);
+         $scope.totalItems = undefined;
+         if (keywordChange) {}
+         NavigationService.searchCall("RuleEngine/search", {
+                 page: $scope.currentPage,
+                 keyword: $scope.search.keyword
+             }, ++i,
+             function (data, ini) {
+                 console.log("Data: ", data);
+                 if (ini == i) {
+                     $scope.allRules = data.data.results;
+                     $scope.totalItems = data.data.total;
+                     $scope.maxRow = 3;
+                 }
+             });
+
+     };
+     //  JsonService.refreshView = $scope.getAllItems;
+     $scope.getAllItems();
+
+     //  NavigationService.callApi("RuleEngine/search", function (data) {
+     //      if (data.value == true) {
+     //          $scope.allRules = data.data.results;
+     //          $scope.totalItems = data.data.total;
+     //          $scope.maxRow = 3;
+     //          console.log(" $scope.allRules", data);
+     //      }
+     //  });
  })
