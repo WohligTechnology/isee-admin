@@ -42,13 +42,10 @@
      ];
 
      var i = 0;
-     console.log("$stateParams.page", $stateParams.page);
      if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
          $scope.currentPage = $stateParams.page;
-         console.log("$stateParams.page", $scope.currentPage);
      } else {
          $scope.currentPage = 1;
-         console.log("$stateParams.page", $scope.currentPage);
      }
 
      $scope.search = {
@@ -58,7 +55,7 @@
          $scope.search.keyword = $stateParams.keyword;
      }
      $scope.changePage = function (page) {
-         console.log("changePage: ", page);
+         //  console.log("changePage: ", page);
          var goTo = "view-rules";
          $scope.currentPage = page;
          if ($scope.search.keyword) {
@@ -71,7 +68,7 @@
      };
 
      $scope.getAllItems = function (keywordChange) {
-         console.log("In getAllItems: ", keywordChange);
+         //  console.log("In getAllItems: ", keywordChange);
          $scope.totalItems = undefined;
          if (keywordChange) {}
          NavigationService.searchCall("RuleEngine/search", {
@@ -79,7 +76,7 @@
                  keyword: $scope.search.keyword
              }, ++i,
              function (data, ini) {
-                 console.log("Data: ", data);
+                 //  console.log("Data: ", data);
                  if (ini == i) {
                      $scope.allRules = data.data.results;
                      $scope.totalItems = data.data.total;

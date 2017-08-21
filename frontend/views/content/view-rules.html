@@ -45,10 +45,10 @@
             </table>
             <div class="row">
 
-                <!--<ul ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page=3 ng-model="currentPage"
-                    num-pages=1 class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>-->
-
-
+                <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
+                                            " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
+                    class="pagination-sm
+                                            " boundary-links="true " force-ellipses="true "></ul>
 
                 <!--<div class="col-xs-12">
                     <div class="dataTables_paginate paging_simple_numbers">
