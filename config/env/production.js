@@ -27,7 +27,6 @@ module.exports = {
 
   port: 80,
   realHost: "http://35.184.246.124",
-  host:"35.184.246.124",
   emails: ["chintan@wohlig.com", "jagruti@wohlig.com", "tushar@wohlig.com", "chirag@wohlig.com", "harsh@wohlig.com"]
 
   /***************************************************************************
