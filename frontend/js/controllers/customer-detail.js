@@ -257,4 +257,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             });
         };
     };
+
+    //Tab Colour Change
+    NavigationService.apiCall("AllLogs/findDataInTable", $scope.tabs, function (data) {
+        if (data.value == true) {
+            $scope.tabs = data.data;
+            console.log("$scope.tabs-------    ", data);
+        }
+    });
+
 });

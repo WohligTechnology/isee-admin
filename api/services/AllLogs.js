@@ -151,6 +151,154 @@
             });
         },
 
+        findDataInTable: function (tabs, callback) {
+
+            // var AllTableLog = {};
+
+            async.parallel([
+
+                //find customerNote Data
+                function (callback) {
+                    CustomerNote.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[0].checkMe = true;
+                            } else {
+                                tabs[0].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                },
+                function (callback) {
+                    Crm.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[1].checkMe = true;
+                            } else {
+                                tabs[1].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+
+                },
+                function (callback) {
+                    Company.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[2].checkMe = true;
+                            } else {
+                                tabs[2].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    CompanyContact.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[3].checkMe = true;
+                            } else {
+                                tabs[3].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    CompanyInfo.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[4].checkMe = true;
+                            } else {
+                                tabs[4].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Item.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[5].checkMe = true;
+                            } else {
+                                tabs[5].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Locations.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[6].checkMe = true;
+                            } else {
+                                tabs[6].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    Transaction.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[7].checkMe = true;
+                            } else {
+                                tabs[7].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+
+                    });
+                },
+                function (callback) {
+                    WarrantyItem.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[8].checkMe = true;
+                            } else {
+                                tabs[8].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                }
+            ], function (err, results) {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, tabs);
+                }
+            });
+        }
 
     };
     module.exports = _.assign(module.exports, exports, model);

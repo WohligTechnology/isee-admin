@@ -328,7 +328,7 @@ header {
         padding: 8px;
         font-weight: 400;
         color: #5d5d5d;
-        &:hover{
+        &:hover {
             color: $brand-primary;
         }
     }
@@ -682,6 +682,12 @@ header {
                     border-left: 15px solid $brand-primary;
                     z-index: 2;
                 }
+                &.true {
+                    background: darken($brand-primary, 20%);
+                    &:after {
+                        border-left-color: darken($brand-primary, 20%);
+                    }
+                }
             }
         }
     } //end bredcrum
@@ -730,7 +736,7 @@ header {
         &:first-child {
             border-top: none;
         }
-        span{
+        span {
             display: block;
         }
     }

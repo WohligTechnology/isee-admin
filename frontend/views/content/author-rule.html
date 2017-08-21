@@ -3,7 +3,7 @@
 <!-- end header -->
 <!-- header bredcrums -->
 <div class="add-header">
-    <span class="main bredcrums"> <a ui-sref="drl-rule">Author Rule</a> >><a ui-sref="drl-rule"> Listing Library</a> >><a href=""> Add New Rule</a> >> DRL Rule</span>
+    <span class="main bredcrums"> <a href="views/template/template.html">Home</a> >> <a href="view-rules">Rule List</a> >> DRL Rules</span>
 </div>
 <!-- End header bredcrums -->
 
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>-->
-                    <div class="panel-divider" ng-repeat="choice in drlRule.choices">
+                    <div class="panel-divider">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
@@ -55,13 +55,16 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="panel-divider" ng-repeat="choice in drlRule.choices">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">All Models</label>
+                                    <label class=" control-label">Models</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
+                                    <ui-select ng-model="choice.model" on-select="addAllModel(choice.model,$index)">
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -78,7 +81,7 @@
                                     <label class=" control-label">Model Fields</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true">
+                                    <ui-select ng-model="choice.field" name="country" on-select="addModelField(choice.field,$index)" theme="bootstrap" sortable="true">
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -95,8 +98,7 @@
                                     <label class=" control-label">Select Operator</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country2.operators" on-select="addOperator(country2.operators,$index)" name="choice" theme="bootstrap"
-                                        sortable="true">
+                                    <ui-select ng-model="choice.operators" on-select="addOperator(choice.operators,$index)" name="choice" theme="bootstrap" sortable="true">
                                         <ui-select-match placeholder="Select Operator">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -111,13 +113,49 @@
                             <div class="row">
                                 <div class="col-sm-8 col-sm-offset-4">
                                     <div class="radio">
-                                        <label><input type="radio" name="element">Constant</label>
+                                        <label><input type="radio" name="element" value="true" ng-model="optCons" ng-click="choice.element=''">Constant</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-model="choice.constant">
+                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-disabled="optCons!='true'" ng-model="choice.constant">
                                     <div class="radio">
-                                        <label><input type="radio" name="element">Element/Expression</label>
+                                        <label><input type="radio" name="element" value="false" ng-model="optCons" ng-click="choice.constant=''">Element/Expression</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-model="choice.element">
+                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-disabled="optCons!='false'" ng-model="choice.element">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-1">
+                                    <label class=" control-label">table</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
+                                        <ui-select-match placeholder="Select">
+                                            <span>{{$select.selected}}</span>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
+                                            {{country}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-1">
+                                    <label class=" control-label">table Fields</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true">
+                                        <ui-select-match placeholder="Select">
+                                            <span>{{$select.selected}}</span>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="country in allFields | filter: $select.search" refresh="" refresh-delay="0">
+                                            {{country}}
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +163,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-11 col-sm-offset-1">
-                                    <div class="mt20" ng-if="choices.length>1">
+                                    <div class="mt20" ng-if="drlRule.choices.length>1">
                                         <a class="btn btn-success" ng-click="removeChoice($index);">
                                             <i class="fa fa-minus" aria-hidden="true"></i> 
                                             Remove Condition </a>
@@ -150,9 +188,9 @@
                         <div class="row">
                             <div class="col-sm-11 col-sm-offset-1">
                                 <div class="mt20 text-right">
-                                    <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
+                                    <a ui-sref="view-rules" class="btn btn-primary">Cancel</a>
                                     <a class="btn btn-primary" ng-click="drlSave(drlRule)">Save</a>
-                                    <a ng-click="" class="btn btn-primary">Home</a>
+                                    <!--<a ng-click="" class="btn btn-primary">Home</a>-->
                                 </div>
                             </div>
                         </div>

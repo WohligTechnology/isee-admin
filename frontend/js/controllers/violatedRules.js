@@ -11,6 +11,7 @@
      $scope.singleRuleData = {};
      NavigationService.apiCall("RuleEngine/getOne", $scope.getRuleData, function (data) {
          if (data.value == true) {
+             console.log("data", data);
              $scope.singleRuleData = data.data;
              $scope.getRuleData = {};
              $scope.getRuleData.id = $stateParams.ruleId;
@@ -21,7 +22,7 @@
                      _.forEach($scope.violatedRuleData, function (n) {
                          if (!_.isEmpty(n.result) && n.result.length == $scope.singleRuleData.rule.length) {
                              $scope.violatedRule.push(n);
-                             console.log("violatedRule-----", $scope.violatedRule);
+                             //  console.log("violatedRule-----", $scope.violatedRule);
                          }
                      });
                  }

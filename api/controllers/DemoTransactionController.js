@@ -6,7 +6,7 @@ var controller = {
     rulesDemo: function (req, res) {
         // req.body = {};
         req.body.companyExcel = {
-            name: "598d90146608f93786e91972.xlsx",
+            name: "59944228a711d867c6d9f3f5.xlsx",
             fields: [{
                     ourField: "orignalTender",
                     theirField: "Orignal Tender"
@@ -16,6 +16,10 @@ var controller = {
                 }, {
                     ourField: "amount",
                     theirField: "Amount"
+                },
+                {
+                    ourField: "name",
+                    theirField: "Name"
                 }
                 // {
                 //     ourField: "lastName",
@@ -75,7 +79,7 @@ var controller = {
                                     });
                                 }, function (err, data) {
                                     callback(err, {
-                                        name: singleData.amount,
+                                        name: singleData.name,
                                         result: data
                                     });
                                 });

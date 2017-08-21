@@ -6,14 +6,17 @@
 			<!--tabs for  Button Nav Excel Upload-->
 			<div class="tab">
 				<ul class="nav nav-tabs bread-cum-holder">
-					<li class="btn btn-default btn-primary breadcrum" ng-class="" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</li>
+
+					<li class="btn btn-default btn-primary breadcrum {{tab.checkMe}}" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</li>
+
 				</ul>
+
 			</div>
 			<!--End tabs for  Button Nav Excel Upload-->
 			<!--tabs Start-->
 			<div class="remove-tabs">
-				<uib-tabset active="activeJustified">
-					<uib-tab ng-repeat="tab in tabs" index="$index + 1" disable="tab.disabled">
+				<uib-tabset active="activeJustified ">
+					<uib-tab ng-repeat="tab in tabs track by $index" index="$index + 1" disable="tab.disabled">
 						<!--tabs title-->
 						<div class="mb-20">
 							<span class="main bredcrums">{{tab.title}}</span>
@@ -30,7 +33,7 @@
 								<div class="col-sm-6">
 									<div class="text-right">
 										<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)">Upload 
-										<i class="fa fa-upload" aria-hidden="true"></i></button>
+											<i class="fa fa-upload" aria-hidden="true"></i></button>
 									</div>
 								</div>
 							</div>
@@ -43,8 +46,8 @@
 									<div class="col-sm-4 col-sm-offset-1 ">
 										<!-- {{formname}} -->
 										<label class=" control-label">{{formname.field}} 
-										<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
-									</label>
+											<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
+										</label>
 									</div>
 									<div class="col-sm-6">
 										<ui-select ng-model="formData[formname.field]" name="country" theme="bootstrap" sortable="true">
@@ -100,13 +103,13 @@
 													<div class="col-xs-3">
 														<div class="pad-5 inside-history">
 															<span class="success"> {{logData.succesCount}} 
-														<i class="fa fa-check-circle"></i></span>
+															<i class="fa fa-check-circle"></i></span>
 														</div>
 													</div>
 													<div class="col-xs-3">
 														<div class="pad-5 inside-history">
 															<span class="danger"> {{logData.errorCount}}
-														 <i class="fa fa-times-circle"></i></span>
+															<i class="fa fa-times-circle"></i></span>
 														</div>
 													</div>
 													<div class="col-xs-3">
@@ -145,8 +148,8 @@
 													<div class="col-xs-9">
 														<div class="pad-5 inside-history">
 															<span>
-													<pre class="danger-pre"><code>{{logs.error.errors|json}}</code></pre>
-													</span>
+														<pre class="danger-pre"><code>{{logs.error.errors|json}}</code></pre>
+														</span>
 														</div>
 													</div>
 												</div>

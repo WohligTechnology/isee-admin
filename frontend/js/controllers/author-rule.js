@@ -1,4 +1,4 @@
-myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
     $scope.template = TemplateService.getHTML("content/author-rule.html");
     TemplateService.title = "Author Rule"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
@@ -68,20 +68,48 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         $scope.drlRule.choices[index].operators = val;
     };
 
-
+    $scope.rules = {};
     $scope.drlSave = function (formdata) {
-        $scope.rules = {};
-        $scope.rules.name = formdata.name;
-        $scope.rules.rule = formdata.choices;
-        NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
-            if (data.value == true) {
-                // $scope.allFields = data.data;
-                console.log("data-------    ", data);
-                $state.go("view-rules");
-            } else {
-                toastr.error("Rule Not Saved");
 
-            }
-        });
-    }
+        if ($stateParams.ruleId) {
+            $scope.rules.name = formdata.name;
+            $scope.rules.rule = formdata.choices;
+            $scope.rules._id = $stateParams.ruleId;
+            NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
+                if (data.value == true) {
+                    // $scope.allFields = data.data;
+                    // console.log("data-------    ", data);
+                    $state.go("view-rules");
+                } else {
+                    toastr.error("Rule Not Saved");
+
+                }
+            });
+        } else {
+            $scope.rules.name = formdata.name;
+            $scope.rules.rule = formdata.choices;
+            NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
+                if (data.value == true) {
+                    // $scope.allFields = data.data;
+                    // console.log("data-------    ", data);
+                    $state.go("view-rules");
+                } else {
+                    toastr.error("Rule Not Saved");
+
+                }
+            });
+        }
+    };
+
+    //view all rulesss
+
+    $scope.getRuleData = {};
+    $scope.getRuleData._id = $stateParams.ruleId;
+    NavigationService.apiCall("RuleEngine/getOne", $scope.getRuleData, function (data) {
+        if (data.value == true) {
+            $scope.drlRule = data.data;
+            $scope.drlRule.choices = data.data.rule;
+        }
+    });
+
 })

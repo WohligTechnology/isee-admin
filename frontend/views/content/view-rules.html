@@ -1,7 +1,7 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header">
     <span class="main bredcrums"> 
-        <a href="">Home</a> >><a ui-sref="drl-rule"> DRL Rule</a> >> Rule List
+        <a href="views/template/template.html">Home</a> >> Rule List
         </span>
 </div>
 <div class="panel panel-default">
@@ -38,13 +38,19 @@
                     <tr ng-repeat="data in allRules">
 
                         <td>{{data.name}}</td>
-                        <td> <a class="btn btn-primary" ui-sref="view-rules-detail({ruleId:data._id})">View</a></td>
+                        <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td>
                         <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td>
 
                     </tr>
             </table>
             <div class="row">
-                <div class="col-xs-12">
+
+                <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
+                                            " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
+                    class="pagination-sm
+                                            " boundary-links="true " force-ellipses="true "></ul>
+
+                <!--<div class="col-xs-12">
                     <div class="dataTables_paginate paging_simple_numbers">
                         <ul class="pagination">
                             <li class="paginate_button previous"><a href="#">Previous</a></li>
@@ -56,7 +62,7 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="dataTables_info">Showing 1 to 10 of 57 entries</div>
-                </div>
+                </div>-->
             </div>
         </div>
 

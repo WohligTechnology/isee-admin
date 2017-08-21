@@ -54,7 +54,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'LoginCtrl'
         })
         .state('drl-rule', {
-            url: "/drl-rule",
+            url: "/drl-rule/:ruleId",
             templateUrl: tempateURL,
             controller: 'AuthorRuleCtrl'
         })
@@ -79,7 +79,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'CustomerDetailCtrl'
         })
         .state('view-rules', {
-            url: "/view-rules",
+            url: "/view-rules/{page:.*}",
             templateUrl: tempateURL,
             controller: 'ViewRulesCtrl'
         })
