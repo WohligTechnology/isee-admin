@@ -80,7 +80,7 @@
                  if (ini == i) {
                      $scope.allRules = data.data.results;
                      $scope.totalItems = data.data.total;
-                     $scope.maxRow = 3;
+                     $scope.maxRow = data.data.options.count;
                  }
              });
 
