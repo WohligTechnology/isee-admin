@@ -5,9 +5,15 @@ myApp.factory('NavigationService', function ($http) {
     var navigation = [{
         name: "Dashboard",
         classis: "active",
-        anchor: "dashboard",
+        anchor: "",
+        hasSub: "has-sub",
         // icon: "fa-tachometer"
         subnav: [{
+            name: "Corporate Overview",
+            classis: "active",
+            anchor: "dashboard",
+            // icon: "fa-cog"
+        }, {
             name: "Cash Short",
             classis: "active",
             anchor: "cash-short",

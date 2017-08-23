@@ -27,6 +27,31 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'DashboardCtrl'
         })
+        .state('cash-short', {
+            url: "/cash-short",
+            templateUrl: tempateURL,
+            controller: 'CashShortCtrl'
+        })
+        .state('map-sales', {
+            url: "/map-sale",
+            templateUrl: tempateURL,
+            controller: 'MapSalesCtrl'
+        })
+        .state('map-cash-short', {
+            url: "/map-cash-short",
+            templateUrl: tempateURL,
+            controller: 'MapCashShortCtrl'
+        })
+        .state('transaction-report', {
+            url: "/transaction-report",
+            templateUrl: tempateURL,
+            controller: 'TransactionsReportCtrl'
+        })
+        .state('till-register', {
+            url: "/till-register",
+            templateUrl: tempateURL,
+            controller: 'TillRegisterdCtrl'
+        })
         .state('user', {
             url: "/user",
             templateUrl: tempateURL,
