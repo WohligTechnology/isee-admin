@@ -5,8 +5,34 @@ myApp.factory('NavigationService', function ($http) {
     var navigation = [{
         name: "Dashboard",
         classis: "active",
-        anchor: "corporate",
+        anchor: "dashboard",
         // icon: "fa-tachometer"
+        subnav: [{
+            name: "Cash Short",
+            classis: "active",
+            anchor: "cash-short",
+            // icon: "fa-cog"
+        }, {
+            name: "Map – Sales",
+            classis: "active",
+            anchor: "map-sales",
+            // icon: "fa-cog"
+        }, {
+            name: "Map – Cash Short",
+            classis: "active",
+            anchor: "map-cash-short",
+            // icon: "fa-cog"
+        }, {
+            name: "Transactions Report",
+            classis: "active",
+            anchor: "transaction-report",
+            // icon: "fa-cog"
+        }, {
+            name: "Till Register",
+            classis: "active",
+            anchor: "till-register",
+            // icon: "fa-cog"
+        }]
     }, {
         name: "Predictive Dashboard",
         classis: "active",
