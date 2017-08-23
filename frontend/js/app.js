@@ -22,10 +22,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
     // for http request with session
     $httpProvider.defaults.withCredentials = true;
     $stateProvider
-        .state('corporate', {
+        .state('dashboard', {
             url: "/",
             templateUrl: tempateURL,
-            controller: 'CorporateCtrl'
+            controller: 'DashboardCtrl'
         })
         .state('user', {
             url: "/user",
