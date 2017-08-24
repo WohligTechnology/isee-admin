@@ -6,15 +6,6 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
         $scope.navigation = NavigationService.getNavigation();
     })
 
-
-    // .controller('CorporateOverviewCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-    //     $scope.template = TemplateService.getHTML("content/corporate-overview.html");
-    //     TemplateService.title = "Corporate Overview"; //This is the Title of the Website
-    //     TemplateService.class = "corporate"; //This is the Class of the Theme
-    //     TemplateService.templateTitle = ""; //This is the Title of the Theme
-    //     $scope.navigation = NavigationService.getNavigation();
-    // })
-
     .controller('CashShortCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.getHTML("content/cash-short.html");
         TemplateService.title = "Cash Short"; //This is the Title of the Website
