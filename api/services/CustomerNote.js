@@ -1,9 +1,7 @@
 var schema = new Schema({
-    crm: {
-        type: Schema.Types.ObjectId,
-        ref: 'Crm',
-        index: true,
-        key: "customerNote"
+    customerId: {
+        type: String,
+        es_indexed: true
     },
     noteSequence: {
         type: Number,
@@ -11,6 +9,14 @@ var schema = new Schema({
     },
     note: String,
     noteTimeStamp: Date,
+
+    //////
+    crm: {
+        type: Schema.Types.ObjectId,
+        ref: 'Crm',
+        index: true,
+        key: "customerNote"
+    },
 
     //custId
     custId: String

@@ -1,15 +1,8 @@
 var schema = new Schema({
-    company: {
-        type: Schema.Types.ObjectId,
-        ref: 'Company',
-        index: true,
-        key: "location"
+    organizationId: {
+        type: String,
+        es_indexed: true
     },
-    transaction: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction',
-        index: true
-    }],
     retailLocationId: {
         type: String,
         es_indexed: true
@@ -71,6 +64,19 @@ var schema = new Schema({
         es_indexed: true
     },
     geoCode: String,
+
+    //////
+    company: {
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
+        key: "location"
+    },
+    transaction: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction',
+        index: true
+    }],
 
     //custId
 

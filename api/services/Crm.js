@@ -1,8 +1,17 @@
 var schema = new Schema({
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
     customerGroupId: {
         type: String,
         es_indexed: true
     },
+    customerId: {
+        type: String,
+        es_indexed: true
+    },
+    customerNumber: Number,
     salutation: String,
     firstName: {
         type: String,
@@ -92,6 +101,9 @@ var schema = new Schema({
         es_indexed: true
     },
     creatorParty: String,
+    loyaltyProgramNumber: Number,
+
+    ////
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'Customer',

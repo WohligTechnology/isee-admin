@@ -51,7 +51,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         });
         logData.isOpen = !logData.isOpen;
         NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
-            console.log(data);
+            // console.log(data);
             if (data.value == true) {
                 $scope.logInsideData = data.data.logs;
                 // console.log("logData--------------", $scope.logInsideData);

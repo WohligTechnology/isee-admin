@@ -1,4 +1,8 @@
 var schema = new Schema({
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
     businessDate: Date,
     transactionSequence: String,
     workstationId: {
@@ -10,10 +14,30 @@ var schema = new Schema({
         type: String,
         es_indexed: true
     },
-    activityDate: Date,
-    amount: Number,
+    paymentMode: String,
+    transactionVoidFlag: String,
+    transactionNumber: Number,
+    transactionReferenceNumber: Number,
     cardNumber: {
         type: Number,
+        es_indexed: true
+    },
+    tillNumber: {
+        type: Number,
+        es_indexed: true
+    },
+    itemId: String,
+    quantity: String,
+    amount: Number,
+    netAmount: Number,
+    custAccountId: {
+        type: String,
+        es_indexed: true
+    },
+    activityDate: Date,
+    time: Date,
+    customerId: {
+        type: String,
         es_indexed: true
     },
     custAccountCode: {
@@ -29,10 +53,12 @@ var schema = new Schema({
         es_indexed: true
     },
     historySequence: String,
-    CustomerGroupId: {
+    customerGroupId: {
         type: String,
         es_indexed: true
     },
+
+    ////////////
     location: {
         type: Schema.Types.ObjectId,
         ref: 'Location',

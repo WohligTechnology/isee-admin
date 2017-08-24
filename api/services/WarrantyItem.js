@@ -1,4 +1,8 @@
 var schema = new Schema({
+    warrantyItemId: {
+        type: String,
+        es_indexed: true
+    },
     warrantyType: {
         type: String,
         es_indexed: true
@@ -9,6 +13,8 @@ var schema = new Schema({
     },
     description: String,
     replaceType: String,
+
+    //////
     item: [{
         type: Schema.Types.ObjectId,
         ref: 'Item',

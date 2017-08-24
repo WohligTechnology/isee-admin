@@ -6,23 +6,16 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   $.fancybox.close(true);
 
   //submenu
-  $scope.subClass = "closeSub";
-  // $scope.subMenu = function () {
-  //   console.log("menu");
-
-  // };
+  $scope.oneAtATime = true;
+  $scope.classNg = "open";
+  $scope.sideMenu = function(){
+      console.log("menu");
+    if ($scope.classNg === "open")
+      $scope.classNg = "collapsed";
+    else
+      $scope.classNg = "open";
+  };
   //End submenu
-
-
- $scope.oneAtATime = true;
-  $scope.subMenu = function (navigation) {
-    if (navigation.subClass == "has-sub") {
-      navigation.subClass = "expanded";
-    } else {
-      navigation.subClass = "has-sub";
-      console.log("Closemenu");
-    };
-  }
 
   // jStorage for user 
   if (!$.jStorage.get("User")) {

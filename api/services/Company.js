@@ -1,4 +1,8 @@
 var schema = new Schema({
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
     name: {
         type: String,
         es_indexed: true
@@ -29,6 +33,8 @@ var schema = new Schema({
     minimumCost: Number,
     maximumCost: Number,
     itemId: String, //item table
+
+    //////
     location: [{
         type: Schema.Types.ObjectId,
         ref: "Location",
