@@ -1,4 +1,8 @@
 var schema = new Schema({
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
     phoneNumberId: {
         type: String,
         es_indexed: true
@@ -13,6 +17,8 @@ var schema = new Schema({
         type: String,
         enum: ['Asc', 'Desc']
     },
+
+
     //custId
 
     custId: String

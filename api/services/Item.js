@@ -1,5 +1,13 @@
 var schema = new Schema({
-    organizationId: String,
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
+    itemId: {
+        type: String,
+        es_indexed: true
+    },
+    listPrice: Number,
     promptToAdd: String,
     applyRestockingFee: String,
     disallowDiscounts: {
@@ -13,7 +21,6 @@ var schema = new Schema({
     itemUrl: String,
     maximumSaleUnitCount: Number,
     minimumSaleUnitCount: Number,
-    listPrice: Number,
     noGiveaways: String,
     notInventoried: String,
     notReturnable: String,
@@ -96,6 +103,7 @@ var schema = new Schema({
         type: String,
         es_indexed: true
     },
+    //////
     transaction: [{
         type: Schema.Types.ObjectId,
         ref: 'Transaction',

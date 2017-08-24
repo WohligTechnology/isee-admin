@@ -1,4 +1,8 @@
 var schema = new Schema({
+    organizationId: {
+        type: String,
+        es_indexed: true
+    },
     reasonTypeCode: {
         type: String,
         es_indexed: true

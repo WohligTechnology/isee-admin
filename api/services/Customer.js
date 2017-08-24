@@ -1,4 +1,12 @@
 var schema = new Schema({
+    customerId: {
+        type: String,
+        es_indexed: true
+    },
+    addressID: {
+        type: String,
+        es_indexed: true
+    },
     address1: String,
     address2: String,
     apartment: String,

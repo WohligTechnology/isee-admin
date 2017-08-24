@@ -87,13 +87,4 @@
      };
      //  JsonService.refreshView = $scope.getAllItems;
      $scope.getAllItems();
-
-     //  NavigationService.callApi("RuleEngine/search", function (data) {
-     //      if (data.value == true) {
-     //          $scope.allRules = data.data.results;
-     //          $scope.totalItems = data.data.total;
-     //          $scope.maxRow = 3;
-     //          console.log(" $scope.allRules", data);
-     //      }
-     //  });
  })
