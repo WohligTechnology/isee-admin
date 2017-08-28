@@ -631,10 +631,12 @@ var controller = {
     customerNoteUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
-            retJson.fields = [{
-                    field: "customerId",
-                    description: "Note Sequence a number that can not be greater than 65000"
-                }, {
+            retJson.fields = [
+                // {
+                //     field: "customerId",
+                //     description: "Note Sequence a number that can not be greater than 65000"
+                // }, 
+                {
                     field: "noteSequence",
                     description: "Note Sequence a number that can not be greater than 65000"
                 }, {
@@ -709,6 +711,7 @@ var controller = {
                                         if (_.isEmpty(found)) {
                                             callback(err, null);
                                         } else {
+                                            console.log("found!!!!", found);
                                             var count = 0;
                                             _.forEachRight(found, function (value) {
                                                 if (value.error != null) {
