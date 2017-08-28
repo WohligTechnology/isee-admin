@@ -729,26 +729,26 @@ var controller = {
                                 });
                             },
                             function (finalData, callback) {
-                                // console.log("data", finalData);
-                                var dataFinal = {};
-                                var eData = {};
-                                $scope.eData.tableName = 'CustomerNote';
-                                $scope.eData.logs = finalData.found;
-                                AllLogs.saveData(eData, function (err, found) {
-                                    if (err) {
-                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                        callback(err, null);
-                                    } else {
-                                        if (_.isEmpty(found)) {
-                                            callback(err, null);
-                                        } else {
-                                            dataFinal.count = finalData.count;
-                                            console.log("dataFinal----", dataFinal);
+                                console.log("data---finalData-----finalData", finalData);
+                                // var dataFinal = {};
+                                // var eData = {};
+                                // $scope.eData.tableName = 'CustomerNote';
+                                // $scope.eData.logs = finalData.found;
+                                // AllLogs.saveData(eData, function (err, found) {
+                                //     if (err) {
+                                //         console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                //         callback(err, null);
+                                //     } else {
+                                //         if (_.isEmpty(found)) {
+                                //             callback(err, null);
+                                //         } else {
+                                //             dataFinal.count = finalData.count;
+                                //             console.log("dataFinal----", dataFinal);
 
-                                            callback(null, dataFinal);
-                                        }
-                                    }
-                                });
+                                //             callback(null, dataFinal);
+                                //         }
+                                //     }
+                                // });
                             }
                         ],
                         function (err, found) {
