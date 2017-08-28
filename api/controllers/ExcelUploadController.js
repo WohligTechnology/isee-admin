@@ -669,6 +669,7 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
+                console.log("Data^^^^^^", data);
                 async.concatSeries(data, function (singleData, callback) {
                     // if (singleData.custId) {
                     //     Customer.findOne({
