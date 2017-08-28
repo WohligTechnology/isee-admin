@@ -702,6 +702,7 @@ var controller = {
                                     callback(err, null);
                                 } else {
                                     console.log("found!!!!", found);
+                                    var finalData = {};
                                     finalData.count = found.length;
                                     finalData.found = found;
                                     console.log("finalDaata----", finalData);
