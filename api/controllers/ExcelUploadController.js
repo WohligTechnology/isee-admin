@@ -668,36 +668,96 @@ var controller = {
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
-                    if (singleData.custId) {
-                        Customer.findOne({
-                            custId: singleData.custId
-                        }).exec(function (err, found) {
+                    // if (singleData.custId) {
+                    //     Customer.findOne({
+                    //         custId: singleData.custId
+                    //     }).exec(function (err, found) {
+                    //         if (err) {
+                    //             callback(err, null);
+                    //         } else {
+                    //             if (found) {
+                    //                 singleData.custId = found._id;
+                    //                 CustomerNote.saveData(singleData, function (err, data) {
+                    //                     callback(null, {
+                    //                         error: err,
+                    //                         success: data
+                    //                     });
+                    //                 });
+                    //             } else {
+                    //                 callback({
+                    //                     message: "Incorrect Credentials!"
+                    //                 }, null);
+                    //             }
+                    //         }
+                    //     });
+                    // } else {
+                    // CustomerNote.saveData(singleData, function (err, data) {
+                    //     callback(null, {
+                    //         error: err,
+                    //         success: data
+                    //     });
+                    // });
+                    async.waterfall([
+                            function (callback) {
+                                var finalData = {};
+                                console.log("singleData", singleData);
+                                CustomerNote.saveData(singleData, function (err, found) {
+                                    if (err) {
+                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                        callback(err, null);
+                                    } else {
+                                        if (_.isEmpty(found)) {
+                                            callback(err, null);
+                                        } else {
+                                            var count = 0;
+                                            _.forEachRight(found, function (value) {
+                                                if (value.error != null) {
+                                                    count++;
+                                                }
+                                            });
+                                            finalData.sucessCount = count;
+                                            finalData.count = found.length;
+                                            finalData.failureCount = found.length - count;
+                                            finalData.found = found;
+                                            callback(null, finalData);
+                                        }
+                                    }
+                                });
+                            },
+                            function (finalData, callback) {
+                                // console.log("data", finalData);
+                                var dataFinal = {};
+                                var eData = {};
+                                $scope.eData.tableName = 'CustomerNote';
+                                $scope.eData.logs = finalData.found;
+                                AllLogs.saveData(eData, function (err, found) {
+                                    if (err) {
+                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                        callback(err, null);
+                                    } else {
+                                        if (_.isEmpty(found)) {
+                                            callback(err, null);
+                                        } else {
+                                            dataFinal.count = finalData.count;
+                                            callback(null, dataFinal);
+                                        }
+                                    }
+                                });
+                            }
+                        ],
+                        function (err, found) {
                             if (err) {
+                                console.log('********** error at final response of asynch.waterfall in search of ProjectExpense.js ************', err);
                                 callback(err, null);
                             } else {
-                                if (found) {
-                                    singleData.custId = found._id;
-                                    CustomerNote.saveData(singleData, function (err, data) {
-                                        callback(null, {
-                                            error: err,
-                                            success: data
-                                        });
-                                    });
+                                if (_.isEmpty(found)) {
+                                    callback(err, null);
                                 } else {
-                                    callback({
-                                        message: "Incorrect Credentials!"
-                                    }, null);
+                                    callback(null, found);
                                 }
                             }
                         });
-                    } else {
-                        CustomerNote.saveData(singleData, function (err, data) {
-                            callback(null, {
-                                error: err,
-                                success: data
-                            });
-                        });
-                    }
+                    // }
                 }, res.callback);
             }
         });
