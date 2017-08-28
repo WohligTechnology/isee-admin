@@ -719,6 +719,7 @@ var controller = {
                                             finalData.count = found.length;
                                             finalData.failureCount = found.length - count;
                                             finalData.found = found;
+                                            console.log("finalDaata----", finalData);
                                             callback(null, finalData);
                                         }
                                     }
@@ -739,6 +740,8 @@ var controller = {
                                             callback(err, null);
                                         } else {
                                             dataFinal.count = finalData.count;
+                                            console.log("dataFinal----", dataFinal);
+
                                             callback(null, dataFinal);
                                         }
                                     }
