@@ -693,26 +693,11 @@ var controller = {
                             }
                         });
                     } else {
-                        CustomerNote.saveData(singleData, function (err, found) {
-                            if (err) {
-                                console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                callback(err, null);
-                            } else {
-                                if (_.isEmpty(found)) {
-                                    callback(err, null);
-                                } else {
-                                    console.log("found!!!!", found);
-                                    var finalData = {};
-                                    finalData.count = found.length;
-                                    finalData.found = found;
-                                    console.log("finalDaata----", finalData);
-                                    callback(null, finalData);
-                                }
-                            }
-                            // callback(null, {
-                            //     error: err,
-                            //     success: data
-                            // });
+                        CustomerNote.saveData(singleData, function (err, data) {
+                            callback(null, {
+                                error: err,
+                                success: data
+                            });
                         });
                         // async.waterfall([
                         //         function (callback) {
