@@ -801,7 +801,7 @@ var controller = {
                                         callback(err, null);
                                     } else {
                                         console.log("dataFinal----", data);
-                                        callback(null, data);
+                                        res.callback(null, data);
                                     }
                                 }
                             });
