@@ -794,8 +794,8 @@ var controller = {
                             console.log("arrData", arrData);
                             var eData = {};
                             eData.tableName = 'CustomerNote';
-                            eData.logs = arrData;
-                            AllLogs.saveData(eData, function (err, found) {
+                            eData.logs = _.cloneDeep(arrData);
+                            AllLogs.saveData(_.cloneDeep(eData), function (err, found) {
                                 if (err) {
                                     console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
                                     callback(err, null);

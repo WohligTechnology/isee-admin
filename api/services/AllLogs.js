@@ -2,9 +2,9 @@
         tableName: {
             type: String
         },
-        logs: {
+        logs: [{
             type: Schema.Types.Mixed
-        },
+        }],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'User',
