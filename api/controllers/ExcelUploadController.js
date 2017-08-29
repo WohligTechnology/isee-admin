@@ -754,10 +754,10 @@ var controller = {
                     CustomerNote.saveData(singleData, function (err, found) {
                         if (err) {
                             console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                            callback(err, null);
+                            callback(null, "next");
                         } else {
                             if (_.isEmpty(found)) {
-                                callback(err, null);
+                                callback(null, "next");
                             } else {
                                 var finalData = {};
                                 console.log("found!!!!", found);
