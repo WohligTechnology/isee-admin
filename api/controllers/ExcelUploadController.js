@@ -758,6 +758,7 @@ var controller = {
                             if (_.isEmpty(found)) {
                                 callback(err, null);
                             } else {
+                                var finalData = {};
                                 console.log("found!!!!", found);
                                 var totalCount = 0;
                                 var sucessCount = 0;
