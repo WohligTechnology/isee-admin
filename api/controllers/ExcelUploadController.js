@@ -678,9 +678,9 @@ var controller = {
                     CustomerNote.saveData(singleData, function (err, found) {
                         if (err) {
                             console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                            callback(null, err);
                             successObj.error = err;
                             successObj.Success = null;
+                            callback(null, err);
                             failureCount++;
                         } else {
                             if (_.isEmpty(found)) {
