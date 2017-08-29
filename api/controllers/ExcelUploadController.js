@@ -672,12 +672,12 @@ var controller = {
                 var failureCount = 0;
                 var arrData = [];
                 var finalData = {};
-                var successObj = {};
                 var eData = {};
                 var dataFinal = {};
                 async.waterfall([
                         function (callback) {
                             async.concatSeries(data, function (singleData, callback) {
+                                var successObj = {};
                                 CustomerNote.saveData(singleData, function (err, found) {
                                     if (err) {
                                         console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
@@ -707,16 +707,7 @@ var controller = {
                                     }
                                 });
                             }, function (err, found) {
-                                if (err) {
-                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                    callback(err, null);
-                                } else {
-                                    if (_.isEmpty(found)) {
-                                        callback(err, null);
-                                    } else {
-                                        callback(null, finalData, arrData);
-                                    }
-                                }
+                                callback(err, finalData, arrData);
                             });
                         },
                         function (finalData, arrData, callback) {
