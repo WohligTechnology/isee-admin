@@ -758,6 +758,7 @@ var controller = {
                 var sucessCount = 0;
                 var failureCount = 0;
                 var arrData = [];
+                var finalData = {};
                 async.concatSeries(data, function (singleData, callback) {
                     CustomerNote.saveData(singleData, function (err, found) {
                         if (err) {
@@ -768,7 +769,6 @@ var controller = {
                             if (_.isEmpty(found)) {
                                 callback(null, err);
                             } else {
-                                var finalData = {};
                                 sucessCount++;
                                 finalData.sucessCount = sucessCount;
                                 finalData.totalCount = sucessCount + failureCount;
@@ -791,6 +791,7 @@ var controller = {
                         if (_.isEmpty(data)) {
                             callback(err, null);
                         } else {
+                            console.log("arrData", arrData);
                             var eData = {};
                             eData.tableName = 'CustomerNote';
                             eData.logs = arrData;
