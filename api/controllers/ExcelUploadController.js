@@ -662,82 +662,123 @@ var controller = {
         }
     },
 
+    // finalUploadForCustomerNote: function (req, res) {
+    //     Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+    //         if (err || _.isEmpty(data)) {
+    //             res.callback(err);
+    //         } else {
+    //             console.log("Data^^^^^^", data);
+    //             async.concatSeries(data, function (singleData, callback) {
+    //                 async.waterfall([
+    //                         function (callback) {
+    //                             var finalData = {};
+    //                             CustomerNote.saveData(singleData, function (err, found) {
+    //                                 if (err) {
+    //                                     console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+    //                                     callback(err, null);
+    //                                 } else {
+    //                                     if (_.isEmpty(found)) {
+    //                                         callback(err, null);
+    //                                     } else {
+    //                                         console.log("found!!!!", found);
+    //                                         var totalCount = 0;
+    //                                         var sucessCount = 0;
+    //                                         var FailureCount = 0;
+    //                                         if (found.err != null) {
+    //                                             sucessCount++;
+    //                                         } else if (found.err == null) {
+    //                                             FailureCount++;
+    //                                         }
+    //                                         if (found) {
+    //                                             totalCount++;
+    //                                         }
+    //                                         finalData.sucessCount = sucessCount;
+    //                                         finalData.totalCount = totalCount;
+    //                                         finalData.failureCount = FailureCount;
+    //                                         finalData.found = found;
+    //                                         console.log("finalDaata----", finalData);
+    //                                         callback(null, finalData);
+    //                                     }
+    //                                 }
+    //                             });
+    //                         },
+    //                         function (finalData, callback) {
+
+    //                             console.log("data---finalData-----finalData", finalData);
+    //                             // var dataFinal = {};
+    //                             // var eData = {};
+    //                             // $scope.eData.tableName = 'CustomerNote';
+    //                             // $scope.eData.logs = finalData.found;
+    //                             // AllLogs.saveData(eData, function (err, found) {
+    //                             //     if (err) {
+    //                             //         console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+    //                             //         callback(err, null);
+    //                             //     } else {
+    //                             //         if (_.isEmpty(found)) {
+    //                             //             callback(err, null);
+    //                             //         } else {
+    //                             //             dataFinal.count = finalData.count;
+    //                             //             console.log("dataFinal----", dataFinal);
+
+    //                             //             callback(null, dataFinal);
+    //                             //         }
+    //                             //     }
+    //                             // });
+    //                         }
+    //                     ],
+    //                     function (err, found) {
+    //                         if (err) {
+    //                             console.log('********** error at final response of asynch.waterfall in search of ProjectExpense.js ************', err);
+    //                             callback(err, null);
+    //                         } else {
+    //                             if (_.isEmpty(found)) {
+    //                                 callback(err, null);
+    //                             } else {
+    //                                 callback(null, found);
+    //                             }
+    //                         }
+    //                     });
+    //                 // }
+    //             }, res.callback);
+    //         }
+    //     });
+    // },
+
     finalUploadForCustomerNote: function (req, res) {
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                console.log("Data^^^^^^", data);
                 async.concatSeries(data, function (singleData, callback) {
-                    async.waterfall([
-                            function (callback) {
-                                var finalData = {};
-                                CustomerNote.saveData(singleData, function (err, found) {
-                                    if (err) {
-                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                        callback(err, null);
-                                    } else {
-                                        if (_.isEmpty(found)) {
-                                            callback(err, null);
-                                        } else {
-                                            console.log("found!!!!", found);
-                                            var totalCount = 0;
-                                            var sucessCount = 0;
-                                            var FailureCount = 0;
-                                            if (found.err != null) {
-                                                sucessCount++;
-                                            } else if (found.err == null) {
-                                                FailureCount++;
-                                            }
-                                            if (found) {
-                                                totalCount++;
-                                            }
-                                            finalData.sucessCount = sucessCount;
-                                            finalData.count = totalCount;
-                                            finalData.failureCount = FailureCount;
-                                            finalData.found = found;
-                                            console.log("finalDaata----", finalData);
-                                            callback(null, finalData);
-                                        }
-                                    }
-                                });
-                            },
-                            function (finalData, callback) {
-                                console.log("data---finalData-----finalData", finalData);
-                                // var dataFinal = {};
-                                // var eData = {};
-                                // $scope.eData.tableName = 'CustomerNote';
-                                // $scope.eData.logs = finalData.found;
-                                // AllLogs.saveData(eData, function (err, found) {
-                                //     if (err) {
-                                //         console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                //         callback(err, null);
-                                //     } else {
-                                //         if (_.isEmpty(found)) {
-                                //             callback(err, null);
-                                //         } else {
-                                //             dataFinal.count = finalData.count;
-                                //             console.log("dataFinal----", dataFinal);
-
-                                //             callback(null, dataFinal);
-                                //         }
-                                //     }
-                                // });
-                            }
-                        ],
-                        function (err, found) {
-                            if (err) {
-                                console.log('********** error at final response of asynch.waterfall in search of ProjectExpense.js ************', err);
+                    CustomerNote.saveData(singleData, function (err, found) {
+                        if (err) {
+                            console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                            callback(err, null);
+                        } else {
+                            if (_.isEmpty(found)) {
                                 callback(err, null);
                             } else {
-                                if (_.isEmpty(found)) {
-                                    callback(err, null);
-                                } else {
-                                    callback(null, found);
+                                console.log("found!!!!", found);
+                                var totalCount = 0;
+                                var sucessCount = 0;
+                                var FailureCount = 0;
+                                if (found.err != null) {
+                                    sucessCount++;
+                                } else if (found.err == null) {
+                                    FailureCount++;
                                 }
+                                if (found) {
+                                    totalCount++;
+                                }
+                                finalData.sucessCount = sucessCount;
+                                finalData.totalCount = totalCount;
+                                finalData.failureCount = FailureCount;
+                                // finalData.found = found;
+                                console.log("finalDaata----", finalData);
+                                callback(null, finalData);
                             }
-                        });
-                    // }
+                        }
+                    });
                 }, res.callback);
             }
         });
