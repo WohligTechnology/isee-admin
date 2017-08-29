@@ -96,15 +96,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     console.log("data-----------------------------------------------", data);
                     $scope.errData = data.data;
-                    // $scope.eData = {};
-                    // $scope.eData.tableName = 'CustomerNote';
-                    // $scope.eData.logs = data.data;
-                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                    //     if (data.value == true) {
-                    //         console.log("Sucess#############################", data);
-                    //         toastr.success("Data Submitted Sucessfully");
-                    //     }
-                    // });
                 }
             });
         };
@@ -231,14 +222,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     console.log("#############1################", data);
                     $scope.errData = data.data;
-                    // $scope.eData = {};
-                    // $scope.eData.tableName = tableName;
-                    // $scope.eData.logs = data.data;
-                    // NavigationService.apiCall("AllLogs/save", $scope.eData, function (data) {
-                    //     if (data.value == true) {
-                    //         toastr.success("Data Submitted Sucessfully");
-                    //     }
-                    // });
                 }
             });
         };
