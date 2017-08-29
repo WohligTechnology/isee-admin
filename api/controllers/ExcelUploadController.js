@@ -673,6 +673,7 @@ var controller = {
                 var arrData = [];
                 var finalData = {};
                 var successObj = {};
+                var eData = {};
                 async.concatSeries(data, function (singleData, callback) {
                     CustomerNote.saveData(singleData, function (err, found) {
                         if (err) {
@@ -710,7 +711,6 @@ var controller = {
                             callback(err, null);
                         } else {
                             console.log("arrData", arrData);
-                            var eData = {};
                             eData.tableName = 'CustomerNote';
                             eData.logs = _.cloneDeep(arrData);
                             AllLogs.saveData(_.cloneDeep(eData), function (err, found) {
