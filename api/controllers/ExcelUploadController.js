@@ -747,6 +747,7 @@ var controller = {
     finalUploadForCustomerNote: function (req, res) {
         Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
             if (err || _.isEmpty(data)) {
+                console.log("errr----", err);
                 res.callback(err);
             } else {
                 async.concatSeries(data, function (singleData, callback) {
