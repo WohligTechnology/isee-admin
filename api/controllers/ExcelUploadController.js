@@ -672,23 +672,28 @@ var controller = {
                 var failureCount = 0;
                 var arrData = [];
                 var finalData = {};
+                var successObj = {};
                 async.concatSeries(data, function (singleData, callback) {
                     CustomerNote.saveData(singleData, function (err, found) {
                         if (err) {
                             console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
                             callback(null, err);
+                            successObj.error = err;
+                            successObj.Success = null;
                             failureCount++;
                         } else {
                             if (_.isEmpty(found)) {
                                 callback(null, err);
                             } else {
                                 sucessCount++;
+                                successObj.error = null;
+                                successObj.Success = found;
                                 finalData.sucessCount = sucessCount;
                                 finalData.totalCount = sucessCount + failureCount;
                                 finalData.failureCount = failureCount;
                                 finalData.found = found;
                                 console.log("finalData.found", finalData.found);
-                                arrData.push(finalData.found);
+                                arrData.push(successObj);
                                 console.log("finalDaata--1--", arrData);
                                 delete finalData.found
                                 console.log("finalDaata--2--", finalData);
