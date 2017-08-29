@@ -771,7 +771,7 @@ var controller = {
                                 var finalData = {};
                                 sucessCount++;
                                 finalData.sucessCount = sucessCount;
-                                finalData.totalCount = sucessCount + FailureCount;
+                                finalData.totalCount = sucessCount + failureCount;
                                 finalData.failureCount = failureCount;
                                 finalData.found = found;
                                 arrData.push(finalData.found);
