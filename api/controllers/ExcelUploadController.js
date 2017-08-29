@@ -706,11 +706,22 @@ var controller = {
                                         }
                                     }
                                 });
-                            }, res.callback);
+                            }, function (err, found) {
+                                if (err) {
+                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                    callback(err, null);
+                                } else {
+                                    if (_.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        callback(null, finalData, arrData);
+                                    }
+                                }
+                            });
                         },
                         function (finalData, arrData, callback) {
                             console.log("data---finalData-----finalData", finalData);
-
+                            console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
                             eData.tableName = 'CustomerNote';
                             eData.logs = arrData;
                             AllLogs.saveData(eData, function (err, found) {
@@ -721,9 +732,7 @@ var controller = {
                                     if (_.isEmpty(found)) {
                                         callback(err, null);
                                     } else {
-
                                         console.log("dataFinal----", finalData);
-
                                         callback(null, finalData);
                                     }
                                 }
