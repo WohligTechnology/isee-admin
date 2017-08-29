@@ -677,11 +677,11 @@ var controller = {
                                 CustomerNote.saveData(singleData, function (err, found) {
                                     if (err) {
                                         console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                        callback(null, "next");
+                                        callback(null, err);
                                         FailureCount++;
                                     } else {
                                         if (_.isEmpty(found)) {
-                                            callback(null, "next");
+                                            callback(null, err);
                                         } else {
                                             console.log("found!!!!", found);
                                             sucessCount++;
