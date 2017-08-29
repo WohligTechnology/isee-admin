@@ -774,9 +774,11 @@ var controller = {
                                 finalData.totalCount = sucessCount + failureCount;
                                 finalData.failureCount = failureCount;
                                 finalData.found = found;
+                                console.log("finalData.found", finalData.found);
                                 arrData.push(finalData.found);
+                                console.log("finalDaata--1--", arrData);s
                                 delete finalData.found
-                                console.log("finalDaata----", finalData);
+                                console.log("finalDaata--2--", finalData);
                                 callback(null, finalData);
                             }
                         }
