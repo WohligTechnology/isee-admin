@@ -29,7 +29,7 @@
         saveLogs: function (data, callback) {
             var logsData = data;
             console.log("logsData", logsData);
-            logsData.save(function (err, found) {
+            logsData.saveData(function (err, found) {
                 if (err) {
                     callback(err, null);
                 } else {
