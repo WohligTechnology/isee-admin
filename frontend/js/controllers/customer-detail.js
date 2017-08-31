@@ -79,26 +79,26 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             });
         };
 
-        // $scope.formData = {};
-        // $scope.mapExcelFields = function (formdata, formdata1) {
-        //     // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-        //     $scope.companyExcel = {};
-        //     $scope.companyExcel.name = formdata1.file;
-        //     $scope.companyExcel.fields = [];
-        //     _.forEach(formdata, function (value, key) {
-        //         $scope.field = {};
-        //         $scope.field.ourField = key;
-        //         $scope.field.theirField = value;
-        //         $scope.companyExcel.fields.push($scope.field);
-        //     });
-        //     console.log("$scope.companyExcel", $scope.companyExcel);
-        //     NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
-        //         if (data.value == true) {
-        //             console.log("data-----------------------------------------------", data);
-        //             $scope.errData = data.data;
-        //         }
-        //     });
-        // };
+        $scope.formData = {};
+        $scope.mapExcelFields = function (formdata, formdata1) {
+            // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
+            $scope.companyExcel = {};
+            $scope.companyExcel.name = formdata1.file;
+            $scope.companyExcel.fields = [];
+            _.forEach(formdata, function (value, key) {
+                $scope.field = {};
+                $scope.field.ourField = key;
+                $scope.field.theirField = value;
+                $scope.companyExcel.fields.push($scope.field);
+            });
+            console.log("$scope.companyExcel", $scope.companyExcel);
+            NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
+                if (data.value == true) {
+                    console.log("data-----------------------------------------------", data);
+                    $scope.errData = data.data;
+                }
+            });
+        };
 
         $scope.getHistory = function (n) {
             $scope.getHistoryData = {};
@@ -217,7 +217,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 $scope.field.theirField = value;
                 $scope.companyExcel.fields.push($scope.field);
             });
-            // console.log("$scope.companyExcel", $scope.companyExcel);
+            console.log("mapExcel", mapExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
                     console.log("#############1################", data);
