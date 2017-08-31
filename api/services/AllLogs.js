@@ -27,9 +27,9 @@
     var model = {
 
         saveLogs: function (data, callback) {
-            var logsData = data;
+            var logsData = this(data);
             console.log("logsData", logsData);
-            AllLogs.save(logsData, function (err, found) {
+            logsData.save(function (err, found) {
                 if (err) {
                     callback(err, null);
                 } else {
