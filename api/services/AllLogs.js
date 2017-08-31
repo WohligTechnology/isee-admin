@@ -151,6 +151,8 @@
             });
         },
 
+        //check all data in table
+        
         findDataInTable: function (tabs, callback) {
 
             // var AllTableLog = {};

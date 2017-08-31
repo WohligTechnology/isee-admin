@@ -697,11 +697,8 @@ var controller = {
                                             finalData.totalCount = sucessCount + failureCount;
                                             finalData.failureCount = failureCount;
                                             finalData.found = found;
-                                            console.log("finalData.found", finalData.found);
                                             arrData.push(successObj);
-                                            console.log("finalDaata--1--", arrData);
                                             delete finalData.found
-                                            console.log("finalDaata--2--", finalData);
                                             callback(null, finalData, arrData);
                                         }
                                     }
@@ -711,8 +708,8 @@ var controller = {
                             });
                         },
                         function (finalData, arrData, callback) {
-                            console.log("data---finalData-----finalData", finalData);
-                            console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
+                            // console.log("data---finalData-----finalData", finalData);
+                            // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
                             eData.tableName = 'CustomerNote';
                             eData.logs = arrData;
                             AllLogs.saveData(eData, function (err, found) {
@@ -732,7 +729,7 @@ var controller = {
                     ],
                     function (err, found) {
                         if (err) {
-                            console.log('********** error at final response of asynch.waterfall in search of ProjectExpense.js ************', err);
+                            console.log('********** error at final response of asynch.waterfall in search************', err);
                             callback(err, null);
                         } else {
                             if (_.isEmpty(found)) {
