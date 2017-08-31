@@ -733,7 +733,7 @@ var controller = {
                             callback(err, null);
                         } else {
                             if (_.isEmpty(found)) {
-                                callback(err, null);
+                                res.callback(err, null);
                             } else {
                                 res.callback(null, found);
                             }

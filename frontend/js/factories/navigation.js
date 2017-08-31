@@ -1,5 +1,4 @@
-var adminUrl = "http://35.184.246.124:8081/api/";
-var uploadurl = adminUrl + "upload/";
+var uploadurl = adminurl + "upload/";
 
 myApp.factory('NavigationService', function ($http) {
     var navigation = [{
