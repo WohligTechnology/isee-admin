@@ -21,9 +21,7 @@
 // Ensure we're in the project directory, so relative paths work as expected
 // no matter where we actually lift from.
 process.chdir(__dirname);
-var mongoose;
-mongoose = require('mongoose');
-
+global.mongoose = require('mongoose');
 global["database"] = "isee";
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/' + database, {
