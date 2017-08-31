@@ -11,7 +11,7 @@ var schema = new Schema({
         type: String,
         es_indexed: true
     },
-    customerNumber: Number,
+    customerNumber: String,
     salutation: String,
     firstName: {
         type: String,
