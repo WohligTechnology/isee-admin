@@ -27,9 +27,22 @@ var controller = {
         }
     },
 
-    findDataInTable: function (req, res) {
+    saveData: function (req, res) {
         if (req.body) {
             AllLogs.findDataInTable(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            });
+        }
+    },
+
+    save: function (req, res) {
+        if (req.body) {
+            AllLogs.save(req.body, res.callback);
         } else {
             res.json({
                 value: false,

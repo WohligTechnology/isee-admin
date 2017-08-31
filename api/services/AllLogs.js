@@ -26,6 +26,27 @@
     var exports = _.cloneDeep(require("sails-wohlig-service")(schema, 'user', 'user'));
     var model = {
 
+        save: function (data, callback) {
+
+            var logsData = this(data);
+            console.log("logsData", logsData);
+            logsData.save(function (err, found) {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    if (found) {
+                        console.log("found", found);
+                        callback(null, "");
+                    } else {
+                        callback(null, {
+                            message: "No Data Found"
+                        });
+                    }
+                }
+
+            });
+        },
+
         // logHistory: function (data, callback) {
         //     AllLogs.aggregate([{
         //         $group: {
