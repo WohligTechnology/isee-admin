@@ -30,11 +30,10 @@ var schema = new Schema({
     },
 
     //custId
-
-    custId: {
-        type: String,
-        unique: true
-    }
+    // custId: {
+    //     type: String,
+    //     unique: true
+    // }
 });
 
 schema.plugin(deepPopulate, {});

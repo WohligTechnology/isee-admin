@@ -38,8 +38,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         },
         {
             title: 'Warranty Item',
+        },
+        {
+            title: 'Calendar',
+        },
+        {
+            title: 'Customer Contact',
         }
-
     ];
 
     $scope.openLogs = function (logData) {
@@ -186,6 +191,20 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             getExcel = "warrantyItemUpload";
             mapExcel = "finalUploadForWarranty";
             tableName = "WarrantyItem";
+            $scope.eData = "";
+        } else if ($scope.activeJustified == 10) {
+            $scope.excelData = "";
+            $scope.errData = "";
+            getExcel = "calendarUpload";
+            mapExcel = "finalUploadForCalendar";
+            tableName = "Calendar";
+            $scope.eData = "";
+        } else if ($scope.activeJustified == 11) {
+            $scope.excelData = "";
+            $scope.errData = "";
+            getExcel = "customerUpload";
+            mapExcel = "finalUploadForCustomer";
+            tableName = "Customer";
             $scope.eData = "";
         }
 
