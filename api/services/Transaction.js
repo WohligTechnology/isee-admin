@@ -19,7 +19,7 @@ var schema = new Schema({
     transactionNumber: Number,
     transactionReferenceNumber: Number,
     cardNumber: {
-        type: Number,
+        type: String,
         es_indexed: true
     },
     tillNumber: {

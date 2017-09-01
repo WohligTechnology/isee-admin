@@ -18,7 +18,6 @@ var schema = new Schema({
         enum: ['Asc', 'Desc']
     },
 
-
     //custId
 
     custId: String

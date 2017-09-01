@@ -9,6 +9,7 @@
      $scope.getRuleData = {};
      $scope.getRuleData._id = $stateParams.ruleId;
      $scope.singleRuleData = {};
+     TemplateService.getLoader();
      NavigationService.apiCall("RuleEngine/getOne", $scope.getRuleData, function (data) {
          if (data.value == true) {
              //  console.log("data", data);
@@ -18,6 +19,7 @@
              $scope.violatedRule = [];
              NavigationService.apiCall("DemoTransaction/rulesDemo", $scope.getRuleData, function (data) {
                  if (data.value == true) {
+                     TemplateService.removeLoader();
                      $scope.violatedRuleData = data.data;
                      //  console.log(" $scope.violatedRuleData", $scope.violatedRuleData.length);
                      //  console.log(" $scope.violatedRuleData", $scope.singleRuleData.rule.length);
@@ -35,6 +37,8 @@
              });
          }
      });
+
+
 
      //  $scope.getRuleData = {};
      //  $scope.getRuleData.id = $stateParams.ruleId;

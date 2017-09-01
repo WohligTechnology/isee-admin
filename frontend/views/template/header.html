@@ -14,8 +14,8 @@
 	<ul class="user-info-menu right-links list-inline list-unstyled">
 		<li class="dropdown user-profile">
 			<a class="dropdown-toggle" data-toggle="dropdown">
-					<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
-					<span>
+				<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
+				<span>
 					Welcome, <br>	
 					{{userData.name}}
 					</span>
@@ -53,6 +53,11 @@
 				</li>
 			</ul>
 		</li>
+
+		<div class="loaderHeader" ng-show="template.isLoader">
+			<img src="frontend/img/loading.gif" alt="" style="height:120px; width:120px;">
+		</div>
+
 		<!--			
 					<li>
 						<a data-toggle="chat">

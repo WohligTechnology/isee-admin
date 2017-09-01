@@ -1,7 +1,7 @@
 myApp.service('TemplateService', function () {
     this.title = "Home";
-    this.class="";
-    this.templateTitle="";
+    this.class = "";
+    this.templateTitle = "";
     this.meta = "";
     this.metadesc = "";
 
@@ -16,6 +16,12 @@ myApp.service('TemplateService', function () {
         this.footer = "views/template/footer.html";
     };
 
+    this.getLoader = function () {
+        this.isLoader = true;
+    };
+    this.removeLoader = function () {
+        this.isLoader = false;
+    };
     this.getHTML = function (page) {
         this.init();
         var data = this;

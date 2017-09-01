@@ -104,16 +104,19 @@ var schema = new Schema({
     loyaltyProgramNumber: Number,
 
     ////
-    customer: {
-        type: Schema.Types.ObjectId,
-        ref: 'Customer',
-        index: true
-    },
+
     customerNote: [{
         type: Schema.Types.ObjectId,
         ref: 'CustomerNote',
         index: true
     }],
+
+    customer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Customer',
+        index: true
+    },
+
     transaction: [{
         type: Schema.Types.ObjectId,
         ref: 'Transaction',

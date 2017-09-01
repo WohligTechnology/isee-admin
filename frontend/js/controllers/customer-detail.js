@@ -149,7 +149,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyContactUpload";
-            mapExcel = "companyContactUpload";
+            mapExcel = "finalUploadForCompanyContact";
             tableName = "CompanyContact";
             $scope.eData = "";
         } else if ($scope.activeJustified == 5) {
@@ -230,8 +230,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.getHistory = function (n) {
             $scope.getHistoryData = {};
             $scope.getHistoryData.tableName = tableName;
+            // console.log("getHistoryData", $scope.getHistoryData);
             NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-                console.log(data);
+                // console.log("getHistory", data);
                 if (data.value == true) {
                     $scope.eData = data.data;
                     // console.log("eData--------------", $scope.eData);
