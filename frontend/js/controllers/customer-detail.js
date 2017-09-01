@@ -208,6 +208,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
+
+            //start lodder here
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -220,6 +222,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("mapExcel", mapExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
+                    // end lodder here
                     console.log("#############1################", data);
                     $scope.errData = data.data;
                 }
