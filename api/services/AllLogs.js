@@ -313,6 +313,34 @@
                         }
                         callback(null, "done");
                     });
+                },
+                function (callback) {
+                    Calendar.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[9].checkMe = true;
+                            } else {
+                                tabs[9].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                },
+                function (callback) {
+                    Customer.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[10].checkMe = true;
+                            } else {
+                                tabs[10].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
                 }
             ], function (err, results) {
                 if (err) {

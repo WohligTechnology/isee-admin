@@ -1,7 +1,141 @@
 var controller = {
 
+    //calender *
 
-    //company..
+    calendarUpload: function (req, res) {
+        if (req.body.file) {
+            var retJson = {};
+            retJson.fields = [{
+                    field: "ActivityDate",
+                    description: "String"
+                }, {
+                    field: "Month",
+                    description: "String"
+                }, {
+                    field: "Year",
+                    description: "String"
+                }, {
+                    field: "MonthYear",
+                    description: "String"
+                }, {
+                    field: "MonthYearSequence",
+                    description: "String"
+                }, {
+                    field: "Quarter",
+                    description: "String"
+                }, {
+                    field: "QuarterYear",
+                    description: "String"
+                }, {
+                    field: "QuarterYearSequence",
+                    description: "Date"
+                }, {
+                    field: "MonthName",
+                    description: "Date"
+                }
+                //  {
+                //     field: "custId",
+                //     description: "This is a Id"
+                // }
+            ]; //fields in schema
+            Config.getGSExcelFields(req.body.file, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    retJson.excelFields = data;
+                    res.callback(null, retJson);
+                }
+            });
+        } else {
+            res.callback("Please provide File to be uploaded");
+        }
+    },
+
+    finalUploadForCalendar: function (req, res) {
+        // console.log("reqqqq*********************************", req.body);
+        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                res.callback(err);
+            } else {
+                var totalCount = 0;
+                var sucessCount = 0;
+                var failureCount = 0;
+                var arrData = [];
+                var finalData = {};
+                var eData = {};
+                var dataFinal = {};
+                async.waterfall([
+                        function (callback) {
+                            async.concatSeries(data, function (singleData, callback) {
+                                var successObj = {};
+                                Calendar.saveData(singleData, function (err, found) {
+                                    if (err) {
+                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                        successObj.error = err;
+                                        successObj.Success = null;
+                                        arrData.push(successObj);
+                                        callback(null, err);
+                                        failureCount++;
+                                    } else {
+                                        if (_.isEmpty(found)) {
+                                            callback(null, err);
+                                        } else {
+                                            sucessCount++;
+                                            successObj.error = null;
+                                            successObj.Success = found;
+                                            finalData.sucessCount = sucessCount;
+                                            finalData.totalCount = sucessCount + failureCount;
+                                            finalData.failureCount = failureCount;
+                                            finalData.found = found;
+                                            arrData.push(successObj);
+                                            delete finalData.found
+                                            callback(null, finalData, arrData);
+                                        }
+                                    }
+                                });
+                            }, function (err, found) {
+                                callback(err, finalData, arrData);
+                            });
+                        },
+                        function (finalData, arrData, callback) {
+                            // console.log("data---finalData-----finalData", finalData);
+                            // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
+                            eData.tableName = 'Calendar';
+                            eData.logs = arrData;
+                            AllLogs.saveData(eData, function (err, found) {
+                                if (err) {
+                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                    callback(err, null);
+                                } else {
+                                    if (_.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        // console.log("dataFinal----", finalData);
+                                        callback(null, finalData);
+                                    }
+                                }
+                            });
+                        }
+                    ],
+                    function (err, found) {
+                        if (err) {
+                            console.log('********** error at final response of asynch.waterfall in search************', err);
+                            callback(err, null);
+                        } else {
+                            if (_.isEmpty(found)) {
+                                res.callback(err, null);
+                            } else {
+                                res.callback(null, found);
+                            }
+                        }
+                    });
+
+
+            }
+        });
+    },
+
+    //company.. *
 
     companyUpload: function (req, res) {
         if (req.body.file) {
@@ -702,44 +836,127 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatSeries(data, function (singleData, callback) {
-                    if (singleData.custId) {
-                        Customer.findOne({
-                            custId: singleData.custId
-                        }).exec(function (err, found) {
-                            if (err) {
-                                callback(err, null);
-                            } else {
-                                if (found) {
-                                    singleData.custId = found._id;
-                                    Crm.saveData(singleData, function (err, data) {
-                                        callback(null, {
-                                            error: err,
-                                            success: data
-                                        });
+                var totalCount = 0;
+                var sucessCount = 0;
+                var failureCount = 0;
+                var arrData = [];
+                var finalData = {};
+                var eData = {};
+                var dataFinal = {};
+                async.waterfall([
+                        function (callback) {
+                            async.concatSeries(data, function (singleData, callback) {
+                                var successObj = {};
+                                if (singleData.customerId) {
+                                    Customer.findOne({
+                                        customerId: singleData.customerId
+                                    }).exec(function (err, found) {
+                                        if (err) {
+                                            callback(err, null);
+                                        } else {
+                                            if (found) {
+                                                singleData.customerId = found._id;
+                                                Crm.saveData(singleData, function (err, found) {
+                                                    if (err) {
+                                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                                        successObj.error = err;
+                                                        successObj.Success = null;
+                                                        arrData.push(successObj);
+                                                        callback(null, err);
+                                                        failureCount++;
+                                                    } else {
+                                                        if (_.isEmpty(found)) {
+                                                            callback(null, err);
+                                                        } else {
+                                                            sucessCount++;
+                                                            successObj.error = null;
+                                                            successObj.Success = found;
+                                                            finalData.sucessCount = sucessCount;
+                                                            finalData.totalCount = sucessCount + failureCount;
+                                                            finalData.failureCount = failureCount;
+                                                            finalData.found = found;
+                                                            arrData.push(successObj);
+                                                            delete finalData.found
+                                                            callback(null, finalData, arrData);
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                callback({
+                                                    message: "Incorrect Credentials!"
+                                                }, null);
+                                            }
+                                        }
                                     });
                                 } else {
-                                    callback({
-                                        message: "Incorrect Credentials!"
-                                    }, null);
+                                    Crm.saveData(singleData, function (err, found) {
+                                        if (err) {
+                                            console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                            successObj.error = err;
+                                            successObj.Success = null;
+                                            arrData.push(successObj);
+                                            callback(null, err);
+                                            failureCount++;
+                                        } else {
+                                            if (_.isEmpty(found)) {
+                                                callback(null, err);
+                                            } else {
+                                                sucessCount++;
+                                                successObj.error = null;
+                                                successObj.Success = found;
+                                                finalData.sucessCount = sucessCount;
+                                                finalData.totalCount = sucessCount + failureCount;
+                                                finalData.failureCount = failureCount;
+                                                finalData.found = found;
+                                                arrData.push(successObj);
+                                                delete finalData.found
+                                                callback(null, finalData, arrData);
+                                            }
+                                        }
+                                    });
                                 }
-                            }
-                        });
-                    } else {
-                        Crm.saveData(singleData, function (err, data) {
-                            callback(null, {
-                                error: err,
-                                success: data
+                            }, function (err, found) {
+                                callback(err, finalData, arrData);
                             });
-                        });
-                    }
-                }, res.callback);
+                        },
+                        function (finalData, arrData, callback) {
+                            // console.log("data---finalData-----finalData", finalData);
+                            // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
+                            eData.tableName = 'Crm';
+                            eData.logs = arrData;
+                            AllLogs.saveData(eData, function (err, found) {
+                                if (err) {
+                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                    callback(err, null);
+                                } else {
+                                    if (_.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        // console.log("dataFinal----", finalData);
+                                        callback(null, finalData);
+                                    }
+                                }
+                            });
+                        }
+                    ],
+                    function (err, found) {
+                        if (err) {
+                            console.log('********** error at final response of asynch.waterfall in search************', err);
+                            callback(err, null);
+                        } else {
+                            if (_.isEmpty(found)) {
+                                res.callback(err, null);
+                            } else {
+                                res.callback(null, found);
+                            }
+                        }
+                    });
             }
         });
     },
 
 
-    //customer
+    //customer *
 
     customerUpload: function (req, res) {
         if (req.body.file) {
@@ -799,38 +1016,80 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatSeries(data, function (singleData, callback) {
-                    if (singleData.custId) {
-                        Customer.findOne({
-                            custId: singleData.custId
-                        }).exec(function (err, found) {
-                            if (err) {
-                                callback(err, null);
-                            } else {
-                                if (found) {
-                                    singleData.custId = found._id;
-                                    Customer.saveData(singleData, function (err, data) {
-                                        callback(null, {
-                                            error: err,
-                                            success: data
-                                        });
-                                    });
-                                } else {
-                                    callback({
-                                        message: "Incorrect Credentials!"
-                                    }, null);
-                                }
-                            }
-                        });
-                    } else {
-                        Customer.saveData(singleData, function (err, data) {
-                            callback(null, {
-                                error: err,
-                                success: data
+                var totalCount = 0;
+                var sucessCount = 0;
+                var failureCount = 0;
+                var arrData = [];
+                var finalData = {};
+                var eData = {};
+                var dataFinal = {};
+                async.waterfall([
+                        function (callback) {
+                            async.concatSeries(data, function (singleData, callback) {
+                                var successObj = {};
+                                Customer.saveData(singleData, function (err, found) {
+                                    if (err) {
+                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                        successObj.error = err;
+                                        successObj.Success = null;
+                                        arrData.push(successObj);
+                                        callback(null, err);
+                                        failureCount++;
+                                    } else {
+                                        if (_.isEmpty(found)) {
+                                            callback(null, err);
+                                        } else {
+                                            sucessCount++;
+                                            successObj.error = null;
+                                            successObj.Success = found;
+                                            finalData.sucessCount = sucessCount;
+                                            finalData.totalCount = sucessCount + failureCount;
+                                            finalData.failureCount = failureCount;
+                                            finalData.found = found;
+                                            arrData.push(successObj);
+                                            delete finalData.found
+                                            callback(null, finalData, arrData);
+                                        }
+                                    }
+                                });
+                            }, function (err, found) {
+                                callback(err, finalData, arrData);
                             });
-                        });
-                    }
-                }, res.callback);
+                        },
+                        function (finalData, arrData, callback) {
+                            // console.log("data---finalData-----finalData", finalData);
+                            // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
+                            eData.tableName = 'Customer';
+                            eData.logs = arrData;
+                            AllLogs.saveData(eData, function (err, found) {
+                                if (err) {
+                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                    callback(err, null);
+                                } else {
+                                    if (_.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        // console.log("dataFinal----", finalData);
+                                        callback(null, finalData);
+                                    }
+                                }
+                            });
+                        }
+                    ],
+                    function (err, found) {
+                        if (err) {
+                            console.log('********** error at final response of asynch.waterfall in search************', err);
+                            callback(err, null);
+                        } else {
+                            if (_.isEmpty(found)) {
+                                res.callback(err, null);
+                            } else {
+                                res.callback(null, found);
+                            }
+                        }
+                    });
+
+
             }
         });
     },
@@ -888,31 +1147,74 @@ var controller = {
                         function (callback) {
                             async.concatSeries(data, function (singleData, callback) {
                                 var successObj = {};
-                                CustomerNote.saveData(singleData, function (err, found) {
-                                    if (err) {
-                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                        successObj.error = err;
-                                        successObj.Success = null;
-                                        arrData.push(successObj);
-                                        callback(null, err);
-                                        failureCount++;
-                                    } else {
-                                        if (_.isEmpty(found)) {
-                                            callback(null, err);
+                                if (singleData.customerId) {
+                                    Customer.findOne({
+                                        customerId: singleData.customerId
+                                    }).exec(function (err, found) {
+                                        if (err) {
+                                            callback(err, null);
                                         } else {
-                                            sucessCount++;
-                                            successObj.error = null;
-                                            successObj.Success = found;
-                                            finalData.sucessCount = sucessCount;
-                                            finalData.totalCount = sucessCount + failureCount;
-                                            finalData.failureCount = failureCount;
-                                            finalData.found = found;
-                                            arrData.push(successObj);
-                                            delete finalData.found
-                                            callback(null, finalData, arrData);
+                                            if (found) {
+                                                singleData.customerId = found._id;
+                                                CustomerNote.saveData(singleData, function (err, found) {
+                                                    if (err) {
+                                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                                        successObj.error = err;
+                                                        successObj.Success = null;
+                                                        arrData.push(successObj);
+                                                        callback(null, err);
+                                                        failureCount++;
+                                                    } else {
+                                                        if (_.isEmpty(found)) {
+                                                            callback(null, err);
+                                                        } else {
+                                                            sucessCount++;
+                                                            successObj.error = null;
+                                                            successObj.Success = found;
+                                                            finalData.sucessCount = sucessCount;
+                                                            finalData.totalCount = sucessCount + failureCount;
+                                                            finalData.failureCount = failureCount;
+                                                            finalData.found = found;
+                                                            arrData.push(successObj);
+                                                            delete finalData.found
+                                                            callback(null, finalData, arrData);
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                callback({
+                                                    message: "Incorrect Credentials!"
+                                                }, null);
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                } else {
+                                    CustomerNote.saveData(singleData, function (err, found) {
+                                        if (err) {
+                                            console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                            successObj.error = err;
+                                            successObj.Success = null;
+                                            arrData.push(successObj);
+                                            callback(null, err);
+                                            failureCount++;
+                                        } else {
+                                            if (_.isEmpty(found)) {
+                                                callback(null, err);
+                                            } else {
+                                                sucessCount++;
+                                                successObj.error = null;
+                                                successObj.Success = found;
+                                                finalData.sucessCount = sucessCount;
+                                                finalData.totalCount = sucessCount + failureCount;
+                                                finalData.failureCount = failureCount;
+                                                finalData.found = found;
+                                                arrData.push(successObj);
+                                                delete finalData.found
+                                                callback(null, finalData, arrData);
+                                            }
+                                        }
+                                    });
+                                }
                             }, function (err, found) {
                                 callback(err, finalData, arrData);
                             });
@@ -930,7 +1232,7 @@ var controller = {
                                     if (_.isEmpty(found)) {
                                         callback(err, null);
                                     } else {
-                                        console.log("dataFinal----", finalData);
+                                        // console.log("dataFinal----", finalData);
                                         callback(null, finalData);
                                     }
                                 }
@@ -949,8 +1251,6 @@ var controller = {
                             }
                         }
                     });
-
-
             }
         });
     },
@@ -1615,7 +1915,7 @@ var controller = {
     },
 
 
-    //warrantyItem
+    //warrantyItem *
 
     warrantyItemUpload: function (req, res) {
         if (req.body.file) {
@@ -1657,39 +1957,80 @@ var controller = {
             if (err || _.isEmpty(data)) {
                 res.callback(err);
             } else {
-                async.concatSeries(data, function (singleData, callback) {
-                    if (singleData.custId) {
-                        Customer.findOne({
-                            custId: singleData.custId
-                        }).exec(function (err, found) {
-                            if (err) {
-                                callback(err, null);
-                            } else {
-                                if (found) {
-                                    singleData.custId = found._id;
-                                    WarrantyItem.saveData(singleData, function (err, data) {
-                                        callback(null, {
-                                            error: err,
-                                            success: data
-                                        });
-                                    });
-                                } else {
-                                    callback({
-                                        message: "Incorrect Credentials!"
-                                    }, null);
-                                }
-                            }
-
-                        });
-                    } else {
-                        WarrantyItem.saveData(singleData, function (err, data) {
-                            callback(null, {
-                                error: err,
-                                success: data
+                var totalCount = 0;
+                var sucessCount = 0;
+                var failureCount = 0;
+                var arrData = [];
+                var finalData = {};
+                var eData = {};
+                var dataFinal = {};
+                async.waterfall([
+                        function (callback) {
+                            async.concatSeries(data, function (singleData, callback) {
+                                var successObj = {};
+                                WarrantyItem.saveData(singleData, function (err, found) {
+                                    if (err) {
+                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                        successObj.error = err;
+                                        successObj.Success = null;
+                                        arrData.push(successObj);
+                                        callback(null, err);
+                                        failureCount++;
+                                    } else {
+                                        if (_.isEmpty(found)) {
+                                            callback(null, err);
+                                        } else {
+                                            sucessCount++;
+                                            successObj.error = null;
+                                            successObj.Success = found;
+                                            finalData.sucessCount = sucessCount;
+                                            finalData.totalCount = sucessCount + failureCount;
+                                            finalData.failureCount = failureCount;
+                                            finalData.found = found;
+                                            arrData.push(successObj);
+                                            delete finalData.found
+                                            callback(null, finalData, arrData);
+                                        }
+                                    }
+                                });
+                            }, function (err, found) {
+                                callback(err, finalData, arrData);
                             });
-                        });
-                    }
-                }, res.callback);
+                        },
+                        function (finalData, arrData, callback) {
+                            // console.log("data---finalData-----finalData", finalData);
+                            // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
+                            eData.tableName = 'WarrantyItem';
+                            eData.logs = arrData;
+                            AllLogs.saveData(eData, function (err, found) {
+                                if (err) {
+                                    console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                    callback(err, null);
+                                } else {
+                                    if (_.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        // console.log("dataFinal----", finalData);
+                                        callback(null, finalData);
+                                    }
+                                }
+                            });
+                        }
+                    ],
+                    function (err, found) {
+                        if (err) {
+                            console.log('********** error at final response of asynch.waterfall in search************', err);
+                            callback(err, null);
+                        } else {
+                            if (_.isEmpty(found)) {
+                                res.callback(err, null);
+                            } else {
+                                res.callback(null, found);
+                            }
+                        }
+                    });
+
+
             }
         });
     },
