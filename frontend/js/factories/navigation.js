@@ -41,7 +41,7 @@ myApp.factory('NavigationService', function ($http) {
     }, {
         name: "Predictive Dashboard",
         classis: "active",
-        anchor: "coming-soon",
+        anchor: "predictive-dashboard",
         // icon: "fa-tachometer"
     }, {
         name: "Product Admin",

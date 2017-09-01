@@ -67,4 +67,5 @@ module.exports = [
   'frontend/js/controllers/coming-soon.js',
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',
+  'frontend/js/controllers/predictive-dash-ctrl.js',
 ];

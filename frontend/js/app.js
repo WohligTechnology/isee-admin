@@ -52,6 +52,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'TillRegisterdCtrl'
         })
+        .state("predictive-dashboard", {
+            url: "/predictive-dashboard",
+            templateUrl: tempateURL,
+            controller: 'PredictiveDashCtrl'
+        })
         .state('user', {
             url: "/user",
             templateUrl: tempateURL,
