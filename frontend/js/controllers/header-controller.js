@@ -8,13 +8,17 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   //submenu
   $scope.oneAtATime = true;
   $scope.classNg = "open";
-  $scope.sideMenu = function(){
-      console.log("menu");
-    if ($scope.classNg === "open")
+  $scope.sideMenu = function () {
+    console.log("menu");
+    if ($scope.classNg === "open") {
       $scope.classNg = "collapsed";
-    else
+      $('#sidemenu').addClass("collapsed");
+    } else {
       $scope.classNg = "open";
+      $('#sidemenu').removeClass("collapsed");
+    }
   };
+
   //End submenu
 
   // jStorage for user 

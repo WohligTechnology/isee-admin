@@ -81,6 +81,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     $scope.excelData = data.data;
                     // console.log("aaaa", $scope.excelArrData);
+                    $(".cust-details_hidesect").css("display", "block"); //display submit and message
                 } else {
                     alert("aaaaa");
                 }
@@ -131,6 +132,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
 
     $scope.activeTabs = function (n) {
+        $(".cust-details_hidesect").css("display", "none"); // to hide submit and message
         $scope.activeJustified = n + 1;
         var getExcel;
         var mapExcel;
@@ -229,6 +231,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     // console.log("aaaa", data);
                     $scope.excelData = data.data;
                     // console.log("excelData", $scope.excelData);
+                    $(".cust-details_hidesect").css("display", "block"); //display submit and message
                 } else {
                     toastr.error("Incorrect Input  ");
                     // alert("Incorrect Input  ");

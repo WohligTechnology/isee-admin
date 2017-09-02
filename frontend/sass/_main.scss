@@ -797,3 +797,21 @@ header {
         padding: 2px;
     }
 }
+
+.cust-details_hidesect {
+    display: none;
+}
+
+.sidebar-menu.collapsed {
+    display: none !important;
+    width: 80px;
+    z-index: 10;
+    overflow: visible;
+    transition: all initial 3ms;
+}
+
+// .active.panel.panel-default.panel-open {
+//     .panel-heading {
+//         background: rebeccapurple;
+//     }
+// }
