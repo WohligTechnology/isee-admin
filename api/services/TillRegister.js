@@ -1,38 +1,43 @@
 var schema = new Schema({
-    activityDate: {
+    retailLocationId: {
+        type: String
+    },
+    tillNumber: {
+        type: String
+    },
+    date: {
         type: Date
     },
-    month: {
+    openingBalance: {
         type: Number
     },
-    year: {
+    additions: {
         type: Number
     },
-    monthYear: {
+    systemBalance: {
+        type: Number
+    },
+    actualBalance: {
+        type: Number
+    },
+    bankDeposit: {
+        type: Number
+    },
+    closingBalance: {
+        type: Number
+    },
+    employeeNumber: {
         type: String
     },
-    monthYearSequence: {
+    randomNumber: {
         type: Number
-    },
-    quarter: {
-        type: Number
-    },
-    quarterYear: {
-        type: String
-    },
-    quarterYearSequence: {
-        type: Number
-    },
-    monthName: {
-        type: String
     }
-
 });
 
 schema.plugin(deepPopulate, {});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
-module.exports = mongoose.model('Calendar', schema);
+module.exports = mongoose.model('TillRegister', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {};

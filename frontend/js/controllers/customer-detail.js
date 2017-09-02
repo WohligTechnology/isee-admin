@@ -206,6 +206,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCustomer";
             tableName = "Customer";
             $scope.eData = "";
+        } else if ($scope.activeJustified == 12) {
+            $scope.excelData = "";
+            $scope.errData = "";
+            getExcel = "tillRegisterUpload";
+            mapExcel = "finalUploadFortillRegister";
+            tableName = "TillRegister";
+            $scope.eData = "";
         }
 
 
