@@ -11,11 +11,10 @@ var myApp = angular.module('myApp', [
     'ui.swiper',
     'highcharts-ng',
     'toastr',
-    'ngFileUpload',
     'ngAnimate',
     'ngSanitize'
 ]);
-
+// 'ngFileUpload',
 // Define all the routes below
 myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     var tempateURL = "views/template/template.html"; //Default Template URL

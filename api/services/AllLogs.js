@@ -342,20 +342,20 @@
                         callback(null, "done");
                     });
                 },
-                // function (callback) {
-                //     TillRegister.find({}).lean().exec(function (err, data) {
-                //         if (err) {
-                //             callback(err, null);
-                //         } else {
-                //             if (!_.isEmpty(data)) {
-                //                 tabs[11].checkMe = true;
-                //             } else {
-                //                 tabs[11].checkMe = false;
-                //             }
-                //         }
-                //         callback(null, "done");
-                //     });
-                // }
+                function (callback) {
+                    TillRegister.find({}).lean().exec(function (err, data) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            if (!_.isEmpty(data)) {
+                                tabs[11].checkMe = true;
+                            } else {
+                                tabs[11].checkMe = false;
+                            }
+                        }
+                        callback(null, "done");
+                    });
+                }
             ], function (err, results) {
                 if (err) {
                     callback(err, null);
@@ -365,20 +365,22 @@
             });
         },
 
+       
+       
         //Transaction
-
 
         // findDataIn: function (tabs, callback) {
 
         //     var organisationData = {};
         //     var customerData = {};
-        //     var organisationID = {};
-        //     var organisationID = {};
-        //     var organisationID = {};
-        //     var organisationID = {};
+        //     var locationData = {};
+        //     var itemData = {};
+        //     var calendarData = {};
+        //     var tillregisterData = {};
         //     async.parallel([
 
-        //         //find customerNote Data
+        //         //oraganisation
+
         //         function (callback) {
         //             Company.findOne({
         //                 organizationId: singleData.organizationId
@@ -388,9 +390,7 @@
         //                 } else {
         //                     if (!_.isEmpty(data)) {
         //                         organisationData = data._id;
-        //                     } else {
-
-        //                     }
+        //                     } 
         //                 }
         //                 callback(null, "done");
         //             });
@@ -407,9 +407,7 @@
         //                 } else {
         //                     if (!_.isEmpty(data)) {
         //                         customerData = data._id;
-        //                     } else {
-
-        //                     }
+        //                     } 
         //                 }
         //                 callback(null, "done");
         //             });
@@ -419,151 +417,70 @@
         //         //location
 
         //         function (callback) {
-        //             Company.find({}).lean().exec(function (err, data) {
+        //             Locations.findOne({
+        //                 retailLocationId: singleData.retailLocationId
+        //             }).lean().exec(function (err, data) {
         //                 if (err) {
         //                     callback(err, null);
         //                 } else {
         //                     if (!_.isEmpty(data)) {
-        //                         tabs[2].checkMe = true;
-        //                     } else {
-        //                         tabs[2].checkMe = false;
-        //                     }
+        //                         locationData=data._id;
+        //                     } 
         //                 }
         //                 callback(null, "done");
-
         //             });
         //         },
+
+        //         //item
+
         //         function (callback) {
-        //             CompanyContact.find({}).lean().exec(function (err, data) {
+        //             Item.findOne({
+        //                 itemId: singleData.itemId
+        //             }).lean().exec(function (err, data) {
         //                 if (err) {
         //                     callback(err, null);
         //                 } else {
         //                     if (!_.isEmpty(data)) {
-        //                         tabs[3].checkMe = true;
-        //                     } else {
-        //                         tabs[3].checkMe = false;
-        //                     }
+        //                         itemData=data._id;
+        //                     } 
         //                 }
         //                 callback(null, "done");
-
         //             });
         //         },
+        
+        //         //calendar
+
         //         function (callback) {
-        //             CompanyInfo.find({}).lean().exec(function (err, data) {
+        //             Calendar.findOne({
+        //                 activityDate: singleData.activityDate
+        //             }).lean().exec(function (err, data) {
         //                 if (err) {
         //                     callback(err, null);
         //                 } else {
         //                     if (!_.isEmpty(data)) {
-        //                         tabs[4].checkMe = true;
-        //                     } else {
-        //                         tabs[4].checkMe = false;
+        //                         calendarData=data._id;
         //                     }
         //                 }
         //                 callback(null, "done");
-
         //             });
         //         },
+
+        //         //till register
+
         //         function (callback) {
-        //             Item.find({}).lean().exec(function (err, data) {
+        //             TillRegister.findOne({
+        //                 tillNumber: singleData.tillNumber
+        //             }).lean().exec(function (err, data) {
         //                 if (err) {
         //                     callback(err, null);
         //                 } else {
         //                     if (!_.isEmpty(data)) {
         //                         tabs[5].checkMe = true;
-        //                     } else {
-        //                         tabs[5].checkMe = false;
-        //                     }
-        //                 }
-        //                 callback(null, "done");
-
-        //             });
-        //         },
-        //         function (callback) {
-        //             Locations.find({}).lean().exec(function (err, data) {
-        //                 if (err) {
-        //                     callback(err, null);
-        //                 } else {
-        //                     if (!_.isEmpty(data)) {
-        //                         tabs[6].checkMe = true;
-        //                     } else {
-        //                         tabs[6].checkMe = false;
-        //                     }
-        //                 }
-        //                 callback(null, "done");
-
-        //             });
-        //         },
-        //         function (callback) {
-        //             Transaction.find({}).lean().exec(function (err, data) {
-        //                 if (err) {
-        //                     callback(err, null);
-        //                 } else {
-        //                     if (!_.isEmpty(data)) {
-        //                         tabs[7].checkMe = true;
-        //                     } else {
-        //                         tabs[7].checkMe = false;
-        //                     }
-        //                 }
-        //                 callback(null, "done");
-
-        //             });
-        //         },
-        //         function (callback) {
-        //             WarrantyItem.find({}).lean().exec(function (err, data) {
-        //                 if (err) {
-        //                     callback(err, null);
-        //                 } else {
-        //                     if (!_.isEmpty(data)) {
-        //                         tabs[8].checkMe = true;
-        //                     } else {
-        //                         tabs[8].checkMe = false;
-        //                     }
+        //                     } 
         //                 }
         //                 callback(null, "done");
         //             });
-        //         },
-        //         function (callback) {
-        //             Calendar.find({}).lean().exec(function (err, data) {
-        //                 if (err) {
-        //                     callback(err, null);
-        //                 } else {
-        //                     if (!_.isEmpty(data)) {
-        //                         tabs[9].checkMe = true;
-        //                     } else {
-        //                         tabs[9].checkMe = false;
-        //                     }
-        //                 }
-        //                 callback(null, "done");
-        //             });
-        //         },
-        //         function (callback) {
-        //             Customer.find({}).lean().exec(function (err, data) {
-        //                 if (err) {
-        //                     callback(err, null);
-        //                 } else {
-        //                     if (!_.isEmpty(data)) {
-        //                         tabs[10].checkMe = true;
-        //                     } else {
-        //                         tabs[10].checkMe = false;
-        //                     }
-        //                 }
-        //                 callback(null, "done");
-        //             });
-        //         },
-        //         // function (callback) {
-        //         //     TillRegister.find({}).lean().exec(function (err, data) {
-        //         //         if (err) {
-        //         //             callback(err, null);
-        //         //         } else {
-        //         //             if (!_.isEmpty(data)) {
-        //         //                 tabs[11].checkMe = true;
-        //         //             } else {
-        //         //                 tabs[11].checkMe = false;
-        //         //             }
-        //         //         }
-        //         //         callback(null, "done");
-        //         //     });
-        //         // }
+        //         }
         //     ], function (err, results) {
         //         if (err) {
         //             callback(err, null);

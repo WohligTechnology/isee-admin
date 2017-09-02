@@ -1,6 +1,6 @@
 var controller = {
 
-    //till Register *
+    //till Register 
 
     tillRegisterUpload: function (req, res) {
         if (req.body.file) {
@@ -74,31 +74,74 @@ var controller = {
                         function (callback) {
                             async.concatSeries(data, function (singleData, callback) {
                                 var successObj = {};
-                                TillRegister.saveData(singleData, function (err, found) {
-                                    if (err) {
-                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
-                                        successObj.error = err;
-                                        successObj.Success = null;
-                                        arrData.push(successObj);
-                                        callback(null, err);
-                                        failureCount++;
-                                    } else {
-                                        if (_.isEmpty(found)) {
-                                            callback(null, err);
+                                if (singleData.retailLocationId) {
+                                    Locations.findOne({
+                                        retailLocationId: singleData.retailLocationId
+                                    }).exec(function (err, found) {
+                                        if (err) {
+                                            callback(err, null);
                                         } else {
-                                            sucessCount++;
-                                            successObj.error = null;
-                                            successObj.Success = found;
-                                            finalData.sucessCount = sucessCount;
-                                            finalData.totalCount = sucessCount + failureCount;
-                                            finalData.failureCount = failureCount;
-                                            finalData.found = found;
-                                            arrData.push(successObj);
-                                            delete finalData.found
-                                            callback(null, finalData, arrData);
+                                            if (found) {
+                                                singleData.retailLocationId = found._id;
+                                                TillRegister.saveData(singleData, function (err, found) {
+                                                    if (err) {
+                                                        console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                                        successObj.error = err;
+                                                        successObj.Success = null;
+                                                        arrData.push(successObj);
+                                                        callback(null, err);
+                                                        failureCount++;
+                                                    } else {
+                                                        if (_.isEmpty(found)) {
+                                                            callback(null, err);
+                                                        } else {
+                                                            sucessCount++;
+                                                            successObj.error = null;
+                                                            successObj.Success = found;
+                                                            finalData.sucessCount = sucessCount;
+                                                            finalData.totalCount = sucessCount + failureCount;
+                                                            finalData.failureCount = failureCount;
+                                                            finalData.found = found;
+                                                            arrData.push(successObj);
+                                                            delete finalData.found
+                                                            callback(null, finalData, arrData);
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                callback({
+                                                    message: "Incorrect Credentials!"
+                                                }, null);
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                } else {
+                                    TillRegister.saveData(singleData, function (err, found) {
+                                        if (err) {
+                                            console.log('********** error at 1st function of asynch.waterfall in search of ProjectExpense.js ************', err);
+                                            successObj.error = err;
+                                            successObj.Success = null;
+                                            arrData.push(successObj);
+                                            callback(null, err);
+                                            failureCount++;
+                                        } else {
+                                            if (_.isEmpty(found)) {
+                                                callback(null, err);
+                                            } else {
+                                                sucessCount++;
+                                                successObj.error = null;
+                                                successObj.Success = found;
+                                                finalData.sucessCount = sucessCount;
+                                                finalData.totalCount = sucessCount + failureCount;
+                                                finalData.failureCount = failureCount;
+                                                finalData.found = found;
+                                                arrData.push(successObj);
+                                                delete finalData.found
+                                                callback(null, finalData, arrData);
+                                            }
+                                        }
+                                    });
+                                }
                             }, function (err, found) {
                                 callback(err, finalData, arrData);
                             });
@@ -106,7 +149,7 @@ var controller = {
                         function (finalData, arrData, callback) {
                             // console.log("data---finalData-----finalData", finalData);
                             // console.log("arrDataarrDataarrData---finalData-----finalData", arrData);
-                            eData.tableName = 'Calendar';
+                            eData.tableName = 'TillRegister';
                             eData.logs = arrData;
                             AllLogs.saveData(eData, function (err, found) {
                                 if (err) {
@@ -135,6 +178,8 @@ var controller = {
                             }
                         }
                     });
+
+
             }
         });
     },
@@ -1743,7 +1788,6 @@ var controller = {
 
     //location
 
-
     LocationUpload: function (req, res) {
         if (req.body.file) {
             var retJson = {};
@@ -2172,7 +2216,6 @@ var controller = {
             }
         });
     },
-
 
     //warrantyItem *
 

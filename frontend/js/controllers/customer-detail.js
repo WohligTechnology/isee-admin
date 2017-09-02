@@ -44,6 +44,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         },
         {
             title: 'Customer Contact',
+        },
+        {
+            title: 'Till Register',
         }
     ];
 
@@ -237,8 +240,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-
-
             $(".cust-details_loader").css("display", "block"); //loader
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
@@ -252,10 +253,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("mapExcel", mapExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-
                     $(".cust-details_loader").css("display", "none"); //loader end
                     $(".cust-details_loader_done").css("display", "block"); //loader end
-                    console.log("#############1################", data);
+                    // console.log("#############1################", data);
                     $scope.errData = data.data;
                 }
             });
@@ -282,7 +282,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     NavigationService.apiCall("AllLogs/findDataInTable", $scope.tabs, function (data) {
         if (data.value == true) {
             $scope.tabs = data.data;
-            console.log("$scope.tabs-------    ", data);
+            // console.log("$scope.tabs-------    ", data);
         }
     });
 
