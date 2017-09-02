@@ -1,14 +1,14 @@
-<div class="sidebar-menu-inner ps-container">
-	<header class="logo-env">
-		<div class="logo">
-			<a ui-sref="corporate" class="logo-expanded">
+<!-- <div class="sidebar-menu-inner ps-container"> -->
+<header class="logo-env">
+	<div class="logo">
+		<a ui-sref="corporate" class="logo-expanded">
 				<img src="img/logo.png" alt="" width="100"> {{template.templateTitle}}
 			</a>
-			<a ui-sref="corporate" class="logo-collapsed">
+		<a ui-sref="corporate" class="logo-collapsed">
 				<img src="img/logo.png" alt="" width="80">
 			</a>
-		</div>
-		<!--<div class="mobile-menu-toggle visible-xs">
+	</div>
+	<!--<div class="mobile-menu-toggle visible-xs">
 			<a ui-sref="corporate" data-toggle="user-info-menu">
 				<i class="fa-bell-o"></i>
 				<span class="badge badge-success">7</span>
@@ -18,7 +18,8 @@
 				<i class="fa-bars"></i>
 			</a>
 		</div>-->
-	</header>
-	<nav class="sidebar-menu">
+</header>
+
+<nav class="sidebar-menu">
 	<div ng-include="template.menu" id="main-menu" class="main-menu"></div>
-	</nav>
+</nav>

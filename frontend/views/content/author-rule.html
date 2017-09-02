@@ -116,7 +116,7 @@
                                     <div class="radio">
                                         <label><input type="radio" name="element" value="false" ng-model="optCons" ng-click="choice.constant=''">Element/Expression</label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-disabled="optCons!='false'" ng-model="choice.element">
+                                    <!-- <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-disabled="optCons!='false'" ng-model="choice.element"> -->
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     <label class=" control-label">Table</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)">
+                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)" ng-disabled="optCons!='false'">
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -143,7 +143,8 @@
                                     <label class=" control-label">Table Fields</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true">
+                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true"
+                                        ng-disabled="optCons!='false'">
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>

@@ -11,7 +11,6 @@ var myApp = angular.module('myApp', [
     'ui.swiper',
     'highcharts-ng',
     'toastr',
-    'ngFileUpload',
     'ngAnimate',
     'ngSanitize'
 ]);
