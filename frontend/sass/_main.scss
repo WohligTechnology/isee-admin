@@ -154,7 +154,6 @@ header {
 // .btn {
 //     padding: 6px 25px;
 // }
-
 .panel .panel-heading>.panel-options a.btn-primary {
     color: #fff;
 }
@@ -762,7 +761,6 @@ header {
     }
 }
 
-
 .form-block.position-made {
     position: absolute;
     bottom: -56px;
@@ -771,10 +769,31 @@ header {
     @include transform(translateX(-50%));
     padding: 0 10px;
     z-index: 1;
-    span{
+    span {
         padding: 0 5px;
         font-weight: 600;
     }
 }
 
 //End Coming Soon
+//customer details loader
+.cust-details_loader {
+    display: none;
+    text-align: center;
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.cust-details_loader_done {
+    display: none;
+    text-align: center;
+    span {
+        color: White;
+        background-color: green;
+        font-size: 20px;
+        border-radius: 7px;
+        padding: 2px;
+    }
+}

@@ -87,6 +87,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
+            // $(".cust-details_loader").css("display", "block"); //loader
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -100,6 +101,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value === true) {
                     console.log("data-----------------------------------------------", data);
+                    // $(".cust-details_loader").css("display", "none"); //loader
+                    // $(".cust-details_loader_done").css("display", "block"); //loader
                     $scope.errData = data.data;
                 }
             });
@@ -235,7 +238,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
 
-            //start lodder here
+
+            $(".cust-details_loader").css("display", "block"); //loader
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -248,7 +252,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("mapExcel", mapExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    // end lodder here
+
+                    $(".cust-details_loader").css("display", "none"); //loader end
+                    $(".cust-details_loader_done").css("display", "block"); //loader end
                     console.log("#############1################", data);
                     $scope.errData = data.data;
                 }
