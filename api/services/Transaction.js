@@ -89,5 +89,39 @@ schema.plugin(mongoosastic);
 module.exports = mongoose.model('Transaction', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+
+    saveOnExcel: function (data, callback) {
+        async.parallel({
+                organizationId: function (callback) {
+                    Company.getFromId("organizationId", data.organizationId, callback);
+                },
+                customerId: function (callback) {
+                    Customer.getFromId("customerId", data.customerId, callback);
+                },
+                retailLocationId: function (callback) {
+                    Locations.getFromId("retailLocationId", data.retailLocationId, callback);
+                },
+                itemId: function (callback) {
+                    Item.getFromId("itemId", data.itemId, callback);
+                },
+                activityDate: function (callback) {
+                    Calendar.getFromId("activityDate", data.activityDate, callback);
+                },
+                tillNumber: function (callback) {
+                    TillRegister.getFromId("tillNumber", data.tillNumber, callback);
+                }
+            },
+            function (err, result) {
+                console.log(err);
+                if (err || _.isEmpty(result)) {
+                    callback(err);
+                } else {
+                    data = _.assign(data, result);
+                    Transaction.saveData(data, callback);
+                }
+            });
+    }
+
+};
 module.exports = _.assign(module.exports, exports, model);

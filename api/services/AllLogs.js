@@ -5,6 +5,12 @@
         logs: [{
             type: Schema.Types.Mixed
         }],
+        sucessCount: Number,
+        failureCount: Number,
+        status: {
+            type: String,
+            enum: ['Pending', 'Completed']
+        },
         user: {
             type: Schema.Types.ObjectId,
             ref: 'User',
@@ -365,8 +371,8 @@
             });
         },
 
-       
-       
+
+
         //Transaction
 
         // findDataIn: function (tabs, callback) {
@@ -447,7 +453,7 @@
         //                 callback(null, "done");
         //             });
         //         },
-        
+
         //         //calendar
 
         //         function (callback) {

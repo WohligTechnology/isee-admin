@@ -134,5 +134,25 @@ schema.plugin(mongoosastic);
 module.exports = mongoose.model('Crm', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+
+    saveOnExcel: function (data, callback) {
+        async.parallel({
+                organizationId: function (callback) {
+                    Company.getFromId("organizationId", data.organizationId, callback);
+                },
+                customerId: function (callback) {
+                    Customer.getFromId("customerId", data.customerId, callback);
+                }
+            },
+            function (err, result) {
+                if (err || _.isEmpty(result)) {
+                    callback(err);
+                } else {
+                    data = _.assign(data, result);
+                    Crm.saveData(data, callback);
+                }
+            });
+    }
+};
 module.exports = _.assign(module.exports, exports, model);

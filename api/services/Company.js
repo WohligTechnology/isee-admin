@@ -63,5 +63,22 @@ schema.plugin(mongoosastic);
 module.exports = mongoose.model('Company', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+    getFromId: function (fieldName, fieldValue, callback) {
+        var Model = this;
+        if (!fieldValue || fieldValue == "") {
+            callback(fieldName + " value is Blank");
+        } else {
+            var obj = {};
+            obj[fieldName] = fieldValue;
+            Model.findOne(obj).exec(function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    callback(err);
+                } else {
+                    callback(null, data._id);
+                }
+            });
+        }
+    }
+};
 module.exports = _.assign(module.exports, exports, model);

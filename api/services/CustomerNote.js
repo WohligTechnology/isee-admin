@@ -31,43 +31,21 @@ module.exports = mongoose.model('CustomerNote', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {
 
-    replaceCustomerId: function (data, callback) {
-        // console.log("data", data)
-        Customer.findOne({
-            custId: data.id
-        }).exec(function (err, found) {
-            if (err) {
-                callback(err, null);
-            } else {
-                if (found) {
-                    CustomerNote.findOneAndUpdate({
-                        custId: data.id
-                    }, {
-                        custId: found._id
-                    }, {
-                        new: true
-                    }).exec(function (err, found1) {
-                        if (err) {
-                            callback(err, null);
-                        } else {
-                            if (found) {
-                                callback(null, found1);
-                            } else {
-                                callback({
-                                    message: "Incorrect Credentials!"
-                                }, null);
-                            }
-                        }
-                    });
-                    // callback(null, found);
-                } else {
-                    callback({
-                        message: "Incorrect Credentials!"
-                    }, null);
+    saveOnExcel: function (data, callback) {
+        async.parallel({
+                customerId: function (callback) {
+                    Customer.getFromId("customerId", data.customerId, callback);
                 }
-            }
-
-        });
+            },
+            function (err, result) {
+                if (err || _.isEmpty(result)) {
+                    callback(err);
+                } else {
+                    data = _.assign(data, result);
+                    CustomerNote.saveData(data, callback);
+                }
+            });
     }
+
 };
 module.exports = _.assign(module.exports, exports, model);
