@@ -749,7 +749,7 @@ var controller = {
                 async.waterfall([
                         function (callback) { // Save to All Logs
                             AllLogs.saveData({
-                                tableName: "Crm",
+                                tableName: "CRM",
                                 status: "Pending"
                             }, function (err, found) {
                                 res.callback(err, found);
@@ -1396,11 +1396,17 @@ var controller = {
         if (req.body.file) {
             var retJson = {};
             retJson.fields = [{
+                    field: "records",
+                    description: "Date"
+                }, {
                     field: "organizationId",
                     description: "Date"
                 }, {
                     field: "businessDate",
                     description: "Date"
+                }, {
+                    field: "retailLocationId",
+                    description: "String"
                 }, {
                     field: "transactionSequence",
                     description: "String"
@@ -1415,6 +1421,9 @@ var controller = {
                     description: "String"
                 }, {
                     field: "paymentMode",
+                    description: "String"
+                }, {
+                    field: "randNoTransactionVoidFlag",
                     description: "String"
                 },
                 {
@@ -1459,6 +1468,9 @@ var controller = {
                     description: "Date"
                 }, {
                     field: "customerId",
+                    description: "String"
+                }, {
+                    field: "randomNoForCustId",
                     description: "String"
                 }, {
                     field: "custAccountCode",

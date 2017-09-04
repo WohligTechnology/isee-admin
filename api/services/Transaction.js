@@ -77,6 +77,13 @@ var schema = new Schema({
         index: true,
         key: "transaction"
     },
+    records: String,
+    retailLocationId: {
+        type: String,
+        es_indexed: true
+    },
+    randNoTransactionVoidFlag: Number,
+    randomNoForCustId: Number,
     //custId
 
     custId: String
