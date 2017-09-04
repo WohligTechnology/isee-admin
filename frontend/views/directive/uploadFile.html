@@ -32,3 +32,9 @@
     <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="!isMultiple">Uploading Document {{image.file.name}}</span>
     <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="isMultiple">Uploading Document {{image.length}}</span>
 </div>
+<div class="progress">
+    <div id="fileprogressbar" class="progress-bar" role="progressbar" aria-valuenow="{{fileprogressbar}}%" aria-valuemin="0"
+        aria-valuemax="100">
+        {{fileprogressbar}} %
+    </div>
+</div>

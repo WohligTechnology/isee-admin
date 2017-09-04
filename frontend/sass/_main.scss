@@ -810,8 +810,23 @@ header {
     transition: all initial 3ms;
 }
 
-// .active.panel.panel-default.panel-open {
-//     .panel-heading {
-//         background: rebeccapurple;
-//     }
-// }
+.active.panel.panel-default.panel-open {
+    .panel-heading {
+        background: #96cae8;
+    }
+}
+
+.logo-collapsed {
+    float: left;
+    padding: 20px;
+    display: none;
+}
+
+.progress {
+    width: 200px;
+    height: 15px;
+    margin-top: -12px;
+    .progress-bar {
+        font-size: 12px;
+    }
+}

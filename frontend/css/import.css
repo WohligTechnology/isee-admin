@@ -39331,8 +39331,6 @@ header {
     border-radius: 7px;
     padding: 2px; }
 
-<<<<<<< HEAD
-=======
 .cust-details_hidesect {
   display: none; }
 
@@ -39343,7 +39341,21 @@ header {
   overflow: visible;
   transition: all initial 3ms; }
 
->>>>>>> e9c6329ec17665a682fd2daf28ab262a89aeff03
+.active.panel.panel-default.panel-open .panel-heading {
+  background: #96cae8; }
+
+.logo-collapsed {
+  float: left;
+  padding: 20px;
+  display: none; }
+
+.progress {
+  width: 200px;
+  height: 15px;
+  margin-top: -12px; }
+  .progress .progress-bar {
+    font-size: 12px; }
+
 #fancybox-loading,
 .fancybox-close,
 .fancybox-next span,

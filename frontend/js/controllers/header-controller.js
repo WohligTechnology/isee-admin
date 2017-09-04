@@ -10,12 +10,16 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   $scope.classNg = "open";
   $scope.sideMenu = function () {
     console.log("menu");
+
+
     if ($scope.classNg === "open") {
       $scope.classNg = "collapsed";
       $('#sidemenu').addClass("collapsed");
+      $('#header-collapsed-icon').css("display", "block"); //to make icon visible in header
     } else {
       $scope.classNg = "open";
       $('#sidemenu').removeClass("collapsed");
+      $('#header-collapsed-icon').css("display", "none"); //to hide icon in header 
     }
   };
 

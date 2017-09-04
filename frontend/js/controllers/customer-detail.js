@@ -2,6 +2,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     $scope.template = TemplateService.getHTML("content/customer-detail.html");
     TemplateService.title = "Customer Detail"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
+    $scope.fileprogressbar = 0;
     $scope.navigation = NavigationService.getNavigation();
     $scope.submitForm = function (formLoginData) {
         console.log("This is it");
