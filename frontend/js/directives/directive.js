@@ -121,8 +121,6 @@ myApp.directive('img', function ($compile, $parse) {
                 callback: "&ngCallback"
             },
             link: function ($scope, element, attrs) {
-                $scope.fileprogressbar = 0;
-                $('#fileprogressbar').css("width", $scope.fileprogressbar + '%');
                 console.log($scope.model);
                 $scope.showImage = function () {};
                 $scope.check = true;
@@ -188,6 +186,8 @@ myApp.directive('img', function ($compile, $parse) {
                 };
                 $scope.uploadNow = function (image) {
                     $scope.uploadStatus = "uploading";
+                    $scope.fileprogressbar = 0;
+                    $scope.displayprogress = 'block'
                     console.log("line 188 size of file", image.file.size); //size of image
                     var Template = this;
                     image.hide = true;
@@ -202,11 +202,7 @@ myApp.directive('img', function ($compile, $parse) {
                             progress: function (e) {
 
                                 console.log(e.loaded * 100 / e.total);
-                                console.log("value for fileprogressbar", $scope.fileprogressbar);
-                                $scope.fileprogressbar = parseInt((e.loaded / e.total) * 100);
-                                // $scope.fileprogressbar.$apply;
-                                $('#fileprogressbar').css("width", $scope.fileprogressbar + '%');
-                                console.log("file progress bar", $scope.fileprogressbar);
+                                $scope.fileprogressbar = parseInt((e.loaded / e.total) * 100); // percentage of progress
                             }
                         }
                     }).then(function (data) {
