@@ -1,6 +1,8 @@
 var schema = new Schema({
     retailLocationId: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'Locations',
+        index: true,
     },
     tillNumber: {
         type: String
@@ -31,15 +33,27 @@ var schema = new Schema({
     },
     randomNumber: {
         type: Number
-    }
+    },
+    //
+    transaction: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction',
+        index: true
+    }],
 });
 
-schema.plugin(deepPopulate, {});
+schema.plugin(deepPopulate, {
+    populate: {
+        retailLocationId: {
+            select: ""
+        }
+    }
+});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 module.exports = mongoose.model('TillRegister', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "retailLocationId", "retailLocationId"));
 var model = {
 
     getFromId: function (fieldName, fieldValue, callback) {

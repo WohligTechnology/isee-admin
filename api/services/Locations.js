@@ -1,7 +1,8 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true
     },
     retailLocationId: {
         type: String,
@@ -77,19 +78,21 @@ var schema = new Schema({
         ref: 'Transaction',
         index: true
     }],
-
-    //custId
-
-    custId: String
 });
 
-schema.plugin(deepPopulate, {});
+schema.plugin(deepPopulate, {
+    populate: {
+        organizationId: {
+            select: ""
+        }
+    }
+});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 schema.plugin(mongoosastic);
-module.exports = mongoose.model('Location', schema);
+module.exports = mongoose.model('Locations', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "organizationId", "organizationId"));
 var model = {
 
     getFromId: function (fieldName, fieldValue, callback) {

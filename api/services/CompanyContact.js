@@ -1,7 +1,8 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
     },
     phoneNumberId: {
         type: String,
@@ -16,11 +17,7 @@ var schema = new Schema({
     sortOrder: {
         type: String,
         enum: ['Asc', 'Desc']
-    },
-
-    //custId
-
-    custId: String
+    }
 });
 
 schema.plugin(deepPopulate, {});

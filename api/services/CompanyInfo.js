@@ -1,7 +1,8 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
     },
     reasonTypeCode: {
         type: String,
@@ -40,10 +41,7 @@ var schema = new Schema({
     inventoryBucketId: {
         type: String,
         es_indexed: true
-    },
-    //custId
-
-    custId: String
+    }
 });
 
 schema.plugin(deepPopulate, {});

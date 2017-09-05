@@ -1,7 +1,8 @@
 var schema = new Schema({
     customerId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Customer',
+        index: true,
     },
     noteSequence: {
         type: Number,

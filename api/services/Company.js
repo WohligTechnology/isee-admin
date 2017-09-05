@@ -35,25 +35,21 @@ var schema = new Schema({
     itemId: String, //item table
 
     //////
-    location: [{
-        type: Schema.Types.ObjectId,
-        ref: "Location",
-        index: true
-    }],
-    companyContact: {
-        type: Schema.Types.ObjectId,
-        ref: 'CompanyContact',
-        index: true
-    },
-    companyInfo: {
-        type: Schema.Types.ObjectId,
-        ref: 'CompanyInfo',
-        index: true
-    },
-
-    //custId
-
-    custId: String
+    // location: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Locations",
+    //     index: true
+    // }],
+    // companyContact: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'CompanyContact',
+    //     index: true
+    // },
+    // companyInfo: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'CompanyInfo',
+    //     index: true
+    // }
 });
 
 schema.plugin(deepPopulate, {});

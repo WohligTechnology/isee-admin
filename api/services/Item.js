@@ -1,7 +1,8 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
     },
     itemId: {
         type: String,
@@ -52,8 +53,10 @@ var schema = new Schema({
         es_indexed: true
     },
     warrantyItemId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'WarrantyItem',
+        index: true,
+        key: "item"
     },
     itemCeilingPrice: Number,
     ceilingPriceType: String,
@@ -117,13 +120,22 @@ var schema = new Schema({
     }
 });
 
-schema.plugin(deepPopulate, {});
+schema.plugin(deepPopulate, {
+    populate: {
+        organizationId: {
+            select: ""
+        },
+        warrantyItemId: {
+            select: ""
+        }
+    }
+});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 schema.plugin(mongoosastic);
 module.exports = mongoose.model('Item', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "warrantyItemId organizationId", "warrantyItemId organizationId"));
 var model = {
 
     getFromId: function (fieldName, fieldValue, callback) {
@@ -160,6 +172,23 @@ var model = {
                     Item.saveData(data, callback);
                 }
             });
+    },
+
+    getAllDataFromId: function (fieldName, fieldValue, callback) {
+        var Model = this;
+        if (!fieldValue || fieldValue == "") {
+            callback(fieldName + " value is Blank");
+        } else {
+            var obj = {};
+            obj[fieldName] = fieldValue;
+            Model.findOne(obj).lean().deepPopulate("warrantyItemId organizationId").exec(function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    callback(err);
+                } else {
+                    callback(null, data);
+                }
+            });
+        }
     }
 };
 module.exports = _.assign(module.exports, exports, model);

@@ -1,15 +1,17 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
     },
     customerGroupId: {
         type: String,
         es_indexed: true
     },
     customerId: {
-        type: String,
-        es_indexed: true
+        type: Schema.Types.ObjectId,
+        ref: 'Customer',
+        index: true,
     },
     customerNumber: String,
     salutation: String,
@@ -121,10 +123,7 @@ var schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Transaction',
         index: true
-    }],
-
-    //custId
-    custId: String
+    }]
 });
 
 schema.plugin(deepPopulate, {});
