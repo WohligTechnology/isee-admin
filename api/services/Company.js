@@ -35,6 +35,7 @@ var schema = new Schema({
     itemId: String, //item table
 
     //////
+
     // location: [{
     //     type: Schema.Types.ObjectId,
     //     ref: "Locations",

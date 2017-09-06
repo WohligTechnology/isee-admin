@@ -79,6 +79,26 @@ var schema = new Schema({
     transactionJson: {
         type: Schema.Types.Mixed
     },
+    crm: {
+        type: Schema.Types.ObjectId,
+        ref: 'Crm',
+        index: true
+    },
+    companycontact: {
+        type: Schema.Types.ObjectId,
+        ref: 'CompanyContact',
+        index: true
+    },
+    companyinfo: {
+        type: Schema.Types.ObjectId,
+        ref: 'CompanyInfo',
+        index: true
+    },
+    customernote: {
+        type: Schema.Types.ObjectId,
+        ref: 'CustomerNote',
+        index: true
+    },
 
     ////////////
 
@@ -135,7 +155,18 @@ schema.plugin(deepPopulate, {
         "tillNumber.retailLocationId": {
             select: ""
         },
-
+        crm: {
+            select: ""
+        },
+        companycontact: {
+            select: ""
+        },
+        companyinfo: {
+            select: ""
+        },
+        customernote: {
+            select: ""
+        },
     }
 });
 schema.plugin(uniqueValidator);
@@ -143,10 +174,12 @@ schema.plugin(timestamps);
 schema.plugin(mongoosastic);
 module.exports = mongoose.model('Transaction', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "organizationId retailLocationId customerId activityDate itemId tillNumber itemId.warrantyItemId  retailLocationId.organizationId tillNumber.retailLocationId itemId.organizationId", "organizationId retailLocationId customerId activityDate itemId tillNumber itemId.warrantyItemId retailLocationId.organizationId tillNumber.retailLocationId itemId.organizationId"));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "organizationId retailLocationId customerId activityDate itemId tillNumber itemId.warrantyItemId  retailLocationId.organizationId tillNumber.retailLocationId itemId.organizationId crm", "organizationId retailLocationId customerId activityDate itemId tillNumber itemId.warrantyItemId retailLocationId.organizationId tillNumber.retailLocationId itemId.organizationId crm"));
 var model = {
 
     saveOnExcel: function (data, callback) {
+        var oldData = _.cloneDeep(data);
+        console.log("oldData1", oldData);
         async.parallel({
                 organizationId: function (callback) {
                     Company.getFromId("organizationId", data.organizationId, callback);
@@ -160,77 +193,209 @@ var model = {
                 itemId: function (callback) {
                     Item.getFromId("itemId", data.itemId, callback);
                 },
-                // activityDate: function (callback) {
-                //     Calendar.getFromId("activityDate", data.activityDate, callback);
-                // },
+                activityDate: function (callback) {
+                    Calendar.getFromId("activityDate", data.activityDate, callback);
+                },
                 tillNumber: function (callback) {
                     TillRegister.getFromId("tillNumber", data.tillNumber, callback);
                 }
             },
             function (err, result) {
-                console.log(err);
                 if (err || _.isEmpty(result)) {
                     callback(err);
                 } else {
-                    data = _.assign(data, result);
-                    Transaction.saveData(data, function (err, data) {
-                        if (err || _.isEmpty(data)) {
-                            callback(err);
-                        } else {
-                            Transaction.findOne({
-                                _id: data._id
-                            }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId").exec(function (err, found) {
-                                if (err || _.isEmpty(found)) {
-                                    callback(err, null);
-                                } else {
-                                    var AllData = {};
-                                    var sendData = {};
-                                    AllData.itemData = found.itemId;
-                                    AllData.companyData = found.organizationId;
-                                    AllData.locationData = found.retailLocationId;
-                                    AllData.tillRegisterData = found.tillNumber;
-                                    AllData.customerData = found.customerId;
-                                    sendData._id = found._id;
-                                    sendData.transactionJson = AllData;
-                                    // AllData.ItemData = found.itemId;
-                                    console.log("AllData---------", AllData);
-                                    Transaction.saveData(sendData, function (err, data1) {
-                                        if (err || _.isEmpty(data1)) {
+                    async.waterfall([
+                            function (callback) {
+                                data = _.assign(data, result);
+                                console.log("datawaterfall1-----", data);
+                                Transaction.saveData(data, function (err, data) {
+                                    if (err || _.isEmpty(data)) {
+                                        callback(err);
+                                    } else {
+                                        callback(null, data);
+                                    }
+                                });
+                            },
+                            function (data, callback) {
+                                console.log("datawaterfall2-----", data);
+                                console.log("oldData21", _.cloneDeep(oldData));
+                                async.parallel({
+                                        crmId: function (callback) {
+                                            var crmData = {};
+                                            crmData.organizationId = data.organizationId;
+                                            crmData.customerId = data.customerId;
+                                            Crm.getAllDataFromId(crmData, callback);
+                                        },
+                                        itemId: function (callback) {
+                                            var itemData = {};
+                                            itemData.organizationId = data.organizationId;
+                                            itemData.itemId = oldData.itemId;
+                                            Item.getAllDataFromId(itemData, callback);
+                                        },
+                                        locationId: function (callback) {
+                                            var locationData = {};
+                                            locationData.organizationId = data.organizationId;
+                                            locationData.retailLocationId = oldData.retailLocationId;
+                                            Locations.getAllDataFromId(locationData, callback);
+                                        },
+                                        tillRegisterId: function (callback) {
+                                            var tillRegisterData = {};
+                                            tillRegisterData.tillNumber = oldData.tillNumber;
+                                            tillRegisterData.retailLocationId = data.retailLocationId;
+                                            TillRegister.getAllDataFromId(tillRegisterData, callback);
+                                        },
+                                        companyContactId: function (callback) {
+                                            var companyContactData = {};
+                                            companyContactData.organizationId = data.organizationId;
+                                            CompanyContact.getAllDataFromId(companyContactData, callback);
+                                        },
+                                        companyInfoId: function (callback) {
+                                            var companyInfoData = {};
+                                            companyInfoData.organizationId = data.organizationId;
+                                            CompanyInfo.getAllDataFromId(companyInfoData, callback);
+                                        },
+                                        customerNoteId: function (callback) {
+                                            var customerNoteData = {};
+                                            customerNoteData.customerId = data.customerId;
+                                            CustomerNote.getAllDataFromId(customerNoteData, callback);
+                                        }
+                                    },
+                                    function (err, result1) {
+                                        console.log("2ndparallel result&&&&&&", result1);
+                                        if (err || _.isEmpty(result1)) {
                                             callback(err);
                                         } else {
-                                            callback(null, data);
+                                            Transaction.findOneAndUpdate({
+                                                _id: data._id
+                                            }, {
+                                                crm: result1.crmId,
+                                                itemId: result1.itemId,
+                                                retailLocationId: result1.locationId,
+                                                tillNumber: result1.tillRegisterId,
+                                                companycontact: result1.companyContactId,
+                                                companyinfo: result1.companyInfoId,
+                                                companynote: result1.customerNoteId,
+                                            }, {
+                                                new: true
+                                            }, function (err, updatedata) {
+                                                if (err || _.isEmpty(updatedata)) {
+                                                    callback(err);
+                                                } else {
+                                                    callback(null, updatedata);
+                                                }
+                                            })
                                         }
                                     });
-                                }
-                            });
+                            },
+                            function (updatedata, callback) {
+                                console.log("datawaterfall3-----", updatedata);
+                                Transaction.findOne({
+                                    _id: updatedata._id
+                                }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId crm companycontact companyinfo customernote").exec(function (err, found) {
+                                    if (err || _.isEmpty(found)) {
+                                        callback(err, null);
+                                    } else {
+                                        var AllData = {};
+                                        var sendData = {};
+                                        AllData.itemData = found.itemId;
+                                        AllData.companyData = found.organizationId;
+                                        AllData.locationData = found.retailLocationId;
+                                        AllData.tillRegisterData = found.tillNumber;
+                                        AllData.customerData = found.customerId;
+                                        AllData.calendarData = found.activityDate;
+                                        AllData.crmData = found.crm;
+                                        AllData.companyContactData = found.companycontact;
+                                        AllData.companyInfoData = found.companyinfo;
+                                        AllData.customerNoteData = found.customernote;
+                                        sendData._id = found._id;
+                                        sendData.transactionJson = AllData;
+                                        console.log("AllData---------", AllData);
+                                        Transaction.saveData(sendData, function (err, data1) {
+                                            if (err || _.isEmpty(data1)) {
+                                                callback(err);
+                                            } else {
+                                                callback(null, updatedata);
+                                            }
+                                        });
+                                    }
+                                });
+                            },
+                        ],
+                        function (err, results) {
+                            console.log("results", results);
+                            if (err || _.isEmpty(results)) {
+                                callback(err);
+                            } else {
+                                callback(null, results);
+                            }
                         }
-                    });
+                    );
                 }
             });
     },
 
-    // findAllDetails: function (data, callback) {
-    //     Transaction.findOne({
-    //         _id: data._id
-    //     }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId").exec(function (err, found) {
-    //         if (err || _.isEmpty(found)) {
-    //             callback(err, null);
-    //         } else {
-    //             var AllData = {};
-    //             var sendData = {};
-    //             AllData.itemData = found.itemId;
-    //             AllData.companyData = found.organizationId;
-    //             AllData.locationData = found.retailLocationId;
-    //             AllData.tillRegisterData = found.tillNumber;
-    //             AllData.customerData = found.customerId;
-    //             sendData._id = found._id;
-    //             sendData.transactionJson = AllData;
-    //             // AllData.ItemData = found.itemId;
-    //             console.log("AllData---------", AllData);
-    //             Transaction.saveData(sendData, callback);
-    //             // callback(null, found);
-    //         }
-    //     });
-    // }
+    // saveOnExcel: function (data, callback) {
+    //     async.parallel({
+    //             organizationId: function (callback) {
+    //                 Company.getFromId("organizationId", data.organizationId, callback);
+    //             },
+    //             customerId: function (callback) {
+    //                 Customer.getFromId("customerId", data.customerId, callback);
+    //             },
+    //             retailLocationId: function (callback) {
+    //                 Locations.getFromId("retailLocationId", data.retailLocationId, callback);
+    //             },
+    //             itemId: function (callback) {
+    //                 Item.getFromId("itemId", data.itemId, callback);
+    //             },
+    //             activityDate: function (callback) {
+    //                 Calendar.getFromId("activityDate", data.activityDate, callback);
+    //             },
+    //             tillNumber: function (callback) {
+    //                 TillRegister.getFromId("tillNumber", data.tillNumber, callback);
+    //             }
+    //         },
+    //         function (err, result) {
+    //             console.log("parallel result", result);
+    //             if (err || _.isEmpty(result)) {
+    //                 callback(err);
+    //             } else {
+    //                 data = _.assign(data, result);
+    //                 console.log("data", data);
+    //                 Transaction.saveData(data, function (err, data) {
+    //                     if (err || _.isEmpty(data)) {
+    //                         callback(err);
+    //                     } else {
+    //                         Transaction.findOne({
+    //                             _id: data._id
+    //                         }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId").exec(function (err, found) {
+    //                             if (err || _.isEmpty(found)) {
+    //                                 callback(err, null);
+    //                             } else {
+    //                                 var AllData = {};
+    //                                 var sendData = {};
+    //                                 AllData.itemData = found.itemId;
+    //                                 AllData.companyData = found.organizationId;
+    //                                 AllData.locationData = found.retailLocationId;
+    //                                 AllData.tillRegisterData = found.tillNumber;
+    //                                 AllData.customerData = found.customerId;
+    //                                 AllData.calendarData = found.activityDate;
+    //                                 sendData._id = found._id;
+    //                                 sendData.transactionJson = AllData;
+    //                                 console.log("AllData---------", AllData);
+    //                                 Transaction.saveData(sendData, function (err, data1) {
+    //                                     if (err || _.isEmpty(data1)) {
+    //                                         callback(err);
+    //                                     } else {
+    //                                         callback(null, data);
+    //                                     }
+    //                                 });
+    //                             }
+    //                         });
+    //                     }
+    //                 });
+    //             }
+    //         });
+    // },
 };
 module.exports = _.assign(module.exports, exports, model);

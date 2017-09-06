@@ -67,17 +67,18 @@ var schema = new Schema({
     geoCode: String,
 
     //////
-    company: {
-        type: Schema.Types.ObjectId,
-        ref: 'Company',
-        index: true,
-        key: "location"
-    },
-    transaction: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction',
-        index: true
-    }],
+    // company: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Company',
+    //     index: true,
+    //     key: "location"
+    // },
+    // transaction: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Transaction',
+    //     index: true
+    // }],
+
 });
 
 schema.plugin(deepPopulate, {
@@ -126,6 +127,19 @@ var model = {
                     Locations.saveData(data, callback);
                 }
             });
+    },
+
+    getAllDataFromId: function (data, callback) {
+        var Model = this;
+        console.log("Inside locations*********", data);
+        Model.findOne(data).lean().exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                console.log("data---inside location ", data);
+                callback(null, data._id);
+            }
+        });
     }
 };
 module.exports = _.assign(module.exports, exports, model);

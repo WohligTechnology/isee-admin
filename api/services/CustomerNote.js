@@ -12,15 +12,12 @@ var schema = new Schema({
     noteTimeStamp: Date,
 
     //////
-    crm: {
-        type: Schema.Types.ObjectId,
-        ref: 'Crm',
-        index: true,
-        key: "customerNote"
-    },
-
-    //custId
-    custId: String
+    // crm: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Crm',
+    //     index: true,
+    //     key: "customerNote"
+    // }
 });
 
 schema.plugin(deepPopulate, {});
@@ -46,6 +43,19 @@ var model = {
                     CustomerNote.saveData(data, callback);
                 }
             });
+    },
+
+    getAllDataFromId: function (data, callback) {
+        var Model = this;
+        console.log("Inside tillRegister*********", data);
+        Model.findOne(data).lean().exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                console.log("data---inside customerNote", data);
+                callback(null, data._id);
+            }
+        });
     }
 
 };

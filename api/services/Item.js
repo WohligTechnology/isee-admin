@@ -55,8 +55,7 @@ var schema = new Schema({
     warrantyItemId: {
         type: Schema.Types.ObjectId,
         ref: 'WarrantyItem',
-        index: true,
-        key: "item"
+        index: true
     },
     itemCeilingPrice: Number,
     ceilingPriceType: String,
@@ -107,17 +106,17 @@ var schema = new Schema({
         es_indexed: true
     },
     //////
-    transaction: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction',
-        index: true
-    }],
-    warrantyItem: {
-        type: Schema.Types.ObjectId,
-        ref: 'WarrantyItem',
-        index: true,
-        key: "item"
-    }
+    // transaction: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Transaction',
+    //     index: true
+    // }],
+    // warrantyItem: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'WarrantyItem',
+    //     index: true,
+    //     key: "item"
+    // }
 });
 
 schema.plugin(deepPopulate, {
@@ -174,21 +173,19 @@ var model = {
             });
     },
 
-    getAllDataFromId: function (fieldName, fieldValue, callback) {
+    getAllDataFromId: function (data, callback) {
         var Model = this;
-        if (!fieldValue || fieldValue == "") {
-            callback(fieldName + " value is Blank");
-        } else {
-            var obj = {};
-            obj[fieldName] = fieldValue;
-            Model.findOne(obj).lean().deepPopulate("warrantyItemId organizationId").exec(function (err, data) {
-                if (err || _.isEmpty(data)) {
-                    callback(err);
-                } else {
-                    callback(null, data);
-                }
-            });
-        }
+        console.log("Inside item*********", data);
+        Model.findOne(data).lean().exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                console.log("data---inside item if ", data);
+
+                callback(err);
+            } else {
+                console.log("data---inside item ", data);
+                callback(null, data._id);
+            }
+        });
     }
 };
 module.exports = _.assign(module.exports, exports, model);

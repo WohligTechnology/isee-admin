@@ -107,23 +107,23 @@ var schema = new Schema({
 
     ////
 
-    customerNote: [{
-        type: Schema.Types.ObjectId,
-        ref: 'CustomerNote',
-        index: true
-    }],
+    // customerNote: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'CustomerNote',
+    //     index: true
+    // }],
 
-    customer: {
-        type: Schema.Types.ObjectId,
-        ref: 'Customer',
-        index: true
-    },
+    // customer: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Customer',
+    //     index: true
+    // },
 
-    transaction: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction',
-        index: true
-    }]
+    // transaction: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Transaction',
+    //     index: true
+    // }]
 });
 
 schema.plugin(deepPopulate, {});
@@ -152,6 +152,21 @@ var model = {
                     Crm.saveData(data, callback);
                 }
             });
+    },
+
+    getAllDataFromId: function (data, callback) {
+        var Model = this;
+        console.log("Inside CRm*********", data);
+        Model.findOne(data).exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                console.log("data---inside crm if ", data);
+
+                callback(err);
+            } else {
+                console.log("data---inside crm ", data);
+                callback(null, data._id);
+            }
+        });
     }
 };
 module.exports = _.assign(module.exports, exports, model);

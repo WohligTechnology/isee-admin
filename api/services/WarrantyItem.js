@@ -15,14 +15,11 @@ var schema = new Schema({
     replaceType: String,
 
     //////
-    item: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Item',
-        index: true
-    }],
-    //custId
-
-    custId: String
+    // item: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Item',
+    //     index: true
+    // }],
 });
 
 schema.plugin(deepPopulate, {});

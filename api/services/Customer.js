@@ -27,13 +27,7 @@ var schema = new Schema({
         type: String,
         validate: validators.isEmail(),
         es_indexed: true
-    },
-
-    //custId
-    // custId: {
-    //     type: String,
-    //     unique: true
-    // }
+    }
 });
 
 schema.plugin(deepPopulate, {});
