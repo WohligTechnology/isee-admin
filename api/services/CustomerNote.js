@@ -45,18 +45,18 @@ var model = {
             });
     },
 
-    getAllDataFromId: function (data, callback) {
-        var Model = this;
-        console.log("Inside tillRegister*********", data);
-        Model.findOne(data).lean().exec(function (err, data) {
-            if (err || _.isEmpty(data)) {
-                callback(err);
-            } else {
-                console.log("data---inside customerNote", data);
-                callback(null, data._id);
-            }
-        });
-    }
+    // getAllDataFromId: function (data, callback) {
+    //     var Model = this;
+    //     console.log("Inside customerNote*********", data);
+    //     Model.findOne(data).lean().exec(function (err, data) {
+    //         if (err || _.isEmpty(data)) {
+    //             callback(err);
+    //         } else {
+    //             console.log("data---inside customerNote", data);
+    //             callback(null, data._id);
+    //         }
+    //     });
+    // }
 
 };
 module.exports = _.assign(module.exports, exports, model);

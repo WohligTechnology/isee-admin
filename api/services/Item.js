@@ -175,14 +175,10 @@ var model = {
 
     getAllDataFromId: function (data, callback) {
         var Model = this;
-        console.log("Inside item*********", data);
         Model.findOne(data).lean().exec(function (err, data) {
             if (err || _.isEmpty(data)) {
-                console.log("data---inside item if ", data);
-
                 callback(err);
             } else {
-                console.log("data---inside item ", data);
                 callback(null, data._id);
             }
         });

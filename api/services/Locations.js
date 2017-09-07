@@ -131,12 +131,10 @@ var model = {
 
     getAllDataFromId: function (data, callback) {
         var Model = this;
-        console.log("Inside locations*********", data);
         Model.findOne(data).lean().exec(function (err, data) {
             if (err || _.isEmpty(data)) {
                 callback(err);
             } else {
-                console.log("data---inside location ", data);
                 callback(null, data._id);
             }
         });

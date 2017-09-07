@@ -179,7 +179,6 @@ var model = {
 
     saveOnExcel: function (data, callback) {
         var oldData = _.cloneDeep(data);
-        console.log("oldData1", oldData);
         async.parallel({
                 organizationId: function (callback) {
                     Company.getFromId("organizationId", data.organizationId, callback);
@@ -207,7 +206,6 @@ var model = {
                     async.waterfall([
                             function (callback) {
                                 data = _.assign(data, result);
-                                console.log("datawaterfall1-----", data);
                                 Transaction.saveData(data, function (err, data) {
                                     if (err || _.isEmpty(data)) {
                                         callback(err);
@@ -217,8 +215,6 @@ var model = {
                                 });
                             },
                             function (data, callback) {
-                                console.log("datawaterfall2-----", data);
-                                console.log("oldData21", _.cloneDeep(oldData));
                                 async.parallel({
                                         crmId: function (callback) {
                                             var crmData = {};
@@ -254,14 +250,13 @@ var model = {
                                             companyInfoData.organizationId = data.organizationId;
                                             CompanyInfo.getAllDataFromId(companyInfoData, callback);
                                         },
-                                        customerNoteId: function (callback) {
-                                            var customerNoteData = {};
-                                            customerNoteData.customerId = data.customerId;
-                                            CustomerNote.getAllDataFromId(customerNoteData, callback);
-                                        }
+                                        // customerNoteId: function (callback) {
+                                        //     var customerNoteData = {};
+                                        //     customerNoteData.customerId = data.customerId;
+                                        //     CustomerNote.getAllDataFromId(customerNoteData, callback);
+                                        // }
                                     },
                                     function (err, result1) {
-                                        console.log("2ndparallel result&&&&&&", result1);
                                         if (err || _.isEmpty(result1)) {
                                             callback(err);
                                         } else {
@@ -274,7 +269,7 @@ var model = {
                                                 tillNumber: result1.tillRegisterId,
                                                 companycontact: result1.companyContactId,
                                                 companyinfo: result1.companyInfoId,
-                                                companynote: result1.customerNoteId,
+                                                customernote: result1.customerNoteId,
                                             }, {
                                                 new: true
                                             }, function (err, updatedata) {
@@ -288,7 +283,6 @@ var model = {
                                     });
                             },
                             function (updatedata, callback) {
-                                console.log("datawaterfall3-----", updatedata);
                                 Transaction.findOne({
                                     _id: updatedata._id
                                 }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId crm companycontact companyinfo customernote").exec(function (err, found) {
@@ -306,10 +300,9 @@ var model = {
                                         AllData.crmData = found.crm;
                                         AllData.companyContactData = found.companycontact;
                                         AllData.companyInfoData = found.companyinfo;
-                                        AllData.customerNoteData = found.customernote;
+                                        // AllData.customerNoteData = found.customernote;
                                         sendData._id = found._id;
                                         sendData.transactionJson = AllData;
-                                        console.log("AllData---------", AllData);
                                         Transaction.saveData(sendData, function (err, data1) {
                                             if (err || _.isEmpty(data1)) {
                                                 callback(err);
@@ -322,7 +315,6 @@ var model = {
                             },
                         ],
                         function (err, results) {
-                            console.log("results", results);
                             if (err || _.isEmpty(results)) {
                                 callback(err);
                             } else {

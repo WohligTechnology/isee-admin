@@ -156,14 +156,10 @@ var model = {
 
     getAllDataFromId: function (data, callback) {
         var Model = this;
-        console.log("Inside CRm*********", data);
         Model.findOne(data).exec(function (err, data) {
             if (err || _.isEmpty(data)) {
-                console.log("data---inside crm if ", data);
-
                 callback(err);
             } else {
-                console.log("data---inside crm ", data);
                 callback(null, data._id);
             }
         });
