@@ -1,6 +1,7 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header">
-    <span class="main bredcrums"> <a href="">Author Rule</a> >><a href=""> Listing Library</a> >><a href=""> Add New Rule</a> >> ES Rule</span>
+    <!-- <span class="main bredcrums"> <a href="">Author Rule</a> >><a href=""> Listing Library</a> >><a href=""> Add New Rule</a> >> ES Rule</span> -->
+    <span class="main bredcrums"> <a href="">Setup Rule</a> >> ES Rule</span>
 </div>
 
 <div class="panel panel-default">
@@ -31,62 +32,62 @@
                                     </ui-select-choices>
                                 </ui-select>
                                 <div class="pull-right" ng-repeat="(field,value) in formRule.name.$error" ng-show="formRule.name.$touched">
-                                    <span class="label label-danger" ng-if="field=='required' && value">Select/span>
-                                    </div>
+                                    <span class="label label-danger" ng-if="field=='required' && value">Select</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <label class=" control-label">Data Type for Rule</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
+                                    <ui-select-match placeholder="Select">
+                                        <span>{{$select.selected.name}}</span>
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
+                                        {{country.name}}
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-divider" ng-repeat="choice in choices">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-1">
+                                    <label class=" control-label">Association Transaction Responsible for Voilation?</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-1">
-                                    <label class=" control-label">Data Type for Rule</label>
+                                    <label class=" control-label">Create ES Rule</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="formData.countries" name="country" theme="bootstrap" sortable="true">
-                                        <ui-select-match placeholder="Select">
-                                            <span>{{$select.selected.name}}</span>
-                                    </ui-select-match>
-                                    <ui-select-choices repeat="country.name as country in countries | filter: $select.search" refresh="" refresh-delay="0">
-                                        {{country.name}}
-                                    </ui-select-choices>
-                                    </ui-select>
+                                    <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-divider" ng-repeat="choice in choices">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-3 col-sm-offset-1">
-                                        <label class=" control-label">Association Transaction Responsible for Voilation?</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-3 col-sm-offset-1">
-                                        <label class=" control-label">Create ES Rule</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-11 col-sm-offset-1">
-                                        <div class="mt20" ng-if="!(choice.id == 'choice1')">
-                                            <a class="btn btn-success" ng-click="removeChoice();">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-11 col-sm-offset-1">
+                                    <div class="mt20" ng-if="!(choice.id == 'choice1')">
+                                        <a class="btn btn-success" ng-click="removeChoice();">
                                             <i class="fa fa-minus" aria-hidden="true"></i> 
                                             Remove Condition </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-sm-11 col-sm-offset-1">
                                 <div class="mt20">
@@ -97,23 +98,23 @@
                             </div>
                         </div>
                     </div>
-                    </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-11 col-sm-offset-1">
-                        <div class="mt20 text-right">
-                            <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
-                            <a ng-click="" class="btn btn-primary">Save</a>
-                            <a ng-click="" class="btn btn-primary">Home</a>
-                        </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <div class="mt20 text-right">
+                        <a ng-click="confCancel()" class="btn btn-primary">Cancel</a>
+                        <a ng-click="" class="btn btn-primary">Save</a>
+                        <a ng-click="" class="btn btn-primary">Home</a>
                     </div>
                 </div>
             </div>
-            </form>
-            <!--form-divider End-->
-
         </div>
+        </form>
+        <!--form-divider End-->
+
     </div>
+</div>
 </div>
 </div>
