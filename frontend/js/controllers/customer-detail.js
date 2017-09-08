@@ -75,7 +75,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
     $scope.activeJustified = 1
     if ($scope.activeJustified == 1) {
-
         $scope.getExcelFields = function (formdata) {
             // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/customerNoteUpload", formdata, function (data) {
@@ -106,8 +105,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
                 if (data.value === true) {
                     console.log("data-----------------------------------------------", data);
-                    // $(".cust-details_loader").css("display", "none"); //loader
-                    // $(".cust-details_loader_done").css("display", "block"); //loader
                     $scope.errData = data.data;
                     toastr.success("Data processing");
                     $state.reload();
@@ -135,6 +132,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
 
     $scope.activeTabs = function (n) {
+        $scope.mappingDisabled = false;
         $(".cust-details_hidesect").css("display", "none"); // to hide submit and message
         $scope.activeJustified = n + 1;
         var getExcel;
@@ -334,14 +332,19 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             });
         }
 
-
         $scope.getExcelFields = function (formdata) {
+            // console.log("formdata", formdata);.
+            $scope.mappingDisabled = true;
+            $(".hidesect-loader").css("display", "block"); //loader for table
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
                     $scope.excelData = data.data;
                     // console.log("excelData", $scope.excelData);
-                    $(".cust-details_hidesect").css("display", "block"); //display submit and message
+                    $(".cust-details_hidesect").css("display", "block"); //display table
+                    $(".hidesect-loader").css("display", "none"); // hide loader
                 } else {
+                    $scope.mappingDisabled = false;
+                    $(".hidesect-loader").css("display", "none"); //hide laoder                    
                     toastr.error("Incorrect Input  ");
                 }
             });
@@ -352,6 +355,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
             $(".cust-details_loader").css("display", "block"); //loader
+            $scope.showtable = false;
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -366,6 +370,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 if (data.value == true) {
                     $(".cust-details_loader").css("display", "none"); //loader end
                     $(".cust-details_loader_done").css("display", "block"); //loader end
+                    // $scope.getHistory();
                     // console.log("#############1################", data);
                     $scope.errData = data.data;
                     toastr.success("Data processing");
@@ -388,6 +393,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         //         }
         //     });
         // };
+
+        // $scope.getHistory(); >>>
+
     };
 
     //Tab Colour Change

@@ -31,8 +31,8 @@
 									</div>
 								</div>
 								<div class="col-sm-6">
-									<div class="text-left">
-										<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)" ng-disabled="mappingDisabled">Mapping XML 
+									<div class="text-right">
+										<button type="submit" class="btn btn-success brd-rd-20" ng-click="getExcelFields(formdata)" ng-disabled="mappingDisabled">Mapping Excel 
 											<i class="fa fa-upload" aria-hidden="true"></i></button>
 									</div>
 
@@ -41,47 +41,55 @@
 						</div>
 						<!--upload button end-->
 						<!--Excel Upload Fields-->
-						<div class="custom-scroll">
-							<div class="form-group" ng-repeat="formname in excelData.fields">
-								<div class="row">
-									<div class="col-sm-4 col-sm-offset-1 ">
-										<!-- {{formname}} -->
-										<label class=" control-label">{{formname.field}} 
+						<div class="hidesect-loader">
+							<img src="img/newloading.gif">
+						</div>
+						<div class="cust-details_hidesect">
+							<div class="custom-scroll">
+								<div class="form-group" ng-repeat="formname in excelData.fields">
+									<div class="row">
+										<div class="col-sm-4 col-sm-offset-1 ">
+											<!-- {{formname}} -->
+											<label class="control-label">{{formname.field}} 
 											<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
 										</label>
-									</div>
-									<div class="col-sm-6">
-										<ui-select ng-model="formData[formname.field]" name="country" theme="bootstrap" sortable="true">
-											<ui-select-match placeholder="Select">
-												<span>{{$select.selected}}</span>
-											</ui-select-match>
-											<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search track by $index" refresh="" refresh-delay="0">
-												{{country}}
-											</ui-select-choices>
-										</ui-select>
+										</div>
+										<div class="col-sm-6">
+											<ui-select ng-model="formData[formname.field]" name="country" theme="bootstrap" sortable="true" ng-required="true">
+												<ui-select-match placeholder="Select">
+													<span>{{$select.selected}}</span>
+												</ui-select-match>
+												<ui-select-choices repeat="country in excelData.excelFields | filter: $select.search track by $index" refresh="" refresh-delay="0">
+													{{country}}
+												</ui-select-choices>
+											</ui-select>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!--End Excel Upload Fields-->
-						<div class="cust-details_hidesect">
+							<!--End Excel Upload Fields-->
+
 							<div class="text-center mt-10 mb-20">
 								<button type="submit" class="btn btn-info" ng-click="mapExcelFields(formData,formdata)" promise-btn>Submit</button>
 							</div>
 
 							<div class="cust-details_loader">
-								<img src="img/loading.gif">
+								<img src="img/newloading.gif">
 							</div>
 							<div class="cust-details_loader_done">
-								<span>Done</span>
+								<span>Your Data Has Been Processed</span>
 							</div>
 						</div>
-						<div class="mt-10 mb-20">
+						<!-- <div class="mt-10 mb-20">
 							<button type="submit" class="btn btn-primary btn-big" ng-click="getHistory()">Update Logs</button>
-						</div>
 
+						</div> -->
+						<div class="mb-5 mt-10">
+							<span class="cust-details-logs">Logs</span>
+						</div>
 						<!--Logs Tabel History-->
-						<div class="logs-tabel" ng-if="eData.length>0">
+						<!-- <div class="logs-tabel" ng-if="eData.length>0"> -->
+						<div class="logs-tabel">
 							<div class="dataTables_wrapper">
 								<div class="table table-bordered">
 									<div class="log-history">
