@@ -211,16 +211,13 @@
         //check all data in table
 
         findDataInTable: function (tabs, callback) {
-
-            // var AllTableLog = {};
-
             async.parallel([
 
                 //find customerNote Data
-                function (callback) {
+                function (callback1) {
                     CustomerNote.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[0].checkMe = true;
@@ -228,13 +225,13 @@
                                 tabs[0].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Crm.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[1].checkMe = true;
@@ -242,14 +239,14 @@
                                 tabs[1].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
 
                 },
-                function (callback) {
+                function (callback1) {
                     Company.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[2].checkMe = true;
@@ -257,14 +254,14 @@
                                 tabs[2].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     CompanyContact.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[3].checkMe = true;
@@ -272,14 +269,14 @@
                                 tabs[3].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     CompanyInfo.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[4].checkMe = true;
@@ -287,14 +284,14 @@
                                 tabs[4].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Item.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[5].checkMe = true;
@@ -302,14 +299,14 @@
                                 tabs[5].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Locations.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[6].checkMe = true;
@@ -317,14 +314,14 @@
                                 tabs[6].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Transaction.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[7].checkMe = true;
@@ -332,14 +329,14 @@
                                 tabs[7].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
 
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     WarrantyItem.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[8].checkMe = true;
@@ -347,13 +344,13 @@
                                 tabs[8].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Calendar.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[9].checkMe = true;
@@ -361,13 +358,13 @@
                                 tabs[9].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     Customer.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[10].checkMe = true;
@@ -375,13 +372,13 @@
                                 tabs[10].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
                 },
-                function (callback) {
+                function (callback1) {
                     TillRegister.find({}).lean().exec(function (err, data) {
                         if (err) {
-                            callback(err, null);
+                            callback1(err, null);
                         } else {
                             if (!_.isEmpty(data)) {
                                 tabs[11].checkMe = true;
@@ -389,7 +386,7 @@
                                 tabs[11].checkMe = false;
                             }
                         }
-                        callback(null, "done");
+                        callback1(null, "done");
                     });
                 }
             ], function (err, results) {

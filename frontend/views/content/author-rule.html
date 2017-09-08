@@ -126,8 +126,8 @@
                                     <!-- <label class=" control-label">Table</label> -->
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country.model" on-select="addAllModel(country.model,$index)" ng-disabled="optCons!='false'">
-                                        <ui-select-match placeholder="Table">
+                                    <ui-select ng-model="choice.table" on-select="addAlltables(choice.table,$index)" ng-disabled="optCons!='false'">
+                                        <ui-select-match placeholder="Tables">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
                                         <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
@@ -143,12 +143,12 @@
                                     <!-- <label class=" control-label">Table Fields</label> -->
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="country1.filed" name="country" on-select="addModelField(country1.filed,$index)" theme="bootstrap" sortable="true"
-                                        ng-disabled="optCons!='false'">
+                                    <ui-select ng-model="choice.tableField" name="country" on-select="addModelField(choice.tableField,$index)" theme="bootstrap"
+                                        sortable="true" ng-disabled="optCons!='false'">
                                         <ui-select-match placeholder="Table Fields">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
-                                        <ui-select-choices repeat="country in allFields | filter: $select.search" refresh="" refresh-delay="0">
+                                        <ui-select-choices repeat="country in allTableFields | filter: $select.search" refresh="" refresh-delay="0">
                                             {{country}}
                                         </ui-select-choices>
                                     </ui-select>

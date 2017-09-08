@@ -99,6 +99,11 @@ var schema = new Schema({
         ref: 'CustomerNote',
         index: true
     },
+    violations: [{
+        type: Schema.Types.ObjectId,
+        ref: 'RuleEngine',
+        index: true
+    }]
 
     ////////////
 
@@ -166,7 +171,7 @@ schema.plugin(deepPopulate, {
         },
         customernote: {
             select: ""
-        },
+        }
     }
 });
 schema.plugin(uniqueValidator);
@@ -269,7 +274,7 @@ var model = {
                                                 tillNumber: result1.tillRegisterId,
                                                 companycontact: result1.companyContactId,
                                                 companyinfo: result1.companyInfoId,
-                                                customernote: result1.customerNoteId,
+                                                // customernote: result1.customerNoteId,
                                             }, {
                                                 new: true
                                             }, function (err, updatedata) {
@@ -324,6 +329,32 @@ var model = {
                     );
                 }
             });
+    },
+
+    clearAllPreviousViolations: function (transactionId, callback) {
+        Transaction.findOne({
+            _id: transactionId
+        }).exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                data.violations = [];
+                data.save(callback);
+            }
+        });
+    },
+
+    addViolation: function (transactionId, ruleEngineId, callback) {
+        Transaction.findOne({
+            _id: transactionId
+        }).exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                data.violations.push(ruleEngineId);
+                data.save(callback);
+            }
+        });
     },
 
     // saveOnExcel: function (data, callback) {

@@ -39378,9 +39378,6 @@ header {
 .hidesect-loader {
   display: none;
   text-align: center; }
-  .hidesect-loader img {
-    width: 500px;
-    height: 500px; }
 
 .mb-5 {
   margin-bottom: 5px; }
