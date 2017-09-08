@@ -103,56 +103,86 @@
         //     });
         // },
 
+        // logHistory: function (data, callback) {
+        //     AllLogs.find({
+        //         tableName: data.tableName
+        //     }).lean().exec(function (err, found) {
+        //         if (err) {
+        //             // console.log(err);
+        //             callback(err, null);
+        //         } else {
+        //             if (_.isEmpty(found)) {
+        //                 callback(err, null);
+        //             } else {
+        //                 var result = {};
+        //                 result.totalSuccesCount = 0;
+        //                 result.totalErrorCount = 0;
+        //                 async.eachSeries(found, function (file, cb1) {
+        //                     var succesCount = 0;
+        //                     var errorCount = 0;
+        //                     async.eachSeries(file.logs, function (file1, cb2) {
+        //                         if (file1.error == null) {
+        //                             succesCount = _.cloneDeep(succesCount) + 1;
+        //                             result.totalSuccesCount++;
+        //                         } else {
+        //                             errorCount = _.cloneDeep(errorCount) + 1;
+        //                             result.totalErrorCount++;
+        //                         }
+        //                         cb2(err, file1);
+        //                     }, function (err) {
+        //                         file.succesCount = succesCount;
+        //                         file.errorCount = errorCount;
+        //                         cb1(err, file);
+        //                     });
+        //                 }, function (err) {
+        //                     var logsData = [];
+        //                     result.found = found;
+        //                     async.eachSeries(found, function (file2, cb2) {
+        //                         var Data = {};
+        //                         Data.id = file2._id;
+        //                         Data.succesCount = file2.succesCount;
+        //                         Data.errorCount = file2.errorCount;
+        //                         Data.createdAt = file2.createdAt;
+        //                         logsData.push(Data);
+        //                         // console.log("logsDatalogsData------", logsData);
+        //                         cb2(err, file2);
+        //                     }, function (err) {
+        //                         callback(err, logsData);
+        //                     });
+        //                     // console.log("results------------", result);
+        //                     // callback(err, result);
+        //                 });
+        //                 // callback(err, found);
+        //             }
+        //         }
+        //     });
+        // },
+
         logHistory: function (data, callback) {
             AllLogs.find({
                 tableName: data.tableName
-            }).lean().exec(function (err, found) {
+            }).lean().sort({
+                createdAt: -1
+            }).limit(10).exec(function (err, found) {
                 if (err) {
-                    // console.log(err);
                     callback(err, null);
                 } else {
                     if (_.isEmpty(found)) {
                         callback(err, null);
                     } else {
-                        var result = {};
-                        result.totalSuccesCount = 0;
-                        result.totalErrorCount = 0;
-                        async.eachSeries(found, function (file, cb1) {
-                            var succesCount = 0;
-                            var errorCount = 0;
-                            async.eachSeries(file.logs, function (file1, cb2) {
-                                if (file1.error == null) {
-                                    succesCount = _.cloneDeep(succesCount) + 1;
-                                    result.totalSuccesCount++;
-                                } else {
-                                    errorCount = _.cloneDeep(errorCount) + 1;
-                                    result.totalErrorCount++;
-                                }
-                                cb2(err, file1);
-                            }, function (err) {
-                                file.succesCount = succesCount;
-                                file.errorCount = errorCount;
-                                cb1(err, file);
-                            });
+                        logsData = [];
+                        async.eachSeries(found, function (file2, cb2) {
+                            var Data = {};
+                            Data.id = file2._id;
+                            Data.status = file2.status;
+                            Data.succesCount = file2.sucessCount;
+                            Data.errorCount = file2.failureCount;
+                            Data.createdAt = file2.createdAt;
+                            logsData.push(Data);
+                            cb2(err, file2);
                         }, function (err) {
-                            var logsData = [];
-                            result.found = found;
-                            async.eachSeries(found, function (file2, cb2) {
-                                var Data = {};
-                                Data.id = file2._id;
-                                Data.succesCount = file2.succesCount;
-                                Data.errorCount = file2.errorCount;
-                                Data.createdAt = file2.createdAt;
-                                logsData.push(Data);
-                                // console.log("logsDatalogsData------", logsData);
-                                cb2(err, file2);
-                            }, function (err) {
-                                callback(err, logsData);
-                            });
-                            // console.log("results------------", result);
-                            // callback(err, result);
+                            callback(err, logsData);
                         });
-                        // callback(err, found);
                     }
                 }
             });

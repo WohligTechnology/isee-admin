@@ -60,53 +60,50 @@ var controller = {
     },
 
     finalUploadFortillRegister: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "TillRegister",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                TillRegister.saveOnExcel(singleData, function (err, data) {
-                                    i++;
-                                    console.log("Completed TillRegister " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "TillRegister",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    TillRegister.saveOnExcel(singleData, function (err, data) {
+                                        i++;
+                                        console.log("Completed TillRegister " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
     },
 
@@ -164,55 +161,52 @@ var controller = {
     },
 
     finalUploadForCalendar: function (req, res) {
-        // console.log("reqqqq*********************************", req.body);
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Calendar",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                Calendar.saveData(singleData, function (err, data) {
-                                    i++;
-                                    console.log("Completed Calendar " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "Calendar",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (allLogsId, callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    Calendar.saveData(singleData, function (err, data) {
+                                        i++;
+                                        console.log("Completed Calendar " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
     //company.. *
@@ -299,55 +293,52 @@ var controller = {
     },
 
     finalUploadForCompany: function (req, res) {
-        // console.log("reqqqq*********************************", req.body);
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Company",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                Company.saveData(singleData, function (err, data) {
-                                    i++;
-                                    console.log("Completed Company " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "Company",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    Company.saveData(singleData, function (err, data) {
+                                        i++;
+                                        console.log("Completed Company " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
     // companyContact upload
@@ -395,54 +386,52 @@ var controller = {
     },
 
     finalUploadForCompanyContact: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "CompanyContact",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                CompanyContact.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed CompanyContact " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "CompanyContact",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    CompanyContact.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed CompanyContact " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -518,54 +507,52 @@ var controller = {
     },
 
     finalUploadForCompanyInfo: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "CompanyInfo",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                CompanyInfo.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed CompanyInfo " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "CompanyInfo",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    CompanyInfo.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed CompanyInfo " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -740,54 +727,53 @@ var controller = {
     },
 
     finalUploadForCrm: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "CRM",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
+        AllLogs.saveData({
+            tableName: "CRM",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
 
-                                Crm.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed Crm " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+                                    Crm.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed Crm " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -849,54 +835,53 @@ var controller = {
     },
 
     finalUploadForCustomer: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Customer",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
+        AllLogs.saveData({
+            tableName: "Customer",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
 
-                                Customer.saveData(singleData, function (err, data) {
-                                    i++;
-                                    console.log("Completed Customer" + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+                                    Customer.saveData(singleData, function (err, data) {
+                                        i++;
+                                        console.log("Completed Customer" + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -939,54 +924,53 @@ var controller = {
     },
 
     finalUploadForCustomerNote: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "CustomerNote",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
+        AllLogs.saveData({
+            tableName: "CustomerNote",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
 
-                                CustomerNote.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed CustomerNote" + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+                                    CustomerNote.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed CustomerNote" + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -1177,54 +1161,53 @@ var controller = {
     },
 
     finalUploadForItem: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Item",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                Item.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed Item" + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "Item",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    Item.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed Item" + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
+
     },
 
 
@@ -1339,54 +1322,53 @@ var controller = {
     },
 
     finalUploadForLocation: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Locations",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
+        AllLogs.saveData({
+            tableName: "Locations",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
 
-                                Locations.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed Locations" + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+                                    Locations.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed Locations" + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 
@@ -1518,53 +1500,50 @@ var controller = {
     },
 
     finalUploadForTransaction: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "Transaction",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                Transaction.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                    i++;
-                                    console.log("Completed Transactions " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "Transaction",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    Transaction.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                        i++;
+                                        console.log("Completed Transactions " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
     },
 
@@ -1611,54 +1590,52 @@ var controller = {
     },
 
     finalUploadForWarranty: function (req, res) {
-        Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
-            if (err || _.isEmpty(data)) {
-                res.callback(err);
-            } else {
-                var sucessCount = 0;
-                var failureCount = 0;
-                async.waterfall([
-                        function (callback) { // Save to All Logs
-                            AllLogs.saveData({
-                                tableName: "WarrantyItem",
-                                status: "Pending"
-                            }, function (err, found) {
-                                res.callback(err, found);
-                                callback(err, found._id);
-                            });
-                        },
-                        function (allLogsId, callback) {
-                            var i = 0;
-                            async.concatSeries(data, function (singleData, callback) {
-
-                                WarrantyItem.saveData(singleData, function (err, data) {
-                                    i++;
-                                    console.log("Completed WarrantyItem " + i);
-                                    if (err || _.isEmpty(data)) {
-                                        failureCount++;
-                                    } else {
-                                        sucessCount++;
-                                    }
-                                    callback(null, {
-                                        error: err,
-                                        success: data
+        AllLogs.saveData({
+            tableName: "WarrantyItem",
+            status: "Pending"
+        }, function (err, found) {
+            res.callback(err, found._id);
+            var allLogsId = found._id;
+            Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    res.callback(err);
+                } else {
+                    var sucessCount = 0;
+                    var failureCount = 0;
+                    async.waterfall([
+                            function (callback) {
+                                var i = 0;
+                                async.concatSeries(data, function (singleData, callback) {
+                                    WarrantyItem.saveData(singleData, function (err, data) {
+                                        i++;
+                                        console.log("Completed WarrantyItem " + i);
+                                        if (err || _.isEmpty(data)) {
+                                            failureCount++;
+                                        } else {
+                                            sucessCount++;
+                                        }
+                                        callback(null, {
+                                            error: err,
+                                            success: data
+                                        });
                                     });
+                                }, function (err, found) {
+                                    eData = {};
+                                    eData.logs = found;
+                                    eData._id = allLogsId;
+                                    eData.failureCount = failureCount;
+                                    eData.sucessCount = sucessCount;
+                                    eData.status = "Completed"
+                                    AllLogs.saveData(eData, callback);
                                 });
-                            }, function (err, found) {
-                                eData = {};
-                                eData.logs = found;
-                                eData._id = allLogsId;
-                                eData.failureCount = failureCount;
-                                eData.sucessCount = sucessCount;
-                                eData.status = "Completed"
-                                AllLogs.saveData(eData, callback);
-                            });
-                        }
-                    ],
-                    function () {}
-                );
-            }
+                            }
+                        ],
+                        function () {}
+                    );
+                }
+            });
         });
+
     },
 
 

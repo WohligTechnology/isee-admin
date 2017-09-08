@@ -1,4 +1,4 @@
-myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr) {
+myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $state) {
     $scope.template = TemplateService.getHTML("content/customer-detail.html");
     TemplateService.title = "Customer Detail"; //This is the Title of the Website
     TemplateService.class = ""; //This is the Class of Page
@@ -109,6 +109,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     // $(".cust-details_loader").css("display", "none"); //loader
                     // $(".cust-details_loader_done").css("display", "block"); //loader
                     $scope.errData = data.data;
+                    toastr.success("Data processing");
+                    $state.reload();
                 }
             });
         };
@@ -145,6 +147,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCustomerNote";
             tableName = "CustomerNote";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -152,6 +163,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCrm";
             tableName = "Crm";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -159,6 +179,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCompany";
             tableName = "Company";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 4) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -166,6 +195,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCompanyContact";
             tableName = "CompanyContact";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 5) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -173,6 +211,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCompanyInfo";
             tableName = "CompanyInfo";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 6) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -180,6 +227,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForItem";
             tableName = "Item";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 7) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -187,6 +243,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForLocation";
             tableName = "Locations";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 8) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -194,6 +259,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForTransaction";
             tableName = "Transaction";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 9) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -201,6 +275,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForWarranty";
             tableName = "WarrantyItem";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 10) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -208,6 +291,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCalendar";
             tableName = "Calendar";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 11) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -215,6 +307,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadForCustomer";
             tableName = "Customer";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         } else if ($scope.activeJustified == 12) {
             $scope.excelData = "";
             $scope.errData = "";
@@ -222,20 +323,26 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             mapExcel = "finalUploadFortillRegister";
             tableName = "TillRegister";
             $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
         }
 
 
         $scope.getExcelFields = function (formdata) {
-            // console.log("formdata", formdata);
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
-                    // console.log("aaaa", data);
                     $scope.excelData = data.data;
                     // console.log("excelData", $scope.excelData);
                     $(".cust-details_hidesect").css("display", "block"); //display submit and message
                 } else {
                     toastr.error("Incorrect Input  ");
-                    // alert("Incorrect Input  ");
                 }
             });
         };
@@ -261,25 +368,26 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $(".cust-details_loader_done").css("display", "block"); //loader end
                     // console.log("#############1################", data);
                     $scope.errData = data.data;
+                    toastr.success("Data processing");
+                    $state.reload();
                 }
             });
         };
 
-
-        $scope.getHistory = function (n) {
-            $scope.getHistoryData = {};
-            $scope.getHistoryData.tableName = tableName;
-            // console.log("getHistoryData", $scope.getHistoryData);
-            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-                // console.log("getHistory", data);
-                if (data.value == true) {
-                    $scope.eData = data.data;
-                    // console.log("eData--------------", $scope.eData);
-                } else {
-                    toastr.error('No History');
-                }
-            });
-        };
+        // $scope.getHistory = function (n) {
+        //     $scope.getHistoryData = {};
+        //     $scope.getHistoryData.tableName = tableName;
+        //     // console.log("getHistoryData", $scope.getHistoryData);
+        //     NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+        //         // console.log("getHistory", data);
+        //         if (data.value == true) {
+        //             $scope.eData = data.data;
+        //             // console.log("eData--------------", $scope.eData);
+        //         } else {
+        //             toastr.error('No History');
+        //         }
+        //     });
+        // };
     };
 
     //Tab Colour Change
