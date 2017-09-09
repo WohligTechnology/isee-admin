@@ -111,7 +111,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.getHistoryData = {};
         $scope.getHistoryData.tableName = 'CustomerNote';
         NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-            console.log(data);
             if (data.value == true) {
                 $scope.eData = data.data;
             } else {

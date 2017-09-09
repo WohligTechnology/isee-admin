@@ -61,14 +61,15 @@ var model = {
     findViolationCount: function (ruleId, callback) {
         // callback with count or error
         // Transation.count({violation:ruleId}).exec(callback);
-        console.log(ruleId);
         Transaction.find({
-            _id: "59b23e25d6af2e2848f1456c",
-            violation: {
-                $in: [ObjectId(ruleId.ruleId)]
+            "violations": {
+                $elemMatch: {
+                    $in: [ObjectId(ruleId.ruleId)]
+                }
             }
-        }).exec(function (err, data) {
-            if (err || _.isEmpty(data)) {
+        }).count(function (err, data) {
+            console.log("data", data);
+            if (err) {
                 callback(err);
             } else {
                 callback(null, data);

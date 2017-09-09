@@ -4,6 +4,9 @@ myApp.controller('ErrorLogCtrl', function ($scope, TemplateService, NavigationSe
     TemplateService.class = "error-log"; //This is the Class of Page
     $scope.navigation = NavigationService.getNavigation();
     $scope.noData = true;
+
+
+
     $scope.openLogdata = {};
     $scope.openLogdata._id = $stateParams.error_id;
     NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {

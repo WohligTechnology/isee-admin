@@ -5,7 +5,7 @@
 
 <div ng-if="noData" style="font-size: 25px; font-weight: 600; color: #5ca977;">No Error Found</div>
 <div class="inside-status">
-    <div class="log-history" ng-if="logInsideData.error.errors">
+    <div class="log-history" ng-if="logInsideData.error">
         <div class="row">
             <div class="col-xs-3">
                 <div class="pad-5 title-sub">Row # </div>
@@ -15,11 +15,11 @@
             </div>
 
             <div class="col-xs-3">
-                <div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
+                <div class="pad-5 title-sub">Total Entries: {{logData.sucessCount+logData.failureCount}}</div>
             </div>
         </div>
     </div>
-    <div class="log-history" ng-repeat="logs in logInsideData track by $index" ng-if="logs.error.errors">
+    <div class="log-history" ng-repeat="logs in logInsideData track by $index" ng-if="logs.error">
         <div class="row">
             <!-- <div class="row"> -->
 
@@ -31,7 +31,7 @@
 <div class="col-xs-9">
     <div class="pad-5 inside-history">
         <span>
-														<pre class="danger-pre"><code>{{logs.error.errors|json}}</code></pre>
+														<pre class="danger-pre"><code>{{logs.error|json}}</code></pre>
 														</span>
     </div>
 </div>
