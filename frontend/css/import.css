@@ -39382,6 +39382,27 @@ header {
 .mb-5 {
   margin-bottom: 5px; }
 
+.mgn-top40 {
+  margin-top: 40px; }
+
+.pdright10 {
+  padding-right: 10px !important; }
+
+.mg-top20 {
+  margin-top: 20px; }
+
+.mg-left-40 {
+  margin-left: 40px; }
+
+.cur {
+  cursor: pointer; }
+
+.mg-left-20 {
+  margin-left: 20px; }
+
+.col-white {
+  color: white !important; }
+
 #fancybox-loading,
 .fancybox-close,
 .fancybox-next span,

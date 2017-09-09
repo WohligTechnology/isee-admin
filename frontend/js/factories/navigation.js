@@ -99,7 +99,8 @@ myApp.factory('NavigationService', function ($http) {
         subnav: [{
             name: "Setup Rules",
             classis: "active",
-            anchor: "es-rule",
+            // anchor: "es-rule",
+            anchor: "drl-rule",
             // icon: "fa-cog"
         }, {
             name: "What-if-Analysis",
@@ -120,7 +121,8 @@ myApp.factory('NavigationService', function ($http) {
         subnav: [{
             name: "Setup Rules",
             classis: "active",
-            anchor: "es-rule",
+            // anchor: "es-rule",
+            anchor: "drl-rule",
             // icon: "fa-cog"
         }, {
             name: "What-if-Analysis",
