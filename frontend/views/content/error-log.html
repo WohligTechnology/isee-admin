@@ -1,0 +1,40 @@
+<div ng-include="template.header" class="template header"></div>
+<div class="add-header">
+    <span class="main bredcrums"> <a style="color:#be5358; text-decoration:none;">Error Log</a>
+</div>
+
+<div ng-if="noData" style="font-size: 25px; font-weight: 600; color: #5ca977;">No Error Found</div>
+<div class="inside-status">
+    <div class="log-history" ng-if="logInsideData.error.errors">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="pad-5 title-sub">Row # </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="pad-5 title-sub">Status</div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="log-history" ng-repeat="logs in logInsideData track by $index" ng-if="logs.error.errors">
+        <div class="row">
+            <!-- <div class="row"> -->
+
+            <div class="col-xs-3">
+                <div class="pad-5 inside-history">
+                    <span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.rowNo+2}}</span>
+</div>
+</div>
+<div class="col-xs-9">
+    <div class="pad-5 inside-history">
+        <span>
+														<pre class="danger-pre"><code>{{logs.error.errors|json}}</code></pre>
+														</span>
+    </div>
+</div>
+</div>
+</div>
+</div>

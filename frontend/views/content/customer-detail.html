@@ -116,7 +116,7 @@
 									<div ng-repeat="logData in eData track by $index" ng-if="eData">
 										<div class="log-history">
 											<div class="row pointer">
-												<div ng-click="openLogs(logData)">
+												<div ng-click="" ui-sref="error-log({error_id:logData.id})">
 													<div class="col-xs-4">
 														<div class="pad-5 inside-history">{{logData.createdAt | date:'medium'}}</div>
 													</div>

@@ -68,4 +68,6 @@ module.exports = [
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',
   'frontend/js/controllers/predictive-dash-ctrl.js',
+  'frontend/js/controllers/error-log.js',
+  'frontend/js/controllers/view-violated-rule.js',
 ];

@@ -128,7 +128,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'ComingSoonCtrl'
         })
-
+        .state('error-log', {
+            url: "/error-log/:error_id",
+            templateUrl: tempateURL,
+            controller: 'ErrorLogCtrl'
+        })
+        .state('view-violated-rule', {
+            url: "/view-violated-rule/:id",
+            templateUrl: tempateURL,
+            controller: "ViewViolatedCtrl"
+        })
         .state('view-customer-note', {
             url: "/view-customer-note",
             templateUrl: tempateURL,
