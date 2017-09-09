@@ -728,7 +728,7 @@ var controller = {
 
     finalUploadForCrm: function (req, res) {
         AllLogs.saveData({
-            tableName: "CRM",
+            tableName: "Crm",
             status: "Pending"
         }, function (err, found) {
             res.callback(err, found._id);
@@ -777,7 +777,7 @@ var controller = {
     },
 
 
-    //customer *
+    //customer Contact*
 
     customerUpload: function (req, res) {
         if (req.body.file) {

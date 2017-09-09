@@ -60,12 +60,9 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         });
         logData.isOpen = !logData.isOpen;
         NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
-            // console.log(data);
             if (data.value == true) {
                 $scope.logInsideData = data.data.logs;
-                // console.log("logData--------------", $scope.logInsideData);
                 _.forEach($scope.logInsideData, function (value, key) {
-                    // console.log(value);
                     value.rowNo = key;
                 });
             }
@@ -91,7 +88,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-            // $(".cust-details_loader").css("display", "block"); //loader
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
             $scope.companyExcel.fields = [];
@@ -354,7 +350,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         $scope.formData = {};
         $scope.mapExcelFields = function (formdata, formdata1) {
             // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-            $(".cust-details_loader").css("display", "block"); //loader
             $scope.showtable = false;
             $scope.companyExcel = {};
             $scope.companyExcel.name = formdata1.file;
@@ -368,8 +363,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             console.log("mapExcel", mapExcel);
             NavigationService.apiCall("ExcelUpload/" + mapExcel, $scope.companyExcel, function (data) {
                 if (data.value == true) {
-                    $(".cust-details_loader").css("display", "none"); //loader end
-                    $(".cust-details_loader_done").css("display", "block"); //loader end
                     // $scope.getHistory();
                     // console.log("#############1################", data);
                     $scope.errData = data.data;

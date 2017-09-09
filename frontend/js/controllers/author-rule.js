@@ -13,7 +13,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
     };
     $scope.countries = [];
 
-    $scope.operators = ["==", "<=", ">=", ">", "<", "!=", "Contains", "Matches"];
+    $scope.operators = ["==", "<=", ">=", ">", "<", "!="];
     //addition of Element/Expression
     $scope.drlRule = {};
     $scope.drlRule.choices = [{}];
@@ -48,7 +48,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         }
     });
 
-
+    //model block
     $scope.selectedModel = {};
     $scope.addAllModel = function (val, index) {
         $scope.drlRule.choices[index].model = val;
@@ -64,6 +64,26 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         $scope.drlRule.choices[index].field = val;
 
     };
+
+    //table block
+
+    $scope.selectedTable = {};
+    $scope.addAlltables = function (val, index) {
+        $scope.drlRule.choices[index].table = val;
+        $scope.selectedTable.model = val;
+        NavigationService.apiCall("Web/getModelFields", $scope.selectedTable, function (data) {
+            if (data.value == true) {
+                $scope.allTableFields = data.data;
+            }
+        });
+    };
+    $scope.addTableField = function (val, index) {
+        $scope.drlRule.choices[index].tableField = val;
+
+    };
+
+    /////
+
     $scope.addOperator = function (val, index) {
         $scope.drlRule.choices[index].operators = val;
     };
