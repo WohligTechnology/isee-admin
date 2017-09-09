@@ -18,7 +18,7 @@
                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <a class="btn btn-primary" ui-sref="drl-rule">
+                <a class="btn btn-success col-white" ui-sref="drl-rule">
                 <i class="fa fa-plus"></i>
                     Add Rules
                 </a>
@@ -32,16 +32,28 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Rules</th>
+                        <th>Execute</th>
                         <th>Violated Rules</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in allRules">
-                        <td>{{data.name}}</td>
-                        <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td>
-                        <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td>
+                        <td>{{data.name}} <a class="mg-left-20" ui-sref="drl-rule({ruleId:data._id})" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        </td>
+                        <!-- <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td> -->
+                        <td> <a class="mg-left-20" ui-sref="">
+                            <i class="fa fa-play" aria-hidden="true"></i>
+                        </a></td>
+                        <!-- <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td> -->
+                        <td>
+                            <a class="mg-left-40" ui-sref="violatedRules({ruleId:data._id})" title="View Violated Rule">
+                                 <i class="fa fa-ban" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <label class="label label-success">success</label>
+                        </td>
                     </tr>
             </table>
             <div class="row">
