@@ -108,21 +108,16 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             });
         };
 
-        $scope.getHistory = function (n) {
-            $scope.getHistoryData = {};
-            $scope.getHistoryData.tableName = 'CustomerNote';
-            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-                console.log(data);
-                if (data.value == true) {
-                    $scope.eData = data.data;
-                    // console.log("eData--------------", $scope.eData);
-                    // $scope.logData = data.data.found[0].info[0];
-                    // console.log("logData--------------", $scope.logData);
-                } else {
-                    toastr.error('No History');
-                }
-            });
-        };
+        $scope.getHistoryData = {};
+        $scope.getHistoryData.tableName = 'CustomerNote';
+        NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+            console.log(data);
+            if (data.value == true) {
+                $scope.eData = data.data;
+            } else {
+                toastr.error('No History');
+            }
+        });
 
     }
 
