@@ -38903,8 +38903,9 @@ header {
   margin-top: -20px;
   margin-bottom: 20px; }
   .add-header span.main.bredcrums {
-    font-size: 16px;
+    font-size: 12px;
     color: #5397be;
+    color: #5d5d5d;
     font-weight: 400; }
   .add-header .search-all {
     margin-top: -3px; }
@@ -38912,10 +38913,11 @@ header {
 .add-title {
   padding: 12px 0px; }
   .add-title span.main.bredcrums {
-    font-size: 16px;
+    font-size: 14px;
     color: #5397be;
     font-weight: 400;
-    letter-spacing: 1.5px; }
+    letter-spacing: 1.5px;
+    margin-left: 20px; }
 
 .img-responsive {
   max-width: intial;
@@ -39172,8 +39174,9 @@ header {
         color: #919191; }
 
 .panel-divider {
-  padding: 25px 0px;
-  border-bottom: 1px solid #ddd; }
+  padding: 25px 25px;
+  border-bottom: 1px solid #ddd;
+  color: #5d5d5d; }
 
 .panel-default > .panel-heading {
   background-color: #fff;
@@ -39194,7 +39197,7 @@ header {
   .custom-tabs .remove-tabs .nav.nav-tabs {
     display: none; }
   .custom-tabs span.main.bredcrums {
-    font-size: 16px;
+    font-size: 14px;
     color: #5397be;
     font-weight: 400; }
   .custom-tabs .tab .tab-content {
@@ -39364,7 +39367,7 @@ header {
   top: 16px; }
 
 .cust-details-logs {
-  font-size: 16px;
+  font-size: 14px;
   color: #5397be;
   font-weight: 400; }
 
@@ -39424,6 +39427,51 @@ footer.main-footer.sticky.footer-type-1 {
 
 .logs-tabel {
   margin-top: 20px; }
+
+.fnt {
+  font-size: 13px; }
+
+.header-higt {
+  height: 50px; }
+
+.pd10 {
+  padding: 10px 10px !important; }
+
+.mgt-neg20 {
+  margin-top: -10px !important; }
+
+.rule-insidepanel {
+  background-color: rgba(97, 158, 193, 0.19);
+  padding: 30px 20px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: #5d5d5d; }
+
+.close-button {
+  font-size: 15px;
+  position: relative;
+  left: 70px;
+  top: -20px; }
+
+.table {
+  font-size: 12px;
+  color: #5d5d5d; }
+  .table thead tr th {
+    color: #5d5d5d; }
+
+.exec {
+  opacity: 0.5;
+  cursor: not-allowed !important; }
+
+.vio-table {
+  margin-top: 20px; }
+  .vio-table span {
+    margin-left: 25px;
+    font-weight: bold;
+    color: #5e5e5e; }
+  .vio-table table {
+    margin: 20px;
+    margin-top: 10px; }
 
 #fancybox-loading,
 .fancybox-close,
