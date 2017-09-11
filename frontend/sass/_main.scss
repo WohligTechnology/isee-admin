@@ -191,8 +191,9 @@ header {
     margin-top: -20px;
     margin-bottom: 20px;
     span.main.bredcrums {
-        font-size: 16px;
+        font-size: 12px;
         color: $brand-primary;
+        color: #5d5d5d;
         font-weight: 400;
     }
     .search-all {
@@ -204,10 +205,11 @@ header {
 .add-title {
     padding: 12px 0px;
     span.main.bredcrums {
-        font-size: 16px;
-        color: $brand-primary;
+        font-size: 14px;
+        color: $brand-primary; // color: #5d5d5d;
         font-weight: 400;
         letter-spacing: 1.5px;
+        margin-left: 20px;
     }
 }
 
@@ -594,8 +596,9 @@ header {
 
 //Detail Panel
 .panel-divider {
-    padding: 25px 0px;
+    padding: 25px 25px;
     border-bottom: 1px solid #ddd;
+    color: rgb(93, 93, 93);
 }
 
 .panel-default>.panel-heading {
@@ -628,8 +631,8 @@ header {
         }
     }
     span.main.bredcrums {
-        font-size: 16px;
-        color: $brand-primary;
+        font-size: 14px;
+        color: $brand-primary; // color: #5d5d5d;
         font-weight: 400;
     }
     .tab {
@@ -841,7 +844,7 @@ header {
 }
 
 .cust-details-logs {
-    font-size: 16px;
+    font-size: 14px;
     color: #5397be;
     font-weight: 400;
 }
@@ -939,4 +942,65 @@ footer.main-footer.sticky.footer-type-1 {
 
 .logs-tabel {
     margin-top: 20px;
+}
+
+.fnt {
+    font-size: 13px;
+}
+
+.header-higt {
+    height: 50px;
+}
+
+.pd10 {
+    padding: 10px 10px !important;
+}
+
+.mgt-neg20 {
+    margin-top: -10px !important;
+}
+
+.rule-insidepanel {
+    background-color: rgba(97, 158, 193, 0.19);
+    padding: 30px 20px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: rgb(93, 93, 93);
+}
+
+.close-button {
+    font-size: 15px;
+    position: relative;
+    left: 70px;
+    top: -20px;
+}
+
+.table {
+    font-size: 12px;
+    color: #5d5d5d;
+    thead {
+        tr {
+            th {
+                color: #5d5d5d;
+            }
+        }
+    }
+}
+
+.exec {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+.vio-table {
+    margin-top: 20px;
+    span {
+        margin-left: 25px;
+        font-weight: bold;
+        color: #5e5e5e;
+    }
+    table {
+        margin: 20px;
+        margin-top: 10px;
+    }
 }

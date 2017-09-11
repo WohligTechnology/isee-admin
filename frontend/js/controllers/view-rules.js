@@ -4,7 +4,10 @@
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
      //  $scope.currentPage = 1;
-
+     $scope.isexec = false;
+     $scope.changeexec = function () {
+         $scope.isexec = true;
+     }
      //Json Tables
      $scope.assignmentdata = [{
              _id: 'CTA-2017-04-26_40',
@@ -81,6 +84,7 @@
                      $scope.allRules = data.data.results;
                      $scope.totalItems = data.data.total;
                      $scope.maxRow = data.data.options.count;
+                     console.log($scope.allRules);
                  }
              });
 

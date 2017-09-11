@@ -89,7 +89,7 @@
 						</div>
 						<!--Logs Tabel History-->
 						<!-- <div class="logs-tabel" ng-if="eData.length>0"> -->
-						<div class="logs-tabel">
+						<!-- <div class="logs-tabel">
 							<div class="dataTables_wrapper">
 								<div class="table table-bordered table-hover">
 									<div class="log-history">
@@ -149,41 +149,66 @@
 											</div>
 										</div>
 
-										<!-- LOGS 
-											<div class=" inside-status " ng-if="logData.isOpen ">
-											<div class="log-history " ng-if="logInsideData.error ">
-												<div class="row ">
-													<div class="col-xs-3 ">
-														<div class="pad-5 title-sub ">Row # </div>
-													</div>
-													<div class="col-xs-6 ">
-														<div class="pad-5 title-sub ">Status</div>
-													</div>
 
-													<div class="col-xs-3 ">
-														<div class="pad-5 title-sub ">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
-													</div>
-												</div>
-											</div>
-											<div class="log-history " ng-repeat="logs in logInsideData track by $index " ng-if="logs.error ">
-												<div class="row ">
-																									<div class="col-xs-3 ">
-														<div class="pad-5 inside-history ">
-															<span class="danger "><i class="fa fa-times-circle "></i> Row:{{logs.rowNo+2}}</span>
-														</div>
-													</div>
-													<div class="col-xs-9 ">
-														<div class="pad-5 inside-history ">
-															<span>
-														<pre class="danger-pre "><code>{{logs.error|json}}</code></pre>
-														</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div> -->
 									</div>
 								</div>
+							</div>
+						</div> -->
+
+
+						<!-- logs in table form -->
+						<div class="logs-tabel">
+							<div class="dataTables_wrapper table-responsive  container-fluid">
+								<table class="table table-hover">
+									<thead class="thead-inverse">
+										<tr>
+											<th>
+												Date
+											</th>
+											<th>
+												Success
+											</th>
+
+											<th>
+												Failure
+											</th>
+
+											<th>
+												Total Upload
+											</th>
+											<th>
+												Status
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- <div class="log-history"> -->
+										<tr ng-repeat="logData in eData track by $index" ng-if="eData" ui-sref="error-log({error_id:logData.id})">
+											<td class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}
+											</td>
+											<td>
+												<span class="success"> {{logData.succesCount}}
+												<i class="fa fa-check-circle"></i></span>
+											</td>
+											<td>
+												<span class="danger">{{logData.errorCount}}
+												<i class="fa fa-times-circle"></i></span>
+											</td>
+											<td>
+												<span style="color:#5397be;">{{logData.succesCount+logData.errorCount}}
+												<i class="fa fa-upload" aria-hidden="true"></i></span>
+											</td>
+											<td>
+												<span ng-class="whatClassIsIt(logData.status)">{{logData.status}}</span>
+											</td>
+										</tr>
+										<div class="row pointer">
+											<div ng-click="" ui-sref="error-log({error_id:logData.id})">
+											</div>
+										</div>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 						<!--End Logs Tabel History-->
