@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in violationData track by $index" ui-sref="view-violated-rule({id:data.nameData})">
+                    <tr ng-repeat="data in violationData track by $index">
                         <th>{{data._id}}</th>
 
                         <td>
@@ -39,7 +39,7 @@
                             <!--<ul ng-repeat="data1 in data.result track by $index">{{data1}}</ul>-->
                         </td>
                         <td>
-                            <a class="viewicon" ui-sref="view-violated-rule({id:data.nameData})"><i class="fa fa-desktop" aria-hidden="true"></i></a>
+                            <a class="viewicon" ui-sref="view-violated-rule({id:data._id})"><i class="fa fa-desktop" aria-hidden="true"></i></a>
                         </td>
                     </tr>
             </table>

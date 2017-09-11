@@ -4,7 +4,6 @@
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
 
-
      //pagination
 
      var i = 0;

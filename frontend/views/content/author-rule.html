@@ -121,7 +121,7 @@
                         <div class="form-group">
                             <div class="row">
 
-                                <div class="col-sm-8 col-sm-offset-4">
+                                <div class="col-sm-8 col-sm-offset-3">
                                     <div class="radio" ng-init="optCons='true'">
                                         <label><input type="radio" name="element" value="true" ng-checked="choice.constant!=null"  ng-model="optCons" ng-click="choice.table=''">Constant</label>
 
@@ -137,7 +137,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-3 col-sm-offset-1">
+                                <div class="col-sm-3">
                                     <!-- <label class=" control-label">Table</label> -->
                                 </div>
                                 <div class="col-sm-8">
@@ -154,12 +154,12 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-3 col-sm-offset-1">
+                                <div class="col-sm-3">
                                     <!-- <label class=" control-label">Table Fields</label> -->
                                 </div>
                                 <div class="col-sm-8">
                                     <ui-select ng-model="choice.tableField" name="country" on-select="addTableField(choice.tableField,$index)" theme="bootstrap"
-                                        sortable="true" ng-disabled="optCons!='false'">
+                                        sortable="true" ng-disabled="optCons!='false'" ng-if="optCons=='false'">
                                         <ui-select-match placeholder="Table Fields">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>

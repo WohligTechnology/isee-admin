@@ -62,7 +62,6 @@
                      $scope.allRules = data.data.results;
                      $scope.totalItems = data.data.total;
                      $scope.maxRow = data.data.options.count;
-                     console.log($scope.allRules);
                  }
              });
 

@@ -416,6 +416,18 @@ var model = {
                     callback(null, data);
                 }
             });
+    },
+
+    getViolatedTransaction: function (data, callback) {
+        Transaction.findOne({
+            _id: data.id
+        }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId crm companycontact companyinfo customernote").exec(function (err, found) {
+            if (err || _.isEmpty(found)) {
+                callback(err, null);
+            } else {
+                callback(null, data);
+            }
+        });
     }
 
     // saveOnExcel: function (data, callback) {
