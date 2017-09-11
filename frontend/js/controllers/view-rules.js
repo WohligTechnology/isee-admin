@@ -1,45 +1,23 @@
- myApp.controller('ViewRulesCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+ myApp.controller('ViewRulesCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
      $scope.template = TemplateService.getHTML("content/view-rules.html");
      TemplateService.title = "Rules List"; //This is the Title of the Website
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
+     $scope.executeDisabled = false;
      //  $scope.currentPage = 1;
 
      //Json Tables
-     $scope.assignmentdata = [{
-             _id: 'CTA-2017-04-26_40',
-             to: 'Darsha Patel',
-             entry: 'Legal Entry 1',
-             actualSize: '8',
-             currentSize: '8',
-             expection: '8',
-             outstanding: '0',
-             assignmentDate: '05/02/17',
-             lastPerfect: '05/02/17'
-         },
-         {
-             _id: 'CTA-2017-04-24_40',
-             to: 'Darsha Patel',
-             entry: 'Legal Entry 2',
-             actualSize: '8',
-             currentSize: '8',
-             expection: '5',
-             outstanding: '3',
-             assignmentDate: '05/02/17',
-             lastPerfect: '05/02/17'
-         },
-         {
-             _id: 'CTA-2017-04-26_40',
-             to: 'Darsha Patel',
-             entry: 'Legal Entry 3',
-             actualSize: '8',
-             currentSize: '8',
-             expection: '6',
-             outstanding: '2',
-             assignmentDate: '05/02/17',
-             lastPerfect: '05/02/17'
+     $scope.whatClassIsIt = function (c) {
+         if (c == "Completed") {
+             return "label label-success";
+         } else if (c == "Pending") {
+             return "label label-danger";
+         } else if (c == "Processing") {
+             return "label label-warning";
          }
-     ];
+     }
+
+
 
      var i = 0;
      if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
@@ -87,4 +65,19 @@
      };
      //  JsonService.refreshView = $scope.getAllItems;
      $scope.getAllItems();
+
+
+     //executing rule
+     $scope.executeRule = function (formdata) {
+         $state.reload();
+         NavigationService.apiCall("RuleEngine/execute", formdata, function (data) {
+             if (data.value == true) {
+                 // $scope.allFields = data.data;
+                 //  console.log("data-------    ", data);
+                 $scope.executeDisabled = true;
+             } else {
+                 toastr.error("Rule Not Saved");
+             }
+         });
+     };
  })

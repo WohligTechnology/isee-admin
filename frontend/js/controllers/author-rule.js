@@ -13,6 +13,9 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
     };
     $scope.countries = [];
 
+    var radioChange = false;
+
+
     $scope.operators = ["==", "<=", ">=", ">", "<", "!="];
     //addition of Element/Expression
     $scope.drlRule = {};
@@ -95,6 +98,7 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
             $scope.rules.name = formdata.name;
             $scope.rules.rule = formdata.choices;
             $scope.rules._id = $stateParams.ruleId;
+            $scope.rules.status = 'Pending';
             NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
                 if (data.value == true) {
                     // $scope.allFields = data.data;

@@ -84,7 +84,7 @@ var model = {
         //      itetaty function async each series = > find skip = ((i)*20)  limit = 20 transactions i++;
         Transaction.find({}, function (err, transactions) {
             async.concatLimit(transactions, 20, function (transaction, callback) {
-                RuleEngine.checkViolation(transaction._id, ruleId.ruleId, callback);
+                RuleEngine.checkViolation(transaction._id, ruleId, callback);
             }, callback);
         });
     },
@@ -167,7 +167,6 @@ var model = {
                     callback(null, data);
                 });
             }
-
         });
     }
 

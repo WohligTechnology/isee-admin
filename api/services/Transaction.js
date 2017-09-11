@@ -357,6 +357,67 @@ var model = {
         });
     },
 
+    removeARuleFromTransaction: function (ruleId, callback) {
+        Transaction.find({
+            "violations": {
+                $elemMatch: {
+                    $in: [ObjectId(ruleId.ruleId)]
+                }
+            }
+        }).exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(null, null);
+            } else {
+                async.concatLimit(data, 30, function (singleTransaction, callback) {
+                    var violations = _.cloneDeep(singleTransaction.violations);
+                    _.remove(violations, function (n) {
+                        return n == ruleId.ruleId;
+                    });
+                    singleTransaction.violations = violations;
+                    singleTransaction.save(callback);
+                }, callback);
+            }
+        });
+    },
+
+    getViolationsForARule: function (data, callback) {
+        var maxRow = Config.maxRow;
+        var page = 1;
+        if (data.page) {
+            page = data.page;
+        }
+        var field = data.field;
+        var options = {
+            field: data.field,
+            filters: {
+                keyword: {
+                    fields: ['name'],
+                    term: data.keyword
+                }
+            },
+            sort: {
+                desc: 'createdAt'
+            },
+            start: (page - 1) * maxRow,
+            count: maxRow
+        };
+        Transaction.find({
+                "violations": {
+                    $elemMatch: {
+                        $in: [ObjectId(data.ruleId)]
+                    }
+                }
+            }).order(options)
+            .keyword(options)
+            .page(options, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    callback(err, []);
+                } else {
+                    callback(null, data);
+                }
+            });
+    }
+
     // saveOnExcel: function (data, callback) {
     //     async.parallel({
     //             organizationId: function (callback) {

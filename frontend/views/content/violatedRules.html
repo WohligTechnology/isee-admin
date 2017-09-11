@@ -25,13 +25,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>TransactionId</th>
                         <th>Violated Details</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in violatedRuleData track by $index" ui-sref="view-violated-rule({id:data.nameData})">
-                        <th>{{data.nameData}}</th>
+                    <tr ng-repeat="data in violationData track by $index" ui-sref="view-violated-rule({id:data.nameData})">
+                        <th>{{data._id}}</th>
                         <td>
                             {{data.matchPath[0]}}
                             <!--<ul ng-repeat="data1 in data.result track by $index">{{data1}}</ul>-->
