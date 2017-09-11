@@ -9,7 +9,7 @@
             <img alt="" ng-src="{{sImage|uploadpath}}" class="img-responsive uploadingImage img-thumbnail" />
         </div>
     </div>
-    <div class="btn-upload btn btn-default btn-outline btn-small btn-rounded create-btn">
+    <div class="btn-upload btn btn-default btn-outline btn-small create-btn">
         <input id="inputImage" ng-show="!isMultiple && type=='image'" type="file" accept="image/*,application/pdf" image="image"
             title="Choose Files" class="btn-primary">
         <input id="inputImage" ng-show="!isMultiple && type=='pdf'" type="file" accept="application/pdf" image="image" title="Choose Files"
@@ -21,7 +21,7 @@
         <input id="inputImage" ng-show="!isMultiple" type="file" ng-if="type=='all'" image="image" title="Choose Files" class="btn-primary">
         <input id="inputImage" ng-show="isMultiple" type="file" accept="image/*,application/pdf" image="image" title="Choose Multiple Files"
             class="btn-primary" multiple>
-        <span>CHOOSE FILE</span>
+        <span style="font-size:12px;">CHOOSE FILE</span>
         <!-- <a class="btn btn-primary btn-outline btn-small create-btn" ng-if="!isMultiple">Choose File</a> -->
         <!-- <a class="btn btn-primary btn-outline btn-small create-btn" ng-if="isMultiple">Choose Files</a> -->
     </div>
@@ -33,7 +33,8 @@
     <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="isMultiple">Uploading Document {{image.length}}</span>
 </div>
 <div id="fileprogressbar" class="progress" ng-style="{'display':displayprogress}">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{fileprogressbar}}%" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':fileprogressbar+'%'}">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{fileprogressbar}}%"
+        aria-valuemin="0" aria-valuemax="100" ng-style="{'width':fileprogressbar+'%'}">
         {{fileprogressbar}}%
     </div>
 </div>

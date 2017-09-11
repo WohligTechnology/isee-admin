@@ -12,7 +12,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }, 5000);
         });
     };
-
+    $scope.whatClassIsIt = function (c) {
+        if (c == "Completed") {
+            return "label label-success";
+        } else if (c == "Pending") {
+            return "label label-warning";
+        }
+    }
     $scope.tabs = [{
             title: 'Customer Note',
         },

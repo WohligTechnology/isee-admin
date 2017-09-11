@@ -25,14 +25,14 @@
 						<!--upload button-->
 						<div class="upload-button">
 							<div class="row">
-								<div class="col-sm-4 col-sm-offset-1">
+								<div class="col-sm-4">
 									<div class="upload-data">
 										<upload-image ng-model=formdata.file type="excel"></upload-image>
 									</div>
 								</div>
 								<div class="col-sm-6">
-									<div class="text-right">
-										<button type="submit" class="btn btn-success brd-rd-20" ng-click="getExcelFields(formdata)" ng-disabled="mappingDisabled">Mapping Excel 
+									<div class="">
+										<button type="submit" class="btn btn-success" ng-click="getExcelFields(formdata)" ng-disabled="mappingDisabled" style="font-size:12px;">Mapping Excel 
 											<i class="fa fa-upload" aria-hidden="true"></i></button>
 									</div>
 
@@ -91,7 +91,7 @@
 						<!-- <div class="logs-tabel" ng-if="eData.length>0"> -->
 						<div class="logs-tabel">
 							<div class="dataTables_wrapper">
-								<div class="table table-bordered">
+								<div class="table table-bordered table-hover">
 									<div class="log-history">
 										<div class="row">
 											<div class="col-xs-4 ">
@@ -118,7 +118,9 @@
 											<div class="row pointer">
 												<div ng-click="" ui-sref="error-log({error_id:logData.id})">
 													<div class="col-xs-4">
-														<div class="pad-5 inside-history">{{logData.createdAt | date:'medium'}}</div>
+														<div class="pad-5 inside-history">
+															<span class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}</span>
+														</div>
 													</div>
 													<div class="col-xs-2">
 														<div class="pad-5 inside-history">
@@ -134,52 +136,52 @@
 													</div>
 													<div class="col-xs-2">
 														<div class="pad-5 inside-history">
-															{{logData.succesCount+logData.errorCount}}
+															<span style="color:#5397be;">{{logData.succesCount+logData.errorCount}}
+															<i class="fa fa-upload" aria-hidden="true"></i></span>
 														</div>
 													</div>
 													<div class="col-xs-2">
 														<div class="pad-5 inside-history">
-															{{logData.status}}
+															<span ng-class="whatClassIsIt(logData.status)">{{logData.status}}</span>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 
-										<div class="inside-status" ng-if="logData.isOpen">
-											<div class="log-history" ng-if="logInsideData.error">
-												<div class="row">
-													<div class="col-xs-3">
-														<div class="pad-5 title-sub">Row # </div>
+										<!-- LOGS 
+											<div class=" inside-status " ng-if="logData.isOpen ">
+											<div class="log-history " ng-if="logInsideData.error ">
+												<div class="row ">
+													<div class="col-xs-3 ">
+														<div class="pad-5 title-sub ">Row # </div>
 													</div>
-													<div class="col-xs-6">
-														<div class="pad-5 title-sub">Status</div>
+													<div class="col-xs-6 ">
+														<div class="pad-5 title-sub ">Status</div>
 													</div>
 
-													<div class="col-xs-3">
-														<div class="pad-5 title-sub">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
+													<div class="col-xs-3 ">
+														<div class="pad-5 title-sub ">Total Entries: {{logData.succesCount+logData.errorCount}}</div>
 													</div>
 												</div>
 											</div>
-											<div class="log-history" ng-repeat="logs in logInsideData track by $index" ng-if="logs.error">
-												<div class="row">
-													<!-- <div class="row"> -->
-
-													<div class="col-xs-3">
-														<div class="pad-5 inside-history">
-															<span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.rowNo+2}}</span>
+											<div class="log-history " ng-repeat="logs in logInsideData track by $index " ng-if="logs.error ">
+												<div class="row ">
+																									<div class="col-xs-3 ">
+														<div class="pad-5 inside-history ">
+															<span class="danger "><i class="fa fa-times-circle "></i> Row:{{logs.rowNo+2}}</span>
 														</div>
 													</div>
-													<div class="col-xs-9">
-														<div class="pad-5 inside-history">
+													<div class="col-xs-9 ">
+														<div class="pad-5 inside-history ">
 															<span>
-														<pre class="danger-pre"><code>{{logs.error|json}}</code></pre>
+														<pre class="danger-pre "><code>{{logs.error|json}}</code></pre>
 														</span>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</div>

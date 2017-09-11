@@ -38928,7 +38928,6 @@ header {
   background: #ffffff;
   color: 000;
   width: 250px;
-  box-shadow: 0px 2px 6px #000;
   transition: width 500ms; }
   .sidebar-menu .logo-env {
     background: #5397be; }
@@ -39029,6 +39028,9 @@ header {
 
 .danger {
   color: #e53d0a; }
+
+.primary {
+  color: #5397be; }
 
 .bg-green {
   background: #68bc30 !important; }
@@ -39236,7 +39238,7 @@ header {
         right: -15px;
         top: 0;
         border-top: 16px solid transparent;
-        border-bottom: 16px solid transparent;
+        border-bottom: 15px solid transparent;
         border-left: 15px solid #5397be;
         z-index: 2; }
       .custom-tabs .tab .bread-cum-holder .breadcrum.true {
@@ -39358,7 +39360,7 @@ header {
 #fileprogressbar {
   display: none;
   position: absolute;
-  left: 220px;
+  left: 130px;
   top: 16px; }
 
 .cust-details-logs {
@@ -39371,9 +39373,6 @@ header {
   .loadermapping img {
     width: 50px;
     height: 50px; }
-
-.brd-rd-20 {
-  border-radius: 20px; }
 
 .hidesect-loader {
   display: none;
@@ -39402,6 +39401,29 @@ header {
 
 .col-white {
   color: white !important; }
+
+a.main-menu-anchor {
+  font-size: 13px;
+  font-weight: bold !important; }
+
+.sidebar-menu .main-menu ul li a {
+  font-size: 12px;
+  font-weight: 500; }
+
+.title-sub {
+  color: #5d5d5d; }
+
+a.dropdown-toggle span {
+  font-size: 12px; }
+
+footer.main-footer.sticky.footer-type-1 {
+  background-color: #5397be; }
+
+.footer-text p {
+  color: white; }
+
+.logs-tabel {
+  margin-top: 20px; }
 
 #fancybox-loading,
 .fancybox-close,
