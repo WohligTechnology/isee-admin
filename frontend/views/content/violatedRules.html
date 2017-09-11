@@ -25,18 +25,33 @@
             <table class="table  table-hover">
                 <thead>
                     <tr>
-                        <th>TransactionId</th>
-                        <th>Violated Details</th>
-                        <th> View</th>
+                        <th>Company</th>
+                        <th>Location </th>
+                        <th>Customer </th>
+                        <th>Customer </th>
+                        <th>Calender</th>
+                        <th>CRM Name</th>
+                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in violationData track by $index">
-                        <th>{{data._id}}</th>
+                        <th>{{data.transactionJson.companyData.name}}</th>
 
                         <td>
-                            {{data.matchPath[0]}}
-                            <!--<ul ng-repeat="data1 in data.result track by $index">{{data1}}</ul>-->
+                            {{data.transactionJson.locationData.storeName}}
+                        </td>
+                        <td>
+                            {{data.transactionJson.customerData.city}}
+                        </td>
+                        <td>
+                            {{data.transactionJson.customerData.email}}
+                        </td>
+                        <td>
+                            {{data.transactionJson.calendarData.activityDate|date:'medium'}}
+                        </td>
+                        <td>
+                            {{data.transactionJson.crmData.salutation}} {{data.transactionJson.crmData.firstName}} {{data.transactionJson.crmData.lastName}}
                         </td>
                         <td>
                             <a class="viewicon" ui-sref="view-violated-rule({id:data._id})"><i class="fa fa-desktop" aria-hidden="true"></i></a>

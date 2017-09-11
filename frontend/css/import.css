@@ -40612,14 +40612,24 @@ footer.main-footer.sticky.footer-type-1 {
   cursor: not-allowed !important; }
 
 .vio-table {
-  margin-top: 20px; }
+  margin-top: 20px;
+  break-inside: avoid-column; }
   .vio-table span {
     margin-left: 25px;
     font-weight: bold;
-    color: #5e5e5e; }
+    color: #5e5e5e;
+    font-size: 13px; }
   .vio-table table {
     margin: 20px;
     margin-top: 10px; }
+  .vio-table th:first-child {
+    width: 200px; }
+  .vio-table th {
+    text-transform: capitalize; }
+
+.column-2 {
+  column-count: 2;
+  padding-top: -10px !important; }
 
 #fancybox-loading,
 .fancybox-close,

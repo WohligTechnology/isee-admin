@@ -423,9 +423,9 @@ var model = {
             _id: data.id
         }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId crm companycontact companyinfo customernote").exec(function (err, found) {
             if (err || _.isEmpty(found)) {
-                callback(err, null);
+                callback(err, []);
             } else {
-                callback(null, data);
+                callback(null, found);
             }
         });
     }

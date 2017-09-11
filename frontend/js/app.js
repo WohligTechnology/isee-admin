@@ -10,9 +10,7 @@ var myApp = angular.module('myApp', [
     'angular-flexslider',
     'ui.swiper',
     'highcharts-ng',
-    'toastr',
-    'ngAnimate',
-    'ngSanitize'
+    'toastr'
 ]);
 // 'ngFileUpload',
 // Define all the routes below
