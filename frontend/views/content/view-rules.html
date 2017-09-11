@@ -43,13 +43,14 @@
                         </td>
                         <!-- <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td> -->
 
-                        <td> <a class="mg-left-20" ng-click="executeRule({ruleId:data._id});changeexec()" ng-class="{'exec':isexec}">
+                        <td> <a class="mg-left-20 label label-warning" ng-click="executeRule({ruleId:data._id});changeexec()"
+                                ng-class="{'exec':isexec}">
                             <i class="fa fa-play" aria-hidden="true"></i>
                         </a>
                         </td>
                         <!-- <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td> -->
                         <td>
-                            <a class="mg-left-40" ui-sref="violatedRules({ruleId:data._id})" title="View Violated Rule"> 
+                            <a class="mg-left-40  label label-danger" ui-sref="violatedRules({ruleId:data._id})" title="View Violated Rule"> 
                                  <i class="fa fa-ban" aria-hidden="true"></i>
                             </a>
                         </td>
