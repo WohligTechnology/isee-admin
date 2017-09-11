@@ -1,12 +1,13 @@
-<nav class="navbar user-info-navbar" role="navigation" ng-controller="headerCtrl">
+<nav class="navbar user-info-navbar header-higt" role="navigation" ng-controller="headerCtrl">
 	<!-- User Info, Notifications and Menu Bar -->
-	<a id="header-collapsed-icon" ui-sref="corporate" class="logo-collapsed">
+	<a id="header-collapsed-icon" ui-sref="corporate" class="logo-collapsed pd10">
 				<img src="img/logo.png" alt="" width="100">
 			</a>
 	<!-- Left links for user info navbar -->
 	<ul class="user-info-menu left-links list-inline list-unstyled">
 		<li class="" ng-click="sideMenu()">
-			<a data-toggle="sidebar" class="menu-icons">
+			<!-- <a data-toggle="sidebar" class="menu-icons"> -->
+			<a data-toggle="sidebar" class="">
 				<i class="fa-bars"></i>
 			</a>
 		</li>
@@ -17,9 +18,9 @@
 		<li class="dropdown user-profile">
 			<a class="dropdown-toggle" data-toggle="dropdown">
 				<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
-				<span>
-					Welcome, <br>	
-					{{userData.name}}
+				<span >
+					Welcome, </br>
+					<span style="text-transform:capitalize">{{userData.name}}</span>
 					</span>
 			</a>
 			<ul class="dropdown-menu user-profile-menu list-unstyled">
@@ -47,7 +48,7 @@
 									Help
 								</a>
 				</li> -->
-				<li class="last">
+				<li class="last mgt-neg20">
 					<a ng-click="logout()">
 						<i class="fa-lock"></i> Logout
 					</a>

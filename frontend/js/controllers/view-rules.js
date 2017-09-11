@@ -5,7 +5,10 @@
      $scope.navigation = NavigationService.getNavigation();
      $scope.executeDisabled = false;
      //  $scope.currentPage = 1;
-
+     $scope.isexec = false;
+     $scope.changeexec = function () {
+         $scope.isexec = true;
+     }
      //Json Tables
      $scope.whatClassIsIt = function (c) {
          if (c == "Completed") {
@@ -59,6 +62,7 @@
                      $scope.allRules = data.data.results;
                      $scope.totalItems = data.data.total;
                      $scope.maxRow = data.data.options.count;
+                     console.log($scope.allRules);
                  }
              });
 

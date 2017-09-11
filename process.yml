@@ -1,6 +1,6 @@
 apps:
   - script: "app.js"
-    name: "iSee - 80"
+    name: "iSee - 8081"
     watch: false
     args: "--prod"
     exec_mode: "cluster"
