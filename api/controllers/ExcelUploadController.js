@@ -86,7 +86,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -187,7 +188,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -319,7 +321,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -412,7 +415,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -533,7 +537,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -754,7 +759,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -862,7 +868,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -951,7 +958,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -1187,7 +1195,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -1349,7 +1358,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -1526,7 +1536,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {
@@ -1616,7 +1627,8 @@ var controller = {
                                         }
                                         callback(null, {
                                             error: err,
-                                            success: data
+                                            success: data,
+                                            row: i
                                         });
                                     });
                                 }, function (err, found) {

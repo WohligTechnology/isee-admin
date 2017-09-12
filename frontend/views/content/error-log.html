@@ -7,7 +7,7 @@
     <span class="main bredcrums">Error Log</span>
 </div> -->
 <div ng-if="noData" style="font-size: 25px; font-weight: 600; color: #5ca977;">No Error Found</div>
-<div class="inside-status">
+<div class="inside-status2">
     <div class="log-history" ng-if="logInsideData.error">
         <div class="row">
             <div class="col-xs-3">
@@ -22,22 +22,27 @@
             </div>
         </div>
     </div>
-    <div class="log-history" ng-repeat="logs in logInsideData track by $index" ng-if="logs.error">
+    <div class="log-history" ng-repeat="logs in errLog track by $index">
         <div class="row">
             <!-- <div class="row"> -->
-
             <div class="col-xs-3">
                 <div class="pad-5 inside-history">
-                    <span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.rowNo+2}}</span>
+                    <span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.logs.row+1}}</span>
                 </div>
             </div>
             <div class="col-xs-9">
                 <div class="pad-5 inside-history">
                     <span>
-														<pre class="danger-pre"><code>{{logs.error|json}}</code></pre>
+														<pre class="danger-pre"><code>{{logs.logs.error|json}}</code></pre>
 														</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
+                                            " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
+        class="pagination-sm
+                                            " boundary-links="true " force-ellipses="true ">
+    </ul>
 </div>

@@ -62,28 +62,85 @@
             });
         },
 
+        // singleLogHistory: function (data, callback) {
+        //     AllLogs.findOne({
+        //         _id: data._id,
+        //     }, {
+        //         logs: {
+        //             $slice: [(data.pageNo - 1) * Config.maxRow, Config.maxRow]
+        //         }
+        //     }).deepPopulate("users").exec(function (err, found) {
+        //         if (err) {
+        //             callback(err, null);
+        //         } else {
+        //             if (found) {
+        //                 callback(null, found);
+        //             } else {
+        //                 callback(null, {
+        //                     message: "No Data Found"
+        //                 });
+        //             }
+        //         }
+        //     });
+        // },
 
         singleLogHistory: function (data, callback) {
-            AllLogs.findOne({
-                _id: data._id
-            }, {
-                logs: {
-                    $slice: [0, 1]
-                }
-            }).deepPopulate("users").exec(function (err, found) {
-                if (err) {
-                    callback(err, null);
-                } else {
-                    if (found) {
-                        callback(null, found);
-                    } else {
-                        callback(null, {
-                            message: "No Data Found"
-                        });
+            AllLogs.aggregate([{
+                    $match: {
+                        "_id": ObjectId(data._id)
                     }
+                }, {
+                    $unwind: {
+                        path: "$logs",
+                        preserveNullAndEmptyArrays: false
+                    }
+                }, {
+                    $match: {
+                        "logs.success": null
+                    }
+                },
+                {
+                    $skip: (data.pageNo - 1) * Config.maxRow
+                },
+                {
+                    $limit: 10
+                }
+            ], function (err, found) {
+                if (err || _.isEmpty(found)) {
+                    callback(err, []);
+                } else {
+                    callback(null, found);
                 }
             });
         },
+
+        singleLogHistoryCount: function (data, callback) {
+            AllLogs.aggregate([{
+                    $match: {
+                        "_id": ObjectId(data._id)
+                    }
+                }, {
+                    $unwind: {
+                        path: "$logs",
+                        preserveNullAndEmptyArrays: false
+                    }
+                }, {
+                    $match: {
+                        "logs.success": null
+                    }
+                },
+                {
+                    $count: "logs"
+                }
+            ], function (err, found) {
+                if (err || _.isEmpty(found)) {
+                    callback(err, []);
+                } else {
+                    callback(null, found);
+                }
+            });
+        },
+
 
         //check all data in table
 

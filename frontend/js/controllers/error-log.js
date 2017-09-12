@@ -1,23 +1,65 @@
-myApp.controller('ErrorLogCtrl', function ($scope, TemplateService, NavigationService, $stateParams, $timeout, $uibModal) {
+myApp.controller('ErrorLogCtrl', function ($scope, TemplateService, NavigationService, $stateParams, $timeout, $uibModal, $state) {
     $scope.template = TemplateService.getHTML("content/error-log.html");
     TemplateService.title = "Error Log"; //This is the Title of the Website
     TemplateService.class = "error-log"; //This is the Class of Page
     $scope.navigation = NavigationService.getNavigation();
     $scope.noData = true;
 
+    //pagination
+    var totallogs = 0
+    var i = 0;
+    if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
+        $scope.currentPage = $stateParams.page;
+    } else {
+        $scope.currentPage = 1;
+    }
 
+    $scope.search = {
+        keyword: ""
+    };
+    if ($stateParams.keyword) {
+        $scope.search.keyword = $stateParams.keyword;
+    }
+    $scope.changePage = function (page) {
+        //  console.log("changePage: ", page);
+        var goTo = "error-log";
+        $scope.currentPage = page;
+        if ($scope.search.keyword) {
+            goTo = "error-log";
+        }
+        $state.go(goTo, {
+            page: page
+        });
+        $scope.getAllItems();
+    };
 
-    $scope.openLogdata = {};
-    $scope.openLogdata._id = $stateParams.error_id;
-    NavigationService.apiCall("AllLogs/singleLogHistory", $scope.openLogdata, function (data) {
-        if (data.value == true) {
-            $scope.logInsideData = data.data.logs;
-            _.forEach($scope.logInsideData, function (value, key) {
-                value.rowNo = key;
-                if (value.error) {
+    $scope.getAllItems = function (keywordChange) {
+        //  console.log("In getAllItems: ", keywordChange);
+        $scope.totalItems = undefined;
+        if (keywordChange) {}
+        $scope.openLogdata = {};
+        $scope.openLogdata._id = $stateParams.error_id;
+        NavigationService.apiCall("AllLogs/singleLogHistoryCount", $scope.openLogdata, function (data) {
+            if (data.value == true) {
+                totallogs = data.data[0].logs;
+            }
+        });
+        NavigationService.searchCall("AllLogs/singleLogHistory", {
+                pageNo: $scope.currentPage,
+                keyword: $scope.search.keyword,
+                _id: $stateParams.error_id
+            }, ++i,
+            function (data, ini) {
+                if (ini == i) {
                     $scope.noData = false;
+                    $scope.errLog = data.data;
+                    $scope.totalItems = totallogs;
+                    $scope.maxRow = 10;
                 }
             });
-        }
-    });
+
+    };
+    //  JsonService.refreshView = $scope.getAllItems;
+    $scope.getAllItems();
+
 })
