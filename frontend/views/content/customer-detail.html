@@ -187,15 +187,15 @@
 											<td class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}
 											</td>
 											<td>
-												<span class="success"> {{logData.succesCount}}
+												<span class="success" ng-show="{{logData.status=='Completed'}}"> {{logData.succesCount}}
 												<i class="fa fa-check-circle"></i></span>
 											</td>
 											<td>
-												<span class="danger">{{logData.errorCount}}
+												<span class="danger" ng-show="{{logData.status=='Completed'}}">{{logData.errorCount}}
 												<i class="fa fa-times-circle"></i></span>
 											</td>
 											<td>
-												<span style="color:#5397be;">{{logData.succesCount+logData.errorCount}}
+												<span style="color:#5397be;" ng-show="{{logData.status=='Completed'}}">{{logData.succesCount+logData.errorCount}}
 												<i class="fa fa-upload" aria-hidden="true"></i></span>
 											</td>
 											<td>
