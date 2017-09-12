@@ -20,8 +20,6 @@
          }
      }
 
-
-
      var i = 0;
      if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
          $scope.currentPage = $stateParams.page;

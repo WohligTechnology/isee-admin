@@ -24,23 +24,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <label class=" control-label">Transition Type</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <ui-select ng-model="drlRule.transactionType" name="country" theme="bootstrap" sortable="true">
-                                    <ui-select-match placeholder="Transition Type">
-                                        <span>{{$select.selected}}</span>
-                                    </ui-select-match>
-                                    <ui-select-choices repeat="country in allModels | filter: $select.search" refresh="" refresh-delay="0">
-                                        {{country}}
-                                    </ui-select-choices>
-                                </ui-select>
-                            </div>
-                        </div>
-                    </div>-->
+
                     <div class="panel-divider fnt">
                         <div class="form-group">
                             <div class="row">
@@ -119,19 +103,20 @@
                                 </div>
                             </div>
                         </div>
+                        <pre>{{choice|json}}</pre>
                         <div class="form-group">
                             <div class="row">
 
                                 <div class="col-sm-8 col-sm-offset-3">
-                                    <div class="radio" ng-init="optCons='true'">
+                                    <div class="radio" ng-init="choice.optCons='true'">
                                         <!-- ng-checked="choice.constant!=null"  -->
-                                        <label><input type="radio" name="element" value="true"  ng-model="optCons" ng-click="choice.table=''">Constant</label>
+                                        <label><input type="radio" name="element{{$index}}" value="true"  ng-model="choice.optCons" ng-click="choice.table=''">Constant</label>
 
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-disabled="optCons!='true'" ng-if="optCons=='true'"
+                                    <input type="text" class="form-control" placeholder="Enter Constant" ng-disabled="choice.optCons!='true'" ng-if="choice.optCons=='true'"
                                         ng-model="choice.constant">
                                     <div class="radio">
-                                        <label><input type="radio" name="element" value="false" ng-model="optCons" ng-click="choice.constant=''">Element</label>
+                                        <label><input type="radio" name="element{{$index}}" value="false" ng-model="choice.optCons" ng-click="choice.constant=''">Element</label>
                                     </div>
                                     <!-- <input type="text" class="form-control" placeholder="Enter Element/Expression" ng-disabled="optCons!='false'" ng-model="choice.element"> -->
                                 </div>
@@ -143,7 +128,7 @@
                                     <!-- <label class=" control-label">Table</label> -->
                                 </div>
                                 <div class="col-sm-8">
-                                    <ui-select ng-model="choice.table" on-select="addAlltables(choice.table,$index)" ng-disabled="optCons!='false'" ng-if="optCons=='false'">
+                                    <ui-select ng-model="choice.table" on-select="addAlltables(choice.table,$index)" ng-if="choice.optCons=='false'">
                                         <ui-select-match placeholder="Tables">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -161,7 +146,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <ui-select ng-model="choice.tableField" name="country" on-select="addTableField(choice.tableField,$index)" theme="bootstrap"
-                                        sortable="true" ng-disabled="optCons!='false'" ng-if="optCons=='false'">
+                                        sortable="true" ng-if="choice.optCons=='false'">
                                         <ui-select-match placeholder="Table Fields">
                                             <span>{{$select.selected}}</span>
                                         </ui-select-match>
@@ -172,28 +157,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-11 col-sm-offset-1">
-                                    <div class="mt20" ng-if="drlRule.choices.length>1">
-                                        <a class="btn btn-danger" ng-click="removeChoice($index);">
-                                            <i class="fa fa-minus" aria-hidden="true"></i> 
-                                            Remove Condition </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!--<div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-11 col-sm-offset-1">
-                                    <div class="form-block position-made">
-                                      <span>OR </span> <input type="checkbox" checked class="iswitch iswitch-blue"> <span>AND</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-
                     </div>
                     <div class="form-group">
                         <div class="row">

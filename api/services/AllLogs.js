@@ -66,6 +66,10 @@
         singleLogHistory: function (data, callback) {
             AllLogs.findOne({
                 _id: data._id
+            }, {
+                logs: {
+                    $slice: [0, 1]
+                }
             }).deepPopulate("users").exec(function (err, found) {
                 if (err) {
                     callback(err, null);
