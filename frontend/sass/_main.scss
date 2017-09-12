@@ -829,7 +829,7 @@ header {
 }
 
 .progress {
-    width: 200px;
+    width: 150px;
     margin-top: -12px;
     .progress-bar {
         font-size: 12px;
@@ -1016,4 +1016,20 @@ footer.main-footer.sticky.footer-type-1 {
 .column-2 {
     column-count: 2;
     padding-top: -10px !important;
+}
+
+.fnt-cpt {
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 30px;
+}
+
+.submitmgn {
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.inside-status {
+    height: 600px;
+    overflow: scroll;
 }

@@ -1,8 +1,11 @@
 <div ng-include="template.header" class="template header"></div>
-<div class="add-header">
-    <span class="main bredcrums"> <a style="color:#be5358; text-decoration:none;">Error Log</a>
-</div>
+<div class="add-header add-title">
+    <span class="main bredcrums">Error Log
+</div> 
 
+<!-- <div class="add-title col-md-12">
+    <span class="main bredcrums">Error Log</span>
+</div> -->
 <div ng-if="noData" style="font-size: 25px; font-weight: 600; color: #5ca977;">No Error Found</div>
 <div class="inside-status">
     <div class="log-history" ng-if="logInsideData.error">
@@ -26,15 +29,15 @@
             <div class="col-xs-3">
                 <div class="pad-5 inside-history">
                     <span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.rowNo+2}}</span>
-</div>
-</div>
-<div class="col-xs-9">
-    <div class="pad-5 inside-history">
-        <span>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="pad-5 inside-history">
+                    <span>
 														<pre class="danger-pre"><code>{{logs.error|json}}</code></pre>
 														</span>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-</div>
 </div>
