@@ -149,7 +149,7 @@
 
                 //find customerNote Data
                 function (callback1) {
-                    CustomerNote.find({}).lean().exec(function (err, data) {
+                    Company.find({}).lean().exec(function (err, data) {
                         if (err) {
                             callback1(err, null);
                         } else {
@@ -160,10 +160,11 @@
                             }
                         }
                         callback1(null, "done");
+
                     });
                 },
                 function (callback1) {
-                    Crm.find({}).lean().exec(function (err, data) {
+                    CompanyContact.find({}).lean().exec(function (err, data) {
                         if (err) {
                             callback1(err, null);
                         } else {
@@ -174,11 +175,11 @@
                             }
                         }
                         callback1(null, "done");
-                    });
 
+                    });
                 },
                 function (callback1) {
-                    Company.find({}).lean().exec(function (err, data) {
+                    CompanyInfo.find({}).lean().exec(function (err, data) {
                         if (err) {
                             callback1(err, null);
                         } else {
@@ -193,7 +194,7 @@
                     });
                 },
                 function (callback1) {
-                    CompanyContact.find({}).lean().exec(function (err, data) {
+                    CustomerNote.find({}).lean().exec(function (err, data) {
                         if (err) {
                             callback1(err, null);
                         } else {
@@ -204,11 +205,10 @@
                             }
                         }
                         callback1(null, "done");
-
                     });
                 },
                 function (callback1) {
-                    CompanyInfo.find({}).lean().exec(function (err, data) {
+                    Crm.find({}).lean().exec(function (err, data) {
                         if (err) {
                             callback1(err, null);
                         } else {
@@ -219,9 +219,9 @@
                             }
                         }
                         callback1(null, "done");
-
                     });
                 },
+
                 function (callback1) {
                     Item.find({}).lean().exec(function (err, data) {
                         if (err) {
