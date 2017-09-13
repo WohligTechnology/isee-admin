@@ -20,12 +20,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         }
     }
     $scope.tabs = [{
-            title: 'Customer Note',
-        },
-        {
-            title: 'CRM',
-        },
-        {
             title: 'Company',
         },
         {
@@ -33,6 +27,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         },
         {
             title: 'Company Info',
+        }, {
+            title: 'Customer Note',
+        },
+        {
+            title: 'CRM',
         },
         {
             title: 'Item',
@@ -137,38 +136,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         if ($scope.activeJustified == 1) {
             $scope.excelData = "";
             $scope.errData = "";
-            getExcel = "customerNoteUpload";
-            mapExcel = "finalUploadForCustomerNote";
-            tableName = "CustomerNote";
-            $scope.eData = "";
-            $scope.getHistoryData = {};
-            $scope.getHistoryData.tableName = tableName;
-            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-                if (data.value == true) {
-                    $scope.eData = data.data;
-                } else {
-                    toastr.error('No History');
-                }
-            });
-        } else if ($scope.activeJustified == 2) {
-            $scope.excelData = "";
-            $scope.errData = "";
-            getExcel = "crmUpload";
-            mapExcel = "finalUploadForCrm";
-            tableName = "Crm";
-            $scope.eData = "";
-            $scope.getHistoryData = {};
-            $scope.getHistoryData.tableName = tableName;
-            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-                if (data.value == true) {
-                    $scope.eData = data.data;
-                } else {
-                    toastr.error('No History');
-                }
-            });
-        } else if ($scope.activeJustified == 3) {
-            $scope.excelData = "";
-            $scope.errData = "";
             getExcel = "companyUpload";
             mapExcel = "finalUploadForCompany";
             tableName = "Company";
@@ -182,7 +149,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     toastr.error('No History');
                 }
             });
-        } else if ($scope.activeJustified == 4) {
+        } else if ($scope.activeJustified == 2) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyContactUpload";
@@ -198,12 +165,44 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     toastr.error('No History');
                 }
             });
-        } else if ($scope.activeJustified == 5) {
+        } else if ($scope.activeJustified == 3) {
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyInfoUpload";
             mapExcel = "finalUploadForCompanyInfo";
             tableName = "CompanyInfo";
+            $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
+        } else if ($scope.activeJustified == 4) {
+            $scope.excelData = "";
+            $scope.errData = "";
+            getExcel = "customerNoteUpload";
+            mapExcel = "finalUploadForCustomerNote";
+            tableName = "CustomerNote";
+            $scope.eData = "";
+            $scope.getHistoryData = {};
+            $scope.getHistoryData.tableName = tableName;
+            NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
+                if (data.value == true) {
+                    $scope.eData = data.data;
+                } else {
+                    toastr.error('No History');
+                }
+            });
+        } else if ($scope.activeJustified == 5) {
+            $scope.excelData = "";
+            $scope.errData = "";
+            getExcel = "crmUpload";
+            mapExcel = "finalUploadForCrm";
+            tableName = "Crm";
             $scope.eData = "";
             $scope.getHistoryData = {};
             $scope.getHistoryData.tableName = tableName;
