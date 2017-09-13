@@ -1522,27 +1522,50 @@ var controller = {
                 } else {
                     var sucessCount = 0;
                     var failureCount = 0;
+                    var saveExcelData = {};
                     async.waterfall([
                             function (callback) {
                                 var i = 0;
                                 async.concatSeries(data, function (singleData, callback) {
-                                    Transaction.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
-                                        i++;
-                                        console.log("Completed Transactions " + i);
-                                        if (err || _.isEmpty(data)) {
-                                            failureCount++;
-                                        } else {
-                                            sucessCount++;
+                                    async.waterfall([
+                                            function (callback) {
+                                                Transaction.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 
+                                                    i++;
+                                                    console.log("Completed Transactions " + i);
+                                                    if (err || _.isEmpty(data)) {
+                                                        failureCount++;
+                                                    } else {
+                                                        sucessCount++;
+                                                    }
+                                                    callback(null, {
+                                                        error: err,
+                                                        success: data,
+                                                        row: i
+                                                    });
+                                                });
+                                            },
+                                            function (data, callback) {
+                                                saveExcelData = data;
+                                                if (data.success != null) {
+                                                    var tranId = {};
+                                                    tranId.transactionId = data.success._id;
+                                                    RuleEngine.checkViolationForTransaction(tranId, callback);
+                                                } else {
+                                                    callback(null, null);
+                                                }
+                                            }
+                                        ],
+                                        function (err, results) {
+                                            if (err || _.isEmpty(results)) {
+                                                callback(err);
+                                            } else {
+                                                callback(null, results);
+                                            }
                                         }
-                                        callback(null, {
-                                            error: err,
-                                            success: data,
-                                            row: i
-                                        });
-                                    });
+                                    );
                                 }, function (err, found) {
                                     eData = {};
-                                    eData.logs = found;
+                                    eData.logs = saveExcelData;
                                     eData._id = allLogsId;
                                     eData.failureCount = failureCount;
                                     eData.sucessCount = sucessCount;

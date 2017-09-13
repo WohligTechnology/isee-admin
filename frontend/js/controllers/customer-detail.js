@@ -75,58 +75,6 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         });
     };
 
-
-    $scope.activeJustified = 1
-    if ($scope.activeJustified == 1) {
-        $scope.getExcelFields = function (formdata) {
-            // console.log("formdata", formdata);
-            NavigationService.apiCall("ExcelUpload/customerNoteUpload", formdata, function (data) {
-                if (data.value == true) {
-                    $scope.excelData = data.data;
-                    // console.log("aaaa", $scope.excelArrData);
-                    $(".cust-details_hidesect").css("display", "block"); //display submit and message
-                } else {
-                    alert("aaaaa");
-                }
-            });
-        };
-
-        $scope.formData = {};
-        $scope.mapExcelFields = function (formdata, formdata1) {
-            // console.log("formdata[$scope.activeField]", formdata[$scope.activeField]);
-            $scope.companyExcel = {};
-            $scope.companyExcel.name = formdata1.file;
-            $scope.companyExcel.fields = [];
-            _.forEach(formdata, function (value, key) {
-                $scope.field = {};
-                $scope.field.ourField = key;
-                $scope.field.theirField = value;
-                $scope.companyExcel.fields.push($scope.field);
-            });
-            console.log("$scope.companyExcel", $scope.companyExcel);
-            NavigationService.apiCall("ExcelUpload/finalUploadForCustomerNote", $scope.companyExcel, function (data) {
-                if (data.value === true) {
-                    console.log("data-----------------------------------------------", data);
-                    $scope.errData = data.data;
-                    toastr.success("Data processing");
-                    $state.reload();
-                }
-            });
-        };
-
-        $scope.getHistoryData = {};
-        $scope.getHistoryData.tableName = 'CustomerNote';
-        NavigationService.apiCall("AllLogs/logHistory", $scope.getHistoryData, function (data) {
-            if (data.value == true) {
-                $scope.eData = data.data;
-            } else {
-                toastr.error('No History');
-            }
-        });
-
-    }
-
-
     $scope.activeTabs = function (n) {
         $scope.mappingDisabled = false;
         $(".cust-details_hidesect").css("display", "none"); // to hide submit and message
@@ -390,6 +338,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         // $scope.getHistory(); >>>
 
     };
+
+    $scope.activeTabs(0);
 
     //Tab Colour Change
     NavigationService.apiCall("AllLogs/findDataInTable", $scope.tabs, function (data) {

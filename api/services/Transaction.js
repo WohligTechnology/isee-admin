@@ -184,7 +184,7 @@ var model = {
 
     saveOnExcel: function (data, callback) {
         var oldData = _.cloneDeep(data);
-        async.parallel({
+        async.series({
                 organizationId: function (callback) {
                     Company.getFromId("organizationId", data.organizationId, callback);
                 },
@@ -220,7 +220,7 @@ var model = {
                                 });
                             },
                             function (data, callback) {
-                                async.parallel({
+                                async.series({
                                         crmId: function (callback) {
                                             var crmData = {};
                                             crmData.organizationId = data.organizationId;
