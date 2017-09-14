@@ -882,10 +882,9 @@ header {
     margin-top: 20px;
 }
 
-.mg-left-40 {
-    margin-left: 40px;
-}
-
+// .mg-left-40 {
+//     margin-left: 40px;
+// }
 .cur {
     cursor: pointer;
 }
@@ -998,7 +997,7 @@ footer.main-footer.sticky.footer-type-1 {
     span {
         margin-left: 25px;
         font-weight: bold;
-        color: #5e5e5e;
+        color: #5397be;
         font-size: 13px;
     }
     table {
@@ -1040,4 +1039,15 @@ footer.main-footer.sticky.footer-type-1 {
 
 .mglneg31 {
     margin-left: -31px;
+}
+
+.table {
+    th,
+    td {
+        text-align: center;
+    }
+    td:first-child,
+    th:first-child {
+        text-align: Left;
+    }
 }

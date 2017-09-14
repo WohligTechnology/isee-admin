@@ -1,13 +1,13 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header">
     <span class="main bredcrums"> 
-        <a href="views/template/template.html">Home</a> / Rule List
+        <a href="views/template/template.html">Home</a> / Rules List
         </span>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="add-title col-md-6">
-            <span class="main bredcrums">Rule List</span>
+            <span class="main bredcrums">Rules List</span>
         </div>
 
         <div class="panel-options col-md-6">
@@ -31,9 +31,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Rule Name</th>
                         <th>Execute</th>
-                        <th>Violated Rules</th>
+                        <th>Violations</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -56,6 +56,8 @@
                         </td>
                         <td>
                             <label class="label" ng-class="whatClassIsIt(data.status)"> {{data.status}}</label>
+                            <button type="button" class="btn  label label-warning">Enable</button>
+                            <button type="button" class="btn label label-info">Disabled</button>
                         </td>
                     </tr>
             </table>

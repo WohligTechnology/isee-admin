@@ -38896,7 +38896,7 @@ header {
       color: #d9d9d9; }
 
 .add-header {
-  margin-left: -28px;
+  margin-left: -30px;
   margin-right: -30px;
   background: #fff;
   padding: 12px 30px 16px;
@@ -39393,9 +39393,6 @@ header {
 .mg-top20 {
   margin-top: 20px; }
 
-.mg-left-40 {
-  margin-left: 40px; }
-
 .cur {
   cursor: pointer; }
 
@@ -39470,7 +39467,7 @@ footer.main-footer.sticky.footer-type-1 {
   .vio-table span {
     margin-left: 25px;
     font-weight: bold;
-    color: #5e5e5e;
+    color: #5397be;
     font-size: 13px; }
   .vio-table table {
     margin: 20px;
@@ -39497,6 +39494,20 @@ footer.main-footer.sticky.footer-type-1 {
 .inside-status {
   height: 600px;
   overflow: scroll; }
+
+.t50 {
+  top: 50px; }
+
+.mglneg31 {
+  margin-left: -31px; }
+
+.table th,
+.table td {
+  text-align: center; }
+
+.table td:first-child,
+.table th:first-child {
+  text-align: Left; }
 
 #fancybox-loading,
 .fancybox-close,
