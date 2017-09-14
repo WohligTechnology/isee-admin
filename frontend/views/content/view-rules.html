@@ -35,6 +35,7 @@
                         <th>Execute</th>
                         <th>Violations</th>
                         <th>Status</th>
+                        <th>Sub Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,7 +57,10 @@
                         </td>
                         <td>
                             <label class="label" ng-class="whatClassIsIt(data.status)"> {{data.status}}</label>
-                            <button type="button" class="btn  label label-warning">Enable</button>
+
+                        </td>
+                        <td>
+                            <button type="button" class=" btn label label-warning" ng-if="data.substatus">Enable</button>
                             <button type="button" class="btn label label-info">Disabled</button>
                         </td>
                     </tr>
