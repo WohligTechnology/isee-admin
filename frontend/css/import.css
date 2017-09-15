@@ -39515,7 +39515,8 @@ footer.main-footer.sticky.footer-type-1 {
   font-size: 12px;
   overflow-x: hidden; }
   .termsbody b {
-    font-size: 13px; }
+    font-size: 13px;
+    color: #5d5d5d; }
 
 .menucollapse {
   width: 0px;
