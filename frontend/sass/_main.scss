@@ -1061,3 +1061,9 @@ footer.main-footer.sticky.footer-type-1 {
         font-size: 13px;
     }
 }
+
+.menucollapse {
+    width: 0px;
+    opacity: 0;
+    transition: all 200ms;
+}

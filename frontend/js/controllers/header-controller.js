@@ -15,10 +15,13 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
     if ($scope.classNg === "open") {
       $scope.classNg = "collapsed";
       $('#sidemenu').addClass("collapsed");
+      // $scope.classNg = "menucollapse";    //for animated side menu
+      // $('#sidemenu').addClass("menucollapse");
       $('#header-collapsed-icon').css("display", "block"); //to make icon visible in header
     } else {
       $scope.classNg = "open";
       $('#sidemenu').removeClass("collapsed");
+      //  $('#sidemenu').removeClass("menucollapse");
       $('#header-collapsed-icon').css("display", "none"); //to hide icon in header 
     }
   };

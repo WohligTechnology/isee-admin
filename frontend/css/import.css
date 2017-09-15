@@ -39517,6 +39517,11 @@ footer.main-footer.sticky.footer-type-1 {
   .termsbody b {
     font-size: 13px; }
 
+.menucollapse {
+  width: 0px;
+  opacity: 0;
+  transition: all 200ms; }
+
 #fancybox-loading,
 .fancybox-close,
 .fancybox-next span,
