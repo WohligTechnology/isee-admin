@@ -1051,3 +1051,13 @@ footer.main-footer.sticky.footer-type-1 {
         text-align: Left;
     }
 }
+
+.termsbody {
+    height: 400px;
+    overflow: scroll;
+    font-size: 12px;
+    overflow-x: hidden;
+    b {
+        font-size: 13px;
+    }
+}

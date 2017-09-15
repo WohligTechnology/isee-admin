@@ -151,6 +151,11 @@ myApp.factory('NavigationService', function ($http) {
             anchor: "coming-soon",
             // icon: "fa-cog"
         }]
+    }, {
+        name: "Terms And Condition",
+        classis: "active",
+        // icon: "fa-pencil-square-o",
+        anchor: "terms-condition"
     }];
 
     return {

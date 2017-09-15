@@ -140,6 +140,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/view-customer-note",
             templateUrl: tempateURL,
             controller: 'ViewCustomerNoteCtrl'
+        })
+        .state('terms-condition', {
+            url: "/terms-and-condition",
+            templateUrl: tempateURL,
+            controller: 'TermsAndConditionCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
