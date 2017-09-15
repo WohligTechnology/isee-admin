@@ -39518,6 +39518,11 @@ footer.main-footer.sticky.footer-type-1 {
     font-size: 13px;
     color: #5d5d5d; }
 
+.termstitle {
+  color: black !important;
+  letter-spacing: 0px !important;
+  font-weight: bold !important; }
+
 .menucollapse {
   width: 0px;
   opacity: 0;
