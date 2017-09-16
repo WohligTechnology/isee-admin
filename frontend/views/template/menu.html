@@ -25,28 +25,51 @@
   <uib-accordion close-others="oneAtATime">
     <uib-accordion-group is-open="status.open" ng-repeat="menu in navigation track by $index" class="{{menu.classis}}" is-disabled="menu.disabled">
       <uib-accordion-heading>
-        <a ui-sref="{{menu.anchor}}" class="main-menu-anchor" ng-if="menu.anchor" ui-sref-active="active">
-          <!-- <i class="fa {{menu.icon}}" ng-if="menu.icon"></i> -->
+        <a ui-sref="{{menu.anchor}}" class="main-menu-anchor" ng-if="menu.anchor" ui-sref-active="actives">
+           <i class="fa {{menu.icon}}" ng-if="menu.icon"></i> 
           {{menu.name}}</a>
         <a ng-href="{{menu.link}}" class="main-menu-anchor" ng-if="menu.link && !accessToken" ng-click="$event.stopPropagation()">{{menu.name}}
         </a>
         <a class="main-menu-anchor" ng-if="menu.subnav">
-          <!-- <i class="fa {{menu.icon}}" ng-if="menu.icon"></i> -->
+           <i class="fa {{menu.icon}}" ng-if="menu.icon"></i> 
           {{menu.name}}
           <i class="pull-right fa icon " ng-class="{'fa-angle-down':( status.open && !menu.disabled), 'fa-angle-right': (!status.open && !menu.disabled)}"></i>
         </a>
       </uib-accordion-heading>
       <ul class="nav-submenu list-unstyled">
         <li ng-repeat="submenu in menu.subnav">
-          <a ui-sref="{{submenu.anchor}}" class="" ng-if="submenu.anchor">
-            <!-- <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i> -->
+          <a ui-sref="{{submenu.anchor}}" class="" ng-if="submenu.anchor" ui-sref-active="actives">
+             <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i> 
             {{submenu.name}}</a>
           <a ng-href="{{submenu.link}}" class="" ng-if="submenu.link && !accessToken" target="{{submenu.target}}">
-            <!-- <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i> -->
+             <i class="fa {{submenu.icon}}" ng-if="menu.icon"></i> 
             {{submenu.name}}</a>
         </li>
       </ul>
     </uib-accordion-group>
   </uib-accordion>
   <i class="fa {{menu.icon}}" ng-if="menu.icon"></i>
+</div>
+
+<!-- <div class="sideicon">
+  <ul class="iconlist" ng-click="openiconmenu()">
+    <li title="Dashboard"><i class="fa fa-tachometer" title="Dashboard"></i> </li>
+    <li title="Predictive Dashboard"> <i class="fa fa-tachometer" title="Predictive Dashboard"></i> </li>
+    <li title="Product Admin"> <i class="fa fa-desktop" title="Product Admin"></i> </li>
+    <li title="Company Admin"> <i class="fa fa-tasks" title="Company Admin"></i> </li>
+    <li title="Rules Admin"> <i class="fa fa-pencil-square-o" title="Rules Admin"></i> </li>
+    <li title="Reports"> <i class="fa fa-pencil-square-o" title="Reports"></i> </li>
+    <li title="Case Management"> <i class="fa fa-pencil-square-o" title="Case Management"></i> </li>
+    <li title="Help"> <i class="fa fa-pencil-square-o" title="Help"></i> </li>
+    <li title="Terms and Conditions"> <i class="fa fa-pencil-square-o" title="Terms and Conditions"></i> </li>
+  </ul>
+</div> -->
+<div class="sideicon">
+  <ul class="iconlist " ng-repeat="iconmenu in navigation track by $index">
+    <li ng-if="iconmenu.anchor" ui-sref="{{iconmenu.anchor}}"><i class="fa {{iconmenu.icon}}" title="{{iconmenu.name}}"></i></li>
+    <li ng-if="!iconmenu.anchor"><i class="fa {{iconmenu.icon}}" title="{{iconmenu.name}}"></i></li>
+    <ul class="iconsubmenu" ng-if="iconmenu.subnav">
+      <li ng-repeat="iconsubnav in iconmenu.subnav" ui-sref="{{iconsubnav.anchor}}"><i class="fa {{iconsubnav.icon}}" title="{{iconsubnav.name}}"></i> {{iconsubnav.name}}</li>
+    </ul>
+  </ul>
 </div>
