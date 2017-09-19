@@ -68,6 +68,9 @@ module.exports = [
   'frontend/js/controllers/predictive-dash-ctrl.js',
   'frontend/js/controllers/error-log.js',
   'frontend/js/controllers/view-violated-rule.js',
-  'frontend/js/controllers/terms-condition.js'
-
+  'frontend/js/controllers/terms-condition.js',
+  'frontend/js/controllers/user-admin.js',
+  'frontend/js/controllers/assign-branch.js',
+  'frontend/js/controllers/profile.js',
+  'frontend/js/controllers/role-administration.js',
 ];

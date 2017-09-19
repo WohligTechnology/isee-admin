@@ -10,7 +10,8 @@ var myApp = angular.module('myApp', [
     'angular-flexslider',
     'ui.swiper',
     'highcharts-ng',
-    'toastr'
+    'toastr',
+
 ]);
 // 'ngFileUpload',
 // Define all the routes below
@@ -145,6 +146,26 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/terms-and-condition",
             templateUrl: tempateURL,
             controller: 'TermsAndConditionCtrl'
+        })
+        .state('user-admin', {
+            url: "/user-admin",
+            templateUrl: tempateURL,
+            controller: 'UserAdminCtrl'
+        })
+        .state('assign-branch', {
+            url: "/assign-branch",
+            templateUrl: tempateURL,
+            controller: 'AssignBranchCtrl'
+        })
+        .state('profile', {
+            url: "/profile",
+            templateUrl: tempateURL,
+            controller: 'ProfileCtrl'
+        })
+        .state('role-administration', {
+            url: "/role-administration",
+            templateUrl: tempateURL,
+            controller: 'RoleAdminCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
