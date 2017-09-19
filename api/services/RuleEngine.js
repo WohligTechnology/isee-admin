@@ -13,6 +13,11 @@ var schema = new Schema({
         enum: ['Pending', 'Processing', 'Completed'],
         default: 'Pending'
     },
+    subStatus: {
+        type: String,
+        enum: ['Enable', 'Disabled'],
+        default: 'Disabled'
+    }
     // trasaction: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'Trasaction',
@@ -91,7 +96,9 @@ var model = {
 
     checkViolationForTransaction: function (transactionId, callback) {
         Transaction.clearAllPreviousViolations(transactionId.transactionId, function () {});
-        RuleEngine.find({}, function (err, rules) {
+        RuleEngine.find({
+            subStatus: 'Enable'
+        }, function (err, rules) {
             async.concatLimit(rules, 20, function (rule, callback) {
                 RuleEngine.checkViolation(transactionId.transactionId, rule._id, callback);
             }, callback);

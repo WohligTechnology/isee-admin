@@ -45,7 +45,7 @@
                         <!-- <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td> -->
 
                         <td> <a class="mg-left-20 label label-warning" ng-click="executeRule({ruleId:data._id});changeexec()"
-                                ng-class="{'exec':isexec}" ng-hide="{{data.status=='Completed'||data.status=='Processing'}}">
+                                ng-class="{'exec':isexec}" ng-hide="{{data.status=='Completed'|| data.status=='Processing' || data.subStatus=='Disabled'}}">
                             <i class="fa fa-play" aria-hidden="true"></i>
                         </a>
                         </td>
@@ -60,8 +60,8 @@
 
                         </td>
                         <td>
-                            <button type="button" class=" btn label label-warning" ng-show="enablesub" ng-click="changeenable()">Enable</button>
-                            <button type="button" class="btn label label-info" ng-show="!enablesub" ng-click="changeenable()">Disabled</button>
+                            <button type="button" class=" btn label label-warning" ng-show="data.subStatus=='Enable'" ng-click="changeenable();changeSubStatus(data._id,'Disabled')">Enable</button>
+                            <button type="button" class="btn label label-info" ng-show="data.subStatus!='Enable'" ng-click="changeenable();changeSubStatus(data._id,'Enable')">Disabled</button>
                         </td>
                     </tr>
             </table>
