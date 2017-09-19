@@ -29,7 +29,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
       $('#iseelogo').css("width", "70px");
       $('#header-collapsed-icon').css("display", "block"); //to make icon visible in header
       $('.accordion-custom').css("display", "none");
-      $('.iseetitle').css("opacity", "0");
+      $('.iseetitle').css("display", "none");
       $('.sideicon').css("opacity", "1");
       // console.log("classNg", $scope.classNg);
     } else {
@@ -39,7 +39,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
       $('#iseelogo').css("width", "100px");
       $('#header-collapsed-icon').css("display", "none"); //to hide icon in header 
       $('.accordion-custom').css("display", "block");
-      $('.iseetitle').css("opacity", "1");
+      $('.iseetitle').css("display", "inline-block");
       $('.sideicon').css("opacity", "0");
       // console.log("classNg", $scope.classNg);
     }

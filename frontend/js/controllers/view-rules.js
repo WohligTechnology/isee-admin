@@ -6,8 +6,14 @@
      $scope.executeDisabled = false;
      //  $scope.currentPage = 1;
      $scope.isexec = false;
+
      $scope.changeexec = function () {
          $scope.isexec = true;
+     }
+
+     $scope.enablesub = false;
+     $scope.changeenable = function () {
+         $scope.enablesub = !$scope.enablesub;
      }
      //Json Tables
      $scope.whatClassIsIt = function (c) {
