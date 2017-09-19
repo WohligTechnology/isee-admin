@@ -89,4 +89,17 @@
              }
          });
      };
+
+     //change substatus
+
+     $scope.changeSubStatus = function (data, name) {
+         var changeData = {};
+         changeData._id = data;
+         changeData.subStatus = name;
+         NavigationService.apiCall("RuleEngine/save", changeData, function (data) {
+             if (data.value == true) {
+                 $state.reload();
+             }
+         });
+     }
  })
