@@ -13,34 +13,45 @@
     <div class="panel-body">
         <form>
             <div class="row">
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-1">
-                        Assigned Branch
-                        <select multiple class="form-control" class="ht200">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+
+                <div class="col-sm-4 col-sm-offset-1">
+                    Assigned Branch
+                    <select multiple class="form-control ht200">
+        <!-- <option>brance 1</option>
+        <option>brance 2</option>
+        <option>brance 5</option>
+        <option>brance 10</option>
+        <option>brance 11</option> -->
+        <option ng-repeat="x in assigned">
+            {{x}}
+        </option>
                       </select>
-                    </div>
+
                 </div>
-                <div class="col-sm-1 ht200" style="text-align: center; margin-top: 20px;">
-                    <button class="btn label label-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <div class="col-sm-1" style="text-align: center; margin-top: 30px;">
+                    <button class="btn label label-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i></button><br/>
+                    <button class="btn label label-warning"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-4">
-                        Available Branch
-                        <select multiple class="form-control" class="ht200">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+
+                <div class="col-sm-4">
+                    Available Branch
+                    <select multiple class="form-control ht200">
+        <option ng-repeat="y in available">
+            {{y}}
+        </option>
                         </select>
+                </div>
+
+            </div>
+            <div class="form-group" style="margin-top: 50px; margin-left: 25px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mt20 text-left">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </form>
     </div>
+</div>

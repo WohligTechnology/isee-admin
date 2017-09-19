@@ -5,6 +5,7 @@ myApp.controller('AssignBranchCtrl', function ($scope, TemplateService, Navigati
     TemplateService.templateTitle = ""; //This is the Title of the Theme
     $scope.navigation = NavigationService.getNavigation();
     // $('#multiselect').multiselect();
-
+    $scope.assigned = ['branch 1', 'branch 3', 'branch 5'];
+    $scope.available = ['branch 1', 'branch 2', 'branch 3', 'branch 4', 'branch 5', 'branch 6', 'branch 7', 'branch 8'];
 
 })
