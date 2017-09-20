@@ -99,7 +99,7 @@ myApp.factory('NavigationService', function ($http) {
         subnav: [{
             name: "Corporate Overview",
             classis: "active",
-            anchor: "dashboard",
+            anchor: "corporate",
             icon: "fa-cog"
         }, {
             name: "Cash Short",

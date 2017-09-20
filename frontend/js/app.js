@@ -26,6 +26,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'DashboardCtrl'
         })
+        .state('corporate', {
+            url: "/corporate",
+            templateUrl: tempateURL,
+            controller: 'CorporateCtrl'
+        })
         .state('cash-short', {
             url: "/cash-short",
             templateUrl: tempateURL,
