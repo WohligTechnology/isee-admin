@@ -16,27 +16,27 @@
 
                 <div class="col-sm-4 col-sm-offset-1">
                     Assigned Branch
-                    <select multiple class="form-control ht200">
+                    <select multiple class="form-control ab-select" ng-model="select.a">
         <!-- <option>brance 1</option>
         <option>brance 2</option>
         <option>brance 5</option>
         <option>brance 10</option>
         <option>brance 11</option> -->
-        <option ng-repeat="x in assigned">
+        <option ng-repeat="x in assigned" ng-value="x">
             {{x}}
         </option>
                       </select>
 
                 </div>
-                <div class="col-sm-1" style="text-align: center; margin-top: 30px;">
+                <div class="col-sm-1 ab-arrow">
                     <button class="btn label label-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i></button><br/>
-                    <button class="btn label label-warning"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    <button class="btn label label-warning" ng-click="moveright()"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
 
                 <div class="col-sm-4">
                     Available Branch
-                    <select multiple class="form-control ht200">
-        <option ng-repeat="y in available">
+                    <select multiple class="form-control ab-select" ng-model="select.b">
+        <option ng-repeat="y in available" ng-value="y">
             {{y}}
         </option>
                         </select>

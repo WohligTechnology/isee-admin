@@ -1142,6 +1142,29 @@ footer.main-footer.sticky.footer-type-1 {
     font-size: 12px;
 }
 
-.ht200 {
+.ab-select {
     height: 200px !important;
+    padding: 0px;
+    option {
+        height: 25px;
+    }
+}
+
+.ftr-tc {
+    color: white;
+    &:hover {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.ab-arrow {
+    text-align: center;
+    margin-top: 60px;
+    button {
+        margin: 10px;
+        i {
+            font-size: 20px;
+        }
+    }
 }

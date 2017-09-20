@@ -2,7 +2,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
         $scope.template = TemplateService.getHTML("content/dashboard.html");
         TemplateService.title = "Dashboard"; //This is the Title of the Website
         TemplateService.class = "corporate"; //This is the Class of the Theme
-        TemplateService.templateTitle = "Dashboard"; //This is the Title of the Theme
+        // TemplateService.templateTitle = "Dashboard"; //This is the Title of the Theme
         $scope.navigation = NavigationService.getNavigation();
     })
 

@@ -39572,8 +39572,25 @@ footer.main-footer.sticky.footer-type-1 {
 .useradmin-panel {
   font-size: 12px; }
 
-.ht200 {
-  height: 200px !important; }
+.ab-select {
+  height: 200px !important;
+  padding: 0px; }
+  .ab-select option {
+    height: 25px; }
+
+.ftr-tc {
+  color: white; }
+  .ftr-tc:hover {
+    text-decoration: none;
+    color: white; }
+
+.ab-arrow {
+  text-align: center;
+  margin-top: 60px; }
+  .ab-arrow button {
+    margin: 10px; }
+    .ab-arrow button i {
+      font-size: 20px; }
 
 #fancybox-loading,
 .fancybox-close,
