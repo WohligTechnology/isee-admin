@@ -85,8 +85,6 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
 
     };
 
-    /////
-
     $scope.addOperator = function (val, index) {
         $scope.drlRule.choices[index].operators = val;
     };
@@ -106,7 +104,6 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
                     $state.go("view-rules");
                 } else {
                     toastr.error("Rule Not Saved");
-
                 }
             });
         } else {
@@ -119,7 +116,6 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
                     $state.go("view-rules");
                 } else {
                     toastr.error("Rule Not Saved");
-
                 }
             });
         }

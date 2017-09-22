@@ -130,7 +130,8 @@ var model = {
             if (err || _.isEmpty(transactionData) || _.isEmpty(rules)) {
                 callback(null, "Error");
             } else {
-                async.concatSeries(_.cloneDeep(rules.rule), function (rulesData, callback) {
+                var arrForRuleTransaction = [];
+                async.concatSeries(_.cloneDeep(rules.rule), function (rulesData, callback) { // concat for subRule
                     var value1 = RuleEngine.getValueFromRuleEngine(rulesData.model, rulesData.field, transactionData.transactionJson);
                     var value2;
                     if (!_.isEmpty(rulesData.constant)) {
@@ -138,6 +139,7 @@ var model = {
                     } else {
                         value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData.transactionJson);
                     }
+                    var conditionData;
                     // console.log(value1);
                     // console.log(value2);
                     if (rulesData.operators == '==') {
@@ -153,25 +155,29 @@ var model = {
                     } else if (rulesData.operators == '!=') {
                         conditionData = value1 != value2;
                     }
-                    var rules = [{
-                        name: rulesData.model,
-                        "condition": function (R) {
-                            R.when(conditionData);
-                        },
-                        "consequence": function (R) {
-                            R.next();
-                        }
-                    }];
-                    var R = new RuleEng(rules);
-                    R.execute(transactionData, function (result) {
-                        if (!_.isEmpty(result.matchPath)) {
-                            Transaction.addViolation(transactionData._id, ruleId, callback);
-                        } else {
-                            callback(null, "No Violation");
+                    arrForRuleTransaction.push({
+                        value: conditionData,
+                        comparionType: rulesData.logic
+                    });
+                    callback();
+                }, function (err, data) {
+                    var response = arrForRuleTransaction[0].value;
+                    _.each(arrForRuleTransaction, function (n, index) { // compare AND, OR
+                        if (index != 0) {
+                            if (arrForRuleTransaction[index - 1].comparionType == "AND") {
+                                response = response && n.value;
+                            } else {
+                                response = response || n.value;
+                            }
                         }
                     });
-                }, function (err, data) {
-                    callback(null, data);
+                    if (response) {
+                        Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
+                            callback(null, data);
+                        });
+                    } else {
+                        callback(null, "No Violation");
+                    }
                 });
             }
         });

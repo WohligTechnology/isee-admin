@@ -41,20 +41,7 @@
                         </div>
                     </div>
                     <div ng-repeat="choice in drlRule.choices">
-                        <div class="form-group" ng-if="(!$index==0)">
-                            <div class="row text-center">
-                                <div class="switch-field">
-
-                                    <input type="radio" id="switch_left{{$index}}" name="toggle{{$index}}" ng-model="choice.logic" value="yes" />
-                                    <label for="switch_left{{$index}}">OR</label>
-                                    <input type="radio" id="switch_right{{$index}}" name="toggle{{$index}}" ng-model="choice.logic" value="no" />
-                                    <label for="switch_right{{$index}}">AND</label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="panel-divider rule-insidepanel">
-
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-11">
@@ -132,12 +119,10 @@
                         </div> -->
                             <div class="form-group">
                                 <div class="row">
-
                                     <div class="col-sm-8 col-sm-offset-3">
                                         <div class="radio" ng-init="choice.optCons='true'">
                                             <!-- ng-checked="choice.constant!=null"  -->
                                             <label><input type="radio" name="element{{$index}}" value="true"  ng-model="choice.optCons" ng-click="choice.table=''">Constant</label>
-
                                         </div>
                                         <input type="text" class="form-control" placeholder="Enter Constant" ng-disabled="choice.optCons!='true'" ng-if="choice.optCons=='true'"
                                             ng-model="choice.constant">
@@ -184,6 +169,16 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="form-group" ng-show="drlRule.choices.length>$index+1">
+                            <div class="row text-center">
+                                <div class="switch-field">
+                                    <input type="radio" id="switch_left{{$index}}" name="toggle{{$index}}" ng-model="choice.logic" value="OR" />
+                                    <label for="switch_left{{$index}}">OR</label>
+                                    <input type="radio" id="switch_right{{$index}}" name="toggle{{$index}}" ng-model="choice.logic" value="AND" />
+                                    <label for="switch_right{{$index}}">AND</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
