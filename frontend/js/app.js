@@ -123,7 +123,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'ViewRulesDetailCtrl'
         })
         .state('violatedRules', {
-            url: "/violatedRules/:ruleId",
+            url: "/violatedRules/:ruleId/{page:.*}",
             templateUrl: tempateURL,
             controller: 'violatedRulesCtrl'
         })

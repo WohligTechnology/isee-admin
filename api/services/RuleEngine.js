@@ -171,7 +171,7 @@ var model = {
                             }
                         }
                     });
-                    if (response) {
+                    if (response == true) {
                         Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
                             callback(null, data);
                         });

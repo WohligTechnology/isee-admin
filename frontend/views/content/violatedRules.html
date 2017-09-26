@@ -9,7 +9,8 @@
         <div class="panel-options">
             <form class="navbar-form ng-pristine ng-valid ng-submitted" role="search">
                 <div class="input-group add-on">
-                    <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                    <input type="text " ng-change="getAllItems(true) " placeholder="Search Here...
+                        " ng-model="search.keyword " />
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                     </div>
@@ -61,8 +62,7 @@
             </table>
             <div class="row">
                 <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
-                                            " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
-                    class="pagination-sm
+                                            " items-per-page="maxRow " ng-model="currentPage " max-size="10" class="pagination-sm
                                             " boundary-links="true " force-ellipses="true ">
                 </ul>
                 <!--<div class="col-xs-12">
