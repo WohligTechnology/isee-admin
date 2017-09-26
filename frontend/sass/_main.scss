@@ -970,8 +970,8 @@ footer.main-footer.sticky.footer-type-1 {
 .close-button {
     font-size: 15px;
     position: relative;
-    left: 70px;
-    top: -20px;
+    left: 80px;
+    top: -50px;
 }
 
 .table {
@@ -1226,4 +1226,11 @@ footer.main-footer.sticky.footer-type-1 {
 .switch-field label:last-of-type {
     border-radius: 0 4px 4px 0;
     margin-left: -5px;
+}
+
+.condindex {
+    font-size: 16px;
+    color: #5397be;
+    font-weight: 400;
+    padding: 0px 5px;
 }
