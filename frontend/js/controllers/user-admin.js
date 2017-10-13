@@ -4,7 +4,7 @@ myApp.controller('UserAdminCtrl', function ($scope, TemplateService, NavigationS
     TemplateService.class = "useradmin"; //This is the Class of the Theme
     TemplateService.templateTitle = ""; //This is the Title of the Theme
     $scope.navigation = NavigationService.getNavigation();
-    $scope.companylist = ["s", "d", "sd"];
-    $scope.rulelist = ["rule1", "rule2", "rule3"];
+    $scope.companylist = ["Company1", "Company2", "Company3"];
+    $scope.rulelist = ["Data Manager", "Rules Admin", "Product Admin"];
 
 })

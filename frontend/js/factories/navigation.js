@@ -60,7 +60,7 @@ myApp.factory('NavigationService', function ($http) {
             {
                 name: "Role Administration",
                 classis: "active",
-                anchor: "coming-soon",
+                anchor: "role-administration",
                 icon: "fa-cog"
             }, {
                 name: "Store/Branch Setup",
