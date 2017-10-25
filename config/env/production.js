@@ -26,7 +26,7 @@ module.exports = {
    ***************************************************************************/
 
   port: 8080,
-  realHost: "http://49.248.97.180:8080",
+  realHost: "http://isee.frontidainc.com:8080",
   emails: ["chintan@wohlig.com", "jagruti@wohlig.com", "tushar@wohlig.com", "chirag@wohlig.com", "harsh@wohlig.com"]
 
   /***************************************************************************
