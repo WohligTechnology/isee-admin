@@ -5,7 +5,7 @@ var schema = new Schema({
         index: true,
     },
     itemId: {
-        type: String,
+        type: Number,
         es_indexed: true
     },
     listPrice: Number,

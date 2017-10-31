@@ -13,7 +13,7 @@ var schema = new Schema({
         ref: 'Customer',
         index: true,
     },
-    customerNumber: String,
+    customerNumber: Number,
     salutation: String,
     firstName: {
         type: String,

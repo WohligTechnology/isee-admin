@@ -1,6 +1,6 @@
 var schema = new Schema({
     customerId: {
-        type: String,
+        type: Number,
         es_indexed: true
     },
     addressID: {

@@ -1,6 +1,6 @@
 var schema = new Schema({
     organizationId: {
-        type: String,
+        type: Number,
         es_indexed: true
     },
     name: {
@@ -12,7 +12,7 @@ var schema = new Schema({
         es_indexed: true
     },
     textCode: String,
-    textSequence: String,
+    textSequence: Number,
     textSubcode: String,
     receiptText: String,
     effectiveDate: Date,
