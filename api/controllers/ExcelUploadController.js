@@ -168,6 +168,7 @@ var controller = {
         }, function (err, found) {
             res.callback(err, found._id);
             var allLogsId = found._id;
+            console.log("allLogsId---------",allLogsId);
             Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -175,7 +176,7 @@ var controller = {
                     var sucessCount = 0;
                     var failureCount = 0;
                     async.waterfall([
-                            function (allLogsId, callback) {
+                            function (callback) {
                                 var i = 0;
                                 async.concatSeries(data, function (singleData, callback) {
                                     Calendar.saveData(singleData, function (err, data) {
@@ -1522,7 +1523,7 @@ var controller = {
                 } else {
                     var sucessCount = 0;
                     var failureCount = 0;
-                    var saveExcelData = {};
+                    var saveExcelData = [];
                     async.waterfall([
                             function (callback) {
                                 var i = 0;
@@ -1545,7 +1546,7 @@ var controller = {
                                                 });
                                             },
                                             function (data, callback) {
-                                                saveExcelData = data;
+                                                saveExcelData.push(data);
                                                 if (data.success != null) {
                                                     var tranId = {};
                                                     tranId.transactionId = data.success._id;

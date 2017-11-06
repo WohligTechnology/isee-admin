@@ -85,6 +85,7 @@
         // },
 
         singleLogHistory: function (data, callback) {
+            console.log("data",data);
             AllLogs.aggregate([{
                     $match: {
                         "_id": ObjectId(data._id)
@@ -107,8 +108,10 @@
                 }
             ], function (err, found) {
                 if (err || _.isEmpty(found)) {
+                    console.log("-------------------",err);
                     callback(err, []);
                 } else {
+                    console.log("found------------",found)
                     callback(null, found);
                 }
             });
