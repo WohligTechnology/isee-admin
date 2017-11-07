@@ -4,6 +4,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
     TemplateService.class = ""; //This is the Class of Page
     $scope.fileprogressbar = 0;
     $scope.navigation = NavigationService.getNavigation();
+    $scope.excelloaded = false;
     $scope.submitForm = function (formLoginData) {
         console.log("This is it");
         return new Promise(function (callback) {
@@ -81,8 +82,69 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
         var getExcel;
         var mapExcel;
         var tableName;
-        if ($scope.activeJustified == 1) {
+        if ($scope.activeJustified == 1) { 
+            $scope.excelloaded = false;
             $scope.excelData = "";
+            $scope.staticfields = [{
+                field: "organizationId",
+                description: "String"
+            }, {
+                field: "name",
+                description: "String"
+            }, {
+                field: "region",
+                description: "String"
+            }, {
+                field: "textCode",
+                description: "String"
+            }, {
+                field: "textSequence",
+                description: "String"
+            }, {
+                field: "textSubcode",
+                description: "String"
+            }, {
+                field: "receiptText",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "recordState",
+                description: "String"
+            }, {
+                field: "lineFormat",
+                description: "String"
+            }, {
+                field: "reformat",
+                description: "String"
+            }, {
+                field: "category",
+                description: "String"
+            }, {
+                field: "beginRange",
+                description: "String"
+            }, {
+                field: "endRange",
+                description: "String"
+            }, {
+                field: "cost",
+                description: "Number"
+            }, {
+                field: "minimumCost",
+                description: "Number"
+            }, {
+                field: "maximumCost",
+                description: "Number"
+            }, {
+                field: "itemId",
+                description: "String"
+            }];
+
+
             $scope.errData = "";
             getExcel = "companyUpload";
             mapExcel = "finalUploadForCompany";
@@ -98,6 +160,26 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 2) {
+            $scope.excelloaded = false;
+            $scope.staticfields = [{
+                field: "organizationId",
+                description: "String"
+            }, {
+                field: "phoneNumberId",
+                description: "String"
+            }, {
+                field: "phoneNumber",
+                description: "Number"
+            }, {
+                field: "phoneTypeCode",
+                description: "String"
+            }, {
+                field: "contactDiscription",
+                description: "String"
+            }, {
+                field: "sortOrder",
+                description: "String"
+            }];
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyContactUpload";
@@ -114,6 +196,53 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 3) {
+            $scope.excelloaded = false;
+            $scope.staticfields = [{
+                field: "organizationId",
+                description: "String"
+            }, {
+                field: "reasonTypeCode",
+                description: "String"
+            }, {
+                field: "reasonCode",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "commentRequired",
+                description: "String"
+            }, {
+                field: "sortOrder",
+                description: "String"
+            }, {
+                field: "parentCode",
+                description: "String"
+            }, {
+                field: "glAccountNumber",
+                description: "Number"
+            }, {
+                field: "minimumAmt",
+                description: "Number"
+            }, {
+                field: "maximumAmt",
+                description: "Number"
+            }, {
+                field: "privilegeType",
+                description: "String"
+            }, {
+                field: "customerMessage",
+                description: "String"
+            }, {
+                field: "inventoryActionCode",
+                description: "String"
+            }, {
+                field: "inventoryLocationId",
+                description: "String"
+            }, {
+                field: "inventoryBucketId",
+                description: "String"
+            }];
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "companyInfoUpload";
@@ -130,6 +259,20 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 4) {
+            $scope.staticfields = [{
+                field: "customerId",
+                description: "Note Sequence a number that can not be greater than 65000"
+            }, {
+                field: "noteSequence",
+                description: "Note Sequence a number that can not be greater than 65000"
+            }, {
+                field: "note",
+                description: "This is a string of length less than 140 characters."
+            }, {
+                field: "noteTimeStamp",
+                description: "This is a timestamp"
+            }];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "customerNoteUpload";
@@ -146,6 +289,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 5) {
+            $scope.staticfields = "";
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "crmUpload";
@@ -162,6 +307,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 6) {
+            $scope.staticfields = "";
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "itemUpload";
@@ -178,6 +325,92 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 7) {
+            $scope.staticfields = [{
+                field: "organizationId",
+                description: "String"
+            }, {
+                field: "retailLocationId",
+                description: "String"
+            }, {
+                field: "storeNumber",
+                description: "String"
+            }, {
+                field: "storeName",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "effectiveDate",
+                description: "Date"
+            }, {
+                field: "expirationDate",
+                description: "Date"
+            }, {
+                field: "apartment",
+                description: "String"
+            }, {
+                field: "address1",
+                description: "String"
+            }, {
+                field: "address2",
+                description: "String"
+            }, {
+                field: "city",
+                description: "String"
+            }, {
+                field: "country",
+                description: "String"
+            }, {
+                field: "postalCode",
+                description: "String"
+            }, {
+                field: "state",
+                description: "String"
+            }, {
+                field: "telephone1",
+                description: "Number"
+            }, {
+                field: "telephone2",
+                description: "Number"
+            }, {
+                field: "telephone3",
+                description: "Number"
+            }, {
+                field: "telephone4",
+                description: "Number"
+            }, {
+                field: "region",
+                description: "String"
+            }, {
+                field: "loc",
+                description: "Number"
+            }, {
+                field: "taxPercentage",
+                description: "String"
+            }, {
+                field: "storeManager",
+                description: "String"
+            }, {
+                field: "locationType",
+                description: "String"
+            }, {
+                field: "deliveryAvailable",
+                description: "String"
+            }, {
+                field: "pickupAvailable",
+                description: "String"
+            }, {
+                field: "transferAvailable",
+                description: "String"
+            }, {
+                field: "email",
+                description: "String"
+            }, {
+                field: "geoCode",
+                description: "String"
+            }];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "LocationUpload";
@@ -194,6 +427,8 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 8) {
+            $scope.staticfields = "";
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "TransactionUpload";
@@ -210,6 +445,23 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 9) {
+            $scope.staticfields = [{
+                field: "warrantyItemId",
+                description: "String"
+            }, {
+                field: "warrantyType",
+                description: "String"
+            }, {
+                field: "warrantySubtype",
+                description: "String"
+            }, {
+                field: "description",
+                description: "String"
+            }, {
+                field: "replaceType",
+                description: "String"
+            }];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "warrantyItemUpload";
@@ -226,6 +478,35 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 10) {
+            $scope.staticfields = [{
+                field: "activityDate",
+                description: "String"
+            }, {
+                field: "month",
+                description: "String"
+            }, {
+                field: "year",
+                description: "String"
+            }, {
+                field: "monthYear",
+                description: "String"
+            }, {
+                field: "monthYearSequence",
+                description: "String"
+            }, {
+                field: "quarter",
+                description: "String"
+            }, {
+                field: "quarterYear",
+                description: "String"
+            }, {
+                field: "quarterYearSequence",
+                description: "Date"
+            }, {
+                field: "monthName",
+                description: "Date"
+            }];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "calendarUpload";
@@ -242,6 +523,40 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 11) {
+            $scope.staticfields = [{
+                    field: "customerId",
+                    description: "String"
+                },
+                {
+                    field: "addressID",
+                    description: "String"
+                }, {
+                    field: "address1",
+                    description: "String"
+                }, {
+                    field: "address2",
+                    description: "String"
+                }, {
+                    field: "apartment",
+                    description: "String"
+                }, {
+                    field: "city",
+                    description: "String"
+                }, {
+                    field: "country",
+                    description: "String"
+                }, {
+                    field: "postalCode",
+                    description: "String"
+                }, {
+                    field: "state",
+                    description: "String"
+                }, {
+                    field: "email",
+                    description: "String"
+                }
+            ];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "customerUpload";
@@ -258,6 +573,41 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 }
             });
         } else if ($scope.activeJustified == 12) {
+            $scope.staticfields = [{
+                field: "retailLocationId",
+                description: "String"
+            }, {
+                field: "tillNumber",
+                description: "String"
+            }, {
+                field: "date",
+                description: "date"
+            }, {
+                field: "openingBalance",
+                description: "Number"
+            }, {
+                field: "additions",
+                description: "Number"
+            }, {
+                field: "systemBalance",
+                description: "Number"
+            }, {
+                field: "actualBalance",
+                description: "Number"
+            }, {
+                field: "bankDeposit",
+                description: "Number"
+            }, {
+                field: "closingBalance",
+                description: "Number"
+            }, {
+                field: "employeeNumber",
+                description: "String"
+            }, {
+                field: "randomNumber",
+                description: "Number"
+            }];
+            $scope.excelloaded = false;
             $scope.excelData = "";
             $scope.errData = "";
             getExcel = "tillRegisterUpload";
@@ -277,11 +627,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
 
         $scope.getExcelFields = function (formdata) {
             // console.log("formdata", formdata);.
+            $scope.excelloaded = true;
             $scope.mappingDisabled = true;
             $(".hidesect-loader").css("display", "block"); //loader for table
             NavigationService.apiCall("ExcelUpload/" + getExcel, formdata, function (data) {
                 if (data.value == true) {
                     $scope.excelData = data.data;
+
                     // console.log("excelData", $scope.excelData);
                     $(".cust-details_hidesect").css("display", "block"); //display table
                     $(".hidesect-loader").css("display", "none"); // hide loader
@@ -289,6 +641,7 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                     $scope.mappingDisabled = false;
                     $(".hidesect-loader").css("display", "none"); //hide laoder                    
                     toastr.error("Incorrect Input  ");
+                    $scope.excelloaded = false;
                 }
             });
         };
