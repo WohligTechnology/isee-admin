@@ -46,7 +46,7 @@
 						</div>
 
 						<!-- //static field to show -->
-						<div class="form-group fnt-cpt" ng-repeat="formname in staticfields" ng-show="!excelloaded">
+						<div class="static-form form-group fnt-cpt" ng-repeat="formname in staticfields" ng-show="!excelloaded">
 							<div class="row">
 								<div class="col-sm-4 ">
 									<label class="control-label">{{formname.field}} 
@@ -54,12 +54,13 @@
 										</label>
 								</div>
 								<div class="col-sm-6">
-									<ui-select ng-model="" name="country" ng-disabled=true theme="bootstrap" sortable="true" ng-required="true">
+									<ui-select ng-model="staticform" name="country" ng-disabled=true theme="bootstrap" sortable="true" ng-required="true">
 										<ui-select-match placeholder="Select">
-
+											<span class="fnt"></span>
 										</ui-select-match>
-										<ui-select-choices class="fnt" refresh="" refresh-delay="0">
-
+										<ui-select-choices class="fnt" repeat="country in excelData.excelFields | filter: $select.search track by $index" refresh=""
+										    refresh-delay="0">
+											{{country}}
 										</ui-select-choices>
 									</ui-select>
 								</div>
