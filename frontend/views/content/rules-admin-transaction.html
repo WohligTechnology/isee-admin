@@ -19,13 +19,15 @@
                 <thead>
                     <tr>
                         <th>Transaction Name</th>
-                        <th>Violation</th>
+                        <th>Violation Rule</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>demo transaction 1</td>
-                        <td><a class="label label-danger"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+                    <tr ng-repeat="tranData in transactionData track by $index">
+                        <td>{{tranData.createdAt}}</td>
+                        <td ng-repeat="rules in tranData.violations track by $index">
+                            {{rules.name}}
+                        </td>
                     </tr>
                 </tbody>
             </table>

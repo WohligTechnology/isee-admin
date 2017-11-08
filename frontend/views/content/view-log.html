@@ -1,8 +1,9 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header">
-    <span class="main bredcrums"> 
-        <a href="views/template/template.html">Home</a> /<a ui-sref="customer-detail">Customer Details </a> / Logs
-        </span>
+    <span class="main bredcrums">
+        <a href="views/template/template.html">Home</a> /
+        <a ui-sref="customer-detail">Customer Details </a> / Logs
+    </span>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -42,16 +43,22 @@
                                 <td class="primary" style="color: #527d96;">{{logss.createdAt | date:'medium'}}
                                 </td>
                                 <td>
-                                    <span class="success" ng-show="{{logss.status=='Completed'}}"> {{logss.sucessCount}}
-												<i class="fa fa-check-circle"></i></span>
+                                    <span class="success" ng-if="logss.status=='Completed'"> {{logss.sucessCount}}
+                                        <i class="fa fa-check-circle"></i>
+                                    </span>
                                 </td>
                                 <td>
-                                    <span class="danger" ng-show="{{logss.status=='Completed'}}" ui-sref="error-log({error_id:logss._id})">{{logss.failureCount}}
-												<i class="fa fa-times-circle"></i></span>
+                                    <span class="danger" ng-if="logss.status=='Completed' && logss.failureCount!=0" ui-sref="error-log({error_id:logss._id})">{{logss.failureCount}}
+                                        <i class="fa fa-times-circle"></i>
+                                    </span>
+                                    <span class="danger" ng-if="logss.status=='Completed' && logss.failureCount==0">{{logss.failureCount}}
+                                        <i class="fa fa-times-circle"></i>
+                                    </span>
                                 </td>
                                 <td>
-                                    <span style="color:#5397be;" ng-show="{{logss.status=='Completed'}}">{{logss.sucessCount+logss.failureCount}}
-												<i class="fa fa-upload" aria-hidden="true"></i></span>
+                                    <span style="color:#5397be;" ng-if="logss.status=='Completed'">{{logss.sucessCount+logss.failureCount}}
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                    </span>
                                 </td>
                                 <td>
                                     <span ng-class="whatClassIsIt(logss.status)">{{logss.status}}</span>

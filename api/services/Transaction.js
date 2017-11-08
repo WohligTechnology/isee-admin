@@ -512,13 +512,40 @@ var model = {
     // },
 
     getRecordsByTransaction: function (data, callback) {
-        Transaction.find({}).deepPopulate('violations').lean().exec(function (err, data) {
-            if (err || _.isEmpty(data)) {
-                callback(err, [])
-            } else {
-                callback(null, data)
+        var maxRow = Config.maxRow;
+        var page = 1;
+        if (data.page) {
+            page = data.page;
+        }
+        var field = data.field;
+        var options = {
+            field: data.field,
+            filters: {
+                keyword: {
+                    fields: ['name'],
+                    term: data.keyword
+                }
+            },
+            sort: {
+                desc: 'createdAt'
+            },
+            start: (page - 1) * maxRow,
+            count: maxRow
+        };
+        Transaction.find({
+            "violations": {
+                $exists: true,
+                $ne: []
             }
-        })
+        }).deepPopulate('violations').order(options)
+            .keyword(options)
+            .page(options, function (err, data) {
+                if (err || _.isEmpty(data)) {
+                    callback(err, []);
+                } else {
+                    callback(null, data);
+                }
+            });
     }
 };
 module.exports = _.assign(module.exports, exports, model);
