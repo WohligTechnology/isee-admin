@@ -85,7 +85,6 @@
                 }
             ], function (err, found) {
                 if (err || _.isEmpty(found)) {
-                    console.log("-------------------",err);
                     callback(err, []);
                 } else {
                     callback(null, found);

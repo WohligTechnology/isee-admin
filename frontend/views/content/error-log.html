@@ -1,13 +1,13 @@
 <div ng-include="template.header" class="template header"></div>
 <div class="add-header add-title">
     <span class="main bredcrums">Error Log
-</div> 
+</div>
 
 <!-- <div class="add-title col-md-12">
     <span class="main bredcrums">Error Log</span>
 </div> -->
 <!-- <div ng-if="noData"  style="font-size: 25px; font-weight: 600; color: #5ca977;">No Error Found</div> -->
-<div class="inside-status2">
+<div class="inside-status2" ng-if='totalItems'>
     <div class="log-history" ng-if="logInsideData.error">
         <div class="row">
             <div class="col-xs-3">
@@ -27,14 +27,15 @@
             <!-- <div class="row"> -->
             <div class="col-xs-3">
                 <div class="pad-5 inside-history">
-                    <span class="danger"><i class="fa fa-times-circle"></i> Row:{{logs.logs.row+1}}</span>
+                    <span class="danger">
+                        <i class="fa fa-times-circle"></i> Row:{{logs.logs.row+1}}</span>
                 </div>
             </div>
             <div class="col-xs-9">
                 <div class="pad-5 inside-history">
                     <span>
-														<pre class="danger-pre"><code>{{logs.logs.error|json}}</code></pre>
-														</span>
+                        <pre class="danger-pre"><code>{{logs.logs.error|json}}</code></pre>
+                    </span>
                 </div>
             </div>
         </div>
@@ -45,4 +46,7 @@
         class="pagination-sm
                                             " boundary-links="true " force-ellipses="true ">
     </ul>
+</div>
+<div ng-if='!totalItems'>
+    NO DATA FOUND
 </div>

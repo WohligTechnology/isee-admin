@@ -54,8 +54,6 @@ myApp.controller('ErrorLogCtrl', function ($scope, TemplateService, NavigationSe
                     $scope.noData = false;
                     $scope.errLog = data.data;
                     $scope.totalItems = totallogs;
-                    console.log("  $scope.totalItems----------------",  $scope.totalItems);
-                    console.log("  $scope.$scope.errLog----------------", $scope.errLog);         
                     $scope.maxRow = 10;
                 }
             });
