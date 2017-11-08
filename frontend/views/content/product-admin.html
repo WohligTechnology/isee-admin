@@ -1,0 +1,17 @@
+<div ng-include="template.header" class="template header"></div>
+
+<div class="add-header">
+    <span class="main bredcrums"><a ui-sref="user">Home</a> / Product Admin</span>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="add-title">
+            <span class="main bredcrums">Product Admin</span>
+        </div>
+
+        <div class="col-md-4" ng-repeat="x in subnav" ui-sref="x.anchor">
+
+            <div class="block text-center" ui-sref="{{x.anchor}}"> {{x.name}}</div>
+        </div>
+    </div>
+</div>

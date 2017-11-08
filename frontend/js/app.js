@@ -171,6 +171,36 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/role-administration",
             templateUrl: tempateURL,
             controller: 'RoleAdminCtrl'
+        })
+        .state('product-admin', {
+            url: "/product-admin",
+            templateUrl: tempateURL,
+            controller: 'ProductAdminCtrl'
+        })
+        .state('rules-admin-transaction', {
+            url: "/rules-admin-transaction",
+            templateUrl: tempateURL,
+            controller: 'RulesAdminTransactionCtrl'
+        })
+        .state('view-log', {
+            url: "/view-log/:log_id",
+            templateUrl: tempateURL,
+            controller: 'ViewLogCtrl'
+        })
+        .state('company-admin', {
+            url: "/company-admin",
+            templateUrl: tempateURL,
+            controller: 'CompanyAdminCtrl'
+        })
+        .state('rules-admin', {
+            url: "/rules-admin",
+            templateUrl: tempateURL,
+            controller: 'RulesAdminCtrl'
+        })
+        .state('reports', {
+            url: "/reports",
+            templateUrl: tempateURL,
+            controller: 'ReportsCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);

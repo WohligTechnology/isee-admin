@@ -44,12 +44,33 @@
 						<div class="hidesect-loader">
 							<img src="img/newloading.gif">
 						</div>
+
+						<!-- //static field to show -->
+						<div class="static-form form-group fnt-cpt" ng-repeat="formname in staticfields" ng-show="!excelloaded">
+							<div class="row">
+								<div class="col-sm-4 ">
+									<label class="control-label">{{formname.field}} 
+											<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
+										</label>
+								</div>
+								<div class="col-sm-6">
+									<ui-select ng-model="staticform" name="country" ng-disabled=true theme="bootstrap" sortable="true" ng-required="true">
+										<ui-select-match placeholder="Select">
+											<span class="fnt"></span>
+										</ui-select-match>
+										<ui-select-choices class="fnt" repeat="country in excelData.excelFields | filter: $select.search track by $index" refresh=""
+										    refresh-delay="0">
+											{{country}}
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
 						<div class="cust-details_hidesect">
 							<div class="custom-scroll fnt-cpt">
 								<div class="form-group" ng-repeat="formname in excelData.fields">
 									<div class="row">
 										<div class="col-sm-4 ">
-											<!-- {{formname}} -->
 											<label class="control-label">{{formname.field}} 
 											<i class="fa fa-info-circle" tooltip-placement="{{formname.description}}" uib-tooltip="{{formname.description}}"></i>
 										</label>
@@ -67,6 +88,7 @@
 										</div>
 									</div>
 								</div>
+
 							</div>
 							<!--End Excel Upload Fields-->
 
@@ -158,7 +180,12 @@
 
 
 						<!-- logs in table form -->
-						<div class="logs-tabel">
+
+
+
+
+						<!-- old logs table ui -->
+						<!-- <div class="logs-tabel">
 							<div class="dataTables_wrapper table-responsive  container-fluid">
 								<table class="table table-hover">
 									<thead class="thead-inverse">
@@ -183,7 +210,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<!-- <div class="log-history"> -->
+									
 										<tr ng-repeat="logData in eData track by $index" ng-if="eData" ui-sref="error-log({error_id:logData.id})">
 											<td class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}
 											</td>
@@ -211,7 +238,42 @@
 									</tbody>
 								</table>
 							</div>
+						</div> 
+						 -->
+						<!-- new logs table ui -->
+
+						<div class="logs-tabel">
+							<div class="dataTables_wrapper table-responsive  container-fluid">
+								<table class="table table-hover">
+									<thead class="thead-inverse">
+										<tr>
+											<th>
+												Date
+											</th>
+											<th>
+												Link
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr ng-repeat="logData in eData track by $index" ng-if="eData">
+											<td class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}
+											</td>
+											<td><a class="label label-success pointer" ui-sref="view-log({log_id:logData.id})"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+										</tr>
+										<!-- <div class="row pointer">
+											<div ng-click="" ui-sref="error-log({error_id:logData.id})">
+											</div>
+										</div>
+										</tr> -->
+									</tbody>
+								</table>
+							</div>
 						</div>
+
+
+
 						<!--End Logs Tabel History-->
 					</uib-tab>
 				</uib-tabset>

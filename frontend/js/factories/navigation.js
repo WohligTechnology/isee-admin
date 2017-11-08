@@ -15,7 +15,7 @@ myApp.factory('NavigationService', function ($http) {
     }, {
         name: "Product Admin",
         classis: "active",
-        anchor: "",
+        // anchor: "product-admin",
         icon: "fa-desktop",
         hasSub: "has-sub",
         subnav: [{
@@ -43,15 +43,9 @@ myApp.factory('NavigationService', function ($http) {
         name: "Company Admin",
         classis: "active",
         icon: "fa-tasks",
+        // anchor: "company-admin"
         hasSub: "has-sub",
-        subnav: [
-            //     {
-            //     name: "Setup Company",
-            //     classis: "active",
-            //     anchor: "coming-soon",
-            //     icon: "fa-cog"
-            // }
-            {
+        subnav: [{
                 name: "Setup User",
                 classis: "active",
                 anchor: "coming-soon",
@@ -73,28 +67,36 @@ myApp.factory('NavigationService', function ($http) {
         name: "Rules Admin",
         classis: "active",
         icon: "fa-pencil-square-o",
+        // anchor: "rules-admin"
         hasSub: "has-sub",
         subnav: [{
-            name: "Setup Rules",
-            classis: "active",
-            // anchor: "es-rule",
-            anchor: "drl-rule",
-            icon: "fa-cog"
-        }, {
-            name: "What-if-Analysis",
-            classis: "active",
-            anchor: "coming-soon",
-            icon: "fa-cog"
-        }, {
-            name: "Rules Report",
-            classis: "active",
-            anchor: "view-rules",
-            icon: "fa-cog"
-        }]
+                name: "Setup Rules",
+                classis: "active",
+                anchor: "drl-rule",
+                icon: "fa-cog"
+            }, {
+                name: "What-if-Analysis",
+                classis: "active",
+                anchor: "coming-soon",
+                icon: "fa-cog"
+            }, {
+                name: "Rules Report",
+                classis: "active",
+                anchor: "view-rules",
+                icon: "fa-cog"
+            },
+            {
+                name: "Transaction",
+                classis: "active",
+                anchor: "rules-admin-transaction",
+                icon: "fa-cog"
+            }
+        ]
     }, {
         name: "Reports",
         classis: "active",
         icon: "fa-pencil-square-o",
+        // anchor: "reports"
         hasSub: "has-sub",
         subnav: [{
             name: "Corporate Overview",

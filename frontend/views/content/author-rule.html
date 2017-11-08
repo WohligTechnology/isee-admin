@@ -10,7 +10,7 @@
 <div class="panel panel-default">
     <div class="form-default min-h100">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
                 <!--form-divider-->
                 <form action="" name="formRule">
                     <div class="row">
@@ -205,6 +205,21 @@
                     </div>
                 </form>
                 <!--form-divider End-->
+            </div>
+            <div class="col-sm-2">
+                <div class="preview">
+                    <div class="text-center tit">Preview</div>
+                    <!-- {{drlRule.choices}} -->
+                    <div class="p_block" ng-repeat="x in drlRule.choices">
+                        <div ng-if="x.model"> Table:{{x.model}} </div>
+                        <div ng-if="x.field">Table Fields: {{x.field}} </div>
+                        <div ng-if="x.operators">Operators: {{x.operators}} </div>
+                        <div ng-if="x.constant">constant: {{x.constant}} </div>
+                        <div ng-if="x.table">table: {{x.table}} </div>
+                        <div ng-if="x.tableField">table field: {{x.tableField}} </div>
+                        <div class="logic" ng-if="x.logic">{{x.logic}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
