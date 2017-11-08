@@ -62,30 +62,7 @@
             });
         },
 
-        // singleLogHistory: function (data, callback) {
-        //     AllLogs.findOne({
-        //         _id: data._id,
-        //     }, {
-        //         logs: {
-        //             $slice: [(data.pageNo - 1) * Config.maxRow, Config.maxRow]
-        //         }
-        //     }).deepPopulate("users").exec(function (err, found) {
-        //         if (err) {
-        //             callback(err, null);
-        //         } else {
-        //             if (found) {
-        //                 callback(null, found);
-        //             } else {
-        //                 callback(null, {
-        //                     message: "No Data Found"
-        //                 });
-        //             }
-        //         }
-        //     });
-        // },
-
         singleLogHistory: function (data, callback) {
-            console.log("data",data);
             AllLogs.aggregate([{
                     $match: {
                         "_id": ObjectId(data._id)
@@ -111,7 +88,6 @@
                     console.log("-------------------",err);
                     callback(err, []);
                 } else {
-                    console.log("found------------",found)
                     callback(null, found);
                 }
             });

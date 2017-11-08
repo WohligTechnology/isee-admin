@@ -347,12 +347,29 @@ var model = {
     addViolation: function (transactionId, ruleEngineId, callback) {
         Transaction.findOne({
             _id: transactionId
-        }).exec(function (err, data) {
+        }).lean().exec(function (err, data) {
             if (err || _.isEmpty(data)) {
                 callback(err);
             } else {
-                data.violations.push(ruleEngineId);
-                data.save(callback);
+                if (data.violations) {
+                    data.violations.push(ruleEngineId);
+                    data.violations = _.uniqBy(data.violations, function (n) {
+                        return n + "";
+                    });
+                } else {
+                    data.violations = [];
+                    data.violations.push(ruleEngineId);
+                    data.violations = _.uniqBy(data.violations, function (n) {
+                        return n + "";
+                    });
+                }
+                Transaction.saveData(data, function (err, data1) {
+                    if (err) {
+                        callback(err)
+                    } else {
+                        callback(null, data);
+                    }
+                });
             }
         });
     },
@@ -428,7 +445,7 @@ var model = {
                 callback(null, found);
             }
         });
-    }
+    },
 
     // saveOnExcel: function (data, callback) {
     //     async.parallel({
@@ -493,5 +510,15 @@ var model = {
     //             }
     //         });
     // },
+
+    getRecordsByTransaction: function (data, callback) {
+        Transaction.find({}).deepPopulate('violations').lean().exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err, [])
+            } else {
+                callback(null, data)
+            }
+        })
+    }
 };
 module.exports = _.assign(module.exports, exports, model);
