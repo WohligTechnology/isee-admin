@@ -60,7 +60,11 @@ var model = {
         } else if (tableName == "CompanyInfo") {
             returnTable = transactionJson.companyInfoData;
         }
-        return returnTable[tableField];
+        if (returnTable) {
+            return returnTable[tableField];
+        } else {
+            return null
+        }
     },
 
     findViolationCount: function (ruleId, callback) {
@@ -139,45 +143,58 @@ var model = {
                     } else {
                         value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData.transactionJson);
                     }
-                    var conditionData;
-                    // console.log(value1);
-                    // console.log(value2);
-                    if (rulesData.operators == '==') {
-                        conditionData = value1 == value2;
-                    } else if (rulesData.operators == '<=') {
-                        conditionData = parseFloat(value1) <= parseFloat(value2);
-                    } else if (rulesData.operators == '>=') {
-                        conditionData = parseFloat(value1) >= parseFloat(value2);
-                    } else if (rulesData.operators == '>') {
-                        conditionData = parseFloat(value1) > parseFloat(value2);
-                    } else if (rulesData.operators == '<') {
-                        conditionData = parseFloat(value1) < parseFloat(value2);
-                    } else if (rulesData.operators == '!=') {
-                        conditionData = value1 != value2;
+                    var conditionData = false;
+                    if (value1 != null && value2 != null) {
+                        if (rulesData.operators == '==') {
+                            conditionData = value1 == value2;
+                        } else if (rulesData.operators == '<=') {
+                            conditionData = parseFloat(value1) <= parseFloat(value2);
+                        } else if (rulesData.operators == '>=') {
+                            conditionData = parseFloat(value1) >= parseFloat(value2);
+                        } else if (rulesData.operators == '>') {
+                            conditionData = parseFloat(value1) > parseFloat(value2);
+                        } else if (rulesData.operators == '<') {
+                            conditionData = parseFloat(value1) < parseFloat(value2);
+                        } else if (rulesData.operators == '!=') {
+                            conditionData = value1 != value2;
+                        }
                     }
-                    arrForRuleTransaction.push({
-                        value: conditionData,
-                        comparionType: rulesData.logic
-                    });
+                    if (value1 != null && value2 != null) {
+                        arrForRuleTransaction.push({
+                            value: conditionData,
+                            comparionType: rulesData.logic
+                        });
+                    }
                     callback();
                 }, function (err, data) {
-                    var response = arrForRuleTransaction[0].value;
+                    var response;
+                    if (arrForRuleTransaction[0]) {
+                        response = arrForRuleTransaction[0].value;
+                    }
                     _.each(arrForRuleTransaction, function (n, index) { // compare AND, OR
                         if (index != 0) {
                             if (arrForRuleTransaction[index - 1].comparionType == "AND") {
                                 response = response && n.value;
-                            } else {
+                                if (response == true) {
+                                    Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
+                                       // callback(null, data);
+                                    });
+                                } else {
+                                    //callback(null, "No Violation");
+                                }
+                            } else if (arrForRuleTransaction[index - 1].comparionType == "OR") {
                                 response = response || n.value;
+                                if (response == true) {
+                                    Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
+                                       // callback(null, data);
+                                    });
+                                } else {
+                                    //callback(null, "No Violation");
+                                }
                             }
                         }
                     });
-                    if (response == true) {
-                        Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
-                            callback(null, data);
-                        });
-                    } else {
-                        callback(null, "No Violation");
-                    }
+                    callback(null,"working")
                 });
             }
         });
