@@ -378,7 +378,7 @@ var model = {
         Transaction.find({
             "violations": {
                 $elemMatch: {
-                    $in: [ObjectId(ruleId.ruleId)]
+                    $in: [ObjectId(ruleId)]
                 }
             }
         }).exec(function (err, data) {
@@ -388,7 +388,7 @@ var model = {
                 async.concatLimit(data, 30, function (singleTransaction, callback) {
                     var violations = _.cloneDeep(singleTransaction.violations);
                     _.remove(violations, function (n) {
-                        return n == ruleId.ruleId;
+                        return n == ruleId;
                     });
                     singleTransaction.violations = violations;
                     singleTransaction.save(callback);

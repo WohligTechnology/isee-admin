@@ -143,6 +143,9 @@ var model = {
                     } else {
                         value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData.transactionJson);
                     }
+                    console.log("value1----",value1);
+                    console.log("value2----",value2);
+                    
                     var conditionData = false;
                     if (value1 != null && value2 != null) {
                         if (rulesData.operators == '==') {
@@ -165,6 +168,7 @@ var model = {
                             comparionType: rulesData.logic
                         });
                     }
+                    console.log("arrForRuleTransaction",arrForRuleTransaction);
                     callback();
                 }, function (err, data) {
                     var response;

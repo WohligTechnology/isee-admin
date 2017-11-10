@@ -94,8 +94,6 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
 
         if ($stateParams.ruleId) {
             var sentData={};
-            sentData.ruleId=$stateParams.ruleId
-            NavigationService.apiCall("Transaction/removeARuleFromTransaction",sentData, function (data) {});
             $scope.rules.name = formdata.name;
             $scope.rules.rule = formdata.choices;
             $scope.rules._id = $stateParams.ruleId;
