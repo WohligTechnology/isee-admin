@@ -15,18 +15,36 @@
     </div>
     <div class="panel-body">
         <div class="table-responsive dataTables_wrapper container-fluid">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Transaction Name</th>
+                        <th>title demo 1</th>
+                        <th>title demo 2</th>
+                        <th>title demo 3</th>
                         <th>Violation Rule</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="tranData in transactionData track by $index">
                         <td>{{tranData.createdAt}}</td>
-                        <td ng-repeat="rules in tranData.violations track by $index">
+                        <!-- <td ng-repeat="rules in tranData.violations track by $index">
                             {{rules.name}}
+                        </td> -->
+                        <td>demo 1</td>
+                        <td>demo 2</td>
+                        <td>demo 3</td>
+                        <td class="violated-td">
+                            <!-- <div class="violation-details">
+                                <div class="label label-danger pointer"><i class="fa fa-ban" aria-hidden="true"></i></div>
+                                <div class="vio-details">
+
+                                    <div class="vio-list" ng-repeat="rules in tranData.violations">{{rules.name}}</div>
+
+                                </div>
+                            </div> -->
+                            <div class="vio-list" ng-repeat="rules in tranData.violations"><span ng-show="$index>0">,</span><span>{{rules.name}}</span></div>
+
                         </td>
                     </tr>
                 </tbody>

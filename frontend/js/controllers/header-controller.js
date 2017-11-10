@@ -31,6 +31,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
       $('.accordion-custom').css("display", "none");
       $('.iseetitle').css("display", "none");
       $('.sideicon').css("opacity", "1");
+      $('.sideicon').css("display", "block");
       // console.log("classNg", $scope.classNg);
     } else {
       $scope.classNg = "open";
@@ -41,6 +42,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
       $('.accordion-custom').css("display", "block");
       $('.iseetitle').css("display", "inline-block");
       $('.sideicon').css("opacity", "0");
+      $('.sideicon').css("display", "none");
       // console.log("classNg", $scope.classNg);
     }
   };

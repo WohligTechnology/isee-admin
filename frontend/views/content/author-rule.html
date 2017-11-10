@@ -6,11 +6,32 @@
     <span class="main bredcrums"> <a href="views/template/template.html">Home</a> / <a href="view-rules">Rule List</a> / DRL Rules</span>
 </div>
 <!-- End header bredcrums -->
+<div class="preview " ng-if="drlRule.choices" ng-class="{'preview-toggle':previewToggle}">
+    <div class="preview-inside">
 
+        <div class="text-center tit pointer" ng-click="previewToggle=!previewToggle">Preview</div>
+        <div class="overflow">
+            <div class="p_block" ng-repeat="x in drlRule.choices track by $index">
+                <div class="blok col-md-9" ng-if="(!$index==0 || x.model || x.field || x.operators || x.logic || x.constant || x.tableField || x.table) ">
+                    <!-- ^^ not to show empty item on index 0 ^^ -->
+                    <div class="sideindex">{{$index+1}}</div>
+                    <div ng-if="x.model"> Table:{{x.model}} </div>
+                    <div ng-if="x.field">Table Fields: {{x.field}} </div>
+                    <div ng-if="x.operators">Operators: {{x.operators}} </div>
+                    <div ng-if="x.constant">constant: {{x.constant}} </div>
+                    <div ng-if="x.table">table: {{x.table}} </div>
+                    <div ng-if="x.tableField">table field: {{x.tableField}} </div>
+                </div>
+                <div class="logic" ng-if="x.logic">{{x.logic}}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="form-default min-h100">
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 <!--form-divider-->
                 <form action="" name="formRule">
                     <div class="row">
@@ -206,21 +227,24 @@
                 </form>
                 <!--form-divider End-->
             </div>
-            <div class="col-sm-2">
+
+            <!-- old preview in right hand side -->
+            <!-- <div class="col-sm-2">
                 <div class="preview">
-                    <div class="text-center tit">Preview</div>
-                    <!-- {{drlRule.choices}} -->
-                    <div class="p_block" ng-repeat="x in drlRule.choices">
-                        <div ng-if="x.model"> Table:{{x.model}} </div>
-                        <div ng-if="x.field">Table Fields: {{x.field}} </div>
-                        <div ng-if="x.operators">Operators: {{x.operators}} </div>
-                        <div ng-if="x.constant">constant: {{x.constant}} </div>
-                        <div ng-if="x.table">table: {{x.table}} </div>
-                        <div ng-if="x.tableField">table field: {{x.tableField}} </div>
-                        <div class="logic" ng-if="x.logic">{{x.logic}}</div>
+                    <div class="preview-inside">
+                        <div class="text-center tit">Preview</div>
+                        <div class="p_block" ng-repeat="x in drlRule.choices">
+                            <div ng-if="x.model"> Table:{{x.model}} </div>
+                            <div ng-if="x.field">Table Fields: {{x.field}} </div>
+                            <div ng-if="x.operators">Operators: {{x.operators}} </div>
+                            <div ng-if="x.constant">constant: {{x.constant}} </div>
+                            <div ng-if="x.table">table: {{x.table}} </div>
+                            <div ng-if="x.tableField">table field: {{x.tableField}} </div>
+                            <div class="logic" ng-if="x.logic">{{x.logic}}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
