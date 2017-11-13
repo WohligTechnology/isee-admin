@@ -13,6 +13,11 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }, 5000);
         });
     };
+    $scope.currenttab = ["check"];
+    $scope.makeTabActive = function ($index) {
+        $scope.currenttab = [];
+        $scope.currenttab[$index] = "check";
+    }
     $scope.whatClassIsIt = function (c) {
         if (c == "Completed") {
             return "label label-success";

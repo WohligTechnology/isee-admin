@@ -2,158 +2,164 @@ var uploadurl = adminurl + "upload/";
 
 myApp.factory('NavigationService', function ($http) {
     var navigation = [{
-        name: "Dashboard",
-        classis: "active",
-        anchor: "dashboard",
-        hasSub: "has-sub",
-        icon: "fa-tachometer",
-    }, {
-        name: "Predictive Dashboard",
-        classis: "active",
-        anchor: "predictive-dashboard",
-        icon: "fa-tachometer"
-    }, {
-        name: "Product Admin",
-        classis: "active",
-        // anchor: "product-admin",
-        icon: "fa-desktop",
-        hasSub: "has-sub",
-        subnav: [{
-            name: "Setup Company",
+            name: "Dashboard",
             classis: "active",
-            anchor: "customer-detail",
-            icon: "fa-cog"
+            anchor: "dashboard",
+            // hasSub: "has-sub",
+            icon: "fa-tachometer",
+            subnav: []
         }, {
-            name: "License Manager",
+            name: "Predictive Dashboard",
             classis: "active",
-            anchor: "coming-soon",
-            icon: "fa-cog"
+            anchor: "predictive-dashboard",
+            icon: "fa-tachometer",
+            subnav: []
         }, {
-            name: "User Admin",
+            name: "Product Admin",
             classis: "active",
-            anchor: "user-admin",
-            icon: "fa-cog"
-        }, {
-            name: "Roles Administration",
-            classis: "active",
-            anchor: "role-administration",
-            icon: "fa-cog"
-        }]
-    }, {
-        name: "Company Admin",
-        classis: "active",
-        icon: "fa-tasks",
-        // anchor: "company-admin"
-        hasSub: "has-sub",
-        subnav: [{
-                name: "Setup User",
-                classis: "active",
-                anchor: "coming-soon",
-                icon: "fa-cog"
-            },
-            {
-                name: "Role Administration",
-                classis: "active",
-                anchor: "role-administration",
-                icon: "fa-cog"
-            }, {
-                name: "Store/Branch Setup",
+            // anchor: "product-admin",
+            icon: "fa-desktop",
+            hasSub: "has-sub",
+            subnav: [{
+                name: "Setup Company",
                 classis: "active",
                 anchor: "customer-detail",
                 icon: "fa-cog"
-            }
-        ]
-    }, {
-        name: "Rules Admin",
-        classis: "active",
-        icon: "fa-pencil-square-o",
-        // anchor: "rules-admin"
-        hasSub: "has-sub",
-        subnav: [{
-                name: "Setup Rules",
-                classis: "active",
-                anchor: "drl-rule",
-                icon: "fa-cog"
             }, {
-                name: "What-if-Analysis",
+                name: "License Manager",
                 classis: "active",
                 anchor: "coming-soon",
                 icon: "fa-cog"
             }, {
-                name: "Rules Report",
+                name: "User Admin",
                 classis: "active",
-                anchor: "view-rules",
+                anchor: "user-admin",
                 icon: "fa-cog"
-            },
-            {
-                name: "Transaction",
+            }, {
+                name: "Roles Administration",
                 classis: "active",
-                anchor: "rules-admin-transaction",
+                anchor: "role-administration",
                 icon: "fa-cog"
-            }
-        ]
-    }, {
-        name: "Reports",
-        classis: "active",
-        icon: "fa-pencil-square-o",
-        // anchor: "reports"
-        hasSub: "has-sub",
-        subnav: [{
-            name: "Corporate Overview",
-            classis: "active",
-            anchor: "corporate",
-            icon: "fa-cog"
+            }]
         }, {
-            name: "Cash Short",
+            name: "Company Admin",
             classis: "active",
-            anchor: "cash-short",
-            icon: "fa-cog"
+            icon: "fa-tasks",
+            // anchor: "company-admin"
+            hasSub: "has-sub",
+            subnav: [{
+                    name: "Setup User",
+                    classis: "active",
+                    anchor: "coming-soon",
+                    icon: "fa-cog"
+                },
+                {
+                    name: "Role Administration",
+                    classis: "active",
+                    anchor: "role-administration",
+                    icon: "fa-cog"
+                }, {
+                    name: "Store/Branch Setup",
+                    classis: "active",
+                    anchor: "customer-detail",
+                    icon: "fa-cog"
+                }
+            ]
         }, {
-            name: "Map – Sales",
+            name: "Rules Admin",
             classis: "active",
-            anchor: "map-sales",
-            icon: "fa-cog"
+            icon: "fa-pencil-square-o",
+            // anchor: "rules-admin"
+            hasSub: "has-sub",
+            subnav: [{
+                    name: "Setup Rules",
+                    classis: "active",
+                    anchor: "drl-rule",
+                    icon: "fa-cog"
+                }, {
+                    name: "What-if-Analysis",
+                    classis: "active",
+                    anchor: "coming-soon",
+                    icon: "fa-cog"
+                }, {
+                    name: "Rules Report",
+                    classis: "active",
+                    anchor: "view-rules",
+                    icon: "fa-cog"
+                },
+                {
+                    name: "Transaction",
+                    classis: "active",
+                    anchor: "rules-admin-transaction",
+                    icon: "fa-cog"
+                }
+            ]
         }, {
-            name: "Map – Cash Short",
+            name: "Reports",
             classis: "active",
-            anchor: "map-cash-short",
-            icon: "fa-cog"
-        }, {
-            name: "Transactions Report",
-            classis: "active",
-            anchor: "transaction-report",
-            icon: "fa-cog"
-        }, {
-            name: "Till Register",
-            classis: "active",
-            anchor: "till-register",
-            icon: "fa-cog"
-        }]
+            icon: "fa-pencil-square-o",
+            // anchor: "reports"
+            hasSub: "has-sub",
+            subnav: [{
+                name: "Corporate Overview",
+                classis: "active",
+                anchor: "corporate",
+                icon: "fa-cog"
+            }, {
+                name: "Cash Short",
+                classis: "active",
+                anchor: "cash-short",
+                icon: "fa-cog"
+            }, {
+                name: "Map – Sales",
+                classis: "active",
+                anchor: "map-sales",
+                icon: "fa-cog"
+            }, {
+                name: "Map – Cash Short",
+                classis: "active",
+                anchor: "map-cash-short",
+                icon: "fa-cog"
+            }, {
+                name: "Transactions Report",
+                classis: "active",
+                anchor: "transaction-report",
+                icon: "fa-cog"
+            }, {
+                name: "Till Register",
+                classis: "active",
+                anchor: "till-register",
+                icon: "fa-cog"
+            }]
 
 
 
-    }, {
-        name: "Case Management",
-        classis: "active",
-        icon: "fa-pencil-square-o",
-        anchor: "coming-soon"
-    }, {
-        name: "Help",
-        classis: "active",
-        icon: "fa-pencil-square-o",
-        hasSub: "has-sub",
-        subnav: [{
-            name: "Help Documentation",
+        }, {
+            name: "Case Management",
             classis: "active",
+            icon: "fa-pencil-square-o",
             anchor: "coming-soon",
-            icon: "fa-cog"
-        }]
-    }, {
-        name: "Terms and Conditions",
-        classis: "active",
-        icon: "fa-pencil-square-o",
-        anchor: "terms-condition"
-    }];
+            subnav: []
+        }, {
+            name: "Help",
+            classis: "active",
+            icon: "fa-pencil-square-o",
+            hasSub: "has-sub",
+            subnav: [{
+                name: "Help Documentation",
+                classis: "active",
+                anchor: "coming-soon",
+                icon: "fa-cog"
+            }]
+        },
+        {
+            name: "Terms and Conditions",
+            classis: "active",
+            icon: "fa-pencil-square-o",
+            anchor: "terms-condition",
+            subnav: []
+        }
+    ];
 
     return {
         getNavigation: function () {

@@ -1,13 +1,17 @@
-<div ng-include="template.header" class="template header"></div>
+<!-- <div ng-include="template.header" class="template header"></div> -->
+<div class="add-header">
+	<span class="main bredcrums"> <a href="views/template/template.html">Home</a> / <a href="">Product Admin</a> / SetUp Company</span>
+</div>
+
 <div class="panel panel-default">
 	<div class="form-default">
 		<!--tabs for Excel Upload-->
 		<div class="custom-tabs">
 			<!--tabs for  Button Nav Excel Upload-->
-			<div class="tab">
+			<div class="tab cust-tab">
 				<ul class="nav nav-tabs bread-cum-holder">
 
-					<li class="btn btn-default btn-primary breadcrum {{tab.checkMe}}" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index)">{{tab.title}}</li>
+					<li class="btn btn-default breadcrum {{tab.checkMe}} {{currenttab[$index]}}" ng-repeat="tab in tabs track by $index" ng-click="activeTabs($index);makeTabActive($index)">{{tab.title}}</li>
 
 				</ul>
 
@@ -19,7 +23,7 @@
 					<uib-tab ng-repeat="tab in tabs track by $index" index="$index + 1" disable="tab.disabled">
 						<!--tabs title-->
 						<div class="mb-20">
-							<span class="main bredcrums">{{tab.title}}</span>
+							<!-- <span class="main bredcrums">{{tab.title}}</span> -->
 						</div>
 						<!--end tabs title-->
 						<!--upload button-->
@@ -258,7 +262,7 @@
 									<tbody>
 
 										<tr ng-repeat="logData in eData track by $index" ng-if="eData">
-											<td class="primary" style="color: #527d96;">{{logData.createdAt | date:'medium'}}
+											<td class="primary">{{logData.createdAt | date:'medium'}}
 											</td>
 											<td><a class="label label-success pointer" ui-sref="view-log({log_id:logData.id})"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
 										</tr>

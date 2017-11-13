@@ -1,7 +1,10 @@
 /* Bootstrap Variables Goes Here */
 
 // $brand-primary: #5397be !default;
-$brand-primary: #1c2b37 !default;
+// $brand-primary: #1c2b37 !default;
+$brand-primary: #448dc7 !default;
+// $brand-green:#009586 !default;
+$brand-green:black !default;
 $brand-success: #84ce3c !default;
 $brand-warning: #ffc600 !default;
 $brand-danger: #e53d0a !default;
@@ -133,6 +136,8 @@ header {
 .page-container .main-content {
     display: block;
     min-height: calc(100vh - 78px);
+    padding: 20px;
+    padding-top: 0;
 }
 
 .xe-widget.xe-counter {
@@ -831,7 +836,7 @@ header {
 
 .cust-details-logs {
     font-size: 14px;
-    color: #259586;
+    color: $brand-primary;
     font-weight: 400;
 }
 
@@ -1255,27 +1260,29 @@ footer.main-footer.sticky.footer-type-1 {
 }
 
 .btn-success {
-    background-color: #019586;
+    background-color: $brand-primary;
+    border: 0px;
 }
 
 .btn-success:hover {
-    background-color: #019586;
+    background-color: $brand-primary;
 }
 
 .label-success {
-    background-color: #019586 !important;
+    background-color: $brand-primary !important;
 }
 
 .btn-primary {
-    background-color: #019586 !important;
+    background-color: $brand-primary !important;
+    border: 0px;
 }
 
 .btn-info {
-    background-color: #259586;
+    background-color: $brand-primary;
 }
 
 .btn-info:hover {
-    background-color: #259586;
+    background-color: $brand-primary;
 }
 
 .control-label {
@@ -1400,4 +1407,117 @@ footer.main-footer.sticky.footer-type-1 {
     left: 200;
     width: 79%;
     right: 0; // overflow: scroll;
+}
+
+// new horizontal navbar
+.cust-nav {
+    background-color: $brand-primary;
+    height: auto;
+    .navbar-nav {
+        // margin-top: 5px;
+    }
+    .navbar-nav li a {
+        color: white;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        &:hover {
+            color: $brand-green;
+        }
+    }
+    .navbar-nav .active {
+        a {
+            color: white; // font-weight: bold;
+            background: $brand-green; // border-radius: 15px 15px 0% 0%;
+            &:hover {
+                color: white;
+                background: $brand-green;
+            }
+        }
+    }
+    .navbar-brand {
+        padding: 10px;
+        padding-left: 20px !important;
+        padding-right: 10px !important;
+    }
+    .logo {
+        width: 100%;
+    }
+    .dropdown-menu {
+        background: $brand-primary;
+        width: 200px; // padding: 10px;
+        padding: 0px;
+        .active a {
+            border-radius: 0px;
+        }
+        li a:hover {
+            color: $brand-green;
+            background: none;
+        }
+        li a {
+            padding: 8px;
+        }
+    }
+}
+
+.custom-info-menu {
+    float: right;
+    padding: 5px;
+    margin: 0px;
+    .userpic-32 {
+        float: left;
+    }
+    .info {
+        display: inline-block;
+        text-align: left;
+        margin-left: 10px;
+        color: white;
+    }
+    .dropdown:hover {
+        .user-profile-menu {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .user-profile-menu {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        top: 38px;
+        left: -20px;
+        width: auto;
+        transition: all 0.5s;
+        li {
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+.cust-tab {
+    .breadcrum:before {
+        content: none !important;
+    }
+    .breadcrum:after {
+        content: none !important;
+    }
+    .breadcrum {
+        background-color: white !important;
+        color: black !important;
+        min-width: 80px !important; // padding-left: 0px !important;
+        margin: 0px !important; // padding: 0px 2%;
+        padding: 15px 10px !important; // border-bottom: 4px solid black !important;
+    }
+    .bread-cum-holder {
+        white-space: normal !important;
+        text-align: center!important;
+        padding: 20px 0px !important;
+        border-bottom: 8px solid $brand-primary;
+        padding-bottom: 0px !important;
+    }
+    .check {
+        background-color: $brand-primary !important;
+        color: white !important;
+        border-radius: 15px 15px 0px 0px;
+    }
 }

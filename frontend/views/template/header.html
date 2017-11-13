@@ -1,4 +1,4 @@
-<nav class="navbar user-info-navbar header-higt mglneg31" role="navigation" ng-controller="headerCtrl">
+<!-- <nav class="navbar user-info-navbar header-higt mglneg31" role="navigation" ng-controller="headerCtrl">
 	<ul class="user-info-menu left-links list-inline list-unstyled">
 		<li class="" ng-click="sideMenu()">
 
@@ -37,4 +37,72 @@
 		</div>
 
 	</ul>
-</nav>
+</nav> -->
+
+<header ng-controller="headerCtrl">
+
+	<!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
+	<nav class="navbar navbar-default cust-nav">
+
+		<div class="container_fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+				<a class="navbar-brand" ui-sref="home"><img src="img/logo.png" class="logo" alt="logo" width="20"> </a>
+			</div>
+			<div class="collapse navbar-collapse text-center" id="nav-collapse">
+				<ul class="nav navbar-nav">
+					<li ng-repeat="menu in navigation track by $index" ui-sref-active="active">
+						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
+						<!-- <a ng-click="scrollTo(menu.link)" ng-if="menu.link">{{menu.name}}</a> -->
+						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
+						<a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
+						<ul class="dropdown-menu" ng-if="menu.subnav!='';">
+							<li ng-repeat="submenu in menu.subnav" ui-sref-active="active">
+								<a ui-sref="{{submenu.anchor}}" ng-if="submenu.anchor">{{submenu.name}}</a>
+								<a herf="{{submenu.link}}" ng-if="submenu.link">{{submenu.name}}</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+
+				<ul class="user-info-menu right-links list-inline list-unstyled custom-info-menu">
+					<li class="dropdown user-profile">
+						<a class="dropdown-toggle" data-toggle="dropdown">
+				<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
+				<div class="info">
+					Welcome, <br/>
+					<span style="text-transform:capitalize">{{userData.name}}</span>
+					</div>
+			</a>
+						<ul class="dropdown-menu user-profile-menu list-unstyled t50">
+
+							<li class="last">
+								<a ui-sref="profile">
+					<i class="fa-user"></i>Profile
+								</a>
+							</li>
+							<li class="last">
+								<a ng-click="logout()">
+						<i class="fa-lock"></i> Logout
+					</a>
+
+							</li>
+						</ul>
+					</li>
+
+					<div class="loaderHeader" ng-show="template.isLoader">
+						<img src="frontend/img/loading.gif" alt="" style="height:120px; width:120px;">
+					</div>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
