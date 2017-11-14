@@ -143,9 +143,8 @@ var model = {
                     } else {
                         value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData.transactionJson);
                     }
-                    console.log("value1----",value1);
-                    console.log("value2----",value2);
-                    
+                    // console.log("value1----",value1);
+                    // console.log("value2----",value2);
                     var conditionData = false;
                     if (value1 != null && value2 != null) {
                         if (rulesData.operators == '==') {
@@ -168,7 +167,6 @@ var model = {
                             comparionType: rulesData.logic
                         });
                     }
-                    console.log("arrForRuleTransaction",arrForRuleTransaction);
                     callback();
                 }, function (err, data) {
                     var response;
@@ -181,7 +179,7 @@ var model = {
                                 response = response && n.value;
                                 if (response == true) {
                                     Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
-                                       // callback(null, data);
+                                        // callback(null, data);
                                     });
                                 } else {
                                     //callback(null, "No Violation");
@@ -190,15 +188,23 @@ var model = {
                                 response = response || n.value;
                                 if (response == true) {
                                     Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
-                                       // callback(null, data);
+                                        // callback(null, data);
                                     });
                                 } else {
                                     //callback(null, "No Violation");
                                 }
                             }
+                        } else {
+                            if (response == true) {
+                                Transaction.addViolation(transactionData._id, ruleId, function (err, data) {
+                                    // callback(null, data);
+                                });
+                            } else {
+                                //callback(null, "No Violation");
+                            }
                         }
                     });
-                    callback(null,"working")
+                    callback(null, "working")
                 });
             }
         });
