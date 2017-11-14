@@ -152,13 +152,13 @@ myApp.factory('NavigationService', function ($http) {
                 icon: "fa-cog"
             }]
         },
-        {
-            name: "Terms and Conditions",
-            classis: "active",
-            icon: "fa-pencil-square-o",
-            anchor: "terms-condition",
-            subnav: []
-        }
+        // {
+        //     name: "Terms and Conditions",
+        //     classis: "active",
+        //     icon: "fa-pencil-square-o",
+        //     anchor: "terms-condition",
+        //     subnav: []
+        // }
     ];
 
     return {

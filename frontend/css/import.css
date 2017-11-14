@@ -39795,8 +39795,8 @@ footer.main-footer.sticky.footer-type-1 {
       background: black; }
   .cust-nav .navbar-brand {
     padding: 10px;
-    padding-left: 20px !important;
-    padding-right: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 20px !important;
     position: relative; }
   .cust-nav .logo {
     width: 100%; }
@@ -39867,7 +39867,8 @@ footer.main-footer.sticky.footer-type-1 {
   font-size: 12px;
   position: absolute;
   top: 8px;
-  right: 10px; }
+  right: 20px;
+  color: white; }
 
 #fancybox-loading,
 .fancybox-close,
