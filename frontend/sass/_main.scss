@@ -25,6 +25,8 @@ $brand-info: #2191d0 !default;
 body {
     // padding-top: 70px;
     background-color: #eee;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 img.loading {
@@ -657,6 +659,7 @@ header {
                 color: #fff;
                 padding-left: 25px;
                 margin: 10px 10px 0px 0;
+                font-size: 12px;
                 &:before {
                     content: '';
                     position: absolute;
@@ -920,7 +923,7 @@ a.dropdown-toggle {
 }
 
 footer.main-footer.sticky.footer-type-1 {
-    background-color: #1c2b37;
+    background-color: $brand-primary;
 }
 
 .footer-text {
@@ -950,7 +953,7 @@ footer.main-footer.sticky.footer-type-1 {
 }
 
 .rule-insidepanel {
-    background-color: rgba(37, 149, 134, 0.22);
+    background-color: rgba(67, 141, 199, 0.2);
     padding: 30px 20px;
     font-size: 13px;
     margin-bottom: 20px;
@@ -1362,7 +1365,7 @@ footer.main-footer.sticky.footer-type-1 {
     -moz-box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.75);
     box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.75);
     .tit {
-        background: rgba(37, 149, 134, 0.22);
+        background: rgb(220, 233, 244);
         margin-bottom: 15px;
         height: 30px;
         font-size: 14px;
@@ -1375,7 +1378,7 @@ footer.main-footer.sticky.footer-type-1 {
         width: 33%;
     }
     .blok {
-        border: 1px solid green;
+        border: 1px solid $brand-primary;
         min-height: 155px;
         padding: 10px;
         padding-left: 20px;
@@ -1393,7 +1396,7 @@ footer.main-footer.sticky.footer-type-1 {
     .sideindex {
         position: absolute;
         top: 0px;
-        background: green;
+        background: $brand-primary;
         padding: 3px;
         width: 15px;
         margin-left: -20px;
@@ -1417,6 +1420,7 @@ footer.main-footer.sticky.footer-type-1 {
         // margin-top: 5px;
     }
     .navbar-nav li a {
+        font-size: 12px;
         color: white;
         padding-left: 10px !important;
         padding-right: 10px !important;
@@ -1438,6 +1442,7 @@ footer.main-footer.sticky.footer-type-1 {
         padding: 10px;
         padding-left: 20px !important;
         padding-right: 10px !important;
+        position: relative;
     }
     .logo {
         width: 100%;
@@ -1485,7 +1490,7 @@ footer.main-footer.sticky.footer-type-1 {
         top: 38px;
         left: -20px;
         width: auto;
-        transition: all 0.5s;
+        transition: all 0.2s;
         li {
             a {
                 color: white;
@@ -1520,4 +1525,12 @@ footer.main-footer.sticky.footer-type-1 {
         color: white !important;
         border-radius: 15px 15px 0px 0px;
     }
+}
+
+.pos {
+    width: 0px;
+    font-size: 12px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
 }
