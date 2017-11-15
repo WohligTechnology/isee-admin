@@ -187,6 +187,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'ViewLogCtrl'
         })
+        .state('view-success-log', {
+            url: "/view-success-log/:log_id",
+            templateUrl: tempateURL,
+            controller: 'ViewSuccessLogCtrl'
+        })
         .state('company-admin', {
             url: "/company-admin",
             templateUrl: tempateURL,

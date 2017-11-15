@@ -58,7 +58,7 @@
 			</div>
 			<div class="collapse navbar-collapse text-center" id="nav-collapse">
 				<ul class="nav navbar-nav">
-					<li ng-repeat="menu in navigation track by $index" ui-sref-active="active">
+					<li ng-repeat="menu in navigation track by $index" ng-class="{active:isSubmenuActive(menu.subnav)}" ui-sref-active="active">
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<!-- <a ng-click="scrollTo(menu.link)" ng-if="menu.link">{{menu.name}}</a> -->
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>

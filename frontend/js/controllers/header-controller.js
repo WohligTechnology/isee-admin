@@ -61,5 +61,10 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
     $state.go("login");
   };
 
+
+  $scope.isSubmenuActive = function (submenu) {
+
+
+  };
   //End  jStorage for user
 });
