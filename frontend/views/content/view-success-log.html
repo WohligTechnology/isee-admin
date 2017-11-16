@@ -16,40 +16,39 @@
                 <div class="dataTables_wrapper table-responsive  container-fluid">
                     <table class="table table-hover">
                         <thead class="thead-inverse">
-                            <tr>
-                                <th>
-                                    Date
-                                </th>
-                                <th>
-                                    Success
-                                </th>
-
-                                <th>
-                                    Failure
-                                </th>
-
-                                <th>
-                                    Total Upload
-                                </th>
-                                <th>
-                                    Status
+                            <tr >
+                                <th ng-repeat="(value,internalVal) in successLog[0].logs.success" ng-if="!(value=='_id' || value=='__v' || value=='createdAt' || value=='updatedAt')">
+                                    {{value}}
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-
-
-                            <tr>
-                                <td>Demo1</td>
-                                <td>Demo2</td>
-                                <td>Demo3</td>
-                                <td>Demo4</td>
-                                <td>Demo5</td>
+                            <tr ng-repeat="logs in successLog track by $index" >
+                                <td ng-repeat="(value,internalVal) in logs.logs.success" ng-if="!(value=='_id' || value=='__v' || value=='createdAt' || value=='updatedAt')">{{internalVal}}</td>
                             </tr>
 
 
                         </tbody>
                     </table>
+                    <div class="row">
+                        <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
+                                                    " items-per-page="maxRow " ng-model="currentPage " max-size="10" class="pagination-sm
+                                                    " boundary-links="true " force-ellipses="true ">
+                        </ul>
+                        <!--<div class="col-xs-12">
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous"><a href="#">Previous</a></li>
+                                    <li class="paginate_button active" tabindex="0"><a href="#">1</a></li>
+                                    <li class="paginate_button " tabindex="0"><a href="#">2</a></li>
+                                    <li class="paginate_button next" tabindex="0"><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="dataTables_info">Showing 1 to 10 of 57 entries</div>
+                        </div>-->
+                    </div>
                 </div>
             </div>
 

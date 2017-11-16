@@ -310,5 +310,67 @@
             });
         },
 
+        singleSuccessLogHistory: function (data, callback) {
+            AllLogs.aggregate([{
+                    $match: {
+                        "_id": ObjectId(data._id)
+                    }
+                }, {
+                    $unwind: {
+                        path: "$logs",
+                        preserveNullAndEmptyArrays: false
+                    }
+                }, {
+                    $match: {
+                        "logs.error": null
+                    }
+                },
+                {
+                    $project: {
+                        "logs.success": 1
+                    }
+                },
+                {
+                    $skip: (data.pageNo - 1) * Config.maxRow
+                },
+                {
+                    $limit: 10
+                }
+            ], function (err, found) {
+                if (err || _.isEmpty(found)) {
+                    callback(err, []);
+                } else {
+                    callback(null, found);
+                }
+            });
+        },
+
+        singleSuccessLogHistoryCount: function (data, callback) {
+            AllLogs.aggregate([{
+                    $match: {
+                        "_id": ObjectId(data._id)
+                    }
+                }, {
+                    $unwind: {
+                        path: "$logs",
+                        preserveNullAndEmptyArrays: false
+                    }
+                }, {
+                    $match: {
+                        "logs.error": null
+                    }
+                },
+                {
+                    $count: "logs"
+                }
+            ], function (err, found) {
+                if (err || _.isEmpty(found)) {
+                    callback(err, []);
+                } else {
+                    callback(null, found);
+                }
+            });
+        },
+
     };
     module.exports = _.assign(module.exports, exports, model);
