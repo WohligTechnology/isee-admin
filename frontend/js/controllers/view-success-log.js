@@ -4,8 +4,6 @@ myApp.controller('ViewSuccessLogCtrl', function ($scope, TemplateService, Naviga
     TemplateService.class = "Success Log"; //This is the Class of Page
     $scope.navigation = NavigationService.getNavigation();
     $scope.noData = true;
-
-
-
+    $scope.log_id = $stateParams.log_id;
 
 })

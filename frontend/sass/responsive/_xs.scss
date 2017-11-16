@@ -1,3 +1,13 @@
  @media (max-width: $screen-xs-max) {
      // Mobile
+     .custom-info-menu {
+         width: 100%;
+     }
+     .navbar-collapse.in {
+         overflow-y: unset;
+         height: auto;
+     }
+     .add-header {
+         margin-right: -20px;
+     }
  }

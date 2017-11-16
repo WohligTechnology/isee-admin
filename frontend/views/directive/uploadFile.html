@@ -27,10 +27,10 @@
     </div>
     <br ng-show="isMultiple">
     <button ng-show="isMultiple" class="btn btn-danger btn-outline btn-small create-btn" ng-click="clearOld()">CLEAR FILES</button>
-    <span class="label label-success" ng-if="uploadStatus == 'uploaded'" ng-show="!isMultiple">Document Uploaded - {{image.file.name}}</span>
-    <span class="label label-success" ng-if="uploadStatus == 'uploaded'" ng-show="isMultiple">Document Uploaded - {{image.length}}</span>
-    <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="!isMultiple">Uploading Document {{image.file.name}}</span>
-    <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="isMultiple">Uploading Document {{image.length}}</span>
+    <span class="upload-status label label-success" ng-if="uploadStatus == 'uploaded'" ng-show="!isMultiple">Document Uploaded - {{image.file.name}}</span>
+    <span class="upload-status label label-success" ng-if="uploadStatus == 'uploaded'" ng-show="isMultiple">Document Uploaded - {{image.length}}</span>
+    <span class="upload-status label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="!isMultiple">Uploading Document {{image.file.name}}</span>
+    <span class="upload-status label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="isMultiple">Uploading Document {{image.length}}</span>
 </div>
 <div id="fileprogressbar" class="progress active" ng-style="{'display':displayprogress}">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{fileprogressbar}}%"

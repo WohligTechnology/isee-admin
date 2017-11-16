@@ -1,15 +1,12 @@
-myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope) {
+myApp.controller('headerCtrl', function ($scope, TemplateService, NavigationService, $state, $scope, $timeout) {
   $scope.template = TemplateService;
+  $scope.navigartion_mobile = NavigationService.getNavigartionMobile();
   $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
   $.fancybox.close(true);
-
-  //submenu
   $scope.oneAtATime = true;
-
   $scope.classNg = "open";
-
   $scope.openiconmenu = function () {
     $scope.classNg = "menucollapse";
     $scope.sideMenu();
@@ -62,9 +59,15 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, $state, $scope
   };
 
 
-  $scope.isSubmenuActive = function (submenu) {
 
 
-  };
-  //End  jStorage for user
+
+
+
+  // ---------to add active class to nav while selecting sub nav-----------
+  $timeout(function () {
+    console.log("time out");
+    $(".submenu-active").closest(".menu").addClass("active")
+  }, 500);
+
 });

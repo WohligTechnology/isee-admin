@@ -22,14 +22,14 @@
         <option>brance 5</option>
         <option>brance 10</option>
         <option>brance 11</option> -->
-        <option ng-repeat="x in assigned" ng-value="x">
+        <option ng-repeat="x in assigned track by $index" ng-value="x">
             {{x}}
         </option>
                       </select>
 
                 </div>
                 <div class="col-sm-1 ab-arrow">
-                    <button class="btn label label-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i></button><br/>
+                    <button class="btn label label-warning" ng-click="moveleft()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button><br/>
                     <button class="btn label label-warning" ng-click="moveright()"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
 

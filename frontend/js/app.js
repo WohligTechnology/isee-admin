@@ -206,6 +206,41 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/reports",
             templateUrl: tempateURL,
             controller: 'ReportsCtrl'
+        })
+        .state('license-manager', {
+            url: "/license-manager",
+            templateUrl: tempateURL,
+            controller: 'LicenseCtrl'
+        })
+        .state('setup-user', {
+            url: "/setup-user",
+            templateUrl: tempateURL,
+            controller: 'SetupUserCtrl'
+        })
+        .state('branch-setup', {
+            url: "/branch-setup",
+            templateUrl: tempateURL,
+            controller: 'BranchSetupCtrl'
+        })
+        .state('what-if-analysis', {
+            url: "/what-if-analysis",
+            templateUrl: tempateURL,
+            controller: 'WhatIfAnalysisCtrl'
+        })
+        .state('case-management', {
+            url: "/case-management",
+            templateUrl: tempateURL,
+            controller: 'CaseManagementCtrl'
+        })
+        .state('help', {
+            url: "/help",
+            templateUrl: tempateURL,
+            controller: 'HelpCtrl'
+        })
+        .state('company-role-administration', {
+            url: "/company-role-administration",
+            templateUrl: tempateURL,
+            controller: 'CompanyRoleAdminCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);

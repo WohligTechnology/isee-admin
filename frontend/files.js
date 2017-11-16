@@ -79,5 +79,12 @@ module.exports = [
   'frontend/js/controllers/company-admin.js',
   'frontend/js/controllers/rules-admin.js',
   'frontend/js/controllers/reports.js',
-  'frontend/js/controllers/view-success-log.js'
+  'frontend/js/controllers/view-success-log.js',
+  'frontend/js/controllers/license-manager.js',
+  'frontend/js/controllers/setup-user.js',
+  'frontend/js/controllers/branch-setup.js',
+  'frontend/js/controllers/what-if-analysis.js',
+  'frontend/js/controllers/case-management.js',
+  'frontend/js/controllers/help.js',
+  'frontend/js/controllers/company-role-administration.js'
 ];

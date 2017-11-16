@@ -39777,12 +39777,12 @@ footer.main-footer.sticky.footer-type-1 {
     padding-right: 10px !important; }
     .cust-nav .navbar-nav li a:hover {
       color: black; }
-  .cust-nav .navbar-nav .active a {
+  .cust-nav .navbar-nav .active > a {
     color: white;
-    background: black; }
-    .cust-nav .navbar-nav .active a:hover {
+    background: #0f5084; }
+    .cust-nav .navbar-nav .active > a:hover {
       color: white;
-      background: black; }
+      background: #0f5084; }
   .cust-nav .navbar-brand {
     padding: 10px;
     padding-left: 10px !important;
@@ -39801,6 +39801,8 @@ footer.main-footer.sticky.footer-type-1 {
       background: none; }
     .cust-nav .dropdown-menu li a {
       padding: 8px; }
+  .cust-nav .submenu-active a {
+    background: #0f5084 !important; }
 
 .custom-info-menu {
   float: right;
@@ -39855,10 +39857,18 @@ footer.main-footer.sticky.footer-type-1 {
 .pos {
   width: 0px;
   font-size: 12px;
+  vertical-align: super;
   position: absolute;
   top: 8px;
   right: 20px;
   color: white; }
+
+.upload-status {
+  display: block;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin-top: 10px; }
 
 #fancybox-loading,
 .fancybox-close,
@@ -39899,3 +39909,41 @@ footer.main-footer.sticky.footer-type-1 {
 
 .fancybox-nav.fancybox-prev span {
   background-image: url(../img/prev.png); }
+
+@media (max-width: 991px) {
+  .cust-nav .navbar-brand {
+    padding-right: 0px !important; }
+  .cust-nav .logo {
+    width: 60%;
+    display: inline-block; }
+  .cust-nav .navbar-nav li a {
+    font-size: 9px;
+    padding-left: 5px !important;
+    padding-right: 5px !important; }
+  .navbar-header {
+    width: 85px; }
+  .navbar-brand {
+    width: 100px; }
+  .pos {
+    right: 35px;
+    font-size: 9px; }
+  .userpic-32 {
+    width: 25px; }
+  .custom-info-menu .info {
+    font-size: 9px; }
+  a.dropdown-toggle span {
+    font-size: 9px; }
+  .navbar-collapse {
+    padding-right: 0px;
+    padding-left: 0px; }
+  .custom-info-menu {
+    padding-top: 12px; } }
+
+@media (max-width: 767px) {
+  .custom-info-menu {
+    width: 100%; }
+  .navbar-collapse.in {
+    overflow-y: unset;
+    height: auto; }
+  .add-header {
+    margin-right: -20px; } }

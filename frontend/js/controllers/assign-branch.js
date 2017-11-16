@@ -12,12 +12,22 @@ myApp.controller('AssignBranchCtrl', function ($scope, TemplateService, Navigati
         b: null
     }
     $scope.moveleft = function () {
-
+        console.log("move left");
+        if ($scope.select.b) {
+            $scope.assigned = _.concat($scope.assigned, $scope.select.b);
+            $scope.assigned = _.uniq($scope.assigned);
+        }
     }
     $scope.moveright = function () {
-        console.log($scope.select.a, "select a");
-        // console.log(_.indexOf($scope.assigned, $scope.select.a), "moeright");
-        // _.slice();
+
+        console.log("move right")
+        if ($scope.select.a != null) {
+            console.log($scope.select.a[0], "select a");
+            $scope.assigned = _.pull($scope.assigned, $scope.select.a[0]);
+
+            // console.log(_.indexOf($scope.assigned, $scope.select.a), "moeright");
+            // _.slice();
+        }
     }
 
 })

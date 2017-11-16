@@ -3,6 +3,7 @@
 // $brand-primary: #5397be !default;
 // $brand-primary: #1c2b37 !default;
 $brand-primary: #448dc7 !default;
+$nav-highlight:#0f5084 !default;
 // $brand-green:#009586 !default;
 $brand-green:black !default;
 $brand-success: #84ce3c !default;
@@ -1426,12 +1427,12 @@ footer.main-footer.sticky.footer-type-1 {
         }
     }
     .navbar-nav .active {
-        a {
+        &>a {
             color: white; // font-weight: bold;
-            background: $brand-green; // border-radius: 15px 15px 0% 0%;
+            background: $nav-highlight; // border-radius: 15px 15px 0% 0%;
             &:hover {
                 color: white;
-                background: $brand-green;
+                background: $nav-highlight;
             }
         }
     }
@@ -1457,6 +1458,11 @@ footer.main-footer.sticky.footer-type-1 {
         }
         li a {
             padding: 8px;
+        }
+    }
+    .submenu-active {
+        a {
+            background: $nav-highlight !important
         }
     }
 }
@@ -1527,8 +1533,15 @@ footer.main-footer.sticky.footer-type-1 {
 .pos {
     width: 0px;
     font-size: 12px;
+    vertical-align: super;
     position: absolute;
     top: 8px;
     right: 20px;
     color: white;
+}
+
+.upload-status {
+    display: block;
+    width: min-content;
+    margin-top: 10px;
 }

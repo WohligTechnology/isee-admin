@@ -1,6 +1,24 @@
 var uploadurl = adminurl + "upload/";
 
 myApp.factory('NavigationService', function ($http) {
+    var navigartion_mobile = [{
+            name: "Dashboard",
+            classis: "active",
+            anchor: "dashboard",
+            // hasSub: "has-sub",
+            icon: "fa-tachometer",
+            subnav: []
+        },
+        {
+            name: "Predictive Dashboard",
+            classis: "active",
+            anchor: "predictive-dashboard",
+            icon: "fa-tachometer",
+            subnav: []
+        }
+    ];
+
+
     var navigation = [{
             name: "Dashboard",
             classis: "active",
@@ -28,7 +46,7 @@ myApp.factory('NavigationService', function ($http) {
             }, {
                 name: "License Manager",
                 classis: "active",
-                anchor: "coming-soon",
+                anchor: "license-manager",
                 icon: "fa-cog"
             }, {
                 name: "User Admin",
@@ -50,18 +68,18 @@ myApp.factory('NavigationService', function ($http) {
             subnav: [{
                     name: "Setup User",
                     classis: "active",
-                    anchor: "coming-soon",
+                    anchor: "setup-user",
                     icon: "fa-cog"
                 },
                 {
                     name: "Role Administration",
                     classis: "active",
-                    anchor: "role-administration",
+                    anchor: "company-role-administration",
                     icon: "fa-cog"
                 }, {
                     name: "Store/Branch Setup",
                     classis: "active",
-                    anchor: "customer-detail",
+                    anchor: "branch-setup",
                     icon: "fa-cog"
                 }
             ]
@@ -79,7 +97,7 @@ myApp.factory('NavigationService', function ($http) {
                 }, {
                     name: "What-if-Analysis",
                     classis: "active",
-                    anchor: "coming-soon",
+                    anchor: "what-if-analysis",
                     icon: "fa-cog"
                 }, {
                     name: "Rules Report",
@@ -138,7 +156,7 @@ myApp.factory('NavigationService', function ($http) {
             name: "Case Management",
             classis: "active",
             icon: "fa-pencil-square-o",
-            anchor: "coming-soon",
+            anchor: "case-management",
             subnav: []
         }, {
             name: "Help",
@@ -148,7 +166,7 @@ myApp.factory('NavigationService', function ($http) {
             subnav: [{
                 name: "Help Documentation",
                 classis: "active",
-                anchor: "coming-soon",
+                anchor: "help",
                 icon: "fa-cog"
             }]
         },
@@ -165,7 +183,9 @@ myApp.factory('NavigationService', function ($http) {
         getNavigation: function () {
             return navigation;
         },
-
+        getNavigartionMobile: function () {
+            return navigartion_mobile;
+        },
         apiCall: function (url, formData, callback) {
             $http.post(adminurl + url, formData).then(function (data) {
                 data = data.data;
