@@ -57,7 +57,7 @@
 					<i class="fa fa-registered pos" aria-hidden="true"></i> </a>
 			</div>
 			<div class="collapse navbar-collapse text-center" id="nav-collapse">
-				<ul class="nav navbar-nav hidden-xs">
+				<ul class="nav navbar-nav hidden-xs hidden-sm">
 					<li class="menu" ng-repeat="menu in navigation track by $index" ui-sref-active="active">
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
@@ -73,7 +73,7 @@
 				</ul>
 
 				<!-- for mobile nav view -->
-				<ul class="nav navbar-nav visible-xs">
+				<ul class="nav navbar-nav visible-xs visible-sm">
 					<li class="menu" ng-repeat="menu in navigartion_mobile track by $index" ui-sref-active="active">
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>

@@ -39910,35 +39910,6 @@ footer.main-footer.sticky.footer-type-1 {
 .fancybox-nav.fancybox-prev span {
   background-image: url(../img/prev.png); }
 
-@media (max-width: 991px) {
-  .cust-nav .navbar-brand {
-    padding-right: 0px !important; }
-  .cust-nav .logo {
-    width: 60%;
-    display: inline-block; }
-  .cust-nav .navbar-nav li a {
-    font-size: 9px;
-    padding-left: 5px !important;
-    padding-right: 5px !important; }
-  .navbar-header {
-    width: 85px; }
-  .navbar-brand {
-    width: 100px; }
-  .pos {
-    right: 35px;
-    font-size: 9px; }
-  .userpic-32 {
-    width: 25px; }
-  .custom-info-menu .info {
-    font-size: 9px; }
-  a.dropdown-toggle span {
-    font-size: 9px; }
-  .navbar-collapse {
-    padding-right: 0px;
-    padding-left: 0px; }
-  .custom-info-menu {
-    padding-top: 12px; } }
-
 @media (max-width: 767px) {
   .custom-info-menu {
     width: 100%; }
