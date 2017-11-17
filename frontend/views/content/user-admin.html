@@ -4,11 +4,13 @@
         <a href="views/template/template.html">Home</a> / User Admin
         </span>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-default panel-rad">
     <div class="panel-heading">
-        <div class="add-title col-md-6">
-            <span class="main bredcrums">User Admin</span>
-        </div>
+        <div class="spacing-heading">
+                <div class="add-title col-md-6">
+                    <h4 class="main bredcrums">User Admin</h4>
+                </div>
+            </div>
     </div>
     <div class="panel-body useradmin-panel">
         <div class="form-default min-h100">
@@ -21,7 +23,7 @@
                                 <div class="col-sm-3">
                                     <label class="control-label">Company</label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <ui-select name="company" ng-model="selectedcompany" on-select="" required>
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
@@ -39,7 +41,7 @@
                                 <div class="col-sm-3">
                                     <label class="control-label">Role </label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <ui-select name="Role" ng-model="selectedrole" on-select="" required>
                                         <ui-select-match placeholder="Select">
                                             <span>{{$select.selected}}</span>
@@ -56,7 +58,7 @@
                                 <div class="col-sm-3">
                                     <label class="control-label">User ID </label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <input type="text" class="form-control" ng-model="email" required>
                                 </div>
                             </div>
@@ -66,7 +68,7 @@
                                 <div class="col-sm-3">
                                     <label class="control-label">Password </label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <input type="password" class="form-control" id="passowrd" ng-model="password" required>
                                 </div>
                             </div>
