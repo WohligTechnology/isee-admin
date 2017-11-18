@@ -6,6 +6,11 @@
     <span class="main bredcrums"> <a href="views/template/template.html">Home</a> / <a href="view-rules">Rule List</a> / DRL Rules</span>
 </div>
 <!-- End header bredcrums -->
+
+
+
+<!-- preview with fixed position -->
+
 <div class="preview " ng-if="drlRule.choices" ng-class="{'preview-toggle':previewToggle}">
     <div class="preview-inside">
 
@@ -25,8 +30,8 @@
                 <div class="logic" ng-if="x.logic">{{x.logic}}</div>
             </div>
         </div>
-
     </div>
+</div>
 </div>
 <div class="panel panel-default">
     <div class="form-default min-h100">
