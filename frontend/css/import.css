@@ -39133,7 +39133,7 @@ h4 {
   margin-bottom: 20px; }
 
 .mt-10 {
-  margin-top: 10px; }
+  margin-top: 40px; }
 
 .min-h100 {
   min-height: 100vh;
@@ -39416,7 +39416,10 @@ h4 {
 
 .cust-details-logs {
   color: #0057c7;
-  font-family: LatoBold; }
+  font-family: LatoBold;
+  margin: 0px;
+  padding: 0px;
+  color: white; }
 
 .loadermapping {
   text-align: center; }
@@ -39806,7 +39809,8 @@ footer.main-footer.sticky.footer-type-1 {
       background: #0f5084; }
   .cust-nav .navbar-nav .active > a {
     color: white;
-    background: #0f5084; }
+    background: #0057c7;
+    border-bottom: 3px solid #31c672; }
     .cust-nav .navbar-nav .active > a:hover {
       color: white;
       background: #0f5084; }
@@ -39820,6 +39824,7 @@ footer.main-footer.sticky.footer-type-1 {
   .cust-nav .dropdown-menu {
     min-width: 100px;
     font-size: 14px;
+    border-radius: 0px;
     background: #0057c7;
     padding: 0px; }
     .cust-nav .dropdown-menu .active a {
@@ -39913,6 +39918,15 @@ footer.main-footer.sticky.footer-type-1 {
   width: -moz-min-content;
   width: min-content;
   margin-top: 10px; }
+
+.floatright {
+  float: right; }
+
+.horizontal_bar {
+  background: #0057c7;
+  color: white;
+  padding: 8px;
+  padding-left: 20px; }
 
 #fancybox-loading,
 .fancybox-close,

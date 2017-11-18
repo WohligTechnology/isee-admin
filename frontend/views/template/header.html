@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-				<a class="navbar-brand" ui-sref="dashboard"><img src="img/logo.png" class="logo" alt="logo" width="20">
+				<a class="navbar-brand" ui-sref="dashboard"><img src="img/logo.png" class="logo img-responsive" alt="logo" width="20">
 					<i class="fa fa-registered pos" aria-hidden="true"></i> </a>
 			</div>
 			<div class="collapse navbar-collapse text-center" id="nav-collapse">
@@ -92,25 +92,25 @@
 					<li class="dropdown user-profile">
 						<a class="dropdown-toggle" data-toggle="dropdown">
 							<div class="user-img">
-									<img src="img/user.png" alt="user-image" class="img-responsive img-inline userpic-32" width="40" /></div>
-				<div class="info">
-					Welcome<br>
-					<span style="text-transform:capitalize">{{userData.name}}</span><i class="fa fa-caret-down" aria-hidden="true"></i>
-					</div>
-			</a>
+								<img src="img/user.png" alt="user-image" class="img-responsive img-inline userpic-32" width="40" /></div>
+							<div class="info">
+								Welcome<br>
+								<span style="text-transform:capitalize">{{userData.name}}</span><i class="fa fa-caret-down" aria-hidden="true"></i>
+							</div>
+						</a>
 						<ul class="dropdown-menu user-profile-menu list-unstyled t50">
 
 							<li class="last">
 								<a ui-sref="profile">
-					<!-- <i class="fa-user"></i> -->
-					Profile
+									<!-- <i class="fa-user"></i> -->
+									Profile
 								</a>
 							</li>
 							<li class="last">
 								<a ng-click="logout()">
-						<!-- <i class="fa-lock"></i>  -->
-						Logout
-					</a>
+									<!-- <i class="fa-lock"></i>  -->
+									Logout
+								</a>
 
 							</li>
 						</ul>
