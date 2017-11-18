@@ -177,10 +177,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'ProductAdminCtrl'
         })
-        .state('rules-admin-transaction', {
-            url: "/rules-admin-transaction",
+        .state('rules-admin-violations', {
+            url: "/rules-admin-violations",
             templateUrl: tempateURL,
-            controller: 'RulesAdminTransactionCtrl'
+            controller: 'RulesAdminViolationsCtrl'
         })
         .state('view-log', {
             url: "/view-log/:log_id",

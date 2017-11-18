@@ -106,9 +106,9 @@ myApp.factory('NavigationService', function ($http) {
                     icon: "fa-cog"
                 },
                 {
-                    name: "Transaction",
+                    name: "Violations",
                     classis: "active",
-                    anchor: "rules-admin-transaction",
+                    anchor: "rules-admin-violations",
                     icon: "fa-cog"
                 }
             ]

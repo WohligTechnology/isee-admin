@@ -74,7 +74,7 @@ module.exports = [
   'frontend/js/controllers/profile.js',
   'frontend/js/controllers/role-administration.js',
   'frontend/js/controllers/product-admin.js',
-  'frontend/js/controllers/rules-admin-transaction.js',
+  'frontend/js/controllers/rules-admin-violations.js',
   'frontend/js/controllers/view-log.js',
   'frontend/js/controllers/company-admin.js',
   'frontend/js/controllers/rules-admin.js',
