@@ -91,22 +91,25 @@
 				<ul class="user-info-menu right-links list-inline list-unstyled custom-info-menu">
 					<li class="dropdown user-profile">
 						<a class="dropdown-toggle" data-toggle="dropdown">
-				<img src="img/template/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="40" />
+							<div class="user-img">
+									<img src="img/user.png" alt="user-image" class="img-responsive img-inline userpic-32" width="40" /></div>
 				<div class="info">
-					Welcome, <br/>
-					<span style="text-transform:capitalize">{{userData.name}}</span>
+					Welcome<br>
+					<span style="text-transform:capitalize">{{userData.name}}</span><i class="fa fa-caret-down" aria-hidden="true"></i>
 					</div>
 			</a>
 						<ul class="dropdown-menu user-profile-menu list-unstyled t50">
 
 							<li class="last">
 								<a ui-sref="profile">
-					<i class="fa-user"></i>Profile
+					<!-- <i class="fa-user"></i> -->
+					Profile
 								</a>
 							</li>
 							<li class="last">
 								<a ng-click="logout()">
-						<i class="fa-lock"></i> Logout
+						<!-- <i class="fa-lock"></i>  -->
+						Logout
 					</a>
 
 							</li>

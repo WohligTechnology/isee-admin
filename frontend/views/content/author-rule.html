@@ -32,21 +32,25 @@
         </div>
     </div>
 </div>
-</div>
-<div class="panel panel-default">
+
+<div class="panel panel-default panel-rad">
     <div class="form-default min-h100">
         <div class="row">
             <div class="col-sm-12">
                 <!--form-divider-->
                 <form action="" name="formRule">
                     <div class="row">
-                        <div class="col-sm-12  ">
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="add-title">
+                                <h4 class="main bredcrums">Listing Library</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+
                             <div class="pull-right">
                                 <button class="btn btn-info btn-md" ui-sref="view-rules">  
-                                     <i class="fa fa-eye"></i>View</button>
-                            </div>
-                            <div class="add-title">
-                                <span class="main bredcrums">Listing Library</span>
+                                             <i class="fa fa-eye"></i>View</button>
                             </div>
                         </div>
                     </div>
@@ -57,7 +61,7 @@
                                 <div class="col-sm-3">
                                     <label class=" control-label">Name</label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <input type="text" ng-model="drlRule.name" class="form-control">
                                     <div class="pull-right" ng-repeat="(field,value) in formRule.name.$error" ng-show="formRule.name.$touched">
                                         <span class="label label-danger" ng-if="field=='required' && value">Please Select Show Results When</span>
@@ -85,7 +89,7 @@
                                     <div class="col-sm-3">
                                         <label class=" control-label">Tables</label>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                         <ui-select ng-model="choice.model" on-select="addAllModel(choice.model,$index)">
                                             <ui-select-match placeholder="Select">
                                                 <span>{{$select.selected}}</span>
@@ -102,7 +106,7 @@
                                     <div class="col-sm-3">
                                         <label class=" control-label">Table Fields</label>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                         <ui-select ng-model="choice.field" name="country" on-select="addModelField(choice.field,$index)" theme="bootstrap" sortable="true">
                                             <ui-select-match placeholder="Select">
                                                 <span>{{$select.selected}}</span>
@@ -119,7 +123,7 @@
                                     <div class="col-sm-3">
                                         <label class=" control-label">Select Operator</label>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                         <ui-select ng-model="choice.operators" on-select="addOperator(choice.operators,$index)" name="choice" theme="bootstrap" sortable="true">
                                             <ui-select-match placeholder="Select Operator">
                                                 <span>{{$select.selected}}</span>
@@ -146,7 +150,7 @@
                         </div> -->
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-3">
+                                    <div class="col-sm-9 col-sm-offset-3">
                                         <div class="radio" ng-init="choice.optCons='true'">
                                             <!-- ng-checked="choice.constant!=null"  -->
                                             <label><input type="radio" name="element{{$index}}" value="true"  ng-model="choice.optCons" ng-click="choice.table=''">Constant</label>
@@ -210,17 +214,14 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-12 ">
+                            <div class="col-sm-6">
                                 <div class="mt20">
                                     <a class="btn btn-primary" ng-click="addNewChoice();">
                                         <i class="fa fa-plus" aria-hidden="true"></i> Add Condition </a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-12">
+
+                            <div class="col-sm-6">
                                 <div class="mt20 text-right">
                                     <a ui-sref="view-rules" class="btn btn-primary">Cancel</a>
                                     <a class="btn btn-primary" ng-click="drlSave(drlRule)">Save</a>
