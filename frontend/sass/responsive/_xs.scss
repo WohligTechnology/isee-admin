@@ -10,4 +10,20 @@
      .add-header {
          margin-right: -20px;
      }
+     .cust-nav .navbar-nav .active>a {
+         background: #0d4a98;
+         border-bottom: none;
+     }
+     .nav>li {
+         text-align: left;
+         padding-left: 10px;
+     }
+     .min-h100 {
+         margin: 0px;
+     }
+     .useradmin-panel {
+         input[type="file"] {
+             width: 100%
+         }
+     }
  }

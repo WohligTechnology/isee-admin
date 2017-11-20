@@ -2,7 +2,7 @@
 
 <div class="add-header">
     <span class="main bredcrums"> 
-        <a href="views/template/template.html">Home</a> / Rules Admin / Violations
+        <a href="">Home</a> / <a href="">Rules Admin</a> / Violations
         </span>
 </div>
 
@@ -26,7 +26,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="tranData in transactionData track by $index">
+                    <tr ng-repeat="tranData in transactionData track by $index" ui-sref="view-violated-rule({id:tranData._id})">
+
                         <td>{{tranData.createdAt}}</td>
                         <!-- <td ng-repeat="rules in tranData.violations track by $index">
                             {{rules.name}}

@@ -1,6 +1,7 @@
 myApp.controller('headerCtrl', function ($scope, TemplateService, NavigationService, $state, $scope, $timeout) {
   $scope.template = TemplateService;
-  $scope.navigartion_mobile = NavigationService.getNavigartionMobile();
+  $scope.navigation_mobile = NavigationService.getNavigationMobile();
+  $scope.navigation_tab = NavigationService.getNavigationTab();
   $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
@@ -66,7 +67,7 @@ myApp.controller('headerCtrl', function ($scope, TemplateService, NavigationServ
 
   // ---------to add active class to nav while selecting sub nav-----------
   $timeout(function () {
-    console.log("time out");
+    // console.log("time out");
     $(".submenu-active").closest(".menu").addClass("active")
   }, 500);
 

@@ -1,8 +1,11 @@
 <!-- <div ng-include="template.header" class="template header"></div> -->
 
 <div class="add-header">
-    <span class="main bredcrums"> 
-        <a href="views/template/template.html">Home</a> / <a ui-sref="view-rules">Rules List</a> / <a ui-sref="view-rules">Violated Transactions</a> / View Violated Transactions
+    <span class="main bredcrums" ng-if="prevroute=='violatedRules'"> 
+        <a href="">Home</a> / <a ui-sref="view-rules">Rules List</a> / <a ui-sref="view-rules">Violated Transactions</a> / View Violated Transactions
+        </span>
+    <span class="main bredcrums" ng-if="prevroute=='rules-admin-violations'"> 
+        <a href="">Home</a> / <a href="">Rules Admin </a> / <a ui-sref="rules-admin-violations">Violations</a> / View Violated Transactions
         </span>
 </div>
 <div class="panel panel-default">
@@ -14,7 +17,7 @@
     <div class="panel-body column-2" style="padding-top:0px;">
         <!-- on clicking violated rule -->
         <div class="vio-table col-md-12">
-            <span>Company Table</span>
+            <span>Company</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -31,7 +34,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Location Table</span>
+            <span>Location</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -49,7 +52,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Till Register Table</span>
+            <span>Till Register</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -67,7 +70,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Customer Table</span>
+            <span>Customer</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -85,7 +88,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Calendar Table</span>
+            <span>Calendar</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -108,7 +111,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Crm Table</span>
+            <span>Crm</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -126,7 +129,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Company Contact Table</span>
+            <span>Company Contact</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -144,7 +147,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Item Table</span>
+            <span>Item</span>
 
             <table class="table table-hover table-responsive">
                 <thead>
@@ -162,7 +165,7 @@
         </div>
 
         <div class="vio-table col-md-12">
-            <span>Company Info Table</span>
+            <span>Company Info</span>
 
             <table class="table table-hover table-responsive">
                 <thead>

@@ -4,6 +4,9 @@
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
 
+     //to keep track of prev page 
+     $.jStorage.set("prev_page", "violatedRules");
+
      //pagination
 
      var i = 0;

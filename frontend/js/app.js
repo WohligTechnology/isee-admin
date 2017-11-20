@@ -108,7 +108,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'TransitionCtrl'
         })
         .state('customer-detail', {
-            url: "/customer-detail",
+            url: "/setup-company",
             templateUrl: tempateURL,
             controller: 'CustomerDetailCtrl'
         })

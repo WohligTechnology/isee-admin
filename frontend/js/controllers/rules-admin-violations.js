@@ -6,6 +6,8 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
     $scope.navigation = NavigationService.getNavigation();
     // $('#multiselect').multiselect();
 
+    //to keep track of prev page 
+    $.jStorage.set("prev_page", "rules-admin-violations");
     //pagination
 
     var i = 0;

@@ -4,7 +4,8 @@ myApp.controller('ViewViolatedCtrl', function ($scope, TemplateService, Navigati
     TemplateService.class = "view-violated-rule"; //This is the Class of Page
     $scope.navigation = NavigationService.getNavigation();
 
-
+    $scope.prevroute = $.jStorage.get("prev_page");
+    console.log($.jStorage.get("prev_page"));
     var getTransactionData = {};
     getTransactionData.id = $stateParams.id;
     NavigationService.apiCall("Transaction/getViolatedTransaction", getTransactionData, function (data) {

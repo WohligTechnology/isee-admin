@@ -1,7 +1,8 @@
 var uploadurl = adminurl + "upload/";
 
 myApp.factory('NavigationService', function ($http) {
-    var navigartion_mobile = [{
+
+    var navigation_tab = [{
             name: "Dashboard",
             classis: "active",
             anchor: "dashboard",
@@ -14,6 +15,105 @@ myApp.factory('NavigationService', function ($http) {
             classis: "active",
             anchor: "predictive-dashboard",
             icon: "fa-tachometer",
+            subnav: []
+        }, {
+            name: "Reports",
+            classis: "active",
+            icon: "fa-pencil-square-o",
+            // anchor: "reports"
+            hasSub: "has-sub",
+            subnav: [{
+                name: "Corporate Overview",
+                classis: "active",
+                anchor: "corporate",
+                icon: "fa-cog"
+            }, {
+                name: "Cash Short",
+                classis: "active",
+                anchor: "cash-short",
+                icon: "fa-cog"
+            }, {
+                name: "Map – Sales",
+                classis: "active",
+                anchor: "map-sales",
+                icon: "fa-cog"
+            }, {
+                name: "Map – Cash Short",
+                classis: "active",
+                anchor: "map-cash-short",
+                icon: "fa-cog"
+            }, {
+                name: "Transactions Report",
+                classis: "active",
+                anchor: "transaction-report",
+                icon: "fa-cog"
+            }, {
+                name: "Till Register",
+                classis: "active",
+                anchor: "till-register",
+                icon: "fa-cog"
+            }]
+        }, {
+            name: "Case Management",
+            classis: "active",
+            icon: "fa-pencil-square-o",
+            anchor: "case-management",
+            subnav: []
+        },
+
+    ]
+
+    var navigation_mobile = [{
+            name: "Dashboard",
+            classis: "active",
+            anchor: "dashboard",
+            // hasSub: "has-sub",
+            icon: "fa-tachometer",
+            subnav: []
+        },
+        {
+            name: "Predictive Dashboard",
+            classis: "active",
+            anchor: "predictive-dashboard",
+            icon: "fa-tachometer",
+            subnav: []
+        },
+        {
+            name: "Corporate Overview",
+            classis: "active",
+            anchor: "corporate",
+            icon: "fa-cog"
+        }, {
+            name: "Cash Short",
+            classis: "active",
+            anchor: "cash-short",
+            icon: "fa-cog"
+        }, {
+            name: "Map – Sales",
+            classis: "active",
+            anchor: "map-sales",
+            icon: "fa-cog"
+        }, {
+            name: "Map – Cash Short",
+            classis: "active",
+            anchor: "map-cash-short",
+            icon: "fa-cog"
+        }, {
+            name: "Transactions Report",
+            classis: "active",
+            anchor: "transaction-report",
+            icon: "fa-cog"
+        }, {
+            name: "Till Register",
+            classis: "active",
+            anchor: "till-register",
+            icon: "fa-cog"
+        },
+        {
+            name: "Case Management",
+            classis: "active",
+            icon: "fa-pencil-square-o",
+            anchor: "case-management",
             subnav: []
         }
     ];
@@ -183,8 +283,11 @@ myApp.factory('NavigationService', function ($http) {
         getNavigation: function () {
             return navigation;
         },
-        getNavigartionMobile: function () {
-            return navigartion_mobile;
+        getNavigationMobile: function () {
+            return navigation_mobile;
+        },
+        getNavigationTab: function () {
+            return navigation_tab;
         },
         apiCall: function (url, formData, callback) {
             $http.post(adminurl + url, formData).then(function (data) {
