@@ -39688,7 +39688,8 @@ footer.main-footer.sticky.footer-type-1 {
   cursor: pointer; }
 
 .switch-field input:checked + label {
-  background-color: #e1edf3;
+  background-color: #0057c7;
+  color: white;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1); }
 
 .switch-field label:first-of-type {
