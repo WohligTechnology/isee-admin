@@ -42,12 +42,9 @@
         </div>
     </div>
 
-    <ul ng-if="totalItems " ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
+    <ul ng-change="changePage(currentPage); " uib-pagination total-items="totalItems
                                             " items-per-page="maxRow " ng-model="currentPage " max-size="template.pageMax "
         class="pagination-sm
                                             " boundary-links="true " force-ellipses="true ">
     </ul>
-</div>
-<div ng-if='!totalItems'>
-    NO DATA FOUND
 </div>
