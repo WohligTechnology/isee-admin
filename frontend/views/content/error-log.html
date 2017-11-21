@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="log-history" ng-repeat="logs in errLog track by $index">
-        <div class="row">
+        <div class="row ">
             <!-- <div class="row"> -->
             <div class="col-xs-3">
                 <div class="pad-5 inside-history">
@@ -33,9 +33,10 @@
             </div>
             <div class="col-xs-9">
                 <div class="pad-5 inside-history">
-                    <span>
-                        <pre class="danger-pre"><code>{{logs.logs.error|json}}</code></pre>
-                    </span>
+                    <div>
+                        <!-- <pre class="danger-pre"><code>{{logs.logs.error|json}}</code></pre> -->
+                        <span class="danger-pre">Kindly check the Row :{{logs.logs.row+1}}</span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -40447,7 +40447,8 @@ h4 {
   cursor: pointer; }
 
 .log-history {
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #ddd;
+  padding: 15px; }
 
 .intro-title {
   font-family: latobold;
