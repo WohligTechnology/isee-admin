@@ -16,7 +16,22 @@ myApp.factory('NavigationService', function ($http) {
             anchor: "predictive-dashboard",
             icon: "fa-tachometer",
             subnav: []
-        }, {
+        }
+        // , {
+        //     name: "Rules Admin",
+        //     classis: "active",
+        //     icon: "fa-pencil-square-o",
+        //     // anchor: "rules-admin"
+        //     hasSub: "has-sub",
+        //     subnav: [{
+        //         name: "Violations",
+        //         classis: "active",
+        //         anchor: "rules-admin-violations",
+        //         icon: "fa-cog"
+        //     }]
+        // }
+        ,
+        {
             name: "Reports",
             classis: "active",
             icon: "fa-pencil-square-o",
@@ -53,7 +68,8 @@ myApp.factory('NavigationService', function ($http) {
                 anchor: "till-register",
                 icon: "fa-cog"
             }]
-        }, {
+        },
+        {
             name: "Case Management",
             classis: "active",
             icon: "fa-pencil-square-o",
