@@ -61,6 +61,7 @@
 			<div class="collapse navbar-collapse text-center" id="nav-collapse">
 				<ul class="nav navbar-nav hidden-xs hidden-sm">
 					<li class="menu" ng-repeat="menu in navigation track by $index" ui-sref-active="active">
+						<a ng-if="menu.newtab" href="{{menu.url}}" target="_new">{{menu.name}}</a>
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
 						<a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
@@ -74,7 +75,7 @@
 
 				</ul>
 				<!-- nav for tablet -->
-				<ul class="nav navbar-nav visible-sm hidden-xs">
+				<!-- <ul class="nav navbar-nav  hidden-xs">
 					<li class="menu" ng-repeat="menu in navigation_tab  track by $index" ui-sref-active="active">
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
@@ -87,10 +88,11 @@
 						</ul>
 					</li>
 
-				</ul>
-				<!-- navbar for  mobile  -->
-				<ul class="nav navbar-nav visible-xs">
+				</ul> -->
+				<!-- navbar for  mobile  and tablet -->
+				<ul class="nav navbar-nav visible-xs visible-sm">
 					<li class="menu" ng-repeat="menu in navigation_tab track by $index" ui-sref-active="active">
+						<a ng-if="menu.newtab" href="{{menu.url}}" target="_new">{{menu.name}}</a>
 						<a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
 						<a ng-if="menu.hasSub"> {{menu.name}} <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
 						<a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
