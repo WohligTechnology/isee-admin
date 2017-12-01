@@ -344,6 +344,19 @@ var model = {
         });
     },
 
+    clearAllViolations: function (data, callback) {
+        Transaction.find({}).exec(function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                async.concatLimit(data, 30, function (allTran, callback) {
+                    allTran.violations = [];
+                    Transaction.saveData(allTran, callback);
+                }, callback);
+            }
+        });
+    },
+
     addViolation: function (transactionId, ruleEngineId, callback) {
         Transaction.findOne({
             _id: transactionId
@@ -469,11 +482,11 @@ var model = {
             count: maxRow
         };
         Transaction.find({
-            "violations": {
-                $exists: true,
-                $ne: []
-            }
-        }).deepPopulate('violations').order(options)
+                "violations": {
+                    $exists: true,
+                    $ne: []
+                }
+            }).deepPopulate('violations').order(options)
             .keyword(options)
             .page(options, function (err, data) {
                 if (err || _.isEmpty(data)) {

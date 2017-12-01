@@ -39,10 +39,22 @@ var controller = {
         }
     },
 
-
     getRecordsByTransaction: function (req, res) {
         if (req.body) {
             Transaction.getRecordsByTransaction(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
+        }
+    },
+
+    clearAllViolations: function (req, res) {
+        if (req.body) {
+            Transaction.clearAllViolations(req.body, res.callback);
         } else {
             res.json({
                 value: false,
