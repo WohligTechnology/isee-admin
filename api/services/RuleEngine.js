@@ -39,6 +39,7 @@ var model = {
         var returnTable = "";
         // red(tableName);
         // green(tableField);
+        if(transactionJson){
         if (tableName == "Company") {
             returnTable = transactionJson.companyData;
         } else if (tableName == "Item") {
@@ -64,7 +65,7 @@ var model = {
             return returnTable[tableField];
         } else {
             return null
-        }
+        }}
     },
 
     findViolationCount: function (ruleId, callback) {
