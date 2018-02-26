@@ -73,7 +73,7 @@ myApp.factory('NavigationService', function ($http) {
             newtab: true,
             icon: "fa-pencil-square-o",
             // anchor: "case-management",
-            url: "https://wohlig.freshdesk.com/support/login",
+            url: "https://isee.freshdesk.com/support/login",
             subnav: []
         },
 
@@ -131,7 +131,7 @@ myApp.factory('NavigationService', function ($http) {
             newtab: true,
             icon: "fa-pencil-square-o",
             // anchor: "case-management",
-            url: "https://wohlig.freshdesk.com/support/login",
+            url: "https://isee.freshdesk.com/support/login",
             subnav: []
         }
     ];
@@ -276,7 +276,7 @@ myApp.factory('NavigationService', function ($http) {
             newtab: true,
             icon: "fa-pencil-square-o",
             // anchor: "case-management",
-            url: "https://wohlig.freshdesk.com/support/login",
+            url: "https://isee.freshdesk.com/support/login",
             subnav: []
         }, {
             name: "Help",
