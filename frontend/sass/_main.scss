@@ -11,7 +11,6 @@ $brand-warning: #ffc600 !default;
 $brand-danger: #e53d0a !default;
 $brand-info: #2191d0 !default;
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-
 /* Bootstrap Variables Goes Here */
 
 @import "other/font-fix";
@@ -162,7 +161,7 @@ header {
     float: left;
 } // colors
 .color-red {
-    background: $brand-danger!important;
+    background: $brand-danger !important;
 }
 
 .panel-spacing {
@@ -848,7 +847,7 @@ h4 {
         background: #009586;
     }
     .main-menu-anchor:hover {
-        color: white!important;
+        color: white !important;
     }
 }
 
@@ -1589,7 +1588,7 @@ footer.main-footer.sticky.footer-type-1 {
     }
     .bread-cum-holder {
         white-space: normal !important;
-        text-align: center!important;
+        text-align: center !important;
         padding: 20px 0px !important;
         border-bottom: 2px solid $brand-primary;
         padding-bottom: 0px !important;
@@ -1629,4 +1628,11 @@ footer.main-footer.sticky.footer-type-1 {
     color: white;
     padding: 8px;
     padding-left: 20px;
+}
+
+.table_nowrap {
+    th,
+    td {
+        white-space: nowrap;
+    }
 }

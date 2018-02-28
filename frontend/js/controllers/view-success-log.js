@@ -42,22 +42,21 @@ myApp.controller('ViewSuccessLogCtrl', function ($scope, TemplateService, Naviga
         NavigationService.apiCall("AllLogs/singleSuccessLogHistoryCount", $scope.openLogdata, function (data) {
             if (data.value == true) {
                 totallogs = data.data[0].logs;
+                NavigationService.searchCall("AllLogs/singleSuccessLogHistory", {
+                    pageNo: $scope.currentPage,
+                    keyword: $scope.search.keyword,
+                    _id: $stateParams.log_id
+                }, ++i,
+                function (data, ini) {
+                    if (ini == i) {
+                        $scope.noData = false;
+                        $scope.successLog = data.data;
+                        $scope.totalItems = totallogs;
+                        $scope.maxRow = 10;
+                    }
+                });
             }
         });
-        NavigationService.searchCall("AllLogs/singleSuccessLogHistory", {
-                pageNo: $scope.currentPage,
-                keyword: $scope.search.keyword,
-                _id: $stateParams.log_id
-            }, ++i,
-            function (data, ini) {
-                if (ini == i) {
-                    $scope.noData = false;
-                    $scope.successLog = data.data;
-                    $scope.totalItems = totallogs;
-                    $scope.maxRow = 10;
-                }
-            });
-
     };
     //  JsonService.refreshView = $scope.getAllItems;
     $scope.getAllItems();
