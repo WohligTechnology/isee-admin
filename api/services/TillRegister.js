@@ -1,4 +1,9 @@
 var schema = new Schema({
+    organizationId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        index: true,
+    },
     retailLocationId: {
         type: Schema.Types.ObjectId,
         ref: 'Locations',
@@ -75,6 +80,9 @@ var model = {
 
     saveOnExcel: function (data, callback) {
         async.parallel({
+                organizationId: function (callback) {
+                    Company.getFromId("organizationId", data.organizationId, callback);
+                },
                 retailLocationId: function (callback) {
                     Locations.getFromId("retailLocationId", data.retailLocationId, callback);
                 }

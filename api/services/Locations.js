@@ -65,6 +65,12 @@ var schema = new Schema({
         es_indexed: true
     },
     geoCode: String,
+    latitude:{
+        type:Number
+    },
+    longitude:{
+        type:Number
+    }
 
     //////
     // company: {

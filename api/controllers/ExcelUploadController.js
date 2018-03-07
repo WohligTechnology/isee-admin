@@ -6,6 +6,9 @@ var controller = {
         if (req.body.file) {
             var retJson = {};
             retJson.fields = [{
+                    field: "organizationId",
+                    description: "Date"
+                }, {
                     field: "retailLocationId",
                     description: "String"
                 }, {
@@ -168,7 +171,7 @@ var controller = {
         }, function (err, found) {
             res.callback(err, found._id);
             var allLogsId = found._id;
-            console.log("allLogsId---------",allLogsId);
+            console.log("allLogsId---------", allLogsId);
             Config.importGSForCustomFields(req.body.name, req.body.fields, function (err, data) {
                 if (err || _.isEmpty(data)) {
                     res.callback(err);
@@ -1310,6 +1313,14 @@ var controller = {
                 }, {
                     field: "geoCode",
                     description: "String"
+                },
+                {
+                    field: "latitude",
+                    description: "Number"
+                },
+                {
+                    field: "longitude",
+                    description: "Number"
                 },
                 // {
                 //     field: "custId",

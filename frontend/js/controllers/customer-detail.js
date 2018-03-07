@@ -414,6 +414,13 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             }, {
                 field: "geoCode",
                 description: "String"
+            },{
+                field: "latitude",
+                description: "Number"
+            },
+            {
+                field: "longitude",
+                description: "Number"
             }];
             $scope.excelloaded = false;
             $scope.excelData = "";
