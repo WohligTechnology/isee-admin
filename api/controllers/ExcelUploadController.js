@@ -1501,6 +1501,10 @@ var controller = {
                     field: "customerGroupId",
                     description: "String"
                 },
+                {
+                    field: "locationDataId",
+                    description: "String"
+                },
                 // {
                 //     field: "custId",
                 //     description: "This is a Id"
