@@ -39,27 +39,29 @@ var model = {
         var returnTable = "";
         // red(tableName);
         // green(tableField);
-        if(transactionJson){
+        if(transactionJson.transactionJson){
         if (tableName == "Company") {
-            returnTable = transactionJson.companyData;
+            returnTable = transactionJson.transactionJson.companyData;
         } else if (tableName == "Item") {
-            returnTable = transactionJson.itemData;
+            returnTable = transactionJson.transactionJson.itemData;
         } else if (tableName == "WarrantyItem") {
-            returnTable = transactionJson.itemData.warrantyItemId;
+            returnTable = transactionJson.transactionJson.itemData.warrantyItemId;
         } else if (tableName == "Locations") {
-            returnTable = transactionJson.locationData;
+            returnTable = transactionJson.transactionJson.locationData;
         } else if (tableName == "TillRegister") {
-            returnTable = transactionJson.tillRegisterData;
+            returnTable = transactionJson.transactionJson.tillRegisterData;
         } else if (tableName == "Customer") {
-            returnTable = transactionJson.customerData;
+            returnTable = transactionJson.transactionJson.customerData;
         } else if (tableName == "Calendar") {
-            returnTable = transactionJson.calendarData;
+            returnTable = transactionJson.transactionJson.calendarData;
         } else if (tableName == "Crm") {
-            returnTable = transactionJson.crmData;
+            returnTable = transactionJson.transactionJson.crmData;
         } else if (tableName == "CompanyContact") {
-            returnTable = transactionJson.companyContactData;
+            returnTable = transactionJson.transactionJson.companyContactData;
         } else if (tableName == "CompanyInfo") {
-            returnTable = transactionJson.companyInfoData;
+            returnTable = transactionJson.transactionJson.companyInfoData;
+        }else{
+            returnTable = transactionJson;
         }
         if (returnTable) {
             return returnTable[tableField];
@@ -135,14 +137,15 @@ var model = {
             if (err || _.isEmpty(transactionData) || _.isEmpty(rules)) {
                 callback(null, "Error");
             } else {
+                // console.log("transactionDatatransactionData----",transactionData)
                 var arrForRuleTransaction = [];
                 async.concatSeries(_.cloneDeep(rules.rule), function (rulesData, callback) { // concat for subRule
-                    var value1 = RuleEngine.getValueFromRuleEngine(rulesData.model, rulesData.field, transactionData.transactionJson);
+                    var value1 = RuleEngine.getValueFromRuleEngine(rulesData.model, rulesData.field, transactionData);
                     var value2;
                     if (!_.isEmpty(rulesData.constant)) {
                         value2 = rulesData.constant;
                     } else {
-                        value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData.transactionJson);
+                        value2 = RuleEngine.getValueFromRuleEngine(rulesData.table, rulesData.tableField, transactionData);
                     }
                     // console.log("value1----", value1);
                     // console.log("value2----", value2);

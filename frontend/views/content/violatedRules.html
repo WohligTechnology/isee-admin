@@ -29,8 +29,8 @@
                     <tr>
                         <th>Company</th>
                         <th>Location </th>
-                        <th>Customer </th>
-                        <th>Customer </th>
+                        <th>City </th>
+                        <th>State </th>
                         <th>Calender</th>
                         <th>Name</th>
                         <th>View</th>
@@ -44,10 +44,10 @@
                             {{data.transactionJson.locationData.storeName}}
                         </td>
                         <td>
-                            {{data.transactionJson.customerData.city}}
+                            {{data.transactionJson.locationData.city}}
                         </td>
                         <td>
-                            {{data.transactionJson.customerData.email}}
+                            {{data.transactionJson.locationData.state}}
                         </td>
                         <td>
                             {{data.transactionJson.calendarData.activityDate|date:'medium'}}
