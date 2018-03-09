@@ -107,6 +107,10 @@ var schema = new Schema({
 
     ////
 
+    //for  clik sense
+    orgId: Number,
+    custId: String
+
     // customerNote: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'CustomerNote',

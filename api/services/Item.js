@@ -106,6 +106,12 @@ var schema = new Schema({
         es_indexed: true
     },
     //////
+
+    //for  clik sense
+    orgId: Number,
+    warrantyItem: String
+
+
     // transaction: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'Transaction',

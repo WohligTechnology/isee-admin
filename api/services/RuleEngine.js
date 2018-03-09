@@ -94,7 +94,7 @@ var model = {
         // i = 0 
         // async.timesSeries(total_pages, iteratee, callback)
         //      itetaty function async each series = > find skip = ((i)*20)  limit = 20 transactions i++;
-        Transaction.find({}, function (err, transactions) {
+        Transaction.find({}).limit(4000).exec(function (err, transactions) {
             async.concatLimit(transactions, 20, function (transaction, callback) {
                 RuleEngine.checkViolation(transaction._id, ruleId, callback);
             }, callback);

@@ -104,7 +104,14 @@ var schema = new Schema({
         ref: 'RuleEngine',
         index: true
     }],
-    locationDataId:Number
+
+     //for clik sense
+    locationDataId:Number,
+    activdate:Date,
+    orgId:Number,
+    itemDataId:String,
+    tillNum:String,
+    custId:String,
 
     ////////////
 

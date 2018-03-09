@@ -70,7 +70,10 @@ var schema = new Schema({
     },
     longitude:{
         type:Number
-    }
+    },
+
+    //for  clik sense
+    orgId:Number
 
     //////
     // company: {

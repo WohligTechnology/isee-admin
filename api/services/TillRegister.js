@@ -40,6 +40,14 @@ var schema = new Schema({
         type: Number
     },
     //
+
+    //for clik sense
+
+    locationDataId:Number,
+    activdate:Date,
+    orgId:Number,
+    
+
     transaction: [{
         type: Schema.Types.ObjectId,
         ref: 'Transaction',

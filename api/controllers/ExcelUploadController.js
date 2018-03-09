@@ -41,6 +41,15 @@ var controller = {
                 }, {
                     field: "randomNumber",
                     description: "Number"
+                }, {
+                    field: "locationDataId",
+                    description: "Number"
+                }, {
+                    field: "activdate",
+                    description: "Date"
+                }, {
+                    field: "orgId",
+                    description: "Number"
                 }
                 //  {
                 //     field: "custId",
@@ -715,6 +724,14 @@ var controller = {
                     field: "loyaltyProgramNumber",
                     description: "String"
                 },
+                {
+                    field: "orgId",
+                    description: "Number"
+                },
+                {
+                    field: "custId",
+                    description: "String"
+                }
                 // {
                 //     field: "custId",
                 //     description: "This is a Id"
@@ -1152,6 +1169,14 @@ var controller = {
                     field: "subClassId",
                     description: "String"
                 },
+                {
+                    field: "orgId",
+                    description: "String"
+                },
+                {
+                    field: "warrantyItem",
+                    description: "String"
+                }
                 //  {
                 //     field: "custId",
                 //     description: "This is a Id"
@@ -1322,6 +1347,10 @@ var controller = {
                     field: "longitude",
                     description: "Number"
                 },
+                {
+                    field: "orgId",
+                    description: "Number"
+                }
                 // {
                 //     field: "custId",
                 //     description: "This is a Id"
@@ -1505,6 +1534,26 @@ var controller = {
                     field: "locationDataId",
                     description: "String"
                 },
+                {
+                    field: "activdate",
+                    description: "String"
+                },
+                {
+                    field: "orgId",
+                    description: "String"
+                },
+                {
+                    field: "itemDataId",
+                    description: "String"
+                },
+                {
+                    field: "tillNum",
+                    description: "String"
+                },
+                {
+                    field: "custId",
+                    description: "String"
+                }
                 // {
                 //     field: "custId",
                 //     description: "This is a Id"

@@ -421,6 +421,10 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
             {
                 field: "longitude",
                 description: "Number"
+            },
+            {
+                field: "orgId",
+                description: "Number"
             }];
             $scope.excelloaded = false;
             $scope.excelData = "";
@@ -617,6 +621,15 @@ myApp.controller('CustomerDetailCtrl', function ($scope, TemplateService, Naviga
                 description: "String"
             }, {
                 field: "randomNumber",
+                description: "Number"
+            },{
+                field: "locationDataId",
+                description: "Number"
+            }, {
+                field: "activitydate",
+                description: "Date"
+            }, {
+                field: "orgId",
                 description: "Number"
             }];
             $scope.excelloaded = false;
