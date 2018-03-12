@@ -241,7 +241,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/company-role-administration",
             templateUrl: tempateURL,
             controller: 'CompanyRoleAdminCtrl'
-        });
+        })
+        .state('exceptionReport', {
+            url: "/exception-report",
+            templateUrl: tempateURL,
+            controller: 'exceptionReportCtrl'
+        }); 
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
 });

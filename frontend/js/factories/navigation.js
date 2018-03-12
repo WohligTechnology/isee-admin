@@ -266,6 +266,12 @@ myApp.factory('NavigationService', function ($http) {
                 classis: "active",
                 anchor: "till-register",
                 icon: "fa-cog"
+            },
+            {
+                name: "Exception Report",
+                classis: "active",
+                anchor: "exceptionReport",
+                icon: "fa-cog"
             }]
 
 
