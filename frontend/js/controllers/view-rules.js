@@ -4,6 +4,9 @@
      TemplateService.class = "assignment-list"; //This is the Class of the Theme
      $scope.navigation = NavigationService.getNavigation();
      $scope.executeDisabled = false;
+
+
+
      //  $scope.currentPage = 1;
      $scope.isexec = false;
 
@@ -78,7 +81,6 @@
 
      //executing rule
      $scope.executeRule = function (formdata) {
-         $state.reload();
          NavigationService.apiCall("RuleEngine/execute", formdata, function (data) {
              if (data.value == true) {
                  // $scope.allFields = data.data;
@@ -102,4 +104,11 @@
              }
          });
      }
+
+     var updateStatusSocket = function (data) {
+         console.log("abc", data);
+
+         $scope.getAllItems();
+     }
+     io.socket.on("updateStatus", updateStatusSocket);
  })

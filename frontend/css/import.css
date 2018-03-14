@@ -41087,6 +41087,10 @@ footer.main-footer.sticky.footer-type-1 {
 .table_nowrap td {
   white-space: nowrap; }
 
+.mar-l12 {
+  margin-left: 12px;
+  color: #cd3f44; }
+
 #fancybox-loading,
 .fancybox-close,
 .fancybox-next span,

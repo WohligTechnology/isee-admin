@@ -12,7 +12,12 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
     <link rel="shortcut icon" href="img/favicon.ico" />
-
+    <script src="lib/sails/sails.io.js"></script>
+    <script>
+      var adminUUU = "http://wohlig.io:8080";
+      var adminurl = "http://wohlig.io:8080/api/";
+      io.sails.url = adminUUU;
+    </script>
     <title ng-bind="'iSee | '+template.title"></title>
 
     <!--[if IE]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->

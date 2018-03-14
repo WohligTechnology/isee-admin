@@ -65,6 +65,9 @@ var controller = {
                     if (err || _.isEmpty(data)) {
                         callback(err, []);
                     } else {
+                        sails.sockets.blast("updateStatus", {
+                            ruleEngData: data
+                        });
                         callback(null, data);
                     }
                 });
