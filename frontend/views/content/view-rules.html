@@ -35,7 +35,7 @@
                     <tr>
                         <th>Rule Name</th>
                         <th>Execute</th>
-                        <th>Violations</th>
+                        <th>Result</th>
                         <th>Status</th>
                         <th>Sub Status</th>
                     </tr>
@@ -43,7 +43,7 @@
                 <tbody>
                     <tr ng-repeat="data in allRules">
                         <td>{{data.name}} <a class="mg-left-20" ui-sref="drl-rule({ruleId:data._id})" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <a class="mar-l12" title="Delete"><i class="fa fa-trash"></i></a>
+                            <!-- <a class="mar-l12" ng-click="deleteRule(data._id)" title="Delete"><i class="fa fa-trash"></i></a> -->
                         </td>
                         <!-- <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td> -->
 
