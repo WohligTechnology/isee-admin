@@ -88,6 +88,8 @@ var controller = {
                             function (callback) {
                                 var i = 0;
                                 async.concatSeries(data, function (singleData, callback) {
+                                    singleData.date = new Date((singleData.date - (25567 + 1)) * 86400 * 1000);
+                                    singleData.activdate = new Date((singleData.activdate - (25567 + 1)) * 86400 * 1000);
                                     TillRegister.saveOnExcel(singleData, function (err, data) {
                                         i++;
                                         console.log("Completed TillRegister " + i);
@@ -191,6 +193,7 @@ var controller = {
                             function (callback) {
                                 var i = 0;
                                 async.concatSeries(data, function (singleData, callback) {
+                                    singleData.activityDate = new Date((singleData.activityDate - (25567 + 1)) * 86400 * 1000);
                                     Calendar.saveData(singleData, function (err, data) {
                                         i++;
                                         console.log("Completed Calendar " + i);
@@ -1592,6 +1595,8 @@ var controller = {
                             function (callback) {
                                 var i = 0;
                                 async.concatSeries(data, function (singleData, callback) {
+                                    singleData.activityDate = new Date((singleData.activityDate - (25567 + 1)) * 86400 * 1000);
+                                    singleData.activdate = new Date((singleData.activdate - (25567 + 1)) * 86400 * 1000);
                                     async.waterfall([
                                             function (callback) {
                                                 Transaction.saveOnExcel(singleData, function (err, data) { //for mapping id's from diffent tables 

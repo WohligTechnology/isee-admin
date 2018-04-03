@@ -13,7 +13,9 @@ var schema = new Schema({
         type: String
     },
     date: {
-        type: Date
+        type: Schema.Types.ObjectId,
+        ref: 'Calendar',
+        index: true,
     },
     openingBalance: {
         type: Number
@@ -43,10 +45,10 @@ var schema = new Schema({
 
     //for clik sense
 
-    locationDataId:Number,
-    activdate:Date,
-    orgId:Number,
-    
+    locationDataId: Number,
+    activdate: Date,
+    orgId: Number,
+
 
     transaction: [{
         type: Schema.Types.ObjectId,
@@ -93,6 +95,9 @@ var model = {
                 },
                 retailLocationId: function (callback) {
                     Locations.getFromId("retailLocationId", data.retailLocationId, callback);
+                },
+                date: function (callback) {
+                    Calendar.getFromId("activityDate", data.date, callback);
                 }
             },
             function (err, result) {
