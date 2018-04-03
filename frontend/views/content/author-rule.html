@@ -58,7 +58,7 @@
                     <div class="panel-divider fnt">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-1">
                                     <label class=" control-label">Name</label>
                                 </div>
                                 <div class="col-sm-9">
@@ -66,6 +66,34 @@
                                     <div class="pull-right" ng-repeat="(field,value) in formRule.name.$error" ng-show="formRule.name.$touched">
                                         <span class="label label-danger" ng-if="field=='required' && value">Please Select Show Results When</span>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <label class=" control-label">From</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
+                                            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                           <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                               </span>
+                                    </p>
+                                </div>
+                                <div class="col-sm-1 text-right">
+                                    <label class=" control-label">To</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" uib-datepicker-popup ng-model="dtt" is-open="popup2.opened" datepicker-options="dateOptions"
+                                            ng-required="true" close-text="Close" />
+                                        <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                  </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
