@@ -93,8 +93,8 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <p class="input-group">
-                                        <input type="text" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true"
-                                            close-text="Close" ng-model="drlRule.toDate" />
+                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" uib-datepicker-popup is-open="popup2.opened" datepicker-options="dateOptions"
+                                            ng-required="true" close-text="Close" ng-model="drlRule.toDate" />
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="open2()">
                                                 <i class="glyphicon glyphicon-calendar"></i>
