@@ -105,13 +105,13 @@ var schema = new Schema({
         index: true
     }],
 
-     //for clik sense
-    locationDataId:Number,
-    activdate:Date,
-    orgId:Number,
-    itemDataId:String,
-    tillNum:String,
-    custId:String,
+    //for clik sense
+    locationDataId: Number,
+    activdate: Date,
+    orgId: Number,
+    itemDataId: String,
+    tillNum: String,
+    custId: String,
 
     ////////////
 

@@ -17,7 +17,9 @@ var schema = new Schema({
         type: String,
         enum: ['Enable', 'Disabled'],
         default: 'Disabled'
-    }
+    },
+    fromDate: Date,
+    toDate: Date,
     // trasaction: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'Trasaction',
@@ -39,35 +41,36 @@ var model = {
         var returnTable = "";
         // red(tableName);
         // green(tableField);
-        if(transactionJson.transactionJson){
-        if (tableName == "Company") {
-            returnTable = transactionJson.transactionJson.companyData;
-        } else if (tableName == "Item") {
-            returnTable = transactionJson.transactionJson.itemData;
-        } else if (tableName == "WarrantyItem") {
-            returnTable = transactionJson.transactionJson.itemData.warrantyItemId;
-        } else if (tableName == "Locations") {
-            returnTable = transactionJson.transactionJson.locationData;
-        } else if (tableName == "TillRegister") {
-            returnTable = transactionJson.transactionJson.tillRegisterData;
-        } else if (tableName == "Customer") {
-            returnTable = transactionJson.transactionJson.customerData;
-        } else if (tableName == "Calendar") {
-            returnTable = transactionJson.transactionJson.calendarData;
-        } else if (tableName == "Crm") {
-            returnTable = transactionJson.transactionJson.crmData;
-        } else if (tableName == "CompanyContact") {
-            returnTable = transactionJson.transactionJson.companyContactData;
-        } else if (tableName == "CompanyInfo") {
-            returnTable = transactionJson.transactionJson.companyInfoData;
-        }else{
-            returnTable = transactionJson;
+        if (transactionJson.transactionJson) {
+            if (tableName == "Company") {
+                returnTable = transactionJson.transactionJson.companyData;
+            } else if (tableName == "Item") {
+                returnTable = transactionJson.transactionJson.itemData;
+            } else if (tableName == "WarrantyItem") {
+                returnTable = transactionJson.transactionJson.itemData.warrantyItemId;
+            } else if (tableName == "Locations") {
+                returnTable = transactionJson.transactionJson.locationData;
+            } else if (tableName == "TillRegister") {
+                returnTable = transactionJson.transactionJson.tillRegisterData;
+            } else if (tableName == "Customer") {
+                returnTable = transactionJson.transactionJson.customerData;
+            } else if (tableName == "Calendar") {
+                returnTable = transactionJson.transactionJson.calendarData;
+            } else if (tableName == "Crm") {
+                returnTable = transactionJson.transactionJson.crmData;
+            } else if (tableName == "CompanyContact") {
+                returnTable = transactionJson.transactionJson.companyContactData;
+            } else if (tableName == "CompanyInfo") {
+                returnTable = transactionJson.transactionJson.companyInfoData;
+            } else {
+                returnTable = transactionJson;
+            }
+            if (returnTable) {
+                return returnTable[tableField];
+            } else {
+                return null
+            }
         }
-        if (returnTable) {
-            return returnTable[tableField];
-        } else {
-            return null
-        }}
     },
 
     findViolationCount: function (ruleId, callback) {
@@ -94,11 +97,24 @@ var model = {
         // i = 0 
         // async.timesSeries(total_pages, iteratee, callback)
         //      itetaty function async each series = > find skip = ((i)*20)  limit = 20 transactions i++;
-        Transaction.find({}).limit(2000).exec(function (err, transactions) {
-            async.concatLimit(transactions, 20, function (transaction, callback) {
-                RuleEngine.checkViolation(transaction._id, ruleId, callback);
-            }, callback);
-        });
+        if (ruleId.fromDate && ruleId.toDate) {
+            Transaction.find({
+                activdate: {
+                    $gte: ruleId.fromDate,
+                    $lte: ruleId.toDate
+                }
+            }).limit(2000).exec(function (err, transactions) {
+                async.concatLimit(transactions, 20, function (transaction, callback) {
+                    RuleEngine.checkViolation(transaction._id, ruleId.ruleId, callback);
+                }, callback);
+            });
+        } else {
+            Transaction.find({}).limit(2000).exec(function (err, transactions) {
+                async.concatLimit(transactions, 20, function (transaction, callback) {
+                    RuleEngine.checkViolation(transaction._id, ruleId.ruleId, callback);
+                }, callback);
+            });
+        }
     },
 
     checkViolationForTransaction: function (transactionId, callback) {
@@ -217,7 +233,7 @@ var model = {
         });
     },
 
-    
+
 
 };
 module.exports = _.assign(module.exports, exports, model);

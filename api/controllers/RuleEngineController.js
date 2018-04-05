@@ -28,6 +28,7 @@ var controller = {
     // },
 
     execute: function (req, res) {
+        var objToSend = {};
         async.waterfall([
             function (callback) {
                 RuleEngine.findOneAndUpdate({
@@ -41,6 +42,9 @@ var controller = {
                         callback(err, []);
                     } else {
                         res.callback(err, data.status);
+                        objToSend.fromDate = data.fromDate
+                        objToSend.toDate = data.toDate
+                        objToSend.ruleId = req.body.ruleId
                         callback(null, data);
                     }
                 });
@@ -51,7 +55,7 @@ var controller = {
             },
             function (data, callback) { // 
                 // checkViolationForRule run rules on all the transactions for this new created rule only
-                RuleEngine.checkViolationForRule(req.body.ruleId, callback)
+                RuleEngine.checkViolationForRule(objToSend, callback)
             },
             function (data, callback) {
                 // status completed

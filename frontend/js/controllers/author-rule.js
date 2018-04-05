@@ -91,11 +91,12 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
 
     $scope.rules = {};
     $scope.drlSave = function (formdata) {
-
         if ($stateParams.ruleId) {
             var sentData = {};
             $scope.rules.name = formdata.name;
             $scope.rules.rule = formdata.choices;
+            $scope.rules.fromDate = moment(formdata.fromDate).format("YYYY-MM-DD")
+            $scope.rules.toDate = moment(formdata.toDate).format("YYYY-MM-DD")
             $scope.rules._id = $stateParams.ruleId;
             $scope.rules.status = 'Pending';
             NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
@@ -110,6 +111,8 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         } else {
             $scope.rules.name = formdata.name;
             $scope.rules.rule = formdata.choices;
+            $scope.rules.fromDate = moment(formdata.fromDate).format("YYYY-MM-DD")
+            $scope.rules.toDate = moment(formdata.toDate).format("YYYY-MM-DD")
             NavigationService.apiCall("RuleEngine/save", $scope.rules, function (data) {
                 if (data.value == true) {
                     // $scope.allFields = data.data;
@@ -130,6 +133,8 @@ myApp.controller('AuthorRuleCtrl', function ($scope, TemplateService, Navigation
         if (data.value == true) {
             $scope.drlRule = data.data;
             $scope.drlRule.choices = data.data.rule;
+            $scope.drlRule.fromDate = new Date($scope.drlRule.fromDate);
+            $scope.drlRule.toDate = new Date($scope.drlRule.toDate);
         }
     });
 
