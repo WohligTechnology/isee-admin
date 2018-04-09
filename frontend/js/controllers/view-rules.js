@@ -111,4 +111,10 @@
          $scope.getAllItems();
      }
      io.socket.on("updateStatus", updateStatusSocket);
+
+     //deleteRule
+     $scope.deleteRule = function (formdata) {
+         console.log("formdata", formdata);
+     };
+
  })

@@ -1,9 +1,10 @@
 <!-- <div ng-include="template.header" class="template header"></div> -->
 
 <div class="add-header">
-    <span class="main bredcrums"> 
-        <a href="">Home</a> / <a href="">Rules Admin</a> / Violations
-        </span>
+    <span class="main bredcrums">
+        <a href="">Home</a> /
+        <a href="">Rules Admin</a> / Violations
+    </span>
 </div>
 
 
@@ -18,23 +19,23 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Transaction Name</th>
-                        <th>title demo 1</th>
-                        <th>title demo 2</th>
-                        <th>title demo 3</th>
+                        <th>Transaction Date</th>
+                        <th>Store No</th>
+                        <th>State</th>
+                        <th>City</th>
                         <th>Violation Rule</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="tranData in transactionData track by $index" ui-sref="view-violated-rule({id:tranData._id})">
 
-                        <td>{{tranData.createdAt}}</td>
+                        <td>{{tranData.activdate|date}}</td>
                         <!-- <td ng-repeat="rules in tranData.violations track by $index">
                             {{rules.name}}
                         </td> -->
-                        <td>demo 1</td>
-                        <td>demo 2</td>
-                        <td>demo 3</td>
+                        <td>{{tranData.transactionJson.locationData.storeNumber}}</td>
+                        <td>{{tranData.transactionJson.locationData.state}}</td>
+                        <td>{{tranData.transactionJson.locationData.city}}</td>
                         <td class="violated-td">
                             <!-- <div class="violation-details">
                                 <div class="label label-danger pointer"><i class="fa fa-ban" aria-hidden="true"></i></div>
@@ -44,7 +45,10 @@
 
                                 </div>
                             </div> -->
-                            <div class="vio-list" ng-repeat="rules in tranData.violations"><span ng-show="$index>0">,</span><span>{{rules.name}}</span></div>
+                            <div class="vio-list" ng-repeat="rules in tranData.violations">
+                                <span ng-show="$index>0">,</span>
+                                <span>{{rules.name}}</span>
+                            </div>
 
                         </td>
                     </tr>
@@ -56,20 +60,6 @@
                     class="pagination-sm
                                             " boundary-links="true " force-ellipses="true ">
                 </ul>
-
-                <!--<div class="col-xs-12">
-                    <div class="dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            <li class="paginate_button previous"><a href="#">Previous</a></li>
-                            <li class="paginate_button active" tabindex="0"><a href="#">1</a></li>
-                            <li class="paginate_button " tabindex="0"><a href="#">2</a></li>
-                            <li class="paginate_button next" tabindex="0"><a href="#">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="dataTables_info">Showing 1 to 10 of 57 entries</div>
-                </div>-->
             </div>
         </div>
 

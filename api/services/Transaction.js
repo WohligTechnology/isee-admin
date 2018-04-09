@@ -459,7 +459,7 @@ var model = {
     getViolatedTransaction: function (data, callback) {
         Transaction.findOne({
             _id: data.id
-        }).lean().deepPopulate("itemId.organizationId itemId.warrantyItemId organizationId retailLocationId customerId activityDate itemId tillNumber retailLocationId.organizationId tillNumber.retailLocationId crm companycontact companyinfo customernote").exec(function (err, found) {
+        }).lean().exec(function (err, found) {
             if (err || _.isEmpty(found)) {
                 callback(err, []);
             } else {
@@ -501,6 +501,25 @@ var model = {
                     callback(err, []);
                 } else {
                     callback(null, data);
+                }
+            });
+    },
+
+    clearViolationForTransactions: function (data, callback) {
+        async.parallel({
+                organizationId: function (callback) {
+                    Company.getFromId("organizationId", data.organizationId, callback);
+                },
+                warrantyItemId: function (callback) {
+                    WarrantyItem.getFromId("warrantyItemId", data.warrantyItemId, callback);
+                }
+            },
+            function (err, result) {
+                if (err || _.isEmpty(result)) {
+                    callback(err);
+                } else {
+                    data = _.assign(data, result);
+                    Item.saveData(data, callback);
                 }
             });
     }

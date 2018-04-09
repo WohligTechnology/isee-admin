@@ -8,6 +8,7 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
 
     //to keep track of prev page 
     $.jStorage.set("prev_page", "rules-admin-violations");
+
     //pagination
 
     var i = 0;
@@ -25,10 +26,10 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
     }
     $scope.changePage = function (page) {
         //  console.log("changePage: ", page);
-        var goTo = "rules-admin-transaction";
+        var goTo = "rules-admin-violations";
         $scope.currentPage = page;
         if ($scope.search.keyword) {
-            goTo = "rules-admin-transaction";
+            goTo = "rules-admin-violations";
         }
         $state.go(goTo, {
             page: page
@@ -46,6 +47,7 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
             function (data, ini) {
                 if (ini == i) {
                     $scope.transactionData = data.data.results;
+                    console.log(" $scope.transactionData", $scope.transactionData);
                     $scope.totalItems = data.data.total;
                     $scope.maxRow = data.data.options.count;
                 }

@@ -1,12 +1,16 @@
 <!-- <div ng-include="template.header" class="template header"></div> -->
 
 <div class="add-header">
-    <span class="main bredcrums" ng-if="prevroute=='violatedRules'"> 
-        <a href="">Home</a> / <a ui-sref="view-rules">Rules List</a> / <a ui-sref="view-rules">Violated Transactions</a> / View Violated Transactions
-        </span>
-    <span class="main bredcrums" ng-if="prevroute=='rules-admin-violations'"> 
-        <a href="">Home</a> / <a href="">Rules Admin </a> / <a ui-sref="rules-admin-violations">Violations</a> / View Violated Transactions
-        </span>
+    <span class="main bredcrums" ng-if="prevroute=='violatedRules'">
+        <a href="">Home</a> /
+        <a ui-sref="view-rules">Rules List</a> /
+        <a ui-sref="view-rules">Violated Transactions</a> / View Violated Transactions
+    </span>
+    <span class="main bredcrums" ng-if="prevroute=='rules-admin-violations'">
+        <a href="">Home</a> /
+        <a href="">Rules Admin </a> /
+        <a ui-sref="rules-admin-violations">Violations</a> / View Violated Transactions
+    </span>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -60,7 +64,7 @@
                     <th>value</th>
                 </thead>
                 <tbody>
-                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='retailLocationId')"
+                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='retailLocationId' || tableField=='date'|| tableField=='transaction')"
                         ng-repeat="(tableField,tableData) in violationResult.transactionJson.tillRegisterData track by $index">
                         <td>{{tableField}}</td>
                         <td>{{tableData}}</td>
@@ -175,6 +179,24 @@
                 <tbody>
                     <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId')"
                         ng-repeat="(tableField,tableData) in violationResult.transactionJson.companyInfoData track by $index">
+                        <td>{{tableField}}</td>
+                        <td>{{tableData}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="vio-table col-md-12">
+            <span>Transaction</span>
+
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <th>Title</th>
+                    <th>value</th>
+                </thead>
+                <tbody>
+                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='retailLocationId' || tableField=='customerId' || tableField=='crm' || tableField=='violations' || tableField=='transactionJson' || tableField=='tillNumber' || tableField=='itemId' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId'|| tableField=='activityDate'|| tableField=='companycontact'|| tableField=='companyinfo')"
+                        ng-repeat="(tableField,tableData) in violationResult track by $index">
                         <td>{{tableField}}</td>
                         <td>{{tableData}}</td>
                     </tr>

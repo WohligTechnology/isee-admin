@@ -43,18 +43,18 @@ myApp.controller('ViewSuccessLogCtrl', function ($scope, TemplateService, Naviga
             if (data.value == true) {
                 totallogs = data.data[0].logs;
                 NavigationService.searchCall("AllLogs/singleSuccessLogHistory", {
-                    pageNo: $scope.currentPage,
-                    keyword: $scope.search.keyword,
-                    _id: $stateParams.log_id
-                }, ++i,
-                function (data, ini) {
-                    if (ini == i) {
-                        $scope.noData = false;
-                        $scope.successLog = data.data;
-                        $scope.totalItems = totallogs;
-                        $scope.maxRow = 10;
-                    }
-                });
+                        pageNo: $scope.currentPage,
+                        keyword: $scope.search.keyword,
+                        _id: $stateParams.log_id
+                    }, ++i,
+                    function (data, ini) {
+                        if (ini == i) {
+                            $scope.noData = false;
+                            $scope.successLog = data.data;
+                            $scope.totalItems = totallogs;
+                            $scope.maxRow = 10;
+                        }
+                    });
             }
         });
     };

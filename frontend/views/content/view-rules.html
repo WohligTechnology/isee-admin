@@ -1,8 +1,8 @@
 <!-- <div ng-include="template.header" class="template header"></div> -->
 <div class="add-header">
-    <span class="main bredcrums"> 
+    <span class="main bredcrums">
         <a href="">Home</a> / Rules List
-        </span>
+    </span>
 </div>
 <div class="panel panel-default panel-rad  panel-spacing">
     <div class="panel-heading">
@@ -21,8 +21,8 @@
                         </div> -->
                     <a class="btn btn-primary col-white pull-right" ui-sref="drl-rule">
                         <i class="fa fa-plus"></i>
-                            Add Rules
-                        </a>
+                        Add Rules
+                    </a>
                 </form>
 
             </div>
@@ -42,20 +42,26 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in allRules">
-                        <td>{{data.name}} <a class="mg-left-20" ui-sref="drl-rule({ruleId:data._id})" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <!-- <a class="mar-l12" ng-click="deleteRule(data._id)" title="Delete"><i class="fa fa-trash"></i></a> -->
+                        <td>{{data.name}}
+                            <a class="mg-left-20" ui-sref="drl-rule({ruleId:data._id})" title="Edit">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a class="mar-l12" ng-click="deleteRule(data._id)" title="Delete">
+                                <i class="fa fa-trash"></i>
+                            </a>
                         </td>
                         <!-- <td> <a class="btn btn-primary" ui-sref="drl-rule({ruleId:data._id})">View</a></td> -->
 
-                        <td> <a class="mg-left-20 label label-warning" ng-click="executeRule({ruleId:data._id});changeexec()"
+                        <td>
+                            <a class="mg-left-20 label label-warning" ng-click="executeRule({ruleId:data._id});changeexec()"
                                 ng-class="{'exec':isexec}" ng-hide="{{data.status=='Completed'|| data.status=='Processing' || data.subStatus=='Disabled'}}">
-                            <i class="fa fa-play" aria-hidden="true"></i>
-                        </a>
+                                <i class="fa fa-play" aria-hidden="true"></i>
+                            </a>
                         </td>
                         <!-- <td> <a class="btn btn-primary" ui-sref="violatedRules({ruleId:data._id})">Violation</a></td> -->
                         <td>
-                            <a class="mg-left-40  label label-danger" ui-sref="violatedRules({ruleId:data._id})" title="View Violated Rule" ng-show="{{data.status=='Completed'}}"> 
-                                 <i class="fa fa-ban" aria-hidden="true"></i>
+                            <a class="mg-left-40  label label-danger" ui-sref="violatedRules({ruleId:data._id})" title="View Violated Rule" ng-show="{{data.status=='Completed'}}">
+                                <i class="fa fa-ban" aria-hidden="true"></i>
                             </a>
                         </td>
                         <td>
