@@ -9,8 +9,6 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
     //to keep track of prev page 
     $.jStorage.set("prev_page", "rules-admin-violations");
 
-    //pagination
-
     var i = 0;
     if ($stateParams.page && !isNaN(parseInt($stateParams.page))) {
         $scope.currentPage = $stateParams.page;
@@ -38,6 +36,7 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
     };
 
     $scope.getAllItems = function (keywordChange) {
+        //  console.log("In getAllItems: ", keywordChange);
         $scope.totalItems = undefined;
         if (keywordChange) {}
         NavigationService.searchCall("Transaction/getRecordsByTransaction", {
@@ -45,9 +44,9 @@ myApp.controller('RulesAdminViolationsCtrl', function ($scope, TemplateService, 
                 keyword: $scope.search.keyword
             }, ++i,
             function (data, ini) {
+                //  console.log("Data: ", data);
                 if (ini == i) {
                     $scope.transactionData = data.data.results;
-                    console.log(" $scope.transactionData", $scope.transactionData);
                     $scope.totalItems = data.data.total;
                     $scope.maxRow = data.data.options.count;
                 }

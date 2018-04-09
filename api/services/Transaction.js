@@ -507,19 +507,44 @@ var model = {
 
     clearViolationForTransactions: function (data, callback) {
         async.parallel({
-                organizationId: function (callback) {
-                    Company.getFromId("organizationId", data.organizationId, callback);
+                deleteFromRule: function (callback) {
+                    RuleEngine.deleteData({
+                        _id: data.ruleId
+                    }, function (err, data) {
+                        if (err || _.isEmpty(data)) {
+                            callback(err);
+                        } else {
+                            callback(null, data)
+                        }
+                    });
                 },
-                warrantyItemId: function (callback) {
-                    WarrantyItem.getFromId("warrantyItemId", data.warrantyItemId, callback);
+                deleteViolations: function (callback) {
+                    Transaction.find({
+                        "violations": {
+                            $exists: true,
+                            $ne: []
+                        }
+                    }).lean().exec(function (err, data1) {
+                        if (err || _.isEmpty(data1)) {
+                            callback(err);
+                        } else {
+                            async.concatLimit(data1, 30, function (allTran, callback) {
+                                var del = data.ruleId;
+                                allTran.violations = allTran.violations.filter(function (item) {
+                                    // console.log("============", del == item.toString().replace(/ /g, ''));
+                                    return item.toString().replace(/ /g, '') !== del
+                                })
+                                Transaction.saveData(allTran, callback);
+                            }, callback);
+                        }
+                    });
                 }
             },
             function (err, result) {
                 if (err || _.isEmpty(result)) {
                     callback(err);
                 } else {
-                    data = _.assign(data, result);
-                    Item.saveData(data, callback);
+                    callback(null, result);
                 }
             });
     }

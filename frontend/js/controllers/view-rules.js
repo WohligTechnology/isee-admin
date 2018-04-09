@@ -114,7 +114,13 @@
 
      //deleteRule
      $scope.deleteRule = function (formdata) {
-         console.log("formdata", formdata);
+         var deleteDataToId = {};
+         deleteDataToId.ruleId = formdata
+         NavigationService.apiCall("Transaction/clearViolationForTransactions", deleteDataToId, function (data) {
+             if (data.value == true) {
+                 $state.reload();
+             }
+         });
      };
 
  })
