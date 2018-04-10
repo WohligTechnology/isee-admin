@@ -67,7 +67,8 @@
                     <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='retailLocationId' || tableField=='date'|| tableField=='transaction')"
                         ng-repeat="(tableField,tableData) in violationResult.transactionJson.tillRegisterData track by $index">
                         <td>{{tableField}}</td>
-                        <td>{{tableData}}</td>
+                        <td ng-if="tableField=='additions' || tableField=='openingBalance' || tableField=='systemBalance' ||tableField=='actualBalance' ||tableField=='bankDeposit' ||tableField=='closingBalance'">{{tableData}} $</td>
+                        <td ng-if="tableField=='organizationId' || tableField=='tillNumber' || tableField=='employeeNumber' ||tableField=='locationDataId' ||tableField=='activdate' ||tableField=='orgId'">{{tableData}}</td>
                     </tr>
                 </tbody>
             </table>
