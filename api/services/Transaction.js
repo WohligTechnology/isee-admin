@@ -506,47 +506,34 @@ var model = {
     },
 
     clearViolationForTransactions: function (data, callback) {
-        async.parallel({
-                deleteFromRule: function (callback) {
-                    RuleEngine.deleteData({
-                        _id: data.ruleId
-                    }, function (err, data) {
-                        if (err || _.isEmpty(data)) {
-                            callback(err);
-                        } else {
-                            callback(null, data)
-                        }
-                    });
-                },
-                deleteViolations: function (callback) {
-                    Transaction.find({
-                        "violations": {
-                            $exists: true,
-                            $ne: []
-                        }
-                    }).lean().exec(function (err, data1) {
-                        if (err || _.isEmpty(data1)) {
-                            callback(err);
-                        } else {
-                            async.concatLimit(data1, 30, function (allTran, callback) {
-                                var del = data.ruleId;
-                                allTran.violations = allTran.violations.filter(function (item) {
-                                    // console.log("============", del == item.toString().replace(/ /g, ''));
-                                    return item.toString().replace(/ /g, '') !== del
-                                })
-                                Transaction.saveData(allTran, callback);
-                            }, callback);
-                        }
-                    });
-                }
-            },
-            function (err, result) {
-                if (err || _.isEmpty(result)) {
-                    callback(err);
-                } else {
-                    callback(null, result);
-                }
-            });
+        RuleEngine.deleteData({
+            _id: data.ruleId
+        }, function (err, data) {
+            if (err || _.isEmpty(data)) {
+                callback(err);
+            } else {
+                callback(null, "Success")
+                Transaction.find({
+                    "violations": {
+                        $exists: true,
+                        $ne: []
+                    }
+                }).lean().limit(2000).exec(function (err, data1) {
+                    if (err || _.isEmpty(data1)) {
+                        // callback(err);
+                    } else {
+                        async.concatLimit(data1, 30, function (allTran, callback) {
+                            var del = data.ruleId;
+                            allTran.violations = allTran.violations.filter(function (item) {
+                                // console.log("============", del == item.toString().replace(/ /g, ''));
+                                return item.toString().replace(/ /g, '') !== del
+                            })
+                            Transaction.saveData(allTran, function (err, data) {});
+                        }, callback);
+                    }
+                });
+            }
+        });
     }
 };
 module.exports = _.assign(module.exports, exports, model);
