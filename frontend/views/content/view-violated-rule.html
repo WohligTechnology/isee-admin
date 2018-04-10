@@ -64,7 +64,7 @@
                     <th>value</th>
                 </thead>
                 <tbody>
-                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='retailLocationId' || tableField=='date'|| tableField=='transaction')"
+                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='retailLocationId' || tableField=='date'|| tableField=='transaction' || tableField=='organizationId')"
                         ng-repeat="(tableField,tableData) in violationResult.transactionJson.tillRegisterData track by $index">
                         <td>{{tableField}}</td>
                         <td ng-if="tableField=='additions' || tableField=='openingBalance' || tableField=='systemBalance' ||tableField=='actualBalance' ||tableField=='bankDeposit' ||tableField=='closingBalance'">{{tableData}} $</td>
@@ -74,7 +74,7 @@
             </table>
         </div>
 
-        <div class="vio-table col-md-12">
+        <!-- <div class="vio-table col-md-12">
             <span>Customer</span>
 
             <table class="table table-hover table-responsive">
@@ -90,7 +90,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
 
         <div class="vio-table col-md-12">
             <span>Calendar</span>
@@ -126,6 +126,11 @@
                 <tbody>
                     <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId'  || tableField=='customerId')"
                         ng-repeat="(tableField,tableData) in violationResult.transactionJson.crmData track by $index">
+                        <td>{{tableField}}</td>
+                        <td>{{tableData}}</td>
+                    </tr>
+                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId'  || tableField=='customerId')"
+                        ng-repeat="(tableField,tableData) in violationResult.transactionJson.customerData track by $index">
                         <td>{{tableField}}</td>
                         <td>{{tableData}}</td>
                     </tr>
@@ -196,10 +201,11 @@
                     <th>value</th>
                 </thead>
                 <tbody>
-                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='retailLocationId' || tableField=='customerId' || tableField=='crm' || tableField=='violations' || tableField=='transactionJson' || tableField=='tillNumber' || tableField=='itemId' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId'|| tableField=='activityDate'|| tableField=='companycontact'|| tableField=='companyinfo')"
+                    <tr ng-if="!(tableField=='_id' || tableField=='__v' || tableField=='retailLocationId' || tableField=='customerId' || tableField=='crm' || tableField=='violations' || tableField=='transactionJson' || tableField=='tillNumber' || tableField=='itemId' || tableField=='createdAt' || tableField=='updatedAt' || tableField=='organizationId'|| tableField=='activityDate'|| tableField=='companycontact' || tableField=='companyinfo' || tableField=='time')"
                         ng-repeat="(tableField,tableData) in violationResult track by $index">
                         <td>{{tableField}}</td>
-                        <td>{{tableData}}</td>
+                        <td ng-if="tableField=='amount' || tableField=='netAmount'">{{tableData}} $</td>
+                        <td ng-if="tableField=='records' || tableField=='workstationId' || tableField=='retailTransactionLineItemSequence' ||tableField=='transactionType' ||tableField=='paymentMode' ||tableField=='transactionVoidFlag'||tableField=='transactionNumber'||tableField=='cardNumber'||tableField=='quantity'||tableField=='custAccountCode' || tableField=='locationDataId' || tableField=='tillNum' || tableField=='itemDataId' || tableField=='activdate'|| tableField=='orgId'|| tableField=='custId'">{{tableData}}</td>
                     </tr>
                 </tbody>
             </table>
